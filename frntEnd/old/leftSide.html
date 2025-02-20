@@ -1,0 +1,125 @@
+<ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" id="menuDshbrd" href="">
+        <i class="icon-grid menu-icon"></i>
+        <span class="menu-title">Dashboard</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="">
+        <i class="icon-bar-graph menu-icon"></i>
+        <span class="menu-title">Fil d'actualités</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#Admin" aria-expanded="false" aria-controls="ui-basic">
+        <i class="mdi mdi-account-card-details menu-icon"></i>
+        <span class="menu-title">Service Admin</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="Admin">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="#">Nouveau</a></li>
+          <li class="nav-item"> <a class="nav-link" href="Collaborateur.html">Collaborateurs</a></li>
+          <li class="nav-item"> <a class="nav-link" href="#">Demandes RH</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#Recrutement" aria-expanded="false" aria-controls="form-elements">
+        <i class="mdi mdi-linkedin menu-icon"></i>
+        <span class="menu-title">Recrutement</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="Recrutement">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Compagnes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Offres</a></li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#Marketing" aria-expanded="false" aria-controls="form-elements">
+        <i class="mdi mdi-signal-variant menu-icon"></i>
+        <span class="menu-title">Dév-commercial</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="Marketing">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contacts</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Offres</a></li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#IT" aria-expanded="false" aria-controls="form-elements">
+        <i class="mdi mdi-incognito menu-icon"></i>
+        <span class="menu-title">Service IT</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="IT">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"><a class="nav-link" href="#">Management</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Utilisateurs</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Accés</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#WFM" aria-expanded="false" aria-controls="form-elements">
+        <i class="mdi mdi-calendar-clock menu-icon"></i>
+        <span class="menu-title">WFM</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="WFM">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"><a class="nav-link" href="#">Adhérence Planning</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Plannings</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Pauses</a></li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#Finance" aria-expanded="false" aria-controls="form-elements">
+        <i class="mdi mdi-wallet menu-icon"></i>
+        <span class="menu-title">Finance</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="Finance">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Entités</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Demandes Achats</a></li>
+        </ul>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="#">
+        <i class="mdi mdi-store menu-icon"></i>
+        <span class="menu-title">Service Achats</span>
+      </a>
+    </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="icon-paper menu-icon"></i>
+          <span class="menu-title">TO DO</span>
+        </a>
+      </li>
+  </ul>
+
+  <script type="">
+    switch (window.location.pathname) {
+        case '/':
+            $('#menuDshbrd').attr('aria-expanded', 'true');
+            break;
+            
+    }
+  </script>

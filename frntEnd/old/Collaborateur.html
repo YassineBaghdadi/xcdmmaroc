@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>SACCOMCG- Karim BOURIR</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="vendors/feather/feather.css">
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
+  <link rel="stylesheet" href="vendors/feather/feather.css">
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="vendors/feather/feather.css">
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
+  <!-- inject:css -->
+  <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+  <!-- endinject -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="images/favicon.png" />
+
+  <style>
+    div.scroll {
+        margin:4px, 4px;
+        padding:4px;
+        background-color: white;
+        height:400px;
+        width: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align:justify;
+    }
+</style>
+<style>
+  div.scrollcard {
+      margin:4px, 4px;
+      padding:4px;
+      background-color: white;
+      height:500px;
+      width: auto;
+      overflow-x: hidden;
+      overflow-y: auto;
+      text-align:justify;
+  }
+</style>
+</head>
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logo.png" class="mr-2" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo2.png" alt="logo"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="icon-menu"></span>
+        </button>
+        <ul class="navbar-nav mr-lg-2">
+          <li class="nav-item nav-search d-none d-lg-block">
+            <div class="input-group">
+              <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                <span class="input-group-text" id="search">
+                  <i class="icon-search"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item dropdown">
+            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+              <i class="icon-bell mx-0"></i>
+              <span class="count"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+              <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
+              <a class="dropdown-item preview-item">
+                <div class="preview-item-content">
+                  <h6 class="preview-subject font-weight-normal">Notifications-3</h6>
+                  <p class="font-weight-light small-text mb-0 text-muted">
+                    Maintenant
+                  </p>
+                </div>
+              </a>
+              <a class="dropdown-item preview-item">
+                <div class="preview-item-content">
+                  <h6 class="preview-subject font-weight-normal">Notifications-2</h6>
+                  <p class="font-weight-light small-text mb-0 text-muted">
+                    il y'a une heure
+                  </p>
+                </div>
+              </a>
+              <a class="dropdown-item preview-item">
+                <div class="preview-item-content">
+                  <h6 class="preview-subject font-weight-normal">Notifications-1</h6>
+                  <p class="font-weight-light small-text mb-0 text-muted">
+                    il y'a deux jours
+                  </p>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+              <img src="images/faces/face17.jpg" alt="profile"/>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              <a class="dropdown-item">
+                <i class="ti-user text-primary"></i>
+                  Mon Profil
+              </a>
+              <a class="dropdown-item">
+                <i class="ti-power-off text-primary"></i>
+                Logout
+              </a>
+            </div>
+          </li>
+          <li class="nav-item nav-settings d-none d-lg-flex">
+            <a class="nav-link" href="#">
+              <i class="icon-ellipsis"></i>
+            </a>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+          <span class="icon-menu"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- partial Start -->
+    <div class="container-fluid page-body-wrapper">
+      <div id="right-sidebar" class="settings-panel">
+        <i class="settings-close ti-close"></i>
+        <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link" id="chats-tab" data-toggle="tab" href="#Pointage-section" role="tab" aria-controls="chats-section">PAUSES</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="setting-content">
+
+          <!-- Pointage section tab Start -->
+          <div class="tab-pane fade show active " id="Pointage-section" role="tabpanel" aria-labelledby="Pointage-section">
+            <div class="col-md-12 mb-12 stretch-card transparent">
+                <div class="card-body">
+                  <div class="row text-center">
+                    <div class="col-md-12 text-center">
+                      <button type="submit" class="btn btn-success mb-2">Dispo : 00:00:36 </button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <select class="form-control" id="exampleFormControlSelect1">
+                        <option></option>
+                        <option>Pause légal</option>
+                        <option>Pause Déjeuner</option>
+                        <option>Réunion</option>
+                        <option>Panne technique</option>
+                        <option>Bref</option>
+                      </select>
+                    </div>
+                  </div>
+                  <hr/>
+                  <div class="row">
+                      <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-danger mb-2">Changer</button>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 stretch-card">
+                <div class="card scroll">
+                  <div class="card-body">
+                    <p class="card-title mb-0">Log-In : <span id="timelog">15/03/2022 08:50</span></p>
+                    <div class="table-responsive">
+                      <table class="table table-borderless">
+                        <thead>
+                          <tr>
+                            <th class="pl-0">Pause</th>
+                            <th class="pl-0">Duré</th>
+                            <th class="pl-0">Heure</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="pl-0">Pause légal</td>
+                            <td class="pl-0">10M</td>
+                            <td class="text-muted pl-0">10:30-</td>
+                          </tr>
+                          <tr>
+                            <td class="pl-0">Pause légal</td>
+                            <td class="pl-0">5M</td>
+                            <td class="text-muted pl-0">12:30</td>
+                          </tr>
+                          <tr>
+                            <td class="pl-0" >Pause Déjeuner</td>
+                            <td class="pl-0">45M</td>
+                            <td class="text-muted pl-0">13:00</td>
+                          </tr>
+                          <tr>
+                            <td class="pl-0">Réunion</td>
+                            <td class="pl-0">1H 20M 30S</td>
+                            <td class="text-muted pl-0">14:00</td>
+                          </tr>
+                          <tr>
+                            <td class="pl-0">Pause légal</td>
+                            <td class="pl-0 ">15M</td>
+                            <td class="text-muted pl-0">14:30</td>
+                          </tr>
+                          <tr>
+                            <td class="pl-0">Panne technique</td>
+                            <td class="pl-0">15M</td>
+                            <td class="text-muted pl-0">15:00</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!-- Pointage tab ends -->
+        </div>
+      </div>  <!-- partial  End-->
+    <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+      <!-- NAV /_sidebar.html START -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="icon-bar-graph menu-icon"></i>
+              <span class="menu-title">Fil d'actualités</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#Admin" aria-expanded="true" aria-controls="ui-basic">
+              <i class="mdi mdi-account-card-details menu-icon"></i>
+              <span class="menu-title">Service Admin</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="Admin">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="#">Nouveau</a></li>
+                <li class="nav-item"> <a class="nav-link" href="#">Collaborateurs</a></li>
+                <li class="nav-item"> <a class="nav-link" href="#">Demandes RH</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#Recrutement" aria-expanded="false" aria-controls="form-elements">
+              <i class="mdi mdi-linkedin menu-icon"></i>
+              <span class="menu-title">Recrutement</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="Recrutement">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Compagnes</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Offres</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#Marketing" aria-expanded="false" aria-controls="form-elements">
+              <i class="mdi mdi-signal-variant menu-icon"></i>
+              <span class="menu-title">Dév-commercial</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="Marketing">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Contacts</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Offres</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#IT" aria-expanded="false" aria-controls="form-elements">
+              <i class="mdi mdi-incognito menu-icon"></i>
+              <span class="menu-title">Service IT</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="IT">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="#">Management</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Utilisateurs</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Accés</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#WFM" aria-expanded="false" aria-controls="form-elements">
+              <i class="mdi mdi-calendar-clock menu-icon"></i>
+              <span class="menu-title">WFM</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="WFM">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="#">Adhérence Planning</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Plannings</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Pauses</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#Finance" aria-expanded="false" aria-controls="form-elements">
+              <i class="mdi mdi-wallet menu-icon"></i>
+              <span class="menu-title">Finance</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="Finance">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Entités</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Demandes Achats</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="mdi mdi-store menu-icon"></i>
+              <span class="menu-title">Service Achats</span>
+            </a>
+          </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="icon-paper menu-icon"></i>
+                <span class="menu-title">TO DO</span>
+              </a>
+            </li>
+        </ul>
+      </nav>
+      <!-- NAV END -->
+
+         <!-- NAV END -->
+
+       <!-- content-wrapper Start -->
+       <div class="main-panel">
+<!---------------------------------------------------------------------------------------------------Body Start-------------------------------------------------------------------------------------------------------->
+                <div class="content-wrapper"><!---Body Start-->
+<!----------------------------------------------------------------------------------------------------Contrat info----------------------------------------------------------------------------------------------------->
+
+<div class="col-12 grid-margin">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Contrat : KARIM BOURIR</h4>
+      <form class="form-sample">
+
+        <div class="row">
+          <div class="col-md-3">
+             <label for="Statut">Matricule : <h6 id="Matricule" name="Matricule" class="text-primary">0001</h6></label>
+           </div>
+          <div class="col-md-3">
+              <label for="Entite">Entité actual : <h6 id="Entite" name="Entite"  class="text-primary">WEACT SERVICE</h6></label>
+          </div>
+          <div class="col-md-2">
+                <label for="Etablissement">Etablissement : <h6 id="Etablissement" name="Etablissement" class="text-primary">Interne</h6></label>
+          </div>
+          <div class="col-md-2">
+            <label for="Statut">Poste : <h6 id="Etablissement" name="Etablissement" class="text-primary">Responsable IT</h6></label>
+        </div>
+          <div class="col-md-2">
+              <label for="Statut">Statut : <h6 id="Etablissement" name="Etablissement" class="text-primary">Active</h6></label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3">
+             <label for="Statut">Première Date d'intégration : <h6 id="PremiereDatedintégration" name="PremiereDatedintégration" class="text-primary">21/10/2019</h6></label>
+           </div>
+          <div class="col-md-3">
+            <label for="Statut">Date de dernier transfert : <h6 id="Datedederniertransfert" name="Datedederniertransfert"  class="text-primary">01/01/2023</h6></label>
+          </div>
+           <div class="col-md-2">
+             <label for="Statut">TYPE CONTRAT  : <h6 id="TYPECONTRAT" name="TYPECONTRAT"  class="text-primary">CDI</h6></label>
+           </div>
+           
+           <div class="col-md-2">
+            <label for="Statut">Ancienneté  : <h6 id="SoldeConge" name="SoldeConge"  class="text-primary">3ans 7mois 15jours</h6></label>
+          </div>
+           <div class="col-md-2">
+            <label for="Statut">Solde Congé  : <h6 id="SoldeConge" name="SoldeConge"  class="text-primary">17,5</h6></label>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<!------------------------------------------------------------------------------------------------------TAB----------------------------------------------------------------------------------------------------->
+<div class="row">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#InformationsPresonnelle" role="tab" aria-controls="InformationsPresonnelle" aria-expanded="true">Informations Presonnelle</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="chats-tab" data-toggle="tab" href="#Contrat" role="tab" aria-controls="Contrat">Contrat</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="chats-tab" data-toggle="tab" href="#TransfertContrat" role="tab" aria-controls="TransfertContrat">Transfert Contrat</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="chats-tab" data-toggle="tab" href="#Conge" role="tab" aria-controls="Conge">Congés</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="chats-tab" data-toggle="tab" href="#Decharges" role="tab" aria-controls="Decharges">Décharges</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="chats-tab" data-toggle="tab" href="#Documents" role="tab" aria-controls="Documents">Documents</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="chats-tab" data-toggle="tab" href="#disciplin" role="tab" aria-controls="disciplin">Fiches Sanction disciplinaire</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="setting-content">
+<!------------------------------------------------------------------------------------------------------Personal info----------------------------------------------------------------------------------------------------->
+<div class="tab-pane fade show active scroll-wrapper" id="InformationsPresonnelle" role="tabpanel" aria-labelledby="InformationsPresonnelle"
+>
+          <div class="col-12 grid-margin">
+            <div class="card scrollcard">
+              <div class="card-body">
+                <form class="form-sample">
+
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                       <label for="Statut">Matricule *</label>
+                       <input type="text" class="form-control" name="Matricule" id="Matricule" />
+                      </div>
+                     </div>
+                     <div class="col-md-3">
+                      <div class="form-group">
+                       <label for="Statut">N° CNSS</label>
+                       <input type="text" class="form-control" name="CNSS" id="CNSS" />
+                      </div>
+                     </div>
+                     <div class="col-md-3">
+                      <div class="form-group">
+                       <label for="Statut">Compagnie d'assurance</label>
+                       <input type="text" class="form-control" name="Nationalit" id="Nationalit" />
+                      </div>
+                     </div>
+                    <div class="col-md-3">
+                     <div class="form-group">
+                      <label for="Statut">N° d'affiliation assurance</label>
+                      <input type="text" class="form-control" name="Matricule" id="Matricule" />
+                     </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-3">
+                     <div class="form-group">
+                      <label for="Statut">Civilité</label>
+                      <select class="form-control" id="Civilit" name="Civilit">
+                        <option>Monsieur</option>
+                        <option>Madame</option>
+                      </select>
+                     </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                       <label for="Statut">Nom</label>
+                       <input type="text" class="form-control" name="Nom" id="Nom" />
+                      </div>
+                     </div>
+                     <div class="col-md-3">
+                      <div class="form-group">
+                       <label for="Statut">Prénom</label>
+                       <input type="text" class="form-control" name="Prenom" id="Prenom" />
+                      </div>
+                     </div>
+                     <div class="col-md-3">
+                      <div class="form-group">
+                       <label for="Statut">Date de naissance</label>
+                       <input type="date" class="form-control" name="naissance" id="naissance" />
+                      </div>
+                     </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                       <label for="Statut">Nationalité</label>
+                       <input type="text" class="form-control" name="Nationalit" id="Nationalit" />
+                      </div>
+                     </div>
+                    <div class="col-md-3">
+                     <div class="form-group">
+                      <label for="Statut">N° CIN/Passport</label>
+                      <input type="text" class="form-control" name="Matricule" id="Matricule" />
+                     </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                       <label for="Statut">Situation familiale</label>
+                       <select class="form-control" id="Sfamiliale" name="Sfamiliale">
+                        <option>Célibataire</option>
+                        <option>Marié(e)</option>
+                        <option>Divorcé(e)</option>
+                        <option>veuf/veuve</option>
+                      </select>
+                      </div>
+                     </div>
+                     <div class="col-md-3">
+                      <div class="form-group">
+                       <label for="Statut">Nombre d'enfants</label>
+                       <input type="number" class="form-control" name="enfants" id="enfants" />
+                      </div>
+                     </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                       <label for="Statut">Ville</label>
+                       <input type="text" class="form-control" name="Nationalit" id="Nationalit" />
+                      </div>
+                     </div>
+                    <div class="col-md-3">
+                     <div class="form-group">
+                      <label for="Statut">Code Postal</label>
+                      <input type="text" class="form-control" name="Matricule" id="Matricule" />
+                     </div>
+                    </div>
+                     <div class="col-md-6">
+                      <div class="form-group">
+                       <label for="Statut">Adresse</label>
+                       <input type="text" class="form-control" name="Adresse" id="Adresse" />
+                      </div>
+                     </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                       <label for="Statut">Linkedin</label>
+                       <input type="text" class="form-control" name="Nationalit" id="Nationalit" />
+                      </div>
+                     </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                       <label for="Statut">Téléphone</label>
+                       <input type="number" class="form-control" name="Nationalit" id="Nationalit" />
+                      </div>
+                     </div>
+                    <div class="col-md-3">
+                     <div class="form-group">
+                      <label for="Statut">Portable</label>
+                      <input type="text" class="form-control" name="Matricule" id="Matricule" />
+                     </div>
+                    </div>
+                     <div class="col-md-3">
+                      <div class="form-group">
+                       <label for="Statut">Mail</label>
+                       <input type="text" class="form-control" name="Adresse" id="Adresse" />
+                      </div>
+                     </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                       <label for="Statut">Nom de l'organisme bancaire</label>
+                       <input type="text" class="form-control" name="Nationalit" id="Nationalit" />
+                      </div>
+                     </div>
+                     <div class="col-md-8">
+                      <div class="form-group">
+                       <label for="Statut">RIB</label>
+                       <input type="text" class="form-control" name="Adresse" id="Adresse" />
+                      </div>
+                     </div>
+                  </div>
+
+                    <div class="row text-center">
+                      <div class="col-md-12 text-center">
+                          <button type="submit" class="btn btn-primary md-5">Enregistré/Modifier</button>
+                        </div>
+                    </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+</div>
+<!----------------------------------------------------------------------------------------------------Personal info------------------------------------------------------------------------------------------------------------------>
+
+<!----------------------------------------------------------------------------------------------------Contrat info------------------------------------------------------------------------------------------------------------------>
+<div class="tab-pane fade" id="Contrat" role="tabpanel" aria-labelledby="Contrat">
+
+  <div class="col-12 grid-margin">
+    <div class="card">
+      <div class="card-body">
+        <form class="form-sample">
+          <div class="row">
+
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="Entite">Entité *</label>
+                  <select class="form-control" id="Entite" name="Entite">
+                    <option></option>
+                    <option>SACCOMCG</option>
+                    <option>SACCOMRH</option>
+                    <option>SACCOMXD</option>
+                    <option>SACCOMCC</option>
+                    <option>SRE</option>
+                    <option>XCDM MAROC</option>
+                    <option>WEACT ACADEMY</option>
+                    <option>WEACT SERVICE</option>
+                    <option>QSDEVINTL</option>
+                    <option>SACCOMINTL</option>
+                  </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                  <label for="Etablissement">Département *</label>
+                  <select class="form-control" id="Etablissement" name="Etablissement">
+                    <option></option>
+                    <option>IT</option>
+                    <option>Finance</option>
+                    <option>Administratif</option>
+                    <option>Recrutement</option>
+                    <option>Production</option>
+                    <option>Work force Management</option>
+                    <option>Direction générale</option>
+                  </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                  <label for="Etablissement">Etablissement *</label>
+                  <select class="form-control" id="Etablissement" name="Etablissement">
+                    <option></option>
+                    <option>SACCOM CAPITAL GROUP</option>
+                    <option>XCEED</option>
+                    <option>RICHBOND</option>
+                  </select>
+                </div>
+            </div>
+             <div class="col-md-3">
+              <div class="form-group">
+               <label for="Statut">L'intitulé du poste *</label>
+               <input type="text" class="form-control" name="Poste" id="Poste" />
+              </div>
+             </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group">
+               <label for="Statut">Date d'intégration *</label>
+               <input type="date" class="form-control" name="intégration" id="intégration" />
+              </div>
+             </div>
+             
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="Statut">Type Contrat *</label>
+                  <select class="form-control" id="TypeContrat" name="TypeContrat">
+                    <option></option>
+                    <option>CDI</option>
+                    <option>CDD</option>
+                    <option>CTE</option>
+                    <option>ANAPEC</option>
+                    <option>Autre</option>
+                  </select>
+              </div>
+            </div>
+             <div class="col-md-3">
+              <div class="form-group">
+               <label for="Statut">Date fin contrat </label>
+               <input type="date" class="form-control" name="fincontrat" id="fincontrat" />
+              </div>
+             </div>
+             <div class="col-md-3">
+              <div class="form-group">
+                <label for="Statut">Statut Contrat *</label>
+                  <select class="form-control" id="Statut" name="Statut">
+                    <option></option>
+                    <option>Active</option>
+                    <option>SORTANT</option>
+                  </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 grid-margin">
+              <div class="col-12 col-md-12">
+              <label class="form-check-label text-danger">
+                <input type="checkbox" class="form-check-input"><!-- Contrat clôturer : OUI / Non-->
+                Merci de Cocher la case si Mr <span id="NomUser">XXXX YYYY</span> est le responsbale de département : <span id="Departement">ZZZZZZZ</span> 
+              </label>
+            </div>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-primary md-5">Enregistré/Modifier</button>
+              </div>
+          </div>
+  
+            </div>
+        </form>
+      </div>
+    </div>
+</div>
+
+<!----------------------------------------------------------------------------------------------------Contrat info------------------------------------------------------------------------------------------------------------------>
+
+<!----------------------------------------------------------------------------------------------------Contrat Transfert--------------------------------------------------------------------------------------------------------------->
+<div class="tab-pane fade" id="TransfertContrat" role="tabpanel" aria-labelledby="TransfertContrat">
+  <div class="col-12 grid-margin">
+    <div class="card scrollcard">
+      <div class="card-body">
+        <form class="form-sample">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="Entite">Nouvelle Entité *</label>
+                  <select class="form-control" id="NVEntite" name="NVEntite">
+                    <option>SACCOMCG</option>
+                    <option>SACCOMRH</option>
+                    <option>SACCOMXD</option>
+                    <option>SACCOMCC</option>
+                    <option>SRE</option>
+                    <option>XCDM MAROC</option>
+                    <option>WEACT ACADEMY</option>
+                    <option>WEACT SERVICE</option>
+                    <option>QSDEVINTL</option>
+                    <option>SACCOMINTL</option>
+                  </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                  <label for="Etablissement">Nouvelle Etablissement *</label>
+                  <select class="form-control" id="Etablissement" name="Etablissement">
+                    <option>SACCOM CAPITAL GROUP</option>
+                    <option>XCEED</option>
+                    <option>RICHBOND</option>
+                  </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+               <label for="Statut">Date transfert *</label>
+               <input type="date" class="form-control" name="dateTransfert" id="dateTransfert" />
+              </div>
+             </div>
+             <div class="col-md-3">
+              <div class="form-group">
+               <label for="Statut">Poste *</label>
+               <input type="text" class="form-control" name="NvPoste" id="NvPoste" />
+              </div>
+             </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-12 grid-margin">
+              <div class="col-12 col-md-12">
+              <label class="form-check-label text-danger">
+                <input type="checkbox" class="form-check-input"><!-- Contrat clôturer : OUI / Non-->
+                Cocher la case si vous souhaitez clôturer le contrat encours. Merci de bien noté que le solde des congés et Ancienneté seront réinitialiser
+              </label>
+            </div>
+            </div>
+          </div>
+  
+          <div class="row" hidden > <!--hidden if checkbox = False -->
+            <div class="col-md-4">
+              <div class="form-group">
+               <label for="Statut">Date clôture *</label>
+               <input type="date" class="form-control" name="Datecloture" id="Datecloture" />
+              </div>
+             </div>
+            <div class="col-md-4">
+              <div class="form-group">
+               <label for="Statut">Date d'intégration *</label>
+               <input type="date" class="form-control" name="Nationalit" id="Nationalit" />
+              </div>
+             </div>
+             <div class="col-md-4">
+              <div class="form-group">
+               <label for="Statut">TYPE CONTRAT *</label>
+               <select class="form-control" id="Statut" name="Statut">
+                <option>CDI</option>
+                <option>CDD</option>
+                <option>Anapec</option>
+                <option>Autre</option>
+              </select>
+              </div>
+             </div>
+          </div>
+  
+          <div class="row text-center">
+            <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-primary md-5">Ajouter/Modifier</button>
+              </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card scrollTableau">
+                <div class="card-body">
+                  <p class="card-title">List des Transferts</p> <!--order by date transfert ASC-->
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="table-responsive">
+                        <table id="example" class="display expandable-table" style="width:100%">
+                          <thead>
+                            <tr>
+                              <th>#Date</th>
+                              <th>Date transfert</th>
+                              <th>Ancienne entité</th>
+                              <th>Nouvelle entité</th>
+                              <th>TYPE CONTRAT</th>
+                              <th>Ancien Poste</th>
+                              <th>Nouveau Poste</th>
+                              <th>Contrat clôturer</th> <!--OUI / Non (checkbox = False then Non)  (checkbox = True then OUI) -->
+                              <th>Date clôture</th>
+                              <th>Nouveaux CONTRAT</th><!--CDI / CDD / ANAPEC / AUTRE / CTE-->
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td><a href="#">01/01/2023</a></td>
+                              <td>10/01/2023</td>
+                              <td>SRE</td>
+                              <td>WEACT SERVICE</td>
+                              <td>CDI</td>
+                              <td>Responsable IT</td>
+                              <td>Responsable IT</td>
+                              <td>Non</td>
+                              <td>N/A</td>
+                              <td>N/A</td>
+                            </tr>
+                            <tr>
+                              <td><a href="#">21/06/2021</a></td>
+                              <td>25/06/2021</td>
+                              <td>SACCOMCC</td>
+                              <td>SRE</td>
+                              <td>CDI</td>
+                              <td>Technicien IT</td>
+                              <td>Responsable IT</td>
+                              <td>Non</td>
+                              <td>N/A</td>
+                              <td>N/A</td>
+                            </tr>
+                          </tbody>
+                      </table>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!----------------------------------------------------------------------------------------------------Contrat Transfert------------------------------------------------------------------------------------------------------->
+
+ <!----------------------------------------------------------------------------------------------------DEMANDES Conge----------------------------------------------------------------------------------------------------------->
+    <div class="tab-pane fade" id="Conge" role="tabpanel" aria-labelledby="Conge">
+      <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Solde congés annuel payés : <span id="soldConge">14.5</span></h4>
+          </div>
+  
+          <div class="row"><!---table Congé Start-->
+            <div class="card-body scroll">
+              <h4 class="card-title">Liste des Congés</h4>
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Date</th>
+                      <th>Premier jour</th>
+                      <th>Dernier jour</th>
+                      <th>Nombre des jours</th>
+                      <th>Validation N+1</th>
+                      <th>Validation DRH</th>
+                      <th>Statut</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><a href="#">001</a></td>
+                      <td>24/03/2023</td>
+                      <td>20/06/2023</td>
+                      <td>17/07/2023</td>
+                      <td class="text-center">22</td>
+                      <td><label class="badge badge-success">Validée</label></td>
+                      <td><label class="badge badge-success">Validée</label></td>
+                      <td><label class="badge badge-success">Validée</label></td>
+                    </tr>
+                    <tr>
+                      <td><a href="#">002</a></td>
+                      <td>24/03/2023</td>
+                      <td>20/06/2023</td>
+                      <td>05/07/2023</td>
+                      <td class="text-center">10</td>
+                      <td><label class="badge badge-success">Validée</label></td>
+                      <td><label class="badge badge-warning">En cours</label></td>
+                      <td><label class="badge badge-warning">En cours</label></td>
+                    </tr>
+                    <tr>
+                      <td><a href="#">003</a></td>
+                      <td>24/03/2023</td>
+                      <td>20/06/2023</td>
+                      <td>17/07/2023</td>
+                      <td class="text-center">22</td>
+                      <td><label class="badge badge-warning">En cours</label></td>
+                      <td><label class="badge badge-warning">En cours</label></td>
+                      <td><label class="badge badge-danger">Annulé</label></td>
+                    </tr>
+                    <tr>
+                      <td><a href="#">004</a></td>
+                      <td>24/03/2023</td>
+                      <td>20/06/2023</td>
+                      <td>17/07/2023</td>
+                      <td  class="text-center">22</td>
+                      <td><label class="badge badge-danger">Rejetée</label></td>
+                      <td><label class="badge badge-warning">En cours</label></td>
+                      <td><label class="badge badge-danger">Rejetée</label></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div> <!---table Congé End-->
+
+        <div class="row"><!---historique demande congé  start -->
+          <div class="col-md-6 grid-margin">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Historique</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a href="#">25/04/2023 10:37</a></td>
+                    <td><select class="form-control" id="validationN1" name="validationN1" disabled>
+                      <option>Validée</option>
+                      <option>En cours</option>
+                      <option>Rejetée</option>
+                    </select></a></td>
+                    <td>Kacem BENABDERRAZIK</td>
+                  </tr>
+                  <tr>
+                    <td><a href="#">25/04/2023 13:15</a></td>
+                    <td><select class="form-control" id="validationN1" name="validationN1">
+                      <option></option>
+                      <option>Validée</option>
+                      <option>En cours</option>
+                      <option>Rejetée</option>
+                    </select></a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+        <div class="col-md-6 grid-margin">
+          <div class="row form-group">  
+            <div class="col-12 col-md-12">
+              <label for="Objet" class=" form-control-label">Commentaire</label>
+              <textarea class="form-control" name="Message"  id="Message" rows="10" disabled>
+                Kacem BENABDERRAZIK : je valide le congé pour Mr karim bourir
+              </textarea>
+              </div>
+          </div>
+          <div class="row text-center">
+            <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-primary md-5">Enregistré</button>
+              </div>
+          </div>
+        </div>
+        </div><!---historique demande congé  END -->
+        </div>
+      </div>
+  </div>
+<!----------------------------------------------------------------------------------------------------DEMANDES Conge----------------------------------------------------------------------------------------------------------->
+
+<!----------------------------------------------------------------------------------------------------DEMANDES Decharges------------------------------------------------------------------------------------------------------->
+ <div class="tab-pane fade" id="Decharges" role="tabpanel" aria-labelledby="Decharges">
+  <div class="row"><!---table Décharge Start-->
+    <div class="card-body scroll">
+      <h4 class="card-title">Liste des Congés</h4>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Date demande</th>
+              <th>Date sortie</th>
+              <th>Date de reprise</th>
+              <th>Validation N+1</th><!--- En cours, validée, Refusée-->
+              <th>Statut</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="#">20/03/2023 10:30</a></td>
+              <td>20/03/2023 12:30</td>
+              <td>20/03/2023 18:00</td>
+              <td><label class="badge badge-success">Validé</label></td>
+              <td><label class="badge badge-success">Validé</label></td>
+            </tr>
+            <tr>
+              <td><a href="#">20/03/2023 10:30</a></td>
+              <td>20/03/2023 12:30</td>
+              <td>20/03/2023 18:00</td>
+              <td><label class="badge badge-success">Validée</label></td>
+              <td><label class="badge badge-warning">En cours</label></td>
+            </tr>
+            <tr>
+              <td><a href="#">20/03/2023 10:30</a></td>
+              <td>20/03/2023 12:30</td>
+              <td>20/03/2023 18:00</td>
+              <td><label class="badge badge-warning">En cours</label></td>
+              <td><label class="badge badge-danger">Annulée</label></td>
+            </tr>
+            <tr>
+              <td><a href="#">20/03/2023 10:30</a></td>
+              <td>20/03/2023 12:30</td>
+              <td>20/03/2023 18:00</td>
+              <td><label class="badge badge-danger">Refusée</label></td>
+              <td><label class="badge badge-danger">Refusée</label></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div> <!---table Décharge End-->
+
+  <hr/>
+
+  <div class="row"><!---historique demande Décharge  start -->
+    <div class="col-md-8 grid-margin">
+      <div class="table-responsive scroll">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Historique</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="#">Demande d'Annulation</a></td> <!--une fois c'est la phrase Demande d'Annulation devient la date de traitement -->
+              <td><select class="form-control" id="DemandeAnnulation" name="DemandeAnnulation">
+                <option></option>
+                <option>Annulée la demande</option>
+                <option>Mantenir la demande</option>
+              </select></td> <!---show if the agent ask for discard -->
+              <td></td>
+            </tr>
+            <tr>
+              <td><a href="#">20/03/2023 10:30</a></td>
+              <td>Demande annulée</td>
+              <td>Fayssal SOQRATI</td>
+            </tr>
+            <tr>
+              <td><a href="#">20/03/2023 10:30</a></td>
+              <td>Demande d'Annulation</td>
+              <td>KARIM BOURIR</td>
+            </tr>
+            <tr>
+              <td><a href="#">20/03/2023 10:30</a></td>
+              <td>Refusée</td>
+              <td>Kacem BENABDERRAZIK</td>
+            </tr>
+            <tr>
+              <td><a href="#">20/03/2023 10:30</a></td>
+              <td>Validée</td>
+              <td>Kacem BENABDERRAZIK</td>
+            </tr>
+            <tr>
+              <td><a href="#">20/03/2023 10:30</a></td>
+              <td>En cours</td>
+              <td>system</td>
+            </tr>
+            <tr>
+              <td><a href="#">20/03/2023 10:30</a></td>
+              <td>Demande Envoyé</td>
+              <td>KARIM BOURIR</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+  <div class="col-md-4 grid-margin">
+    <div class="row form-group">  
+      <div class="col-12 col-md-12">
+        <label for="Objet" class=" form-control-label">Message</label>
+        <textarea class="form-control" name="Message"  id="Message" rows="24">
+        </textarea>
+        </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-md-12 text-center">
+          <button type="submit" class="btn btn-primary md-5">Enregistré</button>
+        </div>
+    </div>
+  </div>
+  </div><!---historique demande Décharge  END -->
+</div>
+<!----------------------------------------------------------------------------------------------------DEMANDES Decharges----------------------------------------------------------------------------------------------------------->
+
+<!----------------------------------------------------------------------------------------------------DEMANDES Documents----------------------------------------------------------------------------------------------------------->
+ <div class="tab-pane fade" id="Documents" role="tabpanel" aria-labelledby="Documents">
+  <div class="row"><!---table liste demande Start-->
+    <div class="card-body scroll">
+      <h4 class="card-title">Liste des demandes</h4>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#ID</th>
+              <th>Date demande</th>
+              <th class="text-center">Documents demandés</th>
+              <th>STATUT</th>
+              <th>Date traitement</th>
+              <th>Télécharger</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="#">001</a></td>
+              <td>24/03/2023 15:30</td>
+              <td class="text-center"><textarea class="form-control" name="Message"  id="Message" rows="4" disabled>Attestation de travaille, Domiciliation de salaire, Trois derniers bulletins de paie, Attestation de salaire</textarea></td>
+              <td><label class="badge badge-warning">En cours</label></td> <!---En cours , En attente signature, Livré , Annulé, Demenade refusé-->
+              <td>24/03/2023</td>
+              <td>
+                <button type="button" class="btn btn-inverse-primary btn-icon">
+                  <i class="mdi mdi-folder-download"></i>
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td><a href="#">001</a></td>
+              <td>24/03/2023 15:30</td>
+              <td class="text-center"><textarea class="form-control" name="Message"  id="Message" rows="4" disabled>Attestation de travaille, Domiciliation de salaire, Trois derniers bulletins de paie, Attestation de salaire</textarea></td>
+              <td><label class="badge badge-warning">En cours</label></td> <!---En cours , En attente signature, Livré , Annulé, Demenade refusé-->
+              <td>24/03/2023</td>
+              <td>
+                <button type="button" class="btn btn-inverse-primary btn-icon">
+                  <i class="mdi mdi-folder-download"></i>
+                </button>
+              </td>
+            </tr>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div> <!---table liste demande End-->
+
+  <div class="row"><!---historique demande congé  start -->
+    <div class="col-md-6 grid-margin">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Historique</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="#">Qualification</a></td>
+              <td><select class="form-control" id="QualificationDemandeDocuments" name="QualificationDemandeDocuments">
+                <option></option>
+                <option>En cours</option>
+                <option>En attente signature</option>
+                <option>Livré</option>
+                <option>Refusé</option>
+              </select></td>
+            </tr>
+            <tr>
+              <td><a href="#">26/04/2023 16:00</a></td>
+              <td>Livré</td>
+              <td>Samia ELAABAD</td>
+            </tr>
+            <tr>
+              <td><a href="#">26/04/2023 12:30</a></td>
+              <td>En attente signature</td>
+              <td>Samia ELAABAD</td>
+            </tr>
+            <tr>
+              <td><a href="#">25/04/2023 10:30</a></td>
+              <td>En cours</td>
+              <td>Samia ELAABAD</td>
+            </tr>
+            <tr>
+              <td><a href="#">24/03/2023 15:30</a></td>
+              <td>Demande Envoyé</td>
+              <td>KARIM BOURIR</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+  </div>
+  <div class="col-md-6 grid-margin">
+    <div class="row form-group">  
+      <div class="col-12 col-md-12">
+        <label for="Objet" class=" form-control-label">Détails</label>
+        <textarea class="form-control" name="Message"  id="Message" rows="20" > </textarea>
+        </div>
+    </div>
+  <div class="row text-center">
+    <div class="col-md-12 text-center">
+        <button type="submit" class="btn btn-primary md-5">Enregistré</button>
+      </div>
+  </div>
+  </div>
+  </div><!---historique demande congé  END -->
+</div>
+<!----------------------------------------------------------------------------------------------------DEMANDES Documents----------------------------------------------------------------------------------------------------------->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!----------------------------------------------------------------------------------------------------Historique Start----------------------------------------------------------------------------------------------------------->
+<div class="col-12 grid-margin">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Historique</h4>
+      <div class="row"><!---historique Global start -->
+        <div class="col-md-12 grid-margin">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>By</th>
+                  <th>Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a href="#">26/04/2023 16:00</a></td>
+                  <td>Karim BOURIR</td>
+                  <td> Changement de numéro de téléphone de 0654598756 a 0633808013</td>
+                </tr>
+                <tr>
+                  <td><a href="#">26/04/2023 16:00</a></td>
+                  <td>Samia LAABAD</td>
+                  <td>Modification contrat: transfére contrat de saccomcc a weact service</td>
+                </tr>
+                <tr>
+                  <td><a href="#">26/04/2023 16:00</a></td>
+                  <td>Fyçal SOQRATI</td>
+                  <td>Modification statut demande congé avec id <span>005</span> a validé</td>
+                </tr>
+                <tr>
+                  <td><a href="#">26/04/2023 16:00</a></td>
+                  <td>Fyçal SOQRATI</td>
+                  <td>Accés dossier Collaborateur</td>
+                </tr>
+    
+              </tbody>
+            </table>
+          </div>
+      </div>
+      </div><!---historique Global END -->
+    </div>
+  </div>
+</div>
+<!----------------------------------------------------------------------------------------------------Historique End----------------------------------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+  </div> <!---Body End-->
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+        <!-- content-wrapper ends -->
+
+
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023. SACCOMCG <a href="https://www.saccomcg.com/" target="_blank">SACCOMCG</a> All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made by karim BOURIR & Yassine BAGHDADI <i class="ti-heart text-danger ml-1"></i></span>
+          </div>
+        </footer> 
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>   
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+
+  <!-- plugins:js -->
+  <script src="vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="vendors/chart.js/Chart.min.js"></script>
+  <script src="vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+  <script src="js/dataTables.select.min.js"></script>
+
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="js/off-canvas.js"></script>
+  <script src="js/hoverable-collapse.js"></script>
+  <script src="js/template.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="js/dashboard.js"></script>
+  <script src="js/Chart.roundedBarCharts.js"></script>
+  <!-- End custom js for this page-->
+</body>
+
+</html>
+

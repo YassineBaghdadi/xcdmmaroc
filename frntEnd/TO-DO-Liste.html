@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>TO DO</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link
+      rel="stylesheet"
+      href="vendors/datatables.net-bs4/dataTables.bootstrap4.css"
+    />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="js/select.dataTables.min.css"
+    />
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css" />
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css" />
+    <!-- endinject -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css" />
+    <!-- endinject -->
+    <link rel="shortcut icon" href="images/favicon.png" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/js/r.js"></script>
+    <script src="js/js/todoLst.js"></script>
+
+    <style>
+      div.scroll {
+        margin: 4px, 4px;
+        padding: 4px;
+        background-color: white;
+        height: 500px;
+        width: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align: justify;
+      }
+    </style>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="vendors/select2/select2.min.css" />
+    <link
+      rel="stylesheet"
+      href="vendors/select2-bootstrap-theme/select2-bootstrap.min.css"
+    />
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_navbar.html -->
+      <nav
+        class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+        id="theNavBar"
+      ></nav>
+
+      <!-- partial Start -->
+      <div class="container-fluid page-body-wrapper">
+        <div id="right-sidebar" class="settings-panel"></div>
+        <!-- partial  End-->
+        <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+        <!-- NAV /_sidebar.html START -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar"></nav>
+        <!-- NAV END -->
+
+        <!-- NAV END -->
+
+        <!-- content-wrapper Start -->
+        <div class="main-panel">
+          <!---------------------------------------------------------------------------------------------------Body Start-------------------------------------------------------------------------------------------------------->
+          <div class="content-wrapper">
+            <!---Body Start-->
+            <!---------------------------------------------------------------------------------------------------Body Start-------------------------------------------------------------------------------------------------------->
+
+            <!-------------------------------------------------------------------------------------------ADD TO DO START---------------------------------------------------------------------------------------------------------------->
+
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <div
+                    class="tab-pane fade show active scroll-wrapper"
+                    id="todo-section"
+                    role="tabpanel"
+                    aria-labelledby="todo-section"
+                  >
+                    <div class="add-items d-flex px-3 mb-0">
+                      <form class="form w-100">
+                        <div class="form-group d-flex">
+                          <input
+                            type="text"
+                            class="form-control todo-list-input"
+                            placeholder="To-do"
+                            id="tskNme"
+                          />
+                          <button
+                            type="button"
+                            class="btn btn-primary"
+                            id="addTaskBtn"
+                          >
+                            Ajouter
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="col-2">
+                        <div class="form-group">
+                          <label>Affectation</label>
+                          <div id="the-basics">
+                            <input
+                              class="typeahead"
+                              type="text"
+                              placeholder="Affectée à"
+                              id="Affectation"
+                              name="Affectation"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-5">
+                        <div class="form-group">
+                          <label for="Statut">Utilisateurs</label>
+                          <select class="form-control" id="Users" name="Users">
+                            <option>Tous</option>
+                            <option>User-1</option>
+                            <option>User-2</option>
+                            <option>User-3</option>
+                            <option>User-4</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-5">
+                        <div class="form-group">
+                          <label for="Statut">Statut</label>
+                          <select
+                            class="form-control"
+                            id="typeTODO"
+                            name="typeTODO"
+                          >
+                            <option>Tous</option>
+                            <option>Complété</option>
+                            <option>En cours</option>
+                            <option>New</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-4">
+                        <div class="form-group">
+                          <label for="Statut">Date entre le</label>
+                          <input
+                            type="datetime-local"
+                            class="form-control"
+                            name="date1"
+                            id="date1"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="form-group">
+                          <label for="Statut">et le</label>
+                          <input
+                            type="datetime-local"
+                            class="form-control"
+                            name="date2"
+                            id="date2"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="form-group">
+                          <label for="Statut">Mot clé</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            name="cherche"
+                            id="cherche"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <style>
+                      .cmplt {
+                        text-decoration: line-through;
+                        padding: 1em;
+                        color: grey;
+                        background-color: transparent;
+                        border: none;
+                        cursor: pointer;
+                        width: 100%;
+                        height: 100%;
+                      }
+
+                      .task {
+                        padding: 1em;
+                        background-color: transparent;
+                        border: none;
+                        cursor: pointer;
+                        width: 100%;
+                        height: 100%;
+                        transition: all 0.2s linear 0s;
+
+                        &:before {
+                          content: '>>';
+                          font-family: FontAwesome;
+                          font-size: large;
+                          font-weight: bolder;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          position: absolute;
+                          top: 0;
+                          left: 0px;
+                          height: 100%;
+                          width: 60px;
+                          background-color: green;
+                          border-radius: 0 50% 50% 0;
+                          transform: scale(0, 1);
+                          transform-origin: left center;
+                          transition: all 0.2s linear 0s;
+                        }
+
+                        &:hover {
+                          text-indent: 30px;
+
+                          &:before {
+                            transform: scale(1, 1);
+                            text-indent: 0;
+                          }
+                        }
+                      }
+                      .meeting-header {
+                        display: flex;
+                        align-items: center;
+                        background-color: #fff;
+                        border-radius: 4px;
+                        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+                        padding: 8px;
+                      }
+                      .meeting-title {
+                        flex-grow: 1;
+                        font-size: 16px;
+                        font-weight: bold;
+                        margin-right: 10px;
+                      }
+                      .meeting-toolbar {
+                        display: flex;
+                        gap: 5px;
+                        height: 0.9cm;
+                      }
+                      .meeting-btn {
+                        background-color: #5c6bc0;
+                        border: none;
+                        border-radius: 4px;
+                        color: white;
+                        cursor: pointer;
+                        font-size: 14px;
+                        padding: 6px 10px;
+                        height: 0.9cm;
+                      }
+                      .meeting-btn:hover {
+                        background-color: #3f51b5;
+                      }
+                      .meeting-btn-new {
+                        background-color: #ef5350;
+                      }
+                      .meeting-btn-new:hover {
+                        background-color: #e53935;
+                      }
+                    </style>
+                    <hr />
+
+                    <div class="list-wrapper px-3">
+                      <ul
+                        class="d-flex flex-column-reverse todo-list"
+                        style="padding: 0%"
+                        id="tdLstTbl"
+                      >
+                        <!-- <ul class="d-flex flex-column-reverse todo-list" style="padding: 0%;" > -->
+
+                        <!-- <li class=""> completed 
+                  <div class="form-check form-check-flat">
+                    <label class="form-check-label" style="font-weight: bold; margin-bottom: 0.2cm;">
+                      <input class="checkbox" type="checkbox"> 
+                      Meeting Avec Yasine BAGHDADI
+                    </label>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                      <button type="button" class="btn btn-primary btn-sm">
+                        <i class="mdi mdi-account-multiple-plus"></i>
+                      </button>
+                      <button type="button" class="btn btn-primary btn-sm">
+                        <i class="mdi mdi-note-plus"></i>
+                      </button>
+                      <button type="button" class="btn btn-primary btn-sm">
+                        <i class="mdi mdi-timetable"></i>
+                      </button>
+                      <button type="button" class="btn btn-primary btn-sm">
+                        <i class="mdi mdi-step-forward-2"></i>
+                      </button>
+                      <button type="button" class="btn btn-info btn-sm">
+                        <i class="mdi mdi-history"></i> 
+                      </button>
+                      <select class="form-control btn btn-google btn-sm " id="Users" name="Users">
+                        <option>New</option>
+                        <option>En cours</option>
+                      </select>
+                    </div>
+                  </div>
+                  <i class="remove ti-close"></i> 
+                </li> -->
+
+                        <!-- <li>
+                <div class="meeting-header">
+                  <span class="meeting-title">Meeting Avec Yasine BAGHDADI</span>
+                  <div class="meeting-toolbar">
+                    <button class="meeting-btn" onclick=""><i class="mdi mdi-account-multiple-plus"></i></i></button>
+                    <button class="meeting-btn"><i class="mdi mdi-note-plus"></i></button>
+                    <button class="meeting-btn"><i class="mdi mdi-timetable"></i></button>
+                    <button class="meeting-btn"><i class="mdi mdi-step-forward-2"></i></button>
+                    <button class="meeting-btn"><i class="mdi mdi-history"></i> </button>
+                    <select class="form-control btn btn-google meeting-btn-new " id="Users" name="Users">
+                      <option>New</option>
+                      <option>En cours</option>
+                    </select>
+                  </div>
+                </div>
+              </li> -->
+                        <!-- <li>
+                <div class="meeting-header">
+                  <span class="meeting-title">Meeting Avec Yasine BAGHDADI</span>
+                  <div class="meeting-toolbar">
+                    <button class="meeting-btn">👥</button>
+                    <button class="meeting-btn">📎</button>
+                    <button class="meeting-btn">📅</button>
+                    <button class="meeting-btn">▶️</button>
+                    <button class="meeting-btn">🔄</button>
+                    <button class="meeting-btn meeting-btn-new">New ▼</button>
+                  </div>
+                </div>
+              </li> -->
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-----------------------------------------------------------------ADD TO DO END------------------------------------------------------------>
+            <style>
+              .popup {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(
+                  0,
+                  0,
+                  0,
+                  0.5
+                ); /* Semi-transparent black background */
+              }
+
+              /* Styles for the popup content */
+              .popup-content {
+                position: absolute;
+
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+              }
+
+              /* Style for the close button */
+              .close {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 20px;
+                font-weight: bold;
+                cursor: pointer;
+              }
+            </style>
+            <script>
+              const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 5000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.onmouseenter = Swal.stopTimer;
+                  toast.onmouseleave = Swal.resumeTimer;
+                },
+              });
+              var treatTheCnj = (t, tt) => {
+                if ($('#cnjTrComment').val()) {
+                  var msg = '';
+                  if (t) {
+                    msg =
+                      'La demande a été attribuée au département des ressources humaines.';
+                  }
+
+                  fetch('/TO-DO-Liste/treatTheCnj', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                      i: t,
+                      t: tt,
+                      c: $('#cnjTrComment').val(),
+                    }),
+                  })
+                    .then((response) => response.json())
+                    .then((data) => {
+                      getTasks();
+                      Swal.fire({
+                        icon: 'success',
+                        title: 'La tâche est terminée.',
+                        text: msg,
+                      });
+                      $('#cnjTreatPopUp').hide();
+                    })
+                    .catch((error) => {
+                      console.error('Error:', error);
+                    });
+                } else {
+                  $('#cnjTrComment').css('border', '1px solid red');
+                  Toast.fire({
+                    icon: 'error',
+                    title: 'Veuillez écrire un commentaire avant le traitement',
+                  });
+                }
+              };
+
+              var treatTheDplcm = (t, tt) => {
+                if ($('#DplcmTrComment').val()) {
+                  var msg = '';
+                  if (t) {
+                    msg =
+                      'La demande a été attribuée au département des ressources humaines.';
+                  }
+
+                  fetch('/TO-DO-Liste/treatTheDplcm', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                      i: t,
+                      t: tt,
+                      c: $('#DplcmTrComment').val(),
+                    }),
+                  })
+                    .then((response) => response.json())
+                    .then((data) => {
+                      getTasks();
+                      Swal.fire({
+                        icon: 'success',
+                        title: 'La tâche est terminée.',
+                        text: msg,
+                      });
+                      $('#cnjTreatPopUp').hide();
+                    })
+                    .catch((error) => {
+                      console.error('Error:', error);
+                    });
+                } else {
+                  $('#DplcmTrComment').css('border', '1px solid red');
+                  Toast.fire({
+                    icon: 'error',
+                    title: 'Veuillez écrire un commentaire avant le traitement',
+                  });
+                }
+              };
+
+              function closePopup() {
+                // clear();
+                document.getElementById('cnjTreatPopUp').style.display = 'none';
+                document.getElementById('assignTaskWindow').style.display =
+                  'none';
+              }
+            </script>
+
+            <div class="card scrollcard popup" id="cnjTreatPopUp">
+              <!---table Congé Start-->
+              <div class="card-body popup-content">
+                <span
+                  class="close"
+                  style="font-size: 30px; color: red"
+                  id="closePopupButton"
+                  onclick="closePopup()"
+                  >&times;</span
+                >
+
+                <hr />
+
+                <div class="table-responsive" id="trtWindow">
+                  <!-- <table class="table table-striped">
+        <thead>
+          <tr>
+            
+            <th>Premier jour de congé</th>
+            <th>Dernier jour de congé</th>
+            <th>Nombre des jours</th>
+            <th>Statut</th>
+          </tr>
+        </thead>
+        <tbody >
+          
+        </tbody>
+      </table> -->
+                </div>
+              </div>
+            </div>
+
+            <!------------------------------------------------------------------Affectation------------------------------------------------------------->
+
+            <div class="card scrollcard popup" id="assignTaskWindow">
+              <div class="popup-content">
+                <span
+                  class="close"
+                  style="font-size: 30px; color: red"
+                  id="closePopupButton"
+                  onclick="closePopup()"
+                  >&times;</span
+                >
+
+                <hr />
+                <div class="col-md-12">
+                  <!--Etapes-->
+                  <h4 class="card-title">
+                    Affecter Des Personnes À La Tâche de :
+                    <span id="tskNmePpup"></span
+                    ><span id="tskPpId" hidden></span>
+                  </h4>
+                  <div class="row">
+                    <div class="col-md-6" hidden>
+                      <div class="form-group">
+                        <label>Départements</label>
+
+                        <select
+                          class="js-example-basic-single w-100"
+                          id="Departement"
+                          name="Departement"
+                        >
+                          <option value="">sélectionner un département</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label style="text-align: center">Utilisateurs</label>
+                        <br />
+                        <select
+                          class="js-example-basic-multiple w-100"
+                          style="width: 550px"
+                          multiple="multiple"
+                          id="LSTUser"
+                          name="LSTUser"
+                        ></select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <button
+                        type="button"
+                        id="saveTaskAssign"
+                        class="btn btn-primary mr-2"
+                      >
+                        Enregistrer
+                      </button>
+                    </div>
+                  </div>
+                  <div class="card scroll">
+                    <div class="card-body">
+                      <div class="row">
+                        <p class="card-title mb-0">
+                          Historique des Affectations
+                        </p>
+                        <div class="table-responsive">
+                          <table class="table table-striped table-borderless">
+                            <thead>
+                              <tr>
+                                <th>By</th>
+                                <th>Date</th>
+                                <th>Affectée à</th>
+                              </tr>
+                            </thead>
+                            <tbody id="tskCntrbs"></tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <script></script>
+            <!------------------------------------------------------------------------Affectation-------------------------------------------------------------->
+
+            <!------------------------------------------------------------------------Note--------------------------------------------------------------------->
+            <div class="col-md-12 grid-margin stretch-card" hidden>
+              <div class="card">
+                <div class="card-body">
+                  <div class="col-md-12">
+                    <!--Etapes-->
+                    <h4 class="card-title">
+                      Ajoutez Des Notes À: La Tâche/L'étape
+                    </h4>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="row form-group">
+                          <label for="Objet" class="form-control-label"
+                            >Note</label
+                          >
+                          <textarea
+                            class="form-control"
+                            name="Note"
+                            id="Note"
+                            rows="5"
+                          ></textarea>
+                          <small class="form-text text-muted"
+                            >Maximum 300 caractère</small
+                          >
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <button type="submit" class="btn btn-primary mr-2">
+                          Ajouter
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="card scroll">
+                      <div class="card-body">
+                        <div class="row">
+                          <p class="card-title mb-0">Historique des Notes</p>
+                          <div class="table-responsive">
+                            <table class="table table-striped table-borderless">
+                              <thead>
+                                <tr>
+                                  <th class="text-center">By</th>
+                                  <th class="text-center">Date Ajout</th>
+                                  <th class="text-center">Date Modification</th>
+                                  <th class="text-center">Note</th>
+                                  <th class="text-center">Modifier</th>
+                                  <!--Only for the Owners-->
+                                  <th class="text-center">Supprimer</th>
+                                  <!--Only for the Owners-->
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td class="font-weight-bold">Karim BOURIR</td>
+                                  <td>21/11/2023 14:20</td>
+                                  <td>21/11/2023 14:25</td>
+                                  <td>
+                                    <textarea
+                                      class="form-control"
+                                      name="NoteHisto"
+                                      id="NoteHisto"
+                                      rows="5"
+                                    >
+Swimming Pool", comme "Sous le sable", est le fruit d'une véritable collaboration entre Charlotte Rampling et moi, nous nous sommes trouvés et nous ne sommes pas prêts de nous quitter."François Ozon</textarea
+                                    >
+                                  </td>
+                                  <td class="font-weight-medium">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-warning btn-fw"
+                                    >
+                                      Modifier
+                                    </button>
+                                  </td>
+                                  <td class="font-weight-medium">
+                                    <button
+                                      type="button"
+                                      class="btn btn-outline-danger btn-fw"
+                                    >
+                                      Supprimer
+                                    </button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!----------------------------------------------------------------------------Note-------------------------------------------------------------------------->
+
+            <!------------------------------------------------------------------------Planification--------------------------------------------------------------------->
+            <div class="col-md-12 grid-margin stretch-card" hidden>
+              <div class="card">
+                <div class="card-body">
+                  <div class="col-md-12">
+                    <!--Etapes-->
+                    <h4 class="card-title">Planifier: La Tâche/L'étape</h4>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="Statut">Start Date</label>
+                          <input
+                            type="datetime-local"
+                            class="form-control"
+                            name="StartDate"
+                            id="StartDate"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="Statut">End Date</label>
+                          <input
+                            type="datetime-local"
+                            class="form-control"
+                            name="EndDate"
+                            id="EndDate"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <button type="submit" class="btn btn-primary mr-2">
+                          Modifier/Save
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="card scroll">
+                      <div class="card-body">
+                        <div class="row">
+                          <p class="card-title mb-0">
+                            Historique des Planifications
+                          </p>
+                          <div class="table-responsive">
+                            <table class="table table-striped table-borderless">
+                              <thead>
+                                <tr>
+                                  <th>By</th>
+                                  <th>Date</th>
+                                  <th>Start Date</th>
+                                  <th>End Date</th>
+                                  <th>Total Durée</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td class="font-weight-bold">Karim BOURIR</td>
+                                  <td>21/11/2023 14:20:00</td>
+                                  <td>22/11/2023 09:00:00</td>
+                                  <td>23/11/2023 12:00:00</td>
+                                  <td>28:00:00</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!------------------------------------------------------------------------Panification-------------------------------------------------------------->
+
+            <!------------------------------------------------------------------------Etapes Start------------------------------------------------------------->
+            <div class="col-md-12 grid-margin stretch-card" hidden>
+              <div class="card">
+                <div class="card-body">
+                  <div class="col-md-12">
+                    <!--Etapes-->
+                    <h4 class="card-title">Ajoutez des étapes</h4>
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="list-wrapper pt-2">
+                          <ul
+                            class="d-flex flex-column-reverse todo-etape todo-etape-custom"
+                          >
+                            <!--\js\etapetodolist.js (fonction js url)-->
+                            <li>
+                              <div class="form-check form-check-flat">
+                                <label class="form-check-label">
+                                  <input class="checkbox" type="checkbox" />
+                                  envoyé le lien de la réunoin
+                                </label>
+                                <div
+                                  class="btn-group"
+                                  role="group"
+                                  aria-label="Basic example"
+                                >
+                                  <button
+                                    type="button"
+                                    class="btn btn-primary btn-sm"
+                                  >
+                                    <i
+                                      class="mdi mdi-account-multiple-plus"
+                                    ></i>
+                                  </button>
+                                  <button
+                                    type="button"
+                                    class="btn btn-primary btn-sm"
+                                  >
+                                    <i class="mdi mdi-note-plus"></i>
+                                  </button>
+                                  <button
+                                    type="button"
+                                    class="btn btn-primary btn-sm"
+                                  >
+                                    <i class="mdi mdi-timetable"></i>
+                                  </button>
+                                  <button
+                                    type="button"
+                                    class="btn btn-info btn-sm"
+                                  >
+                                    <i class="mdi mdi-history"></i>
+                                  </button>
+                                  <select
+                                    class="form-control btn btn-google btn-sm"
+                                    id="Users"
+                                    name="Users"
+                                  >
+                                    <option>New</option>
+                                    <option>encours</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <i class="remove ti-close"></i>
+                            </li>
+                            <li class="completed">
+                              <div class="form-check form-check-flat">
+                                <label class="form-check-label">
+                                  <input
+                                    class="checkbox"
+                                    type="checkbox"
+                                    checked
+                                  />
+                                  envoyé le lien de la réunoin
+                                </label>
+                                <div
+                                  class="btn-group"
+                                  role="group"
+                                  aria-label="Basic example"
+                                >
+                                  <button
+                                    type="button"
+                                    class="btn btn-primary btn-sm"
+                                  >
+                                    <i
+                                      class="mdi mdi-account-multiple-plus"
+                                    ></i>
+                                  </button>
+                                  <button
+                                    type="button"
+                                    class="btn btn-primary btn-sm"
+                                  >
+                                    <i class="mdi mdi-note-plus"></i>
+                                  </button>
+                                  <button
+                                    type="button"
+                                    class="btn btn-primary btn-sm"
+                                  >
+                                    <i class="mdi mdi-timetable"></i>
+                                  </button>
+                                  <button
+                                    type="button"
+                                    class="btn btn-info btn-sm"
+                                  >
+                                    <i class="mdi mdi-history"></i>
+                                  </button>
+                                  <select
+                                    class="form-control btn btn-google btn-sm"
+                                    id="Users"
+                                    name="Users"
+                                  >
+                                    <option>Complété</option>
+                                  </select>
+                                </div>
+                              </div>
+                              <i class="remove ti-close"></i>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="add-items d-flex mb-0 mt-2">
+                          <input
+                            type="text"
+                            class="form-control todo-etape-input"
+                            placeholder="Nouvelle étape"
+                          />
+                          <button
+                            class="add btn btn-icon text-primary todo-etape-add-btn bg-transparent"
+                          >
+                            <i class="icon-circle-plus"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--Etapes-->
+                </div>
+              </div>
+            </div>
+            <!--------------------------------------------------------------------------Etapes End----------------------------------------------------------------------------------->
+
+            <!--------------------------------------------------------------------------Historique----------------------------------------------------------------------------------->
+            <div class="col-md-12 grid-margin stretch-card" hidden>
+              <div class="card">
+                <div class="card-body">
+                  <div class="col-md-12">
+                    <!--Etapes-->
+                    <h4 class="card-title">Historique</h4>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="row form-group">
+                          <label for="Objet" class="form-control-label"
+                            >La Tâche/L'étape</label
+                          >
+                          <textarea
+                            class="form-control"
+                            name="Note"
+                            id="Note"
+                            rows="5"
+                            disabled
+                          ></textarea>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <button type="submit" class="btn btn-primary mr-2">
+                          Modifier
+                        </button>
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="card scroll">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="table-responsive">
+                            <table class="table table-striped table-borderless">
+                              <thead>
+                                <tr>
+                                  <th>By</th>
+                                  <th>Date</th>
+                                  <th>Modification</th>
+                                  <th>Commentaire</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td class="font-weight-bold">Karim BOURIR</td>
+                                  <td>21/11/2023 14:20</td>
+                                  <td>Ajout Taches</td>
+                                  <td>
+                                    <textarea
+                                      class="form-control"
+                                      name="NoteHisto"
+                                      id="NoteHisto"
+                                      rows="5"
+                                      disabled
+                                    >
+Meeting avec Yassine BAGHDADI</textarea
+                                    >
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="font-weight-bold">Karim BOURIR</td>
+                                  <td>21/11/2023 14:20</td>
+                                  <td>Ajout etapes</td>
+                                  <td>
+                                    <textarea
+                                      class="form-control"
+                                      name="NoteHisto"
+                                      id="NoteHisto"
+                                      rows="5"
+                                      disabled
+                                    >
+Envoyer le lien de Meeting</textarea
+                                    >
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="font-weight-bold">Karim BOURIR</td>
+                                  <td>21/11/2023 14:25</td>
+                                  <td>Affectation</td>
+                                  <td>
+                                    <textarea
+                                      class="form-control"
+                                      name="NoteHisto"
+                                      id="NoteHisto"
+                                      rows="5"
+                                      disabled
+                                    >
+Kacem Benabderrazik, Yassine BAGHDADI</textarea
+                                    >
+                                  </td>
+                                </tr>
+
+                                <tr>
+                                  <td class="font-weight-bold">
+                                    Yassine BAGHDADI
+                                  </td>
+                                  <td>21/11/2023 14:25</td>
+                                  <td>Changement Statut</td>
+                                  <td>
+                                    <textarea
+                                      class="form-control"
+                                      name="NoteHisto"
+                                      id="NoteHisto"
+                                      rows="5"
+                                      disabled
+                                    >
+En cours</textarea
+                                    >
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!----------------------------------------------------------------------------------Historique-------------------------------------------------------------------->
+
+            <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+          </div>
+          <!---Body End-->
+          <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+          <!-- content-wrapper ends -->
+
+          <!-- partial:partials/_footer.html -->
+          <footer class="footer"></footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+    <!-- plugins:js -->
+    <script src="vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="vendors/chart.js/Chart.min.js"></script>
+    <script src="vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="js/dataTables.select.min.js"></script>
+
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="js/off-canvas.js"></script>
+    <script src="js/hoverable-collapse.js"></script>
+    <script src="js/template.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/todolist.js"></script>
+    <script src="js/etapetodolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="js/dashboard.js"></script>
+    <script src="js/Chart.roundedBarCharts.js"></script>
+    <!-- End custom js for this page-->
+
+    <!--sdqs-->
+
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="vendors/1/typeahead.js/typeahead.bundle.min.js"></script>
+    <script src="vendors/select2/select2.min.js"></script>
+    <!-- End plugin js for this page -->
+
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="js/file-upload.js"></script>
+    <script src="js/1/typeahead.js"></script>
+    <script src="js/select2.js"></script>
+    <script src="js/js/m.js"></script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+{
+  "name": "erp-saccom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bckEnd/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YassineBaghdadi/ERP-saccom.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YassineBaghdadi/ERP-saccom/issues"
+  },
+  "homepage": "https://github.com/YassineBaghdadi/ERP-saccom#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "docx": "^8.5.0",
+    "docxtemplater": "^3.49.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.19.2",
+    "express-mysql-session": "^2.1.8",
+    "express-session": "^1.17.3",
+    "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
+    "moment-timezone": "^0.5.45",
+    "multer": "^1.4.5-lts.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.10.0",
+    "nodemailer": "^6.9.9",
+    "nodemon": "^3.1.7",
+    "nvm": "^0.0.4",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "pizzip": "^3.1.7",
+    "request-ip": "^3.3.0",
+    "socket.io": "^4.7.5",
+    "socket.io-client": "^4.7.5",
+    "sweetalert2": "^11.6.13",
+    "winston": "^3.13.0",
+    "ws": "^8.16.0"
+  }
+}

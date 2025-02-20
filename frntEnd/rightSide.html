@@ -1,0 +1,75 @@
+<i
+  class="settings-close ti-close"
+  onclick="$('#right-sidebar').removeClass('open');"
+></i>
+<ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
+  <li class="nav-item" style="margin-top: 10px;font-weight: bold;font-family: Courier New;">
+    <h3>WFM</h3>
+  </li>
+  
+</ul>
+<div class="tab-content" id="setting-content">
+  <!-- Pointage section tab Start -->
+  <div
+    class="tab-pane fade show active"
+    id="Pointage-section"
+    role="tabpanel"
+    aria-labelledby="Pointage-section"
+  >
+    <div class="col-md-12 mb-12 stretch-card transparent">
+      <div class="card-body">
+        <div class="row text-center">
+          <div class="col-md-12 text-center">
+            <!-- <button type="button" class="btn btn-success mb-2" id="dispoBtn">Dispo : 00:00:36 </button> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <select class="form-control" id="brksList">
+              <option hidden>prendre une pause</option>
+            </select>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <span hidden id="brstart"></span>
+            <button
+              type="button"
+              hidden
+              class="btn btn-success mb-2"
+              id="dispoBtn"
+            >
+              Dispo : 00:00:36
+            </button>
+            <button
+              type="button"
+              id="brChangeBtn"
+              disabled
+              class="btn btn-danger mb-2"
+            >
+              Changer
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 stretch-card">
+        <div class="card scroll">
+          <div class="card-body">
+            <p class="card-title mb-0">
+              Log-In : <span style="font-size: 15px;" id="timelog">N/A</span>
+            </p>
+            <div class="table-responsive scroll" id="allBrksDiv"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Pointage tab ends -->
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.38/moment-timezone.min.js"></script>
+<script src="js/moment.js.10yrs.js"></script>
+<script src="js/js/wfm.js"></script>

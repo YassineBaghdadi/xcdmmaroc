@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>SACCOMCG-MySaccom</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="vendors/feather/feather.css">
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
+  <link rel="stylesheet" href="vendors/feather/feather.css">
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="vendors/feather/feather.css">
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
+  <!-- inject:css -->
+  <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+  <!-- endinject -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="images/favicon.png" />
+
+  <style>
+    div.scroll {
+        margin:4px, 4px;
+        padding:4px;
+        background-color: white;
+        height:300px;
+        width: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align:justify;
+    }
+</style>
+
+<style>
+  div.scrollTableau {
+      margin:4px, 4px;
+      padding:4px;
+      background-color: white;
+      height:600px;
+      width: auto;
+      overflow-x: hidden;
+      overflow-y: auto;
+      text-align:justify;
+  }
+</style>
+</head>
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo mr-5" href="index.html"><img src="images/logo.png" class="mr-2" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo2.png" alt="logo"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="icon-menu"></span>
+        </button>
+        <ul class="navbar-nav mr-lg-2">
+          <li class="nav-item nav-search d-none d-lg-block">
+            <div class="input-group">
+              <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                <span class="input-group-text" id="search">
+                  <i class="icon-search"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item dropdown">
+            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+              <i class="icon-bell mx-0"></i>
+              <span class="count"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+              <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
+              <a class="dropdown-item preview-item">
+                <div class="preview-item-content">
+                  <h6 class="preview-subject font-weight-normal">Notifications-3</h6>
+                  <p class="font-weight-light small-text mb-0 text-muted">
+                    Maintenant
+                  </p>
+                </div>
+              </a>
+              <a class="dropdown-item preview-item">
+                <div class="preview-item-content">
+                  <h6 class="preview-subject font-weight-normal">Notifications-2</h6>
+                  <p class="font-weight-light small-text mb-0 text-muted">
+                    il y'a une heure
+                  </p>
+                </div>
+              </a>
+              <a class="dropdown-item preview-item">
+                <div class="preview-item-content">
+                  <h6 class="preview-subject font-weight-normal">Notifications-1</h6>
+                  <p class="font-weight-light small-text mb-0 text-muted">
+                    il y'a deux jours
+                  </p>
+                </div>
+              </a>
+            </div>
+          </li>
+          <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+              <img src="images/faces/face17.jpg" alt="profile"/>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              <a class="dropdown-item">
+                <i class="ti-user text-primary"></i>
+                  Mon Profil
+              </a>
+              <a class="dropdown-item">
+                <i class="ti-power-off text-primary"></i>
+                Logout
+              </a>
+            </div>
+          </li>
+          <li class="nav-item nav-settings d-none d-lg-flex">
+            <a class="nav-link" href="#">
+              <i class="icon-ellipsis"></i>
+            </a>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+          <span class="icon-menu"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- partial Start -->
+    <div class="container-fluid page-body-wrapper">
+      <div id="right-sidebar" class="settings-panel">
+        <i class="settings-close ti-close"></i>
+        <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link" id="chats-tab" data-toggle="tab" href="#Pointage-section" role="tab" aria-controls="chats-section">PAUSES</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="setting-content">
+
+          <!-- Pointage section tab Start -->
+          <div class="tab-pane fade show active " id="Pointage-section" role="tabpanel" aria-labelledby="Pointage-section">
+            <div class="col-md-12 mb-12 stretch-card transparent">
+                <div class="card-body">
+                  <div class="row text-center">
+                    <div class="col-md-12 text-center">
+                      <button type="submit" class="btn btn-success mb-2">Dispo : 00:01:36</button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <select class="form-control" id="exampleFormControlSelect1">
+                        <option></option>
+                        <option>Pause légal</option>
+                        <option>Pause Déjeuner</option>
+                        <option>Réunion</option>
+                        <option>Panne technique</option>
+                        <option>Bref</option>
+                      </select>
+                    </div>
+                  </div>
+                  <hr/>
+                  <div class="row">
+                      <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-danger mb-2">Changer</button>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 stretch-card">
+                <div class="card scroll">
+                  <div class="card-body">
+                    <p class="card-title mb-0">Log-In : <span id="timelog">15/03/2022 08:50</span></p>
+                    <div class="table-responsive">
+                      <table class="table table-borderless">
+                        <thead>
+                          <tr>
+                            <th class="pl-0">Pause</th>
+                            <th class="pl-0">Duré</th>
+                            <th class="pl-0">Heure</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="pl-0">Pause légal</td>
+                            <td class="pl-0">10M</td>
+                            <td class="text-muted pl-0">10:30-</td>
+                          </tr>
+                          <tr>
+                            <td class="pl-0">Pause légal</td>
+                            <td class="pl-0">5M</td>
+                            <td class="text-muted pl-0">12:30</td>
+                          </tr>
+                          <tr>
+                            <td class="pl-0" >Pause Déjeuner</td>
+                            <td class="pl-0">45M</td>
+                            <td class="text-muted pl-0">13:00</td>
+                          </tr>
+                          <tr>
+                            <td class="pl-0">Réunion</td>
+                            <td class="pl-0">1H 20M 30S</td>
+                            <td class="text-muted pl-0">14:00</td>
+                          </tr>
+                          <tr>
+                            <td class="pl-0">Pause légal</td>
+                            <td class="pl-0 ">15M</td>
+                            <td class="text-muted pl-0">14:30</td>
+                          </tr>
+                          <tr>
+                            <td class="pl-0">Panne technique</td>
+                            <td class="pl-0">15M</td>
+                            <td class="text-muted pl-0">15:00</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!-- Pointage tab ends -->
+        </div>
+      </div>  <!-- partial  End-->
+    <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+      <!-- NAV /_sidebar.html START -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="icon-bar-graph menu-icon"></i>
+              <span class="menu-title">Fil d'actualités</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#Admin" aria-expanded="true" aria-controls="ui-basic">
+              <i class="mdi mdi-account-card-details menu-icon"></i>
+              <span class="menu-title">Service Admin</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="Admin">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="#">Nouveau</a></li>
+                <li class="nav-item"> <a class="nav-link" href="#">Collaborateurs</a></li>
+                <li class="nav-item"> <a class="nav-link" href="#">Demandes RH</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#Recrutement" aria-expanded="false" aria-controls="form-elements">
+              <i class="mdi mdi-linkedin menu-icon"></i>
+              <span class="menu-title">Recrutement</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="Recrutement">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Compagnes</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Offres</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#Marketing" aria-expanded="false" aria-controls="form-elements">
+              <i class="mdi mdi-signal-variant menu-icon"></i>
+              <span class="menu-title">Dév-commercial</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="Marketing">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Contacts</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Offres</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#IT" aria-expanded="false" aria-controls="form-elements">
+              <i class="mdi mdi-incognito menu-icon"></i>
+              <span class="menu-title">Service IT</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="IT">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="#">Management</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Utilisateurs</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Accés</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#WFM" aria-expanded="false" aria-controls="form-elements">
+              <i class="mdi mdi-calendar-clock menu-icon"></i>
+              <span class="menu-title">WFM</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="WFM">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="#">Adhérence Planning</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Plannings</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Pauses</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#Finance" aria-expanded="false" aria-controls="form-elements">
+              <i class="mdi mdi-wallet menu-icon"></i>
+              <span class="menu-title">Finance</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="Finance">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Entités</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Demandes Achats</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="mdi mdi-store menu-icon"></i>
+              <span class="menu-title">Service Achats</span>
+            </a>
+          </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="icon-paper menu-icon"></i>
+                <span class="menu-title">Tasks</span>
+              </a>
+            </li>
+        </ul>
+      </nav>
+      <!-- NAV END -->
+
+         <!-- NAV END -->
+
+       <!-- content-wrapper Start -->
+       <div class="main-panel">
+<!---------------------------------------------------------------------------------------------------Body Start-------------------------------------------------------------------------------------------------------->
+                <div class="content-wrapper"><!---Body Start-->
+<!---------------------------------------------------------------------------------------------------Body Start-------------------------------------------------------------------------------------------------------->
+                <div class="row">
+                    <div class="col-md-12 grid-margin">
+                      <div class="row">
+                        <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                          <h3 class="font-weight-bold">Bienvenu Karim</h3>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------Body Start-------------------------------------------------------------------------------------------------------->
+
+<!---------------------------------------------------------------------------------------------------WIDGET-------------------------------------------------------------------------------------------------------->
+<div class="row">
+  <div class="col-md-2 mb-4 stretch-card transparent">
+    <div class="card card-tale">
+      <div class="card-body">
+        <p class="mb-4">Total Collaborateurs</p>
+        <p class="fs-30 mb-2">2000</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 mb-4 stretch-card transparent">
+    <div class="card card-dark-blue">
+      <div class="card-body">
+        <p class="mb-4">CDI</p>
+        <p class="fs-30 mb-2">1500</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 mb-4 stretch-card transparent">
+    <div class="card card-light-blue">
+      <div class="card-body">
+        <p class="mb-4">CDD</p>
+        <p class="fs-30 mb-2">250</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 mb-4 stretch-card transparent">
+    <div class="card card-dark-blue">
+      <div class="card-body">
+        <p class="mb-4">Anapec</p>
+        <p class="fs-30 mb-2">250</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 mb-4 stretch-card transparent">
+    <div class="card card-light-danger">
+      <div class="card-body">
+        <p class="mb-4">CTE</p>
+        <p class="fs-30 mb-2">250</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 mb-4 stretch-card transparent">
+    <div class="card  card-title">
+      <div class="card-body">
+        <p class="mb-4">AUTRE</p>
+        <p class="fs-30 mb-2">250</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!---------------------------------------------------------------------------------------------------WIDGET-------------------------------------------------------------------------------------------------------->
+
+<!---------------------------------------------------------------------------------------------------Filtre-------------------------------------------------------------------------------------------------------->
+
+<div class="col-12 grid-margin">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Filtre</h4>
+      <form class="form-sample">
+        <p class="card-description">
+          Filtré dans : TOUS / Collaborateurs CDI / Collaborateurs CDD /  Total Collaborateurs Anapec
+        </p>
+
+        
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="Entite">Entité</label>
+                <select class="form-control" id="Entite" name="Entite">
+                  <option>SACCOMCG</option>
+                  <option>SACCOMRH</option>
+                  <option>SACCOMXD</option>
+                  <option>SACCOMCC</option>
+                  <option>XCDM MAROC</option>
+                  <option>SRE</option>
+                  <option>WEACT ACADEMY</option>
+                  <option>WEACT SERVICE</option>
+                  <option>QSDEVINTL</option>
+                  <option>SACCOMINTL</option>
+                </select>
+              </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+                <label for="Etablissement">Etablissement</label>
+                <select class="form-control" id="Etablissement" name="Etablissement">
+                  <option>Interne</option>
+                  <option>XCEED</option>
+                  <option>RICHBOND</option>
+                </select>
+              </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="form-group">
+              <label for="Statut">Statut</label>
+                <select class="form-control" id="Statut" name="Statut">
+                  <option>Active</option>
+                  <option>SORTANT</option>
+                </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="Statut">Date integration entre le :</label>
+              <input type="date" class="form-control" name="integration1" id="integration1" />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="Statut">et le :</label>
+              <input type="date" class="form-control" name="integration2" id="integration2" />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="Statut">Date Sortie entre le :</label>
+              <input type="date" class="form-control" name="integration1" id="integration1" />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="Statut">et le :</label>
+              <input type="date" class="form-control" name="integration2" id="integration2" />
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group">
+              <label for="Statut">Chercher Avec:</label>
+              <select class="form-control" id="ChercherAvec" name="ChercherAvec">
+                <option>Nom</option>
+                <option>Prénom</option>
+                <option>N° CNSS</option>
+                <option>Matricule</option>
+                <option>CIN</option>
+                <option>Téléphone</option>
+                <option>N° CNSS</option>
+                <option>N° d'affiliation assurance</option>
+                <option>Compagnie d'assurance</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-7 text-center">
+            <div class="form-group text-center">
+              <label for="Statut">Mot Clé :</label>
+              <input type="text" class="form-control" name="MotCle" id="MotCle" />
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <div class="form-group">
+              <p><hr/></p>
+              <button type="button" class="btn btn-primary">Cherché</button>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<!---------------------------------------------------------------------------------------------------Filtre-------------------------------------------------------------------------------------------------------->
+
+<!---------------------------------------------------------------------------------------------------Tableau-------------------------------------------------------------------------------------------------------->
+<div class="row">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card scrollTableau">
+      <div class="card-body">
+        <p class="card-title">List Collaborateurs</p>
+        <div class="row">
+          <div class="col-12">
+            <div class="table-responsive">
+              <table id="example" class="display expandable-table" style="width:100%">
+                <thead>
+                  <tr>
+                    <th>Utilisateur</th>
+                    <th>Nom</th>
+                    <th>Entité</th>
+                    <th>Poste</th>
+                    <th>Téléphone</th>
+                    <th>Email</th>
+                    <th>Contrat</th>
+                    <th>Date Integration</th>
+                    <th>Congé</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="py-1"><a href="#"><img src="images/faces/Default.jpg" alt="image" width="30px" height="30px"/></a></td>
+                    <td><a href="#">Karim BOURIR</a></td>
+                    <td>SRE</td>
+                    <td>Responsable IT</td>
+                    <td>0633808013</td>
+                    <td>k.bourir@saccomcc.com</td>
+                    <td>CDI</td>
+                    <td>21/10/2019</td>
+                    <td>13.5</td>
+                  </tr>
+                  <tr>
+                    <td class="py-1"><a href="#"><img src="images/faces/Default.jpg" alt="image" width="30px" height="30px"/></a></td>
+                    <td><a href="#">Karim BOURIR</a></td>
+                    <td>SRE</td>
+                    <td>Responsable IT</td>
+                    <td>0633808013</td>
+                    <td>k.bourir@saccomcc.com</td>
+                    <td>CDI</td>
+                    <td>21/10/2019</td>
+                    <td>13.5</td>
+                  </tr>
+                  <tr>
+                    <td class="py-1"><a href="#"><img src="images/faces/Default.jpg" alt="image" width="30px" height="30px"/></a></td>
+                    <td><a href="#">Karim BOURIR</a></td>
+                    <td>SRE</td>
+                    <td>Responsable IT</td>
+                    <td>0633808013</td>
+                    <td>k.bourir@saccomcc.com</td>
+                    <td>CDI</td>
+                    <td>21/10/2019</td>
+                    <td>13.5</td>
+                  </tr>
+                  <tr>
+                    <td class="py-1"><a href="#"><img src="images/faces/Default.jpg" alt="image" width="30px" height="30px"/></a></td>
+                    <td><a href="#">Karim BOURIR</a></td>
+                    <td>SRE</td>
+                    <td>Responsable IT</td>
+                    <td>0633808013</td>
+                    <td>k.bourir@saccomcc.com</td>
+                    <td>CDI</td>
+                    <td>21/10/2019</td>
+                    <td>13.5</td>
+                  </tr>
+                  <tr>
+                    <td class="py-1"><a href="#"><img src="images/faces/Default.jpg" alt="image" width="30px" height="30px"/></a></td>
+                    <td><a href="#">Karim BOURIR</a></td>
+                    <td>SRE</td>
+                    <td>Responsable IT</td>
+                    <td>0633808013</td>
+                    <td>k.bourir@saccomcc.com</td>
+                    <td>CDI</td>
+                    <td>21/10/2019</td>
+                    <td>13.5</td>
+                  </tr>
+                  <tr>
+                    <td class="py-1"><a href="#"><img src="images/faces/Default.jpg" alt="image" width="30px" height="30px"/></a></td>
+                    <td><a href="#">Karim BOURIR</a></td>
+                    <td>SRE</td>
+                    <td>Responsable IT</td>
+                    <td>0633808013</td>
+                    <td>k.bourir@saccomcc.com</td>
+                    <td>CDI</td>
+                    <td>21/10/2019</td>
+                    <td>13.5</td>
+                  </tr>
+                </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<!---------------------------------------------------------------------------------------------------Tableau-------------------------------------------------------------------------------------------------------->
+
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+   
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+  </div> <!---Body End-->
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+        <!-- content-wrapper ends -->
+
+
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023. SACCOMCG <a href="https://www.saccomcg.com/" target="_blank">SACCOMCG</a> All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made by karim BOURIR & Yassine BAGHDADI <i class="ti-heart text-danger ml-1"></i></span>
+          </div>
+        </footer> 
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>   
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+
+  <!-- plugins:js -->
+  <script src="vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="vendors/chart.js/Chart.min.js"></script>
+  <script src="vendors/datatables.net/jquery.dataTables.js"></script>
+  <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+  <script src="js/dataTables.select.min.js"></script>
+
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="js/off-canvas.js"></script>
+  <script src="js/hoverable-collapse.js"></script>
+  <script src="js/template.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/todolist.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="js/dashboard.js"></script>
+  <script src="js/Chart.roundedBarCharts.js"></script>
+  <!-- End custom js for this page-->
+</body>
+
+</html>
+

@@ -1,0 +1,1978 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>MyXCDM Profile</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link
+      rel="stylesheet"
+      href="vendors/datatables.net-bs4/dataTables.bootstrap4.css"
+    />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="js/select.dataTables.min.css"
+    />
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css" />
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css" />
+    <!-- endinject -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css" />
+    <!-- endinject -->
+    <link rel="shortcut icon" href="images/favicon.png" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/js/r.js"></script>
+
+    <style>
+      div.scroll {
+        margin: 4px, 4px;
+        padding: 4px;
+        background-color: white;
+        height: 300px;
+        width: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align: justify;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_navbar.html -->
+      <nav
+        class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+        id="theNavBar"
+      ></nav>
+
+      <!-- partial Start -->
+      <div class="container-fluid page-body-wrapper">
+        <div id="right-sidebar" class="settings-panel"></div>
+        <!-- partial  End-->
+        <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+        <!-- NAV /_sidebar.html START -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar"></nav>
+        <!-- NAV END -->
+
+        <!-- NAV END -->
+
+        <!-- content-wrapper Start -->
+        <div class="main-panel">
+          <!---------------------------------------------------------------------------------------------------Body Start-------------------------------------------------------------------------------------------------------->
+          <div class="content-wrapper">
+            <!---Body Start-->
+            <!---------------------------------------------------------------------------------------------------Body Start-------------------------------------------------------------------------------------------------------->
+            <div class="row">
+              <div class="col-md-12 grid-margin">
+                <div class="row">
+                  <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                    <h3 class="font-weight-bold">
+                      Bienvenu <span id="userFullName">N/A</span>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+            <div class="row">
+              <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <ul
+                      class="nav nav-tabs border-top"
+                      id="setting-panel"
+                      role="tablist"
+                    >
+                      <li class="nav-item">
+                        <a
+                          class="nav-link active"
+                          id="todo-tab"
+                          data-toggle="tab"
+                          href="#Profil"
+                          role="tab"
+                          aria-controls="Profil"
+                          aria-expanded="true"
+                          >Profil</a
+                        >
+                      </li>
+                      <!---<li class="nav-item">
+                  <a class="nav-link" id="todo-tab" data-toggle="tab" href="#Planning" role="tab" aria-controls="Planning">Planning</a>
+                </li>--->
+                      <li class="nav-item">
+                        <a
+                          class="nav-link"
+                          id="chats-tab"
+                          data-toggle="tab"
+                          href="#Conge"
+                          role="tab"
+                          aria-controls="Conge"
+                          >Congé</a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link"
+                          id="chats-tab"
+                          data-toggle="tab"
+                          href="#Documents"
+                          role="tab"
+                          aria-controls="Documents"
+                          >Documents</a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link"
+                          id="chats-tab"
+                          data-toggle="tab"
+                          href="#Decharge"
+                          role="tab"
+                          aria-controls="Decharge"
+                          >Décharge</a
+                        >
+                      </li>
+                      <li class="nav-item" disabled>
+                        <a
+                          class="nav-link"
+                          id="chats-tab"
+                          data-toggle="tab"
+                          href="#Deplacement"
+                          role="tab"
+                          aria-controls="Deplacement"
+                          >Déplacement</a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link"
+                          id="chats-tab"
+                          data-toggle="tab"
+                          href="#Recuperation"
+                          role="tab"
+                          aria-controls="Recuperation"
+                          >Récupération</a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link"
+                          id="chats-tab"
+                          data-toggle="tab"
+                          href="#DemandeRec"
+                          role="tab"
+                          aria-controls="DemandeRec"
+                          >Demandes/Réclamation</a
+                        >
+                      </li>
+                    </ul>
+                    <div class="tab-content" id="setting-content">
+                      <!---------------------------------------------------------------------------------------------Mon Profil------------------------------------------------------------------------------------------->
+                      <div
+                        class="tab-pane fade show active scroll-wrapper"
+                        id="Profil"
+                        role="tabpanel"
+                        aria-labelledby="Profil"
+                      >
+                        <div class="row">
+                          <div class="col-md-7 grid-margin stretch-card">
+                            <div class="card">
+                              <div class="card-body">
+                                <h4 class="card-title">Mes informations</h4>
+
+                                <div class="row">
+                                  <div class="col-md-4">
+                                    <div class="form-group">
+                                      <label for="NomP">Nom</label>
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        name="Nom"
+                                        id="NomP"
+                                        disabled
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <div class="form-group">
+                                      <label for="Prenom">Prénom</label>
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        name="Prenom"
+                                        id="Prenom"
+                                        disabled
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <div class="form-group">
+                                      <label for="Naissance"
+                                        >Date de Naissance</label
+                                      >
+                                      <input
+                                        type="Date"
+                                        class="form-control"
+                                        name="Naissance"
+                                        id="Naissance"
+                                        disabled
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-md-12">
+                                    <div class="form-group">
+                                      <label for="address">Adresse</label>
+                                      <input
+                                        type="email"
+                                        class="form-control"
+                                        name="address"
+                                        id="address"
+                                        disabled
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-4">
+                                    <div class="form-group">
+                                      <label for="e-Mail">E-mail</label>
+                                      <input
+                                        type="email"
+                                        class="form-control"
+                                        name="Mail"
+                                        id="e-Mail"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <div class="form-group">
+                                      <label for="exampleInputUsername1"
+                                        >Téléphone</label
+                                      >
+                                      <input
+                                        type="number"
+                                        class="form-control"
+                                        name="Telephone"
+                                        id="Telephone"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <div class="form-group">
+                                      <label for="Portable">Portable</label>
+                                      <input
+                                        type="number"
+                                        class="form-control"
+                                        name="Portable"
+                                        id="Portable"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-4">
+                                    <div class="form-group">
+                                      <label for="Mail"
+                                        >Nom d'utilisateur</label
+                                      >
+                                      <input
+                                        type="email"
+                                        class="form-control"
+                                        name="Nom d'utilisateur"
+                                        id="usrNme"
+                                        disabled
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4" hidden>
+                                    <div class="form-group">
+                                      <label for="Motdepasse"
+                                        >Mot de passe</label
+                                      >
+                                      <input
+                                        type="password"
+                                        class="form-control psswr"
+                                        name="Motdepasse"
+                                        id="Motdepasse"
+                                        placeholder="Password"
+                                      />
+                                      <span
+                                        style="
+                                          color: rgba(255, 0, 0, 0.664);
+                                          font-style: italic;
+                                          font-size: small;
+                                        "
+                                        id="psswerr1"
+                                      ></span>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4" hidden>
+                                    <div class="form-group">
+                                      <label for="ConfirmationMotdepasse"
+                                        >Confirmation Mot de passe</label
+                                      >
+                                      <input
+                                        type="password"
+                                        class="form-control psswr"
+                                        name="ConfirmationMotdepasse"
+                                        id="ConfirmationMotdepasse"
+                                        placeholder="Password"
+                                      />
+                                      <span
+                                        style="
+                                          color: rgba(255, 0, 0, 0.664);
+                                          font-style: italic;
+                                          font-size: small;
+                                        "
+                                        id="psswerr2"
+                                      ></span>
+                                    </div>
+                                  </div>
+                                  
+                                </div>
+                                <button
+                                  type="button"
+                                  class="btn btn-primary mr-2"
+                                  id="mdfInfoBtn"
+                                >
+                                  Modifier
+                                </button>
+                                <button
+                                  type="button"
+                                  class="btn btn-primary mr-2"
+                                  id="rstPswdBtn"
+                                >
+                                  Réinitialiser le Mot de Passe
+                                </button>
+                                
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-5 grid-margin stretch-card">
+                            <div class="card">
+                              <div class="card-body">
+                                <h4 class="card-title">photo de profil</h4>
+                                <p class="card-description">
+                                  Ajouter/ Modifier votre photo de profil
+                                </p>
+                                <div class="text-center">
+                                  <div class="nav-item nav-profile">
+                                    <img
+                                      id="thePic"
+                                      style="border-radius: 50%"
+                                      alt="profile"
+                                      width="200"
+                                      height="200"
+                                      onerror="this.onerror=null;this.src='./js/js/prflPic.jpg';$('#addPicBtn').html('Ajouter')"
+                                    />
+                                  </div>
+                                  <hr />
+                                  <div class="text-center">
+                                    <div class="row">
+                                      <div class="col-md-4 col-md-offset-3">
+                                        <input hidden type="file" name="prflPicInput" id="prflPicInput">
+                                        <button
+                                          type="button"
+                                          id="addPicBtn"
+                                          class="btn btn-primary md-5"
+                                        >
+                                          Modifier
+                                        </button>
+                                      </div>
+                                      <div class="col-md-4">
+                                        <h5><br /><small></small></h5>
+                                      </div>
+                                      <div class="col-md-4">
+                                        <button class="btn btn-light">
+                                          Réinitialiser
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label for="Entite">Entité</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                name="Entit"
+                                id="Entite"
+                                placeholder="Entit"
+                                disabled
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label for="Contrat">Contrat</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                name="Contrat"
+                                id="Contrat"
+                                disabled
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label for="integration"
+                                >Date D'integration</label
+                              >
+                              <input
+                                type="text"
+                                class="form-control"
+                                name="integration"
+                                id="integration"
+                                placeholder="Date D'integration"
+                                disabled
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label for="Fonction">Fonction</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                name="Fonction"
+                                id="Fonction"
+                                placeholder="Date D'integration"
+                                disabled
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!---------------------------------------------------------------------------------------------Mon Profil------------------------------------------------------------------------------------------->
+
+                      <!---------------------------------------------------------------------------------------------Planning---
+<div class="tab-pane fade" id="Planning" role="tabpanel" aria-labelledby="Planning">
+  <div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Planning Semaine 23</h4>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Jour</th>
+                  <th>Début shift</th>
+                  <th>Pause 1</th>
+                  <th>Pause Déjeuner</th>
+                  <th>Pause 2</th>
+                  <th>Fin shift</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="py-1">Lundi</td>
+                  <td>12:00</td>
+                  <td>14:15</td>
+                  <td>16:00</td>
+                  <td>20:00</td>
+                  <td>22:00</td>
+                </tr>
+                <tr>
+                  <td class="py-1">Mardi</td>
+                  <td>12:00</td>
+                  <td>14:15</td>
+                  <td>16:00</td>
+                  <td>20:00</td>
+                  <td>22:00</td>
+                </tr>
+                <tr>
+                  <td class="py-1">Mercredi</td>
+                  <td>12:00</td>
+                  <td>14:15</td>
+                  <td>16:00</td>
+                  <td>20:00</td>
+                  <td>22:00</td>
+                </tr>
+                <tr>
+                  <td class="py-1">Jeudi</td>
+                  <td>12:00</td>
+                  <td>14:15</td>
+                  <td>16:00</td>
+                  <td>20:00</td>
+                  <td>22:00</td>
+                </tr>
+                <tr>
+                  <td class="py-1">Vendredi</td>
+                  <td>12:00</td>
+                  <td>14:15</td>
+                  <td>16:00</td>
+                  <td>20:00</td>
+                  <td>22:00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  Planning------------------------------------------------------------------------------------------->
+
+                      <!---------------------------------------------------------------------------------------------Demande Congé------------------------------------------------------------------------------------------->
+                      <div
+                        class="tab-pane fade"
+                        id="Conge"
+                        role="tabpanel"
+                        aria-labelledby="Conge"
+                      >
+                      <style>
+                        .centered-text {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 10vh;
+                            font-size: 2em;
+                            text-align: center;
+                            color: red;
+                            cursor: not-allowed;
+                        }
+                    </style>
+                        <div class="col-md-12 grid-margin stretch-card">
+                          <div class="card">
+                            <h4 class="card-title">
+                              Solde congés annuel payés :
+                              <span id="soldConge">N/A</span>
+                            </h4>
+                            <div class="card-body" id="cnjInputsDiv">
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <label for="exampleInputUsername1"
+                                      >Type Congé</label
+                                    >
+                                    <select class="form-control" id="cnjTpe">
+                                      <option hidden>Choisir</option>
+                                      <option value="1">
+                                        Congés annuel payés
+                                      </option>
+                                      <option value="2">
+                                        Congés sans Solde
+                                      </option>
+                                      <option value="3">
+                                        90 jours Congé maternité
+                                      </option>
+                                      <option value="4">
+                                        2 jours circoncision de mon fils
+                                      </option>
+                                      <option value="5">
+                                        4 jours de congés pour mon mariage
+                                      </option>
+                                      <option value="6">
+                                        2 jours pour le mariage de mon enfant
+                                      </option>
+                                      <option value="7">
+                                        2 jours opération chirurgicale
+                                        (Enfant,conjoint)
+                                      </option>
+                                      <option value="8">
+                                        2 jours de congés de décès
+                                      </option>
+                                      <option value="9">
+                                        3 jours de congés de décès
+                                      </option>
+                                    </select>
+                                    <small hidden class="text-danger" id="cnjProofTxt"
+                                      >Justificatif est obligatoire pour ce type
+                                      de congés sinon il sera considérer comme
+                                      une absence</small
+                                    >
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="form-group">
+                                    <label for="StartDay"
+                                      >Premier jour de congé (inclus)</label
+                                    >
+
+                                    <input
+                                      type="date"
+                                      class="form-control"
+                                      name="StartDay"
+                                      id="StartDay"
+                                      min=""
+                                      disabled
+                                    />
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="form-group">
+                                    <label for="EndDay"
+                                      >Dernier jour de congé (inclus)</label
+                                    >
+                                    <input
+                                      type="date"
+                                      class="form-control"
+                                      name="EndDay"
+                                      id="EndDay"
+                                      disabled
+                                    />
+                                  </div>
+                                </div>
+                                <div class="col-md-2">
+                                  <div class="form-group">
+                                    <label for="JoursCong"
+                                      >Nombre des jours</label
+                                    >
+                                    <input
+                                      type="number"
+                                      class="form-control"
+                                      name="JoursCong"
+                                      id="JoursCong"
+                                      value="00"
+                                      disabled
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-2" id="cnjProof" hidden>
+                                  <input
+                                    type="file"
+                                    name="prflCnjProofInput"
+                                    id="prflCnjProofInput"
+                                    accept="*"
+                                    style="display: none"
+                                  />
+                                  <button
+                                    type="submit"
+                                    class="btn md-5"
+                                    id="addCnjProofBtn"
+                                    style="
+                                      background-color: rgb(53, 155, 53);
+                                      color: white;
+                                    "
+                                    onmouseover="this.style.backgroundColor='rgb(97, 204, 97)';"
+                                    onmouseout="this.style.backgroundColor='rgb(53, 155, 53)';"
+                                  >
+                                    Preuve
+                                  </button>
+                                </div>
+                                <div class="col-md-2">
+                                  <button
+                                    type="button"
+                                    id="saveCnjBtn"
+                                    class="btn btn-primary mr-2"
+                                  >
+                                    valider
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="row">
+                              <!---table Congé Start-->
+                              <div class="card-body scroll">
+                                <h4 class="card-title">Liste des Congés</h4>
+                                <div class="table-responsive">
+                                  <table class="table table-striped">
+                                    <thead>
+                                      <tr>
+                                        <th>#ID</th>
+                                        <th>Date demande</th>
+                                        <th>Premier jour de congé</th>
+                                        <th>Dernier jour de congé</th>
+                                        <th>Nombre des jours</th>
+                                        <th>Validation N+1</th>
+                                        <th>Validation DRH</th>
+                                        <th>Statut</th>
+                                        <th>Annulé</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody id="cnjTbleBdy">
+                                      <!-- <tr>
+                                        <td><a href="#">001</a></td>
+                                        <td>24/03/2023</td>
+                                        <td>20/06/2023</td>
+                                        <td>17/07/2023</td>
+                                        <td>22</td>
+                                        <td>
+                                          <label class="badge badge-success"
+                                            >Validé</label
+                                          >
+                                        </td>
+                                        <td>
+                                          <label class="badge badge-success"
+                                            >Validé</label
+                                          >
+                                        </td>
+                                        <td>
+                                          <label class="badge badge-success"
+                                            >Validé</label
+                                          >
+                                        </td>
+                                        <td>
+                                          <button
+                                            type="button"
+                                            class="btn btn-inverse-danger btn-icon"
+                                          >
+                                            <i class="ti-close"></i>
+                                          </button>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td><a href="#">002</a></td>
+                                        <td>24/03/2023</td>
+                                        <td>20/06/2023</td>
+                                        <td>05/07/2023</td>
+                                        <td>10</td>
+                                        <td>
+                                          <label class="badge badge-success"
+                                            >Validé</label
+                                          >
+                                        </td>
+                                        <td>
+                                          <label class="badge badge-warning"
+                                            >En cours</label
+                                          >
+                                        </td>
+                                        <td>
+                                          <label class="badge badge-warning"
+                                            >En cours</label
+                                          >
+                                        </td>
+                                        <td>
+                                          <button
+                                            type="button"
+                                            class="btn btn-inverse-danger btn-icon"
+                                          >
+                                            <i class="ti-close"></i>
+                                          </button>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td><a href="#">003</a></td>
+                                        <td>24/03/2023</td>
+                                        <td>20/06/2023</td>
+                                        <td>17/07/2023</td>
+                                        <td>22</td>
+                                        <td>
+                                          <label class="badge badge-warning"
+                                            >En cours</label
+                                          >
+                                        </td>
+                                        <td>
+                                          <label class="badge badge-warning"
+                                            >En cours</label
+                                          >
+                                        </td>
+                                        <td>
+                                          <label class="badge badge-danger"
+                                            >Annulé</label
+                                          >
+                                        </td>
+                                        <td>
+                                          <button
+                                            type="button"
+                                            class="btn btn-inverse-danger btn-icon"
+                                            disabled
+                                          >
+                                            <i class="ti-close"></i>
+                                          </button>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td><a href="#">004</a></td>
+                                        <td>24/03/2023</td>
+                                        <td>20/06/2023</td>
+                                        <td>17/07/2023</td>
+                                        <td>22</td>
+                                        <td>
+                                          <label class="badge badge-danger"
+                                            >Rejeté</label
+                                          >
+                                        </td>
+                                        <td>
+                                          <label class="badge badge-warning"
+                                            >En cours</label
+                                          >
+                                        </td>
+                                        <td>
+                                          <label class="badge badge-danger"
+                                            >Rejeté</label
+                                          >
+                                        </td>
+                                        <td>
+                                          <button
+                                            type="button"
+                                            class="btn btn-inverse-danger btn-icon"
+                                            disabled
+                                          >
+                                            <i class="ti-close"></i>
+                                          </button>
+                                        </td>
+                                      </tr> -->
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                            <!---table Congé End-->
+
+                            <hr />
+
+                            <div class="row">
+                              <div class="col-md-3">
+                                <div class="form-group text-center">
+                                  <h6>1er janvier</h6>
+                                  <label>Nouvel An</label>
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group text-center">
+                                  <h6>11 janvier</h6>
+                                  <label>Manifeste de l'indépendance</label>
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group text-center">
+                                  <h6>1er mai</h6>
+                                  <label>Fête du Travail</label>
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group text-center">
+                                  <h6>30 juillet</h6>
+                                  <label>Fête du Trône</label>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="row">
+                              <div class="col-md-3">
+                                <div class="form-group text-center">
+                                  <h6>14 août</h6>
+                                  <label>Oued Eddahab</label>
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group text-center">
+                                  <h6>20 août</h6>
+                                  <label
+                                    >La révolution du roi et du peuple</label
+                                  >
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group text-center">
+                                  <h6>21 août</h6>
+                                  <label>Fête de la Jeunesse</label>
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group text-center">
+                                  <h6>6 novembre</h6>
+                                  <label>La marche verte</label>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="row text-center">
+                              <div class="col-md-12">
+                                <div class="form-group text-center">
+                                  <h6>18 novembre</h6>
+                                  <label>Fête de l'indépendance</label>
+                                </div>
+                              </div>
+                            </div>
+                            <hr />
+                            <div class="row" hidden>
+                              <!---historique demande congé  start -->
+                              <div class="col-md-6 grid-margin">
+                                <div class="table-responsive">
+                                  <table class="table table-striped">
+                                    <thead>
+                                      <tr>
+                                        <th>Historique</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>25/04/2023 10:37</td>
+                                        <td><a href="#">Validé</a></td>
+                                        <td>Kacem BENABDERRAZIK</td>
+                                      </tr>
+                                      <tr>
+                                        <td>25/04/2023 13:15</td>
+                                        <td><a href="#">refusé</a></td>
+                                        <td>MZ ELOUDGHIRI</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                              <div class="col-md-6 grid-margin">
+                                <div class="row form-group">
+                                  <div class="col-12 col-md-12">
+                                    <label
+                                      for="Objet"
+                                      class="form-control-label"
+                                      >Détails</label
+                                    >
+                                    <textarea
+                                      class="form-control"
+                                      name="Message"
+                                      id="Message"
+                                      rows="6"
+                                      disabled
+                                    >
+              Kacem BENABDERRAZIK : je valide le congé pour Mr karim bourir
+
+              MZ ELOUDGHIRI : Merci de décalier le congé  pour une autre date vu les urgences et les engagements qu nous avon actualement
+            </textarea
+                                    >
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!---historique demande congé  END -->
+                          </div>
+                        </div>
+                      </div>
+                      <!---------------------------------------------------------------------------------------------Demande Congé---------------------------------------------------------------------------------------------->
+
+                      <!---------------------------------------------------------------------------------------------Demande Documents------------------------------------------------------------------------------------------->
+                      <div
+                        class="tab-pane fade"
+                        id="Documents"
+                        role="tabpanel"
+                        aria-labelledby="Documents"
+                      >
+                        <div class="row">
+                          <div class="col-md-4 grid-margin">
+                            <div class="table-responsive">
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>Liste des Documents</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      <label class="form-check-label">
+                                        <input
+                                          id="dat"
+                                          type="checkbox"
+                                          class="form-check-input"
+                                        />
+                                        Attestation de travail
+                                      </label>
+                                    </td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <label class="form-check-label">
+                                        <input
+                                          id="das"
+                                          type="checkbox"
+                                          class="form-check-input"
+                                        />
+                                        Attestation de salaire
+                                      </label>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <label class="form-check-label">
+                                        <input
+                                          id="dds"
+                                          type="checkbox"
+                                          class="form-check-input"
+                                        />
+                                        Domiciliation de salaire
+                                      </label>
+                                    </td>
+                                  </tr>
+                                  <td>
+                                    <label class="form-check-label">
+                                      <input
+                                        id="dbp"
+                                        type="checkbox"
+                                        class="form-check-input"
+                                      />
+                                      Bulletin(s) de paie
+                                    </label>
+                                  </td>
+                                  <tr>
+                                    <td>
+                                      <label class="form-check-label">
+                                        <input
+                                          id="dbc"
+                                          type="checkbox"
+                                          class="form-check-input"
+                                        />
+                                        Bordereaux CNSS
+                                      </label>
+                                    </td>
+                                  </tr>
+
+                                  
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+
+                          <div class="col-md-8 grid-margin">
+                            <div class="row form-group">
+                              <div class="col-12 col-md-12">
+                                <label for="Objet" class="form-control-label"
+                                  >Message</label
+                                >
+                                <textarea
+                                  class="form-control"
+                                  name="Message"
+                                  id="DCsRMessage"
+                                  rows="12"
+                                ></textarea>
+                                <small class="form-text text-muted"
+                                  >Maximum 300 caractère</small
+                                >
+                              </div>
+                            </div>
+                            <div class="row form-group">
+                              <div class="col-12 col-md-12">
+                                <button
+                                  id="DCsRqstBtn"
+                                  type="button"
+                                  class="btn btn-inverse-success"
+                                >
+                                  Envoyée
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="row">
+                          <!---table liste demande Start-->
+                          <div class="card-body scroll">
+                            <h4 class="card-title">Liste des demandes</h4>
+                            <div class="table-responsive">
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>#ID</th>
+                                    <th>Date demande</th>
+                                    <th class="text-center">
+                                      Documents demandés
+                                    </th>
+                                    <th>STATUT</th>
+                                    <th>Date traitement</th>
+                                    <th>Annulé</th>
+                                  </tr>
+                                </thead>
+                                <tbody id="DCSrqsttbl"></tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <!---table liste demande End-->
+
+                        <div class="row" hidden>
+                          <!---historique demande congé  start -->
+                          <div class="col-md-6 grid-margin">
+                            <div class="table-responsive">
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>Historique</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>26/04/2023 16:00</td>
+                                    <td><a href="#">Livré</a></td>
+                                    <td>Samia ELAABAD</td>
+                                  </tr>
+                                  <tr>
+                                    <td>26/04/2023 12:30</td>
+                                    <td>
+                                      <a href="#">En attente signature</a>
+                                    </td>
+                                    <td>Samia ELAABAD</td>
+                                  </tr>
+                                  <tr>
+                                    <td>25/04/2023 10:30</td>
+                                    <td><a href="#">En cours</a></td>
+                                    <td>Samia ELAABAD</td>
+                                  </tr>
+                                  <tr>
+                                    <td>24/03/2023 15:30</td>
+                                    <td><a href="#">Demande Envoyé</a></td>
+                                    <td>KARIM BOURIR</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                          <div class="col-md-6 grid-margin">
+                            <div class="row form-group">
+                              <div class="col-12 col-md-12">
+                                <label for="Objet" class="form-control-label"
+                                  >Détails</label
+                                >
+                                <textarea
+                                  class="form-control"
+                                  name="Message"
+                                  id="Message"
+                                  rows="6"
+                                  disabled
+                                >
+          Samia ELAABAD : demande bien réçu, la date pérvu  pour la livraison de vos documents et pour le  26/04/2023  à 16:00
+
+          KARIM BOURIR  : Merci de me fournir les documents damander avec deux copie d'attestation de travaille
+        </textarea
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!---historique demande congé  END -->
+                      </div>
+                      <!---------------------------------------------------------------------------------------------Demande Documents------------------------------------------------------------------------------------------->
+
+                      <!---------------------------------------------------------------------------------------------Decharge---------------------------------------------------------------------------------------------------->
+                      <div
+                        class="tab-pane fade"
+                        id="Decharge"
+                        role="tabpanel"
+                        aria-labelledby="Decharge"
+                      >
+                        <div class="row">
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="exampleInputUsername1"
+                                >Raison de la décharger *</label
+                              >
+                              <select class="form-control" id="dchrgeRsn">
+                                <option value="Raison professionnelle">
+                                  Raison professionnelle
+                                </option>
+                                <option value="Raison personnelle">
+                                  Raison personnelle
+                                </option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label for="exampleInputUsername1"
+                                >Date sortie *</label
+                              >
+                              <input
+                                type="datetime-local"
+                                class="form-control"
+                                name="Datesortie"
+                                id="Datesortie"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label for="exampleInputUsername1"
+                                >Date de reprise *</label
+                              >
+                              <input
+                                type="datetime-local"
+                                class="form-control"
+                                name="Datedereprise"
+                                id="Datedereprise"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-2">
+                            <div class="form-group">
+                              <label for="exampleInputUsername1"
+                                >Votre mot de passe
+                              </label>
+                              <input
+                                type="password"
+                                class="form-control"
+                                name="passe"
+                                id="passe"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row form-group">
+                          <div class="col-12 col-md-12">
+                            <label for="Objet" class="form-control-label"
+                              >Message *</label
+                            >
+                            <textarea
+                              class="form-control"
+                              name="Message"
+                              id="DchrgeMessage"
+                              rows="6"
+                            ></textarea>
+                            <small class="form-text text-muted"
+                              >Maximum 300 caractère</small
+                            >
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-10 grid-margin">
+                            <div class="col-8 col-md-8">
+                              <label class="form-check-label text-danger">
+                                <input
+                                  type="checkbox"
+                                  class="form-check-input"
+                                  id="chckDchrge"
+                                />
+                                * Je confirme avoir pris connaissance que ma
+                                demande ne peut plus être annulée après
+                                accéptation et que les heures de décharge seront
+                                décomptées de mon salaire.
+                              </label>
+                            </div>
+                          </div>
+
+                          <div class="col-md-2 grid-margin">
+                            <div class="col-12 col-md-12">
+                              <button
+                                type="button"
+                                class="btn btn-inverse-success"
+                                disabled
+                                id="saveDchrgeBtn"
+                              >
+                                Envoyée
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                          <!---table Décharge Start-->
+                          <div class="card-body scroll">
+                            <h4 class="card-title">Liste des Congés</h4>
+                            <div class="table-responsive">
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>Date demande</th>
+                                    <th>Date sortie</th>
+                                    <th>Date de reprise</th>
+                                    <th>Validation N+1</th>
+                                    <!--- En cours, validée, Refusée-->
+                                    <th>Statut</th>
+                                    <th>Annulation</th>
+                                  </tr>
+                                </thead>
+                                <tbody id="dchrgesTbl"></tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <!---table Décharge End-->
+
+                        <hr />
+
+                        <div class="row" hidden>
+                          <!---historique demande Décharge  start -->
+                          <div class="col-md-6 grid-margin">
+                            <div class="table-responsive scroll">
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>Historique</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>20/03/2023 10:30</td>
+                                    <td><a href="#">Demande annulée</a></td>
+                                    <td>RH-Fayssal SOQRATI</td>
+                                  </tr>
+                                  <tr>
+                                    <td>20/03/2023 10:30</td>
+                                    <td>
+                                      <a href="#">Demande d'Annulation</a>
+                                    </td>
+                                    <td>KARIM BOURIR</td>
+                                  </tr>
+                                  <tr>
+                                    <td>20/03/2023 10:30</td>
+                                    <td><a href="#">Refusée</a></td>
+                                    <td>Kacem BENABDERRAZIK</td>
+                                  </tr>
+                                  <tr>
+                                    <td>20/03/2023 10:30</td>
+                                    <td><a href="#">Validée</a></td>
+                                    <td>Kacem BENABDERRAZIK</td>
+                                  </tr>
+                                  <tr>
+                                    <td>20/03/2023 10:30</td>
+                                    <td><a href="#">En cours</a></td>
+                                    <td>system</td>
+                                  </tr>
+                                  <tr>
+                                    <td>20/03/2023 10:30</td>
+                                    <td><a href="#">Demande Envoyé </a></td>
+                                    <td>KARIM BOURIR</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                          <div class="col-md-6 grid-margin">
+                            <div class="row form-group">
+                              <div class="col-12 col-md-12">
+                                <label for="Objet" class="form-control-label"
+                                  >Détails</label
+                                >
+                                <textarea
+                                  class="form-control"
+                                  name="Message"
+                                  id="Message"
+                                  rows="15"
+                                  disabled
+                                >
+            Kacem BENABDERRAZIK: j'ai accépter ta demande d'Annulation
+
+            Kacem BENABDERRAZIK: je suis désolé je ne peux pas valider ta demande vu que nous avons un réunoin péru aujourd'hui.
+
+            Kacem BENABDERRAZIK: je valide la demande
+
+            System : votre demnade est envoyé avec notification mail a Mr Kacem BENABDERRAZIK pour validation veuillez de ne pas quitter votre lieu de travail avant la validation.
+
+            KARIM BOURIR  : Merci de valider ma demnade je me sens pas bien je dois quitté mon lieux ed travail.
+          </textarea
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!---historique demande Décharge  END -->
+                      </div>
+                      <!---------------------------------------------------------------------------------------------Decharge---------------------------------------------------------------------------------------------------->
+
+                      <!---------------------------------------------------------------------------------------------Deplacement---------------------------------------------------------------------------------------------------->
+                      <div 
+                        class="tab-pane fade"
+                        id="Deplacement"
+                        role="tabpanel"
+                        aria-labelledby="Deplacement"
+                      >
+                        <div class="row">
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label for="dplcmRsn"
+                                >Motif du déplacement*</label
+                              >
+                              <input
+                                type="text"
+                                class="form-control"
+                                name="Objet"
+                                id="dplcmRsn"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label for="trnsprtTpe"
+                                >Moyen de transport *</label
+                              >
+                              <select class="form-control" id="trnsprtTpe">
+                                <option value="Véhicule de la société">
+                                  Véhicule de la société
+                                </option>
+                                <option value="Transport en commun">
+                                  Transport en commun
+                                </option>
+                                <option value="Véhicule Personne">
+                                  Véhicule Personnel
+                                </option>
+                                <option value="Autres">Autres</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label for="dplcmD1">Sortie *</label>
+                              <input
+                                type="datetime-local"
+                                class="form-control"
+                                name="sortie"
+                                id="dplcmD1"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-3">
+                            <div class="form-group">
+                              <label for="dplcmD2">Reprise *</label>
+                              <input
+                                type="datetime-local"
+                                class="form-control"
+                                name="reprise"
+                                id="dplcmD2"
+                              />
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-8">
+                            <div class="form-group">
+                              <label for="dpcmDlgtion"
+                                >Passation de consignes et délégation de tâches
+                                effectuées à :</label
+                              >
+                              <input
+                                type="text"
+                                class="form-control"
+                                name="Objet"
+                                id="dpcmDlgtion"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="dplcmPaass"
+                                >Mot de passe du délégataire pour Signature
+                              </label>
+                              <input
+                                type="password"
+                                class="form-control"
+                                name="reprise"
+                                id="dplcmPaass"
+                              />
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row form-group">
+                          <div class="col-12 col-md-12">
+                            <label for="dplcmNotes" class="form-control-label"
+                              >Observations *</label
+                            >
+                            <textarea
+                              class="form-control"
+                              name="Message"
+                              id="dplcmNotes"
+                              rows="6"
+                            ></textarea>
+                            <small class="form-text text-muted"
+                              >Maximum 300 caractère</small
+                            >
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-2 grid-margin">
+                            <div class="col-12 col-md-12">
+                              <button
+                                type="button"
+                                class="btn btn-inverse-success"
+                                id="sveDplcmReqBtn"
+                              >
+                                Envoyée
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                          <!---table Déplacements Start-->
+                          <div class="card-body scroll">
+                            <h4 class="card-title">Liste des Déplacements</h4>
+                            <div class="table-responsive">
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>Date demande</th>
+                                    <th>Sortie</th>
+                                    <th>Reprise</th>
+                                    <th>Passation</th>
+                                    <th>Validation N+1</th>
+                                    <!--- En cours, validée, Refusée-->
+                                    <th>Statut</th>
+                                    <!--- En cours, validée, Refusée-->
+                                    <th>Annuler</th>
+                                  </tr>
+                                </thead>
+                                <tbody id="dplcmTbl"></tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <!---table Déplacements End-->
+
+                        <hr />
+
+                        <div class="row" hidden>
+                          <!---historique demande Déplacements  start -->
+                          <div class="col-md-6 grid-margin">
+                            <div class="table-responsive scroll">
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>Historique</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>20/03/2023 10:30</td>
+                                    <td><a href="#">Annuler</a></td>
+                                    <td>KARIM BOURIR</td>
+                                  </tr>
+                                  <tr>
+                                    <td>20/03/2023 10:30</td>
+                                    <td><a href="#">Refusée</a></td>
+                                    <td>Kacem BENABDERRAZIK</td>
+                                  </tr>
+                                  <tr>
+                                    <td>20/03/2023 10:30</td>
+                                    <td><a href="#">Validée</a></td>
+                                    <td>Kacem BENABDERRAZIK</td>
+                                  </tr>
+                                  <tr>
+                                    <td>20/03/2023 10:30</td>
+                                    <td><a href="#">En cours</a></td>
+                                    <td>system</td>
+                                  </tr>
+                                  <tr>
+                                    <td>20/03/2023 10:30</td>
+                                    <td><a href="#">Demande Envoyé </a></td>
+                                    <td>KARIM BOURIR</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                          <div class="col-md-6 grid-margin">
+                            <div class="row form-group">
+                              <div class="col-12 col-md-12">
+                                <label for="Objet" class="form-control-label"
+                                  >Détails</label
+                                >
+                                <textarea
+                                  class="form-control"
+                                  name="Message"
+                                  id="Message"
+                                  rows="15"
+                                  disabled
+                                >
+                                </textarea>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!---historique demande Déplacements  END -->
+                      </div>
+                      <!---------------------------------------------------------------------------------------------Deplacement---------------------------------------------------------------------------------------------------->
+
+                      <!---------------------------------------------------------------------------------------------Récupération---------------------------------------------------------------------------------------------------->
+
+                      <div
+                        class="tab-pane fade"
+                        id="Recuperation"
+                        role="tabpanel"
+                        aria-labelledby="Recuperation"
+                      >
+                        <div class="col-md-12 grid-margin stretch-card">
+                          <div class="card">
+                            <div class="card-body">
+                              <!-- <h4 class="card-title">
+                                Solde Recuperation:
+                                <span id="Recuperation">1</span>
+                              </h4> -->
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label for="recupD1"
+                                      >Premier jour de Récupération
+                                      (inclus)</label
+                                    >
+                                    <input
+                                      type="date"
+                                      class="form-control"
+                                      name="StartDay"
+                                      id="recupD1"
+                                    />
+                                  </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label for="recupD2"
+                                      >Dernier jour de Récupération
+                                      (inclus)</label
+                                    >
+                                    <input
+                                      type="date"
+                                      class="form-control"
+                                      name="EndDay"
+                                      id="recupD2"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                              
+                            </div>
+
+                            <div class="row form-group">
+                              <div class="col-12 col-md-12">
+                                <label for="dplcmNotes" class="form-control-label"
+                                  >Observations *</label
+                                >
+                                <textarea
+                                  class="form-control"
+                                  name="recupMsg"
+                                  id="recupMsg"
+                                  rows="4"
+                                ></textarea>
+                                <small class="form-text text-muted"
+                                  >Maximum 300 caractère</small
+                                >
+                              </div>
+                            </div>
+
+                            <div class="row form-group">
+                              <div class="col-4 col-md-12">
+                                
+                                <button
+                                type="button"
+                                class="btn btn-primary mr-2"
+                                id="sveRecupReqBtn"
+                              >
+                                Envoyer
+                              </button>
+                              </div>
+                            </div>
+                            
+
+                            <div class="row">
+                              <!---table Congé Start-->
+                              <div class="card-body scroll">
+                                <h4 class="card-title">
+                                  Liste des Récupération
+                                </h4>
+                                <div class="table-responsive">
+                                  <table class="table table-striped">
+                                    <thead>
+                                      <tr>
+                                        <th>#ID</th>
+                                        <th>Date demande</th>
+                                        <th>Premier jour de Récupération</th>
+                                        <th>Dernier jour de Récupération</th>
+                                        <!-- <th>Nombre des jours</th> -->
+                                        <th>Validation N+1</th>
+                                        <th>Validation DRH</th>
+                                        <th>Statut</th>
+                                        <th>Annulé</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody id="recupTble"></tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                            <!---table Congé End-->
+                            <hr />
+                            <div class="row" hidden>
+                              <!---historique demande Récupération  start -->
+                              <div class="col-md-6 grid-margin">
+                                <div class="table-responsive">
+                                  <table class="table table-striped">
+                                    <thead>
+                                      <tr>
+                                        <th>Historique</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>25/04/2023 10:37</td>
+                                        <td><a href="#">Validé</a></td>
+                                        <td>Kacem BENABDERRAZIK</td>
+                                      </tr>
+                                      <tr>
+                                        <td>25/04/2023 13:15</td>
+                                        <td><a href="#">refusé</a></td>
+                                        <td>MZ ELOUDGHIRI</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                              <div class="col-md-6 grid-margin">
+                                <div class="row form-group">
+                                  <div class="col-12 col-md-12">
+                                    <label
+                                      for="Objet"
+                                      class="form-control-label"
+                                      >Détails</label
+                                    >
+                                    <textarea
+                                      class="form-control"
+                                      name="Message"
+                                      id="Message"
+                                      rows="6"
+                                      disabled
+                                    >
+                                    </textarea>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!---historique demande congé  END -->
+                          </div>
+                        </div>
+                      </div>
+
+                      <!---------------------------------------------------------------------------------------------Récupération---------------------------------------------------------------------------------------------------->
+                      <!---------------------------------------------------------------------------------------------Demande et Réclamation---------------------------------------------------------------------------------------------------->
+
+                      <div
+                        class="tab-pane fade"
+                        id="DemandeRec"
+                        role="tabpanel"
+                        aria-labelledby="DemandeRec"
+                      >
+                        <div class="col-md-12 grid-margin stretch-card">
+                          <div class="card">
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <label for="dmndTpe" >Demande / Réclamation</label>
+                                    <select class="form-control" id="dmndTpe">
+                                      <option selected hidden></option>
+                                      <option value="Demande">Demande</option>
+                                      <option value="Réclamation">
+                                        Réclamation
+                                      </option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <label for="reclmTpe">Type *</label>
+                                    <select class="form-control" id="reclmTpe"></select>
+                                      
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <label for="reclmTtle">Titre *</label>
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      name="reclmTtle"
+                                      id="reclmTtle"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-12 grid-margin">
+                                <div class="row form-group">
+                                  <div class="col-12 col-md-12">
+                                    <label
+                                      for="reclmMsg"
+                                      class="form-control-label"
+                                      >Message*</label>
+                                    <textarea
+                                      class="form-control"
+                                      name="reclmMsg"
+                                      id="reclmMsg"
+                                      rows="10" >
+                                    </textarea>
+                                  </div>
+                                </div>
+                              </div>
+                              <button
+                                type="button"
+                                class="btn btn-primary mr-2"
+                                id="sveReclmBtn"
+                              >
+                                valider
+                              </button>
+                            </div>
+
+                            <div class="row">
+                              <div class="card-body scroll">
+                                <h4 class="card-title">
+                                  Liste des demandes et réclamamtions
+                                </h4>
+                                <div class="table-responsive">
+                                  <table class="table table-striped">
+                                    <thead>
+                                      <tr>
+                                        <th>#ID</th>
+                                        <th>Date</th>
+                                        <th>Titre</th>
+                                        <th>Type</th>
+                                        <th>Statut</th>
+                                        <th>Modifier</th>
+                                        <th>Supprimer</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody id="reclmTbl">
+                                      
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                            <hr />
+                            <div class="row" hidden>
+                              <!---historique demande   start -->
+                              <div class="col-md-6 grid-margin">
+                                <div class="table-responsive">
+                                  <table class="table table-striped">
+                                    <thead>
+                                      <tr>
+                                        <th>Historique</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>25/04/2023 10:37</td>
+                                        <td><a href="#">Traité</a></td>
+                                        <td>Kacem BENABDERRAZIK</td>
+                                      </tr>
+                                      <tr>
+                                        <td>25/04/2023 13:15</td>
+                                        <td><a href="#">Lu</a></td>
+                                        <td>Kacem BENABDERRAZIK</td>
+                                      </tr>
+                                      <tr>
+                                        <td>24/03/2023 13:15</td>
+                                        <td><a href="#">Ajouté</a></td>
+                                        <td>Karim BOURIR</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                              <div class="col-md-6 grid-margin">
+                                <div class="row form-group">
+                                  <div class="col-12 col-md-12">
+                                    <label
+                                      for="Objet"
+                                      class="form-control-label"
+                                      >Détails</label
+                                    >
+                                    <textarea
+                                      class="form-control"
+                                      name="Message"
+                                      id="Message"
+                                      rows="6"
+                                      disabled
+                                    >
+                                    </textarea>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!---historique demande congé  END -->
+                          </div>
+                        </div>
+                      </div>
+                      <!---------------------------------------------------------------------------------------------Demande et Réclamation---------------------------------------------------------------------------------------------------->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+            <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+          </div>
+          <!---Body End-->
+          <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+          <!-- content-wrapper ends -->
+
+          <!-- partial:partials/_footer.html -->
+          <footer class="footer">
+            <div
+              class="d-sm-flex justify-content-center justify-content-sm-between"
+            >
+              <span
+                class="text-muted text-center text-sm-left d-block d-sm-inline-block"
+                >Copyright © 2023. SACCOMCG
+                <a href="https://www.saccomcg.com/" target="_blank">SACCOMCG</a>
+                All rights reserved.</span
+              >
+              <span
+                class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
+                >Hand-crafted & made by karim BOURIR & Yassine BAGHDADI
+                <i class="ti-heart text-danger ml-1"></i
+              ></span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+    <!-- plugins:js -->
+    <script src="vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="vendors/chart.js/Chart.min.js"></script>
+    <script src="vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="js/dataTables.select.min.js"></script>
+
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="js/off-canvas.js"></script>
+    <script src="js/hoverable-collapse.js"></script>
+    <script src="js/template.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="js/dashboard.js"></script>
+    <script src="js/js/m.js"></script>
+    <script src="js/js/prfl.js"></script>
+    <script src="js/Chart.roundedBarCharts.js"></script>
+    <!-- End custom js for this page-->
+  </body>
+</html>

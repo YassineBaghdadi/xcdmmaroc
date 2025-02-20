@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>FiL-Actualites</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link
+      rel="stylesheet"
+      href="vendors/datatables.net-bs4/dataTables.bootstrap4.css"
+    />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="js/select.dataTables.min.css"
+    />
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css" />
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css" />
+    <!-- endinject -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css" />
+    <!-- endinject -->
+    <link rel="shortcut icon" href="images/favicon.png" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/js/r.js"></script>
+
+    <style>
+      div.scroll {
+        margin: 4px, 4px;
+        padding: 4px;
+        background-color: white;
+        height: 300px;
+        width: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align: justify;
+      }
+    </style>
+
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="vendors/select2/select2.min.css" />
+    <link
+      rel="stylesheet"
+      href="vendors/select2-bootstrap-theme/select2-bootstrap.min.css"
+    />
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_navbar.html -->
+      <nav
+        class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+        id="theNavBar"
+      ></nav>
+
+      <!-- partial Start -->
+      <div class="container-fluid page-body-wrapper">
+        <div id="right-sidebar" class="settings-panel"></div>
+        <!-- partial  End-->
+        <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+        <!-- NAV /_sidebar.html START -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar"></nav>
+        <!-- NAV END -->
+
+        <!-- NAV END -->
+        <script>
+          fetch('err.html')
+            .then(function (response) {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.text();
+            })
+            .then(function (content) {
+              $('.main-panel').html(content);
+            })
+            .catch(function (error) {
+              console.error(
+                'There was a problem with the fetch operation:',
+                error
+              );
+            });
+        </script>
+        <!-- content-wrapper Start -->
+        <div class="main-panel">
+          <!---------------------------------------------------------------------------------------------------Body Start-------------------------------------------------------------------------------------------------------->
+          <div class="content-wrapper">
+            <!---Body Start-->
+            <!---------------------------------------------------------------------------------------------------Body Start-------------------------------------------------------------------------------------------------------->
+            <div class="row">
+              <div class="col-md-12 grid-margin">
+                <div class="row">
+                  <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                    <h3 class="font-weight-bold">Bienvenu Karim</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+            <!---------------------------------------------------------------------------------------------------Nouvelle Publication-------------------------------------------------------------------------------------------------------->
+
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Nouvelle Publication</h4>
+                  <form class="form-sample">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="Entite">Visibilité *</label>
+                          <select
+                            class="js-example-basic-multiple w-100"
+                            multiple="multiple"
+                            id="Visibilit"
+                            name="Visibilit"
+                          >
+                            <option value="1">Service Admin</option>
+                            <option value="2">Service Finance</option>
+                            <option value="3">Service IT</option>
+                            <option value="4">Direction générale</option>
+                            <option value="5">Service Production</option>
+                            <option value="6">Altima</option>
+                            <option value="7">ADWEB</option>
+                            <option value="8">WFM</option>
+                            <option value="9">Service Recrutement</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="Statut">Titre Publication *</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            name="Titre"
+                            id="Titre"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="Statut">Date Limite Publication</label>
+                          <input
+                            type="date"
+                            class="form-control"
+                            name="DateLimite"
+                            id="DateLimite"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-8 grid-margin stretch-card">
+                        <textarea
+                          class="form-control"
+                          name="Message"
+                          id="Message"
+                          rows="5"
+                          placeholder="Votre text ICI"
+                        ></textarea>
+                      </div>
+                      <div class="col-md-4 grid-margin transparent">
+                        <div class="row">
+                          <div class="col-md-6 mb-4 stretch-card transparent">
+                            <button
+                              type="button"
+                              class="btn btn-warning btn-icon-text"
+                            >
+                              <i
+                                class="mdi mdi-folder-image btn-icon-prepend"
+                              ></i>
+                              photo
+                            </button>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6 mb-4 stretch-card transparent">
+                            <button
+                              type="button"
+                              class="btn btn-success btn-icon-text"
+                            >
+                              <i class="ti-upload btn-icon-prepend"></i>
+                              Publier
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!---------------------------------------------------------------------------------------------------Nouvelle Publication-------------------------------------------------------------------------------------------------------->
+
+            <!--------------------------------------------------------------------------------------------------- Publication-------------------------------------------------------------------------------------------------------->
+
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <p class="card-title">Lancement DIGI-SACCOM V0</p>
+                  </div>
+                  <p class="font-weight-500">
+                    sommes ravis de vous annoncer une avancée importante au sein
+                    de notre entreprise ! Nous avons récemment mis en place un
+                    tout nouveau système ERP (Enterprise Resource Planning) pour
+                    la gestion complète de nos activités. Ce nouvel ERP
+                    représente une étape significative dans notre quête
+                    d'efficacité, de transparence et d'amélioration continue. Il
+                    a été soigneusement sélectionné et personnalisé pour
+                    répondre aux besoins spécifiques de notre entreprise, tout
+                    en nous permettant de mieux servir nos clients et de
+                    maximiser nos performances opérationnelles. Les avantages de
+                    ce nouvel ERP sont nombreux, notamment : Une meilleure
+                    gestion des ressources et des stocks. Une visibilité accrue
+                    sur nos processus internes. Une amélioration de la prise de
+                    décision grâce à des données en temps réel. Une
+                    simplification des processus administratifs. Une expérience
+                    utilisateur améliorée pour l'ensemble de nos collaborateurs.
+                    Notre équipe a travaillé d'arrache-pied pour assurer une
+                    transition en douceur vers ce nouveau système. Nous avons
+                    également prévu une formation approfondie pour que chacun
+                    puisse tirer le meilleur parti de cette nouvelle plateforme.
+                    Nous tenons à remercier tout le personnel pour son
+                    engagement et son dévouement tout au long de ce processus de
+                    mise en place. C'est grâce à votre contribution que nous
+                    avons pu concrétiser cette avancée significative. Nous
+                    sommes convaincus que cet ERP renforcera notre compétitivité
+                    et notre capacité à répondre aux besoins de nos clients de
+                    manière plus efficace que jamais. Nous sommes impatients de
+                    voir les avantages qu'il apportera à notre entreprise à long
+                    terme. Si vous avez des questions ou des préoccupations
+                    concernant ce nouveau système, n'hésitez pas à contacter
+                    notre équipe de support technique qui se fera un plaisir de
+                    vous aider. Merci pour votre engagement continu envers notre
+                    entreprise. Nous sommes enthousiastes à l'idée de ce nouveau
+                    chapitre et de l'impact positif qu'il aura sur nos activités
+                  </p>
+                  <div class="card-people mt-auto">
+                    <img src="images/faces/39ee7325.jpg" alt="people" />
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-md-3">
+                      <small
+                        >Date publication :
+                        <div class="badge badge-success">
+                          12/09/2023 12:00
+                        </div></small
+                      >
+                    </div>
+                    <div class="col-md-3">
+                      <small
+                        >Date Fin :
+                        <div class="badge badge-warning">
+                          16/09/2023 12:00
+                        </div></small
+                      >
+                    </div>
+                    <div class="col-md-3">
+                      <small
+                        >Visibilité :
+                        <div class="badge badge-danger">Public</div></small
+                      >
+                    </div>
+                    <div class="col-md-3">
+                      <small
+                        >Publié Par :
+                        <div class="badge badge-primary">
+                          Karim BOURIR
+                        </div></small
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--------------------------------------------------------------------------------------------------- Publication-------------------------------------------------------------------------------------------------------->
+            <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+            <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+          </div>
+          <!---Body End-->
+          <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+          <!-- content-wrapper ends -->
+
+          <!-- partial:partials/_footer.html -->
+          <footer class="footer">
+            <div
+              class="d-sm-flex justify-content-center justify-content-sm-between"
+            >
+              <span
+                class="text-muted text-center text-sm-left d-block d-sm-inline-block"
+                >Copyright © 2023. SACCOMCG
+                <a href="https://www.saccomcg.com/" target="_blank">SACCOMCG</a>
+                All rights reserved.</span
+              >
+              <span
+                class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
+                >Hand-crafted & made by karim BOURIR & Yassine BAGHDADI
+                <i class="ti-heart text-danger ml-1"></i
+              ></span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <script src="js/m.js"></script>
+    <!-- plugins:js -->
+    <script src="vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="vendors/chart.js/Chart.min.js"></script>
+    <script src="vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="js/dataTables.select.min.js"></script>
+
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="js/off-canvas.js"></script>
+    <script src="js/hoverable-collapse.js"></script>
+    <script src="js/template.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="js/dashboard.js"></script>
+    <script src="js/Chart.roundedBarCharts.js"></script>
+    <!-- End custom js for this page-->
+
+    <!--sdqs-->
+
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <script src="vendors/select2/select2.min.js"></script>
+    <!-- End plugin js for this page -->
+
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="js/file-upload.js"></script>
+    <script src="js/typeahead.js"></script>
+    <script src="js/select2.js"></script>
+  </body>
+</html>

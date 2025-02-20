@@ -1,0 +1,302 @@
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.min.js"></script>
+<style>
+  .sliding-label {
+    font-weight: bold;
+    display: inline-block;
+    white-space: nowrap;
+    animation: slide-left 40s linear infinite;
+  }
+
+  @keyframes slide-left {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+</style>
+
+<!-- <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script> -->
+
+<div
+  style="
+    width: 100%;
+    height: 15px;
+    background-color: orange;
+    padding-bottom: 10px;
+  "
+>
+  <div class="form-control">
+    <div class="label-container">
+      <label id="eventLabel" class="sliding-label"></label>
+    </div>
+  </div>
+</div>
+<div
+  class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center"
+>
+  <a class="navbar-brand brand-logo mr-5" href="index.html"
+    ><img src="images/logo.png" class="mr-2" alt="logo"
+  /></a>
+  <a class="navbar-brand brand-logo-mini" href="index.html"
+    ><img src="images/logo2.png" alt="logo"
+  /></a>
+</div>
+<div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+  <button
+    class="navbar-toggler navbar-toggler align-self-center"
+    type="button"
+    id="menuBtn"
+    data-toggle="minimize"
+  >
+    <span class="icon-menu"></span>
+  </button>
+  <ul class="navbar-nav mr-lg-2">
+    <li class="nav-item nav-search d-none d-lg-block">
+      <div class="input-group">
+        <div
+          hidden
+          class="input-group-prepend hover-cursor"
+          id="navbar-search-icon"
+        >
+          <span class="input-group-text" id="search">
+            <i class="icon-search"></i>
+          </span>
+        </div>
+        <!-- <input type="text" class="form-control" id="navbar-search-input" placeholder="Search ..." aria-label="search" aria-describedby="search"> -->
+        <label
+          id="timeLabel"
+          style="font-size: 25px; margin: auto; font-weight: bold"
+        ></label
+        ><label hidden id="timeLabel2"></label>
+      </div>
+    </li>
+  </ul>
+  <ul class="navbar-nav navbar-nav-right">
+    <li class="nav-item dropdown">
+      <a
+        class="nav-link count-indicator dropdown-toggle"
+        id="notificationDropdown"
+        href="#"
+        data-toggle="dropdown"
+      >
+        <i class="icon-bell mx-0"></i>
+        <span class="count"></span>
+      </a>
+      <div
+        class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+        style="width: 500px"
+        aria-labelledby="notificationDropdown"
+        id="nofsArea"
+      ></div>
+    </li>
+    <li class="nav-item nav-profile dropdown">
+      <a
+        class="nav-link dropdown-toggle"
+        href="#"
+        data-toggle="dropdown"
+        id="profileDropdown"
+      >
+        <img
+          this.onerror="null;this.src='./js/js/prflPic.jpg';"
+          id="prflPic"
+          alt="profile"
+        />
+      </a>
+      <div
+        class="dropdown-menu dropdown-menu-right navbar-dropdown"
+        aria-labelledby="profileDropdown"
+      >
+        <a class="dropdown-item" href="/Profile">
+          <i class="ti-user text-primary"></i>
+          Mon Profil
+        </a>
+        <a class="dropdown-item" id="lgoutBtn">
+          <i class="ti-power-off text-primary"></i>
+          Logout
+        </a>
+      </div>
+    </li>
+    <li class="nav-item nav-settings d-none d-lg-flex">
+      <a class="nav-link">
+        <!-- <i class="icon-ellipsis" onclick="$('#right-sidebar').show();"></i> -->
+        <i id="navBar3Points" class="icon-ellipsis" style="cursor: pointer"></i>
+      </a>
+    </li>
+  </ul>
+  <button
+    class="navbar-toggler navbar-toggler-right d-lg-none align-self-center"
+    type="button"
+    data-toggle="offcanvas"
+  >
+    <span class="icon-menu"></span>
+  </button>
+</div>
+
+<script src="js/js/m.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.0/socket.io.js"></script> -->
+
+<script>
+  var uI = '';
+  $.get('/getI', function (data) {
+    uI = data;
+  }).fail(function () {
+    console.error('Failed to fetch default image.');
+  });
+  // const webSocket = new WebSocket(`ws://localhost:8080/?i=${uI}`);
+
+  // webSocket.onmessage = (event) => {
+  //   console.log("message from terminal : ", event.data);
+  // };
+  // webSocket.addEventListener("open", () => {
+  //   console.log("We are connected");
+  // });
+  // webSocket.addEventListener("test", (d) => {
+  //   console.log("new message  : ", d);
+  // });
+  // console.log("checking ws : ", webSocket.connected);
+  // function sendMessage(event) {
+  //   var inputMessage = document.getElementById("message");
+  //   webSocket.send(inputMessage.value);
+  //   inputMessage.value = "";
+  //   event.preventDefault();
+  // }
+</script>
+
+<script type="module">
+  // import { io } from 'https://cdn.socket.io/4.8.1/socket.io.min.js';
+  // const socket = io();
+
+  // const socket = io("ws://localhost:8080/", {
+  //   transports: ["websocket"],
+  // });
+
+  // socket.on("connect", () => {
+  //   console.log("Connected to server");
+  //   alert("socket connected ......");
+  // });
+  // console.log("checking ws : ", socket.connected);
+
+  // socket.on("reconnect", () => {
+  //   console.log("reconnecting .....");
+  // });
+
+  // socket.on("connect_error", (error) => {
+  //   console.error("Connection error:", error.message);
+  // });
+
+  // socket.on("newRow", (row) => {
+  //   console.log("New row added:", row);
+  //   // Handle the new row notification as needed (e.g., display an alert)
+  //   alert("New row added: " + JSON.stringify(row));
+  // });
+
+  // socket.on("disconnect", () => {
+  //   console.log("Disconnected from server");
+  // });
+</script>
+<!-- <script src="js/ws.js"></script> -->
+
+<script>
+  var getPic = async () => {
+    await fetch('/getpc')
+      .then((response) => response.json())
+      .then((data) => {
+        $('#prflPic').attr('src', data);
+      })
+      .catch((error) => console.error('Error:', error));
+    fetch('/gtev')
+      .then((response) => response.json())
+      .then((data) => {
+        $('#eventLabel').html(data);
+      })
+      .catch((error) => console.error('Error:', error));
+  };
+
+  getPic();
+
+  $('#lgoutBtn').click(() => {
+    // console.log('clicked');
+    Swal.fire({
+      title: "Qu'est-ce que vous voulez faire ?",
+      showDenyButton: true,
+      showCancelButton: false,
+      cancelButtonText: 'Annuler',
+      confirmButtonText: 'Verrouiller ma Session',
+      denyButtonText: `Terminer ma Journée`,
+    }).then(async (result) => {
+      console.log(result);
+      if (result.isConfirmed) {
+        await fetch('/lock');
+      } else if (result.isDenied) {
+        await fetch('/logout');
+      }
+      if (!result.isDismissed) {
+        window.location.href = '/';
+      }
+    });
+
+    // if (
+    //   confirm(
+    //     "veuillez noter que si vous êtes connecté à WFM, vous ne pourrez plus vous connecter, êtes-vous sûr de vouloir vous déconnecter ?"
+    //   )
+    // ) {
+    //   window.location.href = "/logout";
+    // }
+  });
+
+  $('#menuBtn').click(function () {
+    if ($('body').hasClass('sidebar-icon-only')) {
+      $('body').removeClass('sidebar-icon-only');
+    } else {
+      $('body').addClass('sidebar-icon-only');
+    }
+  });
+  function checkTime(i) {
+    if (i < 10) {
+      i = '0' + i;
+    }
+    return i;
+  }
+
+  const socket = io();
+  socket.on('currecntTime', (m) => {
+    $('#timeLabel').html(m.t);
+    $('#timeLabel2').html(m.t2);
+  });
+  // function startTime() {
+  //   fetch('/getCurrentTime')
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       if (data.error) {
+  //         console.error(data.error);
+  //       } else {
+  //         $('#timeLabel').html(data.t);
+  //         $('#timeLabel2').html(data.t2);
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error:', error);
+  //     });
+  //   // var today = new Date();
+  //   // var h = today.getHours();
+  //   // var m = today.getMinutes();
+  //   // var s = today.getSeconds();
+
+  //   // m = checkTime(m);
+  //   // s = checkTime(s);
+  //   // document.getElementById('timeLabel').innerHTML = h + ":" + m + ":" + s;
+  //   // setTimeout(function () {
+  //   //   startTime();
+  //   // }, 500);
+  // }
+  // startTime();
+
+  // $.get("/getPic", function (data) {
+  //   $("#prflPic").attr("src", (data) ? "data:image/jpeg;base64," + btoa(data) : `./js/js/prflPic.jpg`);
+  // }).fail(function () {
+  //   console.error("Failed to fetch default image.");
+  // });
+</script>

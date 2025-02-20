@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Offres</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link
+      rel="stylesheet"
+      href="vendors/datatables.net-bs4/dataTables.bootstrap4.css"
+    />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="js/select.dataTables.min.css"
+    />
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css" />
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css" />
+    <!-- endinject -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css" />
+    <!-- endinject -->
+    <link rel="shortcut icon" href="images/favicon.png" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/js/r.js"></script>
+
+    <style>
+      div.scroll {
+        margin: 4px, 4px;
+        padding: 4px;
+        background-color: white;
+        height: 400px;
+        width: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align: justify;
+      }
+    </style>
+    <style>
+      div.scrollcard {
+        margin: 4px, 4px;
+        padding: 4px;
+        background-color: white;
+        height: 500px;
+        width: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align: justify;
+      }
+    </style>
+    <style>
+      div.ScrollSmallTable {
+        margin: 2px, 2px;
+        padding: 0px;
+        background-color: white;
+        height: 300px;
+        width: auto;
+        overflow-x: auto;
+        overflow-y: auto;
+        text-align: justify;
+      }
+    </style>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="vendors/select2/select2.min.css" />
+    <link
+      rel="stylesheet"
+      href="vendors/select2-bootstrap-theme/select2-bootstrap.min.css"
+    />
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_navbar.html -->
+      <nav
+        class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+        id="theNavBar"
+      ></nav>
+
+      <!-- partial Start -->
+      <div class="container-fluid page-body-wrapper">
+        <div id="right-sidebar" class="settings-panel"></div>
+        <!-- partial  End-->
+        <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+        <!-- NAV /_sidebar.html START -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar"></nav>
+        <!-- NAV END -->
+
+        <!-- NAV END -->
+
+        <!-- content-wrapper Start -->
+        <div class="main-panel">
+          <!---------------------------------------------------------------------------------------------------Body Start-------------------------------------------------------------------------------------------------------->
+          <div class="content-wrapper">
+            <!---Body Start-->
+            <!---------------------------------------------------------------------------------------------------Filtre-------------------------------------------------------------------------------------------------------->
+
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">
+                    Filtre :
+                    <span id="totaltrouver" hidden name="totaltrouver">15</span>
+                  </h4>
+
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="RecrutementPour">Recrutement Pour</label>
+                        <div
+                          class="default-select form-cols"
+                          id="default-selects"
+                        >
+                          <select
+                            class="js-example-basic-single w-100"
+                            name="RecrutementPour"
+                            id="entity"
+                          ></select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="StatutOffre">Statut Offre</label>
+                        <select
+                          class="form-control"
+                          id="stts"
+                          name="StatutOffre"
+                        >
+                          <option value="" hidden></option>
+                          <option value="Public">Public</option>
+                          <option value="En instance">En instance</option>
+                          <option value="Expiré">Expiré</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="Etablissement">Fonctions</label>
+                        <div class="default-select" id="default-selects">
+                          <select
+                            class="js-example-basic-single w-100"
+                            name="Etablissement"
+                            id="fonctions"
+                          >
+                            <option value="" hidden>
+                              Choisir une fonctions
+                            </option>
+                            <option value="Achats / Supply Chain">
+                              Achats / Supply Chain
+                            </option>
+                            <option value="Administration des ventes / SAV">
+                              Administration des ventes / SAV
+                            </option>
+                            <option value="Agriculture">Agriculture</option>
+                            <option
+                              value="Assistanat de Direction / Services Généraux"
+                            >
+                              Assistanat de Direction / Services Généraux
+                            </option>
+                            <option value="Assurance">Assurance</option>
+                            <option value="Audit / Conseil">
+                              Audit / Conseil
+                            </option>
+                            <option value="Avocat / Juriste / Fiscaliste">
+                              Avocat / Juriste / Fiscaliste
+                            </option>
+                            <option value="Banque">Banque</option>
+                            <option value="Call Centers">Call Centers</option>
+                            <option
+                              value="Caméraman / Monteur / Preneur de son"
+                            >
+                              Caméraman / Monteur / Preneur de son
+                            </option>
+                            <option value="Commercial / Vente / Export">
+                              Commercial / Vente / Export
+                            </option>
+                            <option value="Communication / Publicité / RP">
+                              Communication / Publicité / RP
+                            </option>
+                            <option value="Coursier / Gardiennage / Propreté">
+                              Coursier / Gardiennage / Propreté
+                            </option>
+                            <option value="Distribution">Distribution</option>
+                            <option value="Electricité">Electricité</option>
+                            <option value="Enseignement">Enseignement</option>
+                            <option value="Environnement">Environnement</option>
+                            <option value="Gestion / Comptabilité / Finance">
+                              Gestion / Comptabilité / Finance
+                            </option>
+                            <option value="Gestion projet / Etudes">
+                              Gestion projet / Etudes / R&amp;D
+                            </option>
+                            <option value="Hôtellerie / Restauration">
+                              Hôtellerie / Restauration
+                            </option>
+                            <option value="Immobilier / Promotion">
+                              Immobilier / Promotion
+                            </option>
+                            <option value="Imprimerie">Imprimerie</option>
+                            <option value="Informatique / Electronique">
+                              Informatique / Electronique
+                            </option>
+                            <option value="Journalisme / Traduction">
+                              Journalisme / Traduction
+                            </option>
+                            <option value="Logistique / Transport">
+                              Logistique / Transport
+                            </option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Multimédia / Internet">
+                              Multimédia / Internet
+                            </option>
+                            <option value="Médical / Paramédical">
+                              Médical / Paramédical
+                            </option>
+                            <option
+                              value="Méthodes / Process / Industrialisation"
+                            >
+                              Méthodes / Process / Industrialisation
+                            </option>
+                            <option
+                              value="Production / Qualité / Sécurité / Maintenance"
+                            >
+                              Production / Qualité / Sécurité / Maintenance
+                            </option>
+                            <option value="RH / Personnel / Formation">
+                              RH / Personnel / Formation
+                            </option>
+                            <option value="Responsable de Département">
+                              Responsable de Département
+                            </option>
+                            <option value="Santé / Social">
+                              Santé / Social
+                            </option>
+                            <option value="Sport / Loisirs">
+                              Sport / Loisirs
+                            </option>
+                            <option value="Tourisme (métiers du)">
+                              Tourisme (métiers du)
+                            </option>
+                            <option value="Travaux / Chantiers / BTP">
+                              Travaux / Chantiers / BTP
+                            </option>
+                            <option value="Télécoms / Réseaux">
+                              Télécoms / Réseaux
+                            </option>
+                            <option value="Urbanisme / architecture">
+                              Urbanisme / architecture
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="Emplacement">Emplacement</label>
+                        <div class="default-select" id="default-selects">
+                          <select
+                            class="js-example-basic-single w-100"
+                            name="Emplacement"
+                            id="place"
+                          >
+                            <option value="" hidden>
+                              Choisir un emplacement
+                            </option>
+                            <option value="Nationales et internationales">
+                              Nationales et internationales
+                            </option>
+                            <option value="Internationales">
+                              Internationales
+                            </option>
+                            <option value="Tout le Maroc (Nationales)">
+                              Tout le Maroc (Nationales)
+                            </option>
+                            <option value="Casablanca et région">
+                              Casablanca et région
+                            </option>
+                            <option value="Agadir et région">
+                              Agadir et région
+                            </option>
+                            <option value="Al Hoceima et région">
+                              Al Hoceima et région
+                            </option>
+                            <option value="Béni Mellal et région">
+                              Béni Mellal et région
+                            </option>
+                            <option value="Fès et région">Fès et région</option>
+                            <option value="Kénitra et région">
+                              Kénitra et région
+                            </option>
+                            <option value="Laâyoune et région">
+                              Laâyoune et région
+                            </option>
+                            <option value="Marrakech et région">
+                              Marrakech et région
+                            </option>
+                            <option value="Meknès et région">
+                              Meknès et région
+                            </option>
+                            <option value="Ouad Ed Dahab et région">
+                              Ouad Ed Dahab et région
+                            </option>
+                            <option value="Oujda et région">
+                              Oujda et région
+                            </option>
+                            <option value="Rabat et région">
+                              Rabat et région
+                            </option>
+                            <option value="Safi et région">
+                              Safi et région
+                            </option>
+                            <option value="Settat et région">
+                              Settat et région
+                            </option>
+                            <option value="Tanger et région">
+                              Tanger et région
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="Salaire">Salaire</label>
+                        <div
+                          class="default-select form-cols"
+                          id="default-selects"
+                        >
+                          <select
+                            class="js-example-basic-single w-100"
+                            name="Salaire"
+                            id="salair"
+                          >
+                            <option value="" hidden>Salaire</option>
+                            <option value="Moins de 4000 DH nets mensuels">
+                              Moins de 4000 DH nets mensuels
+                            </option>
+                            <option value="4000 - 6000 DH nets mensuels">
+                              4000 - 6000 DH nets mensuels
+                            </option>
+                            <option value="6000 - 8000 DH nets mensuels">
+                              6000 - 8000 DH nets mensuels
+                            </option>
+                            <option value="8000 - 10000 DH nets mensuels">
+                              8000 - 10000 DH nets mensuels
+                            </option>
+                            <option value="10000 - 15000 DH nets mensuels">
+                              10000 - 15000 DH nets mensuels
+                            </option>
+                            <option value="15000 - 20000 DH nets mensuels">
+                              15000 - 20000 DH nets mensuels
+                            </option>
+                            <option value="20000 - 30000 DH nets mensuels">
+                              20000 - 30000 DH nets mensuels
+                            </option>
+                            <option value="30000 - 40000 DH nets mensuels">
+                              30000 - 40000 DH nets mensuels
+                            </option>
+                            <option value="Plus de 40000 DH nets mensuels">
+                              Plus de 40000 DH nets mensuels
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="Typeformation">Type de formation</label>
+                        <div
+                          class="default-select form-cols"
+                          id="default-selects"
+                        >
+                          <select
+                            class="js-example-basic-single w-100"
+                            name="Typeformation"
+                            id="formation"
+                          >
+                            <option value="" hidden>Type de formation</option>
+                            <option value="Doctorat / DEA">
+                              Doctorat / DEA
+                            </option>
+                            <option value="Master">Master</option>
+                            <option value="Ecole de commerce">
+                              Ecole de commerce
+                            </option>
+                            <option value="Ecole d'ingénieur">
+                              Ecole d'ingénieur
+                            </option>
+                            <option value="BTS / DUT">BTS / DUT</option>
+                            <option value="Université">Université</option>
+                            <option value="Formation professionnelle">
+                              Formation professionnelle
+                            </option>
+                            <option value="Formation spécialisée">
+                              Formation spécialisée
+                            </option>
+                            <option value="Baccalauréat">Baccalauréat</option>
+                            <option value="Formation avant BAC">
+                              Formation avant BAC
+                            </option>
+                            <option value="Autre">Autre</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="Secteur">Secteur</label>
+                        <div
+                          class="default-select form-cols"
+                          id="default-selects"
+                        >
+                          <select
+                            class="js-example-basic-single w-100"
+                            name="Secteur"
+                            id="sector"
+                          >
+                            <option value="" hidden>Choisir un secteur</option>
+                            <option value="Aéronautique / Spatial">
+                              Aéronautique / Spatial
+                            </option>
+                            <option value="Agence pub / Marketing Direct">
+                              Agence pub / Marketing Direct
+                            </option>
+                            <option value="Agriculture / Environnement">
+                              Agriculture / Environnement
+                            </option>
+                            <option value="Agroalimentaire">
+                              Agroalimentaire
+                            </option>
+                            <option value="Assurance / Courtage">
+                              Assurance / Courtage
+                            </option>
+                            <option value="Audiovisuel">Audiovisuel</option>
+                            <option value="Automobile / Motos / Cycles">
+                              Automobile / Motos / Cycles
+                            </option>
+                            <option value="Banque / Finance">
+                              Banque / Finance
+                            </option>
+                            <option value="BTP / Génie Civil">
+                              BTP / Génie Civil
+                            </option>
+                            <option value="Centre d'appel">
+                              Centre d'appel
+                            </option>
+                            <option value="Chimie / Parachimie / Peintures">
+                              Chimie / Parachimie / Peintures
+                            </option>
+                            <option value="Comptabilité / Audit">
+                              Comptabilité / Audit
+                            </option>
+                            <option value="Conseil / Etudes">
+                              Conseil / Etudes
+                            </option>
+                            <option value="Distribution">Distribution</option>
+                            <option value="Edition / Imprimerie">
+                              Edition / Imprimerie
+                            </option>
+                            <option value="Enseignement / Formation">
+                              Enseignement / Formation
+                            </option>
+                            <option value="Energie">Energie</option>
+                            <option value="Extraction / Mines">
+                              Extraction / Mines
+                            </option>
+                            <option value="Ferroviaire">Ferroviaire</option>
+                            <option value="Hôtellerie / Restauration">
+                              Hôtellerie / Restauration
+                            </option>
+                            <option value="Immobilier / Promoteur / Agence">
+                              Immobilier / Promoteur / Agence
+                            </option>
+                            <option value="Informatique">Informatique</option>
+                            <option value="Internet / Multimédia">
+                              Internet / Multimédia
+                            </option>
+                            <option value="Matériel Médical">
+                              Matériel Médical
+                            </option>
+                            <option value="Pétrole / Gaz">Pétrole / Gaz</option>
+                            <option value="Pharmacie / Santé">
+                              Pharmacie / Santé
+                            </option>
+                            <option value="Plasturgie">Plasturgie</option>
+                            <option value="Presse">Presse</option>
+                            <option value="Recrutement / Intérim">
+                              Recrutement / Intérim
+                            </option>
+                            <option value="Service public / Administration">
+                              Service public / Administration
+                            </option>
+                            <option value="Tabac">Tabac</option>
+                            <option value="Telecom">Telecom</option>
+                            <option value="Textile / Cuir">
+                              Textile / Cuir
+                            </option>
+                            <option value="Tourisme / Voyage / Loisirs">
+                              Tourisme / Voyage / Loisirs
+                            </option>
+                            <option value="Transport / Messagerie / Logistique">
+                              Transport / Messagerie / Logistique
+                            </option>
+                            <option value="Ameublement / Décoration">
+                              Ameublement / Décoration
+                            </option>
+                            <option value="Communication / Evénementiel">
+                              Communication / Evénementiel
+                            </option>
+                            <option value="Cosmétique / Parfumerie / Luxe">
+                              Cosmétique / Parfumerie / Luxe
+                            </option>
+                            <option value="Electro-mécanique / Mécanique">
+                              Electro-mécanique / Mécanique
+                            </option>
+                            <option value="Electronique">Electronique</option>
+                            <option value="Import / Export / Négoce">
+                              Import / Export / Négoce
+                            </option>
+                            <option value="Juridique / Cabinet d’avocats">
+                              Juridique / Cabinet d’avocats
+                            </option>
+                            <option value="Métallurgie / Sidérurgie">
+                              Métallurgie / Sidérurgie
+                            </option>
+                            <option value="Nettoyage / Sécurité / Gardiennage">
+                              Nettoyage / Sécurité / Gardiennage
+                            </option>
+                            <option value="Offshoring / Nearshoring">
+                              Offshoring / Nearshoring
+                            </option>
+                            <option value="Papier / Carton">
+                              Papier / Carton
+                            </option>
+                            <option value="Electricité">Electricité</option>
+                            <option value="Autres Industries">
+                              Autres Industries
+                            </option>
+                            <option value="Autres services">
+                              Autres services
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="experience">Années d'expérience</label>
+                        <div class="default-select" id="default-selects">
+                          <select
+                            class="js-example-basic-single w-100"
+                            name="experience"
+                            id="expYrs"
+                          >
+                            <option value="" hidden>Années d'expérience</option>
+                            <option value="Débutant">Débutant</option>
+                            <option value="Moins de 1 an">Moins de 1 an</option>
+                            <option value="De 1 à 3 ans">De 1 à 3 ans</option>
+                            <option value="De 3 à 5 ans">De 3 à 5 ans</option>
+                            <option value="De 5 à 10 ans">De 5 à 10 ans</option>
+                            <option value="De 10 à 20 ans">
+                              De 10 à 20 ans
+                            </option>
+                            <option value="Plus de 20 ans">
+                              Plus de 20 ans
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="etude">Niveau d'étude</label>
+                        <div class="default-select" id="default-selects">
+                          <select
+                            class="js-example-basic-single w-100"
+                            name="etude"
+                            id="etudLevel"
+                          >
+                            <option value="" hidden>Niveau d'étude</option>
+                            <option value="Autodidacte">Autodidacte</option>
+                            <option value="Qualification avant Bac">
+                              Qualification avant Bac
+                            </option>
+                            <option value="Bac">Bac</option>
+                            <option value="Bac +1">Bac +1</option>
+                            <option value="Bac +2">Bac +2</option>
+                            <option value="Bac +3">Bac +3</option>
+                            <option value="Bac +4">Bac +4</option>
+                            <option value="Bac +5 et plus">
+                              Bac +5 et plus
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="Statut">Date Ajout</label>
+                        <input
+                          type="date"
+                          class="form-control"
+                          name="integration1"
+                          id="dte"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="Statut">Publier entre le :</label>
+                        <input
+                          type="date"
+                          class="form-control"
+                          name="DatePub1"
+                          id="startDte"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="Statut">et le :</label>
+                        <input
+                          type="date"
+                          class="form-control"
+                          name="DatePub2"
+                          id="endDte"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="Statut">Mot Clé</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="cle"
+                          id="cleF"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row text-center">
+                    <div class="col-md-12 text-center">
+                      <button
+                        type="button"
+                        class="btn btn-primary md-5"
+                        id="Fbtn"
+                      >
+                        Afficher les résultats
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!---------------------------------------------------------------------------------------------------Filtre-------------------------------------------------------------------------------------------------------->
+            <style>
+              .fa {
+                padding: 20px;
+                font-size: 30px;
+                width: 30px;
+                text-align: center;
+                text-decoration: none;
+                border-radius: 50%;
+              }
+
+              .fa:hover {
+                opacity: 0.7;
+              }
+            </style>
+
+            
+            <!---------------------------------------------------------------------------------------------------Tableau-------------------------------------------------------------------------------------------------------->
+            <div class="row">
+              <div class="col-md-12 grid-margin stretch-card">
+                <div class="card scrollTableau">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-10">
+                        <p class="card-title">List des Offres</p>
+                      </div>
+                      <div class="col-md-2">
+                        <a
+                          id="addNewOffrBtn"
+                          href="/Recrutement/Nouvelle-Offer"
+                          class="btn btn-success md-5"
+                        >
+                          Nouvelle Offre
+                        </a>
+                      </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="table-responsive">
+                          <table
+                            class="display expandable-table"
+                            style="width: 100%"
+                          >
+                            <thead>
+                              <tr>
+                                <th class="text-center">Titre Offre</th>
+                                <th class="text-center">Statut</th>
+                                <th class="text-center">Recrutement Pour</th>
+                                <th class="text-center">Date Ajout</th>
+                                <th class="text-center">Ajouter Par</th>
+                                <th class="text-center">Candidatures</th>
+                                <th class="text-center">Publier Sur</th>
+                                <th class="text-center">URL</th>
+                              </tr>
+                            </thead>
+                            <tbody id="offersTbleBdy"></tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <script>
+              $('.cpLnk').on('click', function () {
+    alert(`http://career.xcdmmaroc.com/Offer/${$(this).closest('tr').find('select').val()}`)
+    
+    navigator.clipboard.writeText(`http://career.xcdmmaroc.com/Offer/${$(this).closest('tr').find('select').val()}`);
+
+    Toast.fire({
+      icon: "success",
+      title: "Le Lien copié avec succès !",
+    });
+    
+  });
+            </script> -->
+
+            <!---------------------------------------------------------------------------------------------------Tableau-------------------------------------------------------------------------------------------------------->
+
+            <!--------------------------------------------------------------Pop Up lIST CANDIDATURES Start---------------------------------------------------------------------->
+
+            <div
+              class="modal fade"
+              id="Candidatures"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="modalRequestLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modalRequestLabel"></h5>
+                    <span id="ofID" hidden></span>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                      id="clsBtn"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="#">
+                      <div class="form-group">
+                        <label for="exampleFormControlSelect1">Statut</label>
+                        <select
+                          class="form-control form-control-lg cndFltr"
+                          id="qlfSelect"
+                        >
+                          <option value="">Tous</option>
+                          <option value="Accépter Pour Le poste">
+                            Accépter Pour Le poste
+                          </option>
+                          <option value="Accépter Pour un entretien physique">
+                            Accépter Pour un entretien physique
+                          </option>
+                          <option value="Injoignable">Injoignable</option>
+                          <option value="Déja Accépter pour une autre offre">
+                            Déja Accépter pour une autre offre
+                          </option>
+                          <option value="Hors Cible">Hors Cible</option>
+                          <option value="Refuser">Refuser</option>
+                        </select>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-9">
+                          <div class="form-group">
+                            <label for="Date_entretien" class="text-black"
+                              >Date Candidature</label
+                            >
+                            <input
+                              type="datetime-local"
+                              class="form-control form-control-sm cndFltr"
+                              placeholder="Date_Candidature"
+                              aria-label="Date_Candidature"
+                              id="Date_Candidature"
+                              name="Date_Candidature"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-3" hidden>
+                          <div class="form-group">
+                            <label for="send_Convocation" class="text-black"
+                              >Search</label
+                            >
+                            <!-- <button
+                              type="button"
+                              class="btn btn-primary md-5 small"
+                              id="qlfBtn"
+                              onclick="event.stopPropagation();"
+                            >
+                              <i class="mdi mdi-account-search mx-0"></i>
+                            </button> -->
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                    <hr />
+                    <div class="row ScrollSmallTable">
+                      <!--tableau Candidatures-PoPUp start-->
+                      <div class="col-12">
+                        <div class="table-responsive">
+                          <table
+                            class="display expandable-table"
+                            style="width: 100%"
+                          >
+                            <thead>
+                              <tr>
+                                <th class="text-center">Date Candidature</th>
+                                <th class="text-center">Candidat</th>
+                                <th class="text-center">Qualif</th>
+                                <!--Recent qualification-->
+                                <th class="text-center">By</th>
+                                <!--Owner of qualification-->
+                                <th class="text-center">Date</th>
+
+                                <!--date qualification-->
+                              </tr>
+                            </thead>
+                            <tbody id="popUpTblBdy"></tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--------------------------------------------------------------Pop Up lIST CANDIDATURES End---------------------------------------------------------------------->
+            <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+          </div>
+          <!---Body End-->
+          <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+          <!-- content-wrapper ends -->
+
+          <!-- partial:partials/_footer.html -->
+          <footer class="footer">
+            <div
+              class="d-sm-flex justify-content-center justify-content-sm-between"
+            >
+              <span
+                class="text-muted text-center text-sm-left d-block d-sm-inline-block"
+                >Copyright © 2023. SACCOMCG
+                <a href="https://www.saccomcg.com/" target="_blank">SACCOMCG</a>
+                All rights reserved.</span
+              >
+              <span
+                class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
+                >Hand-crafted & made by karim BOURIR & Yassine BAGHDADI
+                <i class="ti-heart text-danger ml-1"></i
+              ></span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+    <!-- plugins:js -->
+    <script src="vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="vendors/chart.js/Chart.min.js"></script>
+    <script src="vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="js/dataTables.select.min.js"></script>
+
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="js/off-canvas.js"></script>
+    <script src="js/hoverable-collapse.js"></script>
+    <script src="js/template.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="js/dashboard.js"></script>
+    <script src="js/Chart.roundedBarCharts.js"></script>
+    <!-- End custom js for this page-->
+
+    <!--sdqs-->
+
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="vendors/UserList/typeahead.js/typeahead.bundle.min.js"></script>
+    <script src="vendors/select2/select2.min.js"></script>
+    <!-- End plugin js for this page -->
+
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="js/file-upload.js"></script>
+    <script src="js/UserList/typeahead.js"></script>
+    <script src="js/select2.js"></script>
+    <script src="js/js/m.js"></script>
+    <script src="js/js/rcrtOffers.js"></script>
+  </body>
+</html>

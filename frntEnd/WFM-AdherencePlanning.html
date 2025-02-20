@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>WFM Planning</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link
+      rel="stylesheet"
+      href="vendors/datatables.net-bs4/dataTables.bootstrap4.css"
+    />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="js/select.dataTables.min.css"
+    />
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css" />
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css" />
+    <!-- endinject -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css" />
+    <!-- endinject -->
+    <link rel="shortcut icon" href="images/favicon.png" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/js/r.js"></script>
+
+    <style>
+      div.scroll {
+        margin: 4px, 4px;
+        padding: 4px;
+        background-color: white;
+        height: 500px;
+        overflow-x: hidden;
+        text-align: justify;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_navbar.html -->
+      <nav
+        class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+        id="theNavBar"
+      ></nav>
+
+      <!-- partial Start -->
+      <div class="container-fluid page-body-wrapper">
+        <div id="right-sidebar" class="settings-panel"></div>
+        <!-- partial  End-->
+        <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+        <!-- NAV /_sidebar.html START -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar"></nav>
+        <!-- NAV END -->
+
+        <!-- NAV END -->
+
+        <!-- content-wrapper Start -->
+        <div class="main-panel">
+          <!---------------------------------------------------------------------------------------------------Body Start-------------------------------------------------------------------------------------------------------->
+          <div class="content-wrapper">
+            <!---Body Start-->
+            <!---------------------------------------------------------------------------------------------------Body Start-------------------------------------------------------------------------------------------------------->
+            <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+            <!---------------------------------------------------------------------------------------------------Filtre-------------------------------------------------------------------------------------------------------->
+
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Filtre</h4>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="Entite">Service</label>
+                        <select
+                          class="form-control wfmFltr"
+                          id="Entite"
+                          name="Entite"
+                        ></select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-2" hidden>
+                      <div class="form-group">
+                        <label for="Etablissement">Statut</label>
+                        <select class="form-control" id="StatutF" name="Statut">
+                          <option value="">Tous</option>
+                          <option>Décharges</option>
+                          <option>Disponible</option>
+                          <option>Pauses</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="form-group">
+                        <label for="Statut">Date Prod</label>
+                        <input
+                          type="date"
+                          class="form-control wfmFltr"
+                          name="DATEProd"
+                          id="DATEProd"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-2" hidden>
+                      <div class="form-group">
+                        <label for="Statut">Mot Clé :</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="MotCle"
+                          id="MotCle"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <hr />
+                      <button
+                        type="button"
+                        class="btn btn-warning btn-icon-text"
+                        id="resetF"
+                      >
+                        <i class="ti-reload btn-icon-prepend"></i>
+                        Réinitialiser
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!---------------------------------------------------------------------------------------------------Filtre-------------------------------------------------------------------------------------------------------->
+            <!---------------------------------------------------------------------------------------------------------------------------Tableau Start------------------------------------------------------------------------------------------->
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body scroll">
+                  <h4 class="card-title">Adhérence Planning</h4>
+                  <p class="card-description">
+                    Tous Or Service IT/Service Admin/Altima ......<!-- selon le filtre choisi a ba yassine-->
+                  </p>
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>User</th>
+                          <!-- MALI YBRAK 3LA IMAGE POP-UP TBAN FIHA DETAILLES DYAL LES PAUSES-->
+                          <th>Nom</th>
+                          <!-- MALI YBRAK 3LA Smiya POP-UP TBAN FIHA DETAILLES DYAL LES PAUSES-->
+                          <th>Service</th>
+                          <th>log-In</th>
+                          <th>log-Out</th>
+                          <th>Durée Log-In</th>
+                          <th>Statut</th>
+                          <th>Durée Statut</th>
+                          <th>Déconnecter</th>
+                        </tr>
+                      </thead>
+                      <tbody id="allPsTbl"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-------------------------------------------------------------------------------------------------Fin Tableau----------------------------------------------------------------------------------------------------------->
+
+            <!---------------------------------------------------------------------------------------------------POP-UP-------------------------------------------------------------------------------------------------------------->
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body scroll">
+                  <hr />
+                  <style>
+                    .popup {
+                      display: none;
+                      position: fixed;
+                      top: 0;
+                      left: 0;
+                      width: 100%;
+                      height: 100%;
+                      background-color: rgba(
+                        0,
+                        0,
+                        0,
+                        0.5
+                      ); /* Semi-transparent black background */
+                    }
+
+                    /* Styles for the popup content */
+                    .popup-content {
+                      position: absolute;
+                      top: 50%;
+                      left: 50%;
+
+                      transform: translate(-50%, -50%);
+                      background-color: white;
+                      padding: 20px;
+                      border-radius: 5px;
+                      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+                    }
+
+                    /* Style for the close button */
+                    .close {
+                      position: absolute;
+                      top: 10px;
+                      right: 10px;
+                      font-size: 20px;
+                      font-weight: bold;
+                      cursor: pointer;
+                    }
+                  </style>
+                  <div id="popupContainer" class="popup">
+                    <!-- Content of the popup -->
+                    <div class="popup-content">
+                      <span
+                        class="close"
+                        id="closePopupButton"
+                        onclick="closePopup()"
+                        >&times;</span
+                      >
+                      <p class="card-description">
+                        Détaille Pause <span id="ttllBrksDt"></span>
+                      </p>
+                      <div
+                        class="table-responsive scroll"
+                        style="height: 400px"
+                        id="detailedPauses"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!---------------------------------------------------------------------------------------------------POP-UP-------------------------------------------------------------------------------------------------------------->
+
+            <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+          </div>
+          <!---Body End-->
+          <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+          <script>
+            var scket = io();
+            var showDetailedPauses = (i, w) => {
+              fetch('/WFM/getTodayBRsForAgent', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  ii: i,
+                  d: w,
+                }),
+              })
+                .then((response) => {
+                  if (response.ok) {
+                    return response.json();
+                  } else {
+                    throw new Error(`Error: ${response.statusText}`);
+                  }
+                })
+                .then((data) => {
+                  // console.log(data);
+                  var tbl = 'No Pauses Found';
+                  if (data) {
+                    tbl = `
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>Pauses</th>
+                          <th>Start</th>
+                          <th>End</th>
+                          <th>Durée</th>
+                        </tr>
+                      </thead>
+                      <tbody >
+                    `;
+                    var dt = data.t;
+                    dt.forEach((e) => {
+                      tbl += `
+                      <tr>
+                          <td>${e.breakName}</td>
+                          <td>${e.strt.split('T')[1].split('.')[0]}</td>
+                          <td>${
+                            e.fnsh ? e.fnsh.split('T')[1].split('.')[0] : '-'
+                          }</td>
+                          <td>${e.drtion ? e.drtion : '-'}</td>
+                        </tr>
+                      `;
+                    });
+
+                    tbl += `
+                        </tbody>
+                      </table>
+                    `;
+                  }
+                  var dy = $('#DATEProd').val();
+                  if (!dy) {
+                    dy = `Aujourd'hui`;
+                  }
+                  $('#ttllBrksDt').html(`de ${data.a} pour ${dy}`);
+                  $('#detailedPauses').html(tbl);
+                })
+                .catch((error) => {
+                  console.error('Error:', error.message);
+                });
+              document.getElementById('popupContainer').style.display = 'block';
+            };
+
+            var makeAgDispo = (i, n) => {
+              Swal.fire({
+                title: `Êtes-vous sûr de vouloir changer le statut de ${n} en Dispo ?`,
+                showDenyButton: false,
+                showCancelButton: true,
+                confirmButtonText: 'Oui',
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  fetch('/WFM/makeAgDispo', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                      i: i,
+                    }),
+                  })
+                    .then((response) => {
+                      if (response.ok) {
+                        return response.json();
+                      } else {
+                        throw new Error(`Error: ${response.statusText}`);
+                      }
+                    })
+                    .then((data) => {
+                      console.log('Data:', data);
+                    })
+                    .catch((error) => {
+                      console.error('Error:', error.message);
+                    });
+                }
+              });
+            };
+
+            function closePopup() {
+              $('#detailedPauses').html('');
+              $('#ttllBrksDt').html(``);
+              document.getElementById('popupContainer').style.display = 'none';
+            }
+
+            var dcnctAg = (i, n) => {
+              Swal.fire({
+                title: `Êtes-vous sûr de vouloir déconnecter ${n} ?`,
+                showDenyButton: false,
+                showCancelButton: true,
+                confirmButtonText: 'Oui',
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  fetch('/WFM/dcnctAg', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                      i: i,
+                    }),
+                  })
+                    .then((response) => {
+                      if (response.ok) {
+                        return response.json();
+                      } else {
+                        throw new Error(`Error: ${response.statusText}`);
+                      }
+                    })
+                    .then((data) => {
+                      console.log('Data:', data);
+                    })
+                    .catch((error) => {
+                      console.error('Error:', error.message);
+                    });
+                }
+              });
+            };
+
+            function getWorkDaysTbl() {
+              fetch('/WFM/getWorkDaysTbl', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  d: $('#DATEProd').val(),
+                  dd: $('#Entite').val(),
+                  s: $('#StatutF').val(),
+                  k: $('#MotCle').val(),
+                }),
+              })
+                .then((response) => {
+                  if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                  }
+                  return response.json();
+                })
+                .then((data) => {
+                  // Handle the JSON response
+                  var tblDt = '';
+                  data.forEach((e) => {
+                    var tmClr = '';
+                    if (e.ttlWrknTm.split(':')[0] >= 9) {
+                      tmClr = 'style="color:red;"';
+                    }
+                    var stts = '';
+                    if (e.breakName == 'Dispo') {
+                      var stts = `<label class="badge badge-success sttsTD">${e.breakName}</label>`;
+                    } else if (e.breakName == 'LogedOff') {
+                      var stts = `<label class="badge badge-danger sttsTD" style="cursor:not-allowed">${e.breakName}</label>`;
+                    } else {
+                      var stts = `<label class="badge badge-warning sttsTD" style="cursor:pointer" title="Cliquez pour changer ${e.usrNme} en Dispo" onclick="makeAgDispo(${e.id}, '${e.usrNme}')">${e.breakName}</label>`;
+                    }
+
+                    var r = `
+                    <tr>
+                      <td class="py-1"><a href="#" onclick="showDetailedPauses(${
+                        e.id
+                      }, ${e.wrkdy})"><img src="${
+                      e.pic
+                    }" onerror="this.onerror=null;this.src='./js/js/prflPic.jpg';" /></a></td> 
+                      <td><a href="#" onclick="showDetailedPauses(${e.id}, ${
+                      e.wrkdy
+                    })"  >${
+                      e.usrNme
+                    }</a></td> <!-- MALI YBRAK 3LA Smiya POP-UP TBAN FIHA DETAILLES DYAL LES PAUSES-->
+                      <td>${e.dprtmnt}</td>
+                      <td>${e.lgin}</td>
+                      <td>${e.lgout}</td>
+                      <td class="wrknTme" ${tmClr}>${e.ttlWrknTm}</td>
+                      <td >${stts}</td>
+                      <td>${e.strt}</td>
+                      <td><button type="button" ${
+                        e.lgout ? 'hidden' : ''
+                      } class="btn btn-outline-danger btn-rounded btn-icon" ${
+                      e.showDcnct
+                    } onclick="dcnctAg(${e.id}, '${
+                      e.usrNme
+                    }')"><i class="mdi mdi-close"></i></button></td>
+                    </tr>
+                    `;
+                    tblDt += r;
+                  });
+                  $('#allPsTbl').html(tblDt);
+                })
+                .catch((error) => {
+                  console.error('Error:', error);
+                });
+              // setTimeout(function () {
+              //   getWorkDaysTbl();
+              // }, 500);
+            }
+            getWorkDaysTbl();
+            setInterval(() => {
+              // $('.wrknTme').each(function () {
+              //   let timeStr = $(this).html(); // Get the current time value
+              //   let parts = timeStr.split(':'); // Split into [HH, MM, SS]
+
+              //   if (parts.length === 3) {
+              //     let hours = parseInt(parts[0], 10);
+              //     let minutes = parseInt(parts[1], 10);
+              //     let seconds = parseInt(parts[2], 10);
+
+              //     // Add one second
+              //     seconds++;
+
+              //     // Handle overflow
+              //     if (seconds === 60) {
+              //       seconds = 0;
+              //       minutes++;
+              //       if (minutes === 60) {
+              //         minutes = 0;
+              //         hours = (hours + 1) % 24; // Reset to 0 if it reaches 24
+              //       }
+              //     }
+
+              //     // Format back to HH:MM:SS
+              //     let newTime =
+              //       String(hours).padStart(2, '0') +
+              //       ':' +
+              //       String(minutes).padStart(2, '0') +
+              //       ':' +
+              //       String(seconds).padStart(2, '0');
+
+              //     $(this).html(newTime); // Update the input field
+              //   }
+              // });
+
+              $('.wrknTme').each(function () {
+                let row = $(this).closest('tr'); // Get the parent row
+                let status = row.find('.sttsTD').text().trim().toLowerCase(); // Get status text
+
+                console.log(status);
+
+                if (status !== 'LogedOff'.toLowerCase()) {
+                  // Only update rows with status "on"
+                  let timeStr = $(this).text().trim(); // Get the current time value
+                  let parts = timeStr.split(':');
+
+                  if (parts.length === 3) {
+                    let hours = parseInt(parts[0], 10);
+                    let minutes = parseInt(parts[1], 10);
+                    let seconds = parseInt(parts[2], 10);
+
+                    // Add one second
+                    seconds++;
+                    if (seconds === 60) {
+                      seconds = 0;
+                      minutes++;
+                      if (minutes === 60) {
+                        minutes = 0;
+                        hours = (hours + 1) % 24;
+                      }
+                    }
+                    // console.log(hours);
+
+                    if (hours >= 9) {
+                      $(this).css('color:red');
+                    }
+
+                    // Format the new time
+                    let newTime =
+                      String(hours).padStart(2, '0') +
+                      ':' +
+                      String(minutes).padStart(2, '0') +
+                      ':' +
+                      String(seconds).padStart(2, '0');
+
+                    $(this).text(newTime); // Update the time in the table cell
+                  }
+                }
+              });
+            }, 1000);
+
+            $('#resetF').click(() => {
+              $('#DATEProd').val('');
+              $('#Entite').val('');
+              $('#StatutF').val('');
+              $('#MotCle').val('');
+              getWorkDaysTbl();
+            });
+
+            scket.on('UpdateWFMtbl', function () {
+              getWorkDaysTbl();
+            });
+
+            $('.wfmFltr').change(() => {
+              getWorkDaysTbl();
+            });
+          </script>
+          <!-- content-wrapper ends -->
+
+          <!-- partial:partials/_footer.html -->
+          <footer class="footer">
+            <div
+              class="d-sm-flex justify-content-center justify-content-sm-between"
+            >
+              <span
+                class="text-muted text-center text-sm-left d-block d-sm-inline-block"
+                >Copyright © 2023. SACCOMCG
+                <a href="https://www.saccomcg.com/" target="_blank">SACCOMCG</a>
+                All rights reserved.</span
+              >
+              <span
+                class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
+                >Hand-crafted & made by karim BOURIR & Yassine BAGHDADI
+                <i class="ti-heart text-danger ml-1"></i
+              ></span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+    <!-- plugins:js -->
+    <script src="vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="vendors/chart.js/Chart.min.js"></script>
+    <script src="vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="js/dataTables.select.min.js"></script>
+
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="js/off-canvas.js"></script>
+    <script src="js/hoverable-collapse.js"></script>
+    <script src="js/template.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="js/dashboard.js"></script>
+    <script src="js/js/m.js"></script>
+    <script src="js/Chart.roundedBarCharts.js"></script>
+    <!-- End custom js for this page-->
+  </body>
+</html>

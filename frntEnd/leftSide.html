@@ -1,0 +1,20 @@
+<ul class="nav" id="mainNavL"></ul>
+
+<script type="">
+  var currentRoute = window.location.pathname;
+  if (currentRoute == "/") {
+    currentRoute = "/home";
+  }
+  var fill = async()=>{
+    await $.get("/getLnav", function (data) {
+      $("#mainNavL").html(data);
+    });
+    $(`#${currentRoute.split("/")[1]}`).attr("aria-expanded", "true");
+  }
+   
+fill();
+  
+
+
+
+</script>

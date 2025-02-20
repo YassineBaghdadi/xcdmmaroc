@@ -1,0 +1,1 @@
+bcrypt bcryptjs body-parser cookie-parser express express-session jsonwebtoken mysql2 nodemon passport passport-jwt

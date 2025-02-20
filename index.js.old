@@ -1,0 +1,429 @@
+const express = require('express');
+const mysql = require('mysql2/promise');
+const bodyParser = require('body-parser');
+const passport = require('passport');
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const WebSocket = require('ws');
+const server = new WebSocket.Server({ port: 8080 });
+const multer = require('multer');
+const fileUpload = require("express-fileupload");
+
+
+
+
+const app = express();
+
+const path = require('path');
+const { log } = require('console');
+app.use(express.static(path.join(__dirname, 'frntEnd'), { index: false }));
+app.use(bodyParser.json());
+app.use(fileUpload());
+app.use(passport.initialize());
+
+
+var db = mysql.createPool({
+    host: process.env.DB_host,
+    user: process.env.DB_user,
+    password: process.env.DB_pass,
+    database: process.env.DB_name
+  });
+  app.use(cookieParser());
+
+  app.use(
+    session({
+      secret: String(process.env.sessionSecret), 
+      resave: false,
+      saveUninitialized: true,
+      cookie: {
+        httpOnly: true,
+      },
+    })
+  );
+  const jwtOptions = {
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    secretOrKey: String(process.env.sessionSecret),
+  };
+
+
+
+  passport.use(
+    new JwtStrategy(jwtOptions, async (payload, done) => {
+      try {
+        
+        const [rows] = await db.execute('SELECT * FROM _Users WHERE id = ?', [payload.id]);
+        console.log('rows');
+        if (!rows[0]) {
+          return done(null, false); 
+        }
+  
+        const user = rows[0];
+        return done(null, user);
+      } catch (error) {
+        return done(error, false);
+      }
+    })
+  );
+
+  app.use(passport.initialize());
+
+
+  
+  function isAuth(req, res, next) {
+
+    jwt.verify(req.cookies.jwtToken, String(process.env.sessionSecret), (err, decoded) => {
+        if (err) {
+            res.redirect('/login');
+        }else{
+            next();
+        }
+        
+        
+      });
+
+  }
+
+
+  app.get('/getNtf', isAuth, async (req, res) => {
+    const [rows, f] = await db.execute('SELECT * FROM _Notifications where rd = 0 and usr = '+ req.cookies.usdt.id);
+    var htntf = '<p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>';
+    for (const not of rows) {
+      
+      htntf += `<a class="dropdown-item preview-item" href="${not.link}"><div class="preview-item-content"><h6 class="preview-subject font-weight-normal">${not.ttle}</h6><p class="font-weight-light small-text mb-0 text-muted">${not.msg}</p></div></a>`;
+      
+    }
+    // console.log(htntf);
+    res.json(htntf)
+
+
+
+    
+  });
+
+  app.get(/^.*\.html$/, (req, res) => {
+    
+    res.redirect(301, '/');
+    
+  });
+
+  app.get(/^.*\.js$/, (req, res) => {
+    
+    res.redirect(301, '/');
+    
+  });
+
+  
+
+
+  app.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+  
+    try {
+        
+      const [rows] = await db.execute('SELECT * FROM _Users WHERE usrNme = ?', [username]);
+  
+      if (!rows[0]) {
+        return res.status(401).json({ message: 'Invalid credentials' });
+      }
+  
+      const user = rows[0];
+  
+      
+      const isPasswordValid = await bcrypt.compare(password, user.pwd);
+  
+      if (!isPasswordValid) {
+        return res.status(401).json({ message: 'Invalid credentials' });
+      }
+
+      const expiresIn = 8 * 60 * 60;
+      res.cookie('usdt', user, {
+        httpOnly: true,
+        
+      });
+      
+      const token = jwt.sign({ id: user.id, username: user.usrNme }, String(process.env.sessionSecret), {
+        expiresIn: expiresIn, 
+      });
+      res.cookie('jwtToken', token, {
+        httpOnly: true,
+        
+      });
+
+
+      
+      
+    //   res.send(token)
+    // console.log(token);
+    
+      res.json({ token });
+    } catch (error) {
+      console.error('Login Error:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+
+
+  });
+
+
+  app.get('/getUsDt', isAuth, async (req, res) => {
+    const [r] = await db.execute(`select fname, lname, bd, CIN, famlyStts, childrenNmber, city, zip, 
+    adress, phone, phone2, email, actualEntity, department, jobeTitle, integrationDate, contractTpe, 
+    usrNme, pic from _Users  where id = ${req.cookies.usdt.id}`);
+    
+    const [cnjs] = await db.execute(`select * from _Conjes where usr = ${req.cookies.usdt.id}`);
+    const [cnjsHstr] = await db.execute(`select * from _Histories where usr = ${req.cookies.usdt.id}`);
+    var cnjsHtml = '';
+
+    var cnjTaken = 0;
+    
+
+    cnjs.forEach((c) => {
+      var v1 = '<label class="badge badge-warning">En cours</label>';
+      var v2 = '<label class="badge badge-warning">En cours</label>';
+      var v3 = '<label class="badge badge-warning">En cours</label>';
+      var cnclBtn = '';
+
+      switch (c.responsableValidation) {
+        case 0:
+          v1 = '<label class="badge badge-danger">Refusé</label>';
+          break;
+        
+        case 1:
+          v1 = '<label class="badge badge-success">Validé</label>';
+          break;
+        
+        case 2:
+          v1 = '<label class="badge badge-danger">Annulé</label>';
+          break;
+          
+
+      }
+      
+
+      
+      switch (c.HRvalidation) {
+        case 0:
+          v2 = '<label class="badge badge-danger">Refusé</label>';
+          break;
+        
+        case 1:
+          v2 = '<label class="badge badge-success">Validé</label>';
+          break;
+        
+        case 2:
+          v2 = '<label class="badge badge-danger">Annulé</label>';
+          break;
+
+        default:
+          v2 = '<label class="badge badge-warning">En cours</label>';
+          break;
+
+      }
+
+      switch (c.stts) {
+        case 0:
+          v3 = '<label class="badge badge-danger">Refusé</label>';
+          cnclBtn = 'hidden';
+          break;
+        
+        case 1:
+          v3 = '<label class="badge badge-success">Validé</label>';
+          cnjTaken++;
+          break;
+        
+        case 2:
+          v3 = '<label class="badge badge-danger">Annulé</label>';
+          cnclBtn = 'hidden';
+          break;
+
+        default:
+          v3 = '<label class="badge badge-warning">En cours</label>';
+          break;
+
+      }
+      var fday = new Date(c.fday);
+      var today = new Date();
+      if (fday <= today) {
+        cnclBtn = 'hidden';
+      }
+
+      cnjsHtml += `
+      <tr>
+      <td><a href="#">${c.id}</a></td>
+      <td>${String(c.dmntDte).split(' ')[0]}</td>
+      <td>${c.fday}</td>
+      <td>${c.lday}</td>
+      <td>${c.duration}</td>
+      <td>${v1}</td>
+      <td>${v2}</td>
+      <td>${v3}</td>
+      <td>
+        <button type="button" class="btn btn-inverse-danger btn-icon" onclick="cancelCnj('${c.id}')">
+          <i class="ti-close"></i>
+        </button>
+      </td>
+      </tr>
+        `;
+
+    });
+
+    
+    var start = new Date(r[0].integrationDate);
+    var end = new Date();
+    var years = end.getFullYear() - start.getFullYear();
+    var months = end.getMonth() - start.getMonth();
+
+    if (end.getDate() < start.getDate()) {
+      months--;
+    }
+
+    var totalMonths = years * 12 + months;
+    var soldCnj = (totalMonths*1.5) - cnjTaken;
+
+
+    if (r[0]) {
+      res.json({ data: r[0] , cnj:cnjsHtml, cnjH: cnjsHstr, Scnj: soldCnj});
+    } else {
+      res.status(404).json({ error: 'Cookie not found' });
+    }
+  });
+  
+  app.get('/getDcsDmndsHistry', isAuth, async (req, res) => {
+    const [hh] = await db.execute(`select * from _DCSrequests where usr = ${req.cookies.usdt.id}`);
+    hh.forEach(r => {
+      
+    });
+  });
+
+app.get('/login', (req, res)=>{
+    jwt.verify(req.cookies.jwtToken, String(process.env.sessionSecret), (err, decoded) => {
+        if (!err) {
+            res.redirect('/');
+        }
+        
+        
+      });
+      
+    res.sendFile(path.join(__dirname, 'frntEnd', 'login.html'));
+});
+
+
+app.get('/', isAuth, (req, res) => {
+    res.sendFile(path.join(__dirname, 'frntEnd', 'MasterPage.html'));
+  });
+
+app.get('/profile', isAuth, (req, res) => {
+    res.sendFile(path.join(__dirname, 'frntEnd', 'Profile.html'));
+  });
+
+  app.get('/logout', isAuth, (req, res) => {
+    res.cookie('jwtToken', '', {
+      httpOnly: true,
+      expires: new Date(0), 
+      path: '/', 
+    });
+    res.cookie('usdt', '', {
+      httpOnly: true,
+      expires: new Date(0), 
+      path: '/', 
+    });
+    // req.cookies = 'jwtToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    res.redirect('/');
+  });
+
+
+
+app.post('/modifyInfo', isAuth, async (req, res) => {
+  const {addr, eml, tel, tel2, psd, psd2} = req.body;
+  var pss = '';
+  if(psd){
+    if (psd != psd2) {
+      
+    return res.status(401).json({ message: 'Error Passwords' });
+    }else{
+      pss = `, pwd = "${(await bcrypt.hash(psd2, 10)).toString()}" `;
+    }
+  }
+  
+  try {
+    const [r] = await db.execute(`update _Users set adress = "${addr}", email = "${eml}", phone ="${tel}", phone2 ="${tel2}" ${pss} where id = ${req.cookies.usdt.id} `);
+    
+  } catch (error) {
+    console.log(error);
+  }
+  
+
+})
+
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
+app.post('/upldPrflPic', isAuth, upload.single('prflPc'), async (req, res) => {
+  const fileData = req.file.buffer;
+
+  console.log(`update _Users set pic = "${fileData}" where id = ${req.cookies.usdt.id}`);
+
+  try {
+    
+    const insertResult = await db.execute(
+      `update _Users set pic = "${fileData}" where id = ${req.cookies.usdt.id}`,
+      
+    );
+
+    
+
+    res.status(200).json('done');
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).send('Error uploading and saving the file.');
+  }
+});
+
+
+app.post("/sveCnj", isAuth, async (req, res) => {
+
+  const { ctpe, sd, ed, cout } = req.body;
+  const PrvCnjFile = req.files.PrvCnjFile;
+  const currentDateTime = new Date().toLocaleString();
+  var cnjj1 = '';
+  var cnjj2 = '';
+  var prvFileblob = null;
+  if (req.files && Object.keys(req.files).length !== 0) {
+    
+    prvFileblob = PrvCnjFile.data;
+  }
+
+
+  var qry = 'insert into _Conjes(usr, dmntDte, fday, lday, duration, prfFile) values (?, ?, ?, ?, ?, ?);';
+  
+  try {
+    const [r] = await db.execute(qry, [req.cookies.usdt.id, currentDateTime, $('#StartDay').val(), $('#EndDay').val(), parseFloat($('#JoursCong').val()), prvFileblob]);
+    res.send("DONE");
+  } catch (error) {
+    res.status(500).send("Error occurred while saving Conji.");
+  }
+  
+  
+  
+});
+
+
+
+
+app.use(function(req, res) {
+  
+  res.json({
+    error: {
+      'name':'Error',
+      'status':404,
+      'message':'Invalid Request',
+      'statusCode':404,
+    },
+     message: 'wrong url'
+  });
+});
+app.listen('1998');

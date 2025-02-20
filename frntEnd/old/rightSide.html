@@ -1,0 +1,93 @@
+<i class="settings-close ti-close" onclick="$('#right-sidebar').removeClass('open');"></i>
+        <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link" id="chats-tab" data-toggle="tab" href="#Pointage-section" role="tab" aria-controls="chats-section">PAUSES</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="setting-content">
+
+          <!-- Pointage section tab Start -->
+          <div class="tab-pane fade show active " id="Pointage-section" role="tabpanel" aria-labelledby="Pointage-section">
+            <div class="col-md-12 mb-12 stretch-card transparent">
+                <div class="card-body">
+                  <div class="row text-center">
+                    <div class="col-md-12 text-center">
+                      <button type="submit" class="btn btn-success mb-2">Dispo : 00:00:36 </button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <select class="form-control" id="exampleFormControlSelect1">
+                        <option></option>
+                        <option>Pause légal</option>
+                        <option>Pause Déjeuner</option>
+                        <option>Réunion</option>
+                        <option>Panne technique</option>
+                        <option>Bref</option>
+                      </select>
+                    </div>
+                  </div>
+                  <hr/>
+                  <div class="row">
+                      <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-danger mb-2">Changer</button>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 stretch-card">
+                <div class="card scroll">
+                  <div class="card-body">
+                    <p class="card-title mb-0">Log-In : <span id="timelog">15/03/2022 08:50</span></p>
+                    <div class="table-responsive">
+                      <table class="table table-borderless">
+                        <thead>
+                          <tr>
+                            <th class="pl-0">Pause</th>
+                            <th class="pl-0">Duré</th>
+                            <th class="pl-0">Heure</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="pl-0">Pause légal</td>
+                            <td class="pl-0">10M</td>
+                            <td class="text-muted pl-0">10:30-</td>
+                          </tr>
+                          <tr>
+                            <td class="pl-0">Pause légal</td>
+                            <td class="pl-0">5M</td>
+                            <td class="text-muted pl-0">12:30</td>
+                          </tr>
+                          <tr>
+                            <td class="pl-0" >Pause Déjeuner</td>
+                            <td class="pl-0">45M</td>
+                            <td class="text-muted pl-0">13:00</td>
+                          </tr>
+                          <tr>
+                            <td class="pl-0">Réunion</td>
+                            <td class="pl-0">1H 20M 30S</td>
+                            <td class="text-muted pl-0">14:00</td>
+                          </tr>
+                          <tr>
+                            <td class="pl-0">Pause légal</td>
+                            <td class="pl-0 ">15M</td>
+                            <td class="text-muted pl-0">14:30</td>
+                          </tr>
+                          <tr>
+                            <td class="pl-0">Panne technique</td>
+                            <td class="pl-0">15M</td>
+                            <td class="text-muted pl-0">15:00</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!-- Pointage tab ends -->
+        </div>

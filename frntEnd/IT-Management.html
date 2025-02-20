@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>IT Management</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link
+      rel="stylesheet"
+      href="vendors/datatables.net-bs4/dataTables.bootstrap4.css"
+    />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="js/select.dataTables.min.css"
+    />
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css" />
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css" />
+    <!-- endinject -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css" />
+    <!-- endinject -->
+    <link rel="shortcut icon" href="images/favicon.png" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/js/r.js"></script>
+
+    <style>
+      div.scroll {
+        margin: 4px, 4px;
+        padding: 4px;
+        background-color: white;
+        height: 400px;
+        width: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align: justify;
+      }
+    </style>
+    <style>
+      div.scrollcard {
+        margin: 4px, 4px;
+        padding: 4px;
+        background-color: white;
+        height: 500px;
+        width: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align: justify;
+      }
+    </style>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="vendors/select2/select2.min.css" />
+    <link
+      rel="stylesheet"
+      href="vendors/select2-bootstrap-theme/select2-bootstrap.min.css"
+    />
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_navbar.html -->
+      <nav
+        class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+        id="theNavBar"
+      ></nav>
+
+      <!-- partial Start -->
+      <div class="container-fluid page-body-wrapper">
+        <div id="right-sidebar" class="settings-panel"></div>
+        <!-- partial  End-->
+        <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+        <!-- NAV /_sidebar.html START -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar"></nav>
+        <!-- NAV END -->
+
+        <!-- NAV END -->
+
+        <!-- content-wrapper Start -->
+        <div class="main-panel">
+          <!---------------------------------------------------------------------------------------------------Body Start-------------------------------------------------------------------------------------------------------->
+          <div class="content-wrapper">
+            <!---Body Start-->
+            <!----------------------------------------------------------------------------------------------------Contrat info----------------------------------------------------------------------------------------------------->
+
+            <!------------------------------------------------------------------------------------------------------TAB----------------------------------------------------------------------------------------------------->
+            <div class="row">
+              <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <ul
+                      class="nav nav-tabs border-top"
+                      id="setting-panel"
+                      role="tablist"
+                    >
+                      <!--<li class="nav-item">
+            <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#Users" role="tab" aria-controls="NewUser" aria-expanded="true">Users</a>
+          </li>-->
+                      <li class="nav-item">
+                        <a
+                          class="nav-link"
+                          active
+                          id="chats-tab"
+                          data-toggle="tab"
+                          href="#Departements"
+                          role="tab"
+                          aria-controls="Departements"
+                          >Départements</a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link"
+                          id="chats-tab"
+                          data-toggle="tab"
+                          href="#Accesses"
+                          role="tab"
+                          aria-controls="Accesses"
+                          >Accesses</a
+                        >
+                      </li>
+                    </ul>
+                    <div class="tab-content" id="setting-content">
+                      <!------------------------------------------------------------------------------------------------------Personal info----------------------------------------------------------------------------------------------------->
+                      <!--<div class="tab-pane fade show active scroll-wrapper" id="Users" role="tabpanel" aria-labelledby="Users"
+>
+          <div class="col-12 grid-margin">
+            <div class="card ">
+              <div class="card-body">
+                <form class="form-sample">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                       <label for="Statut">Nom*</label>
+                       <input type="text" class="form-control" name="Nom" id="Nom" />
+                      </div>
+                     </div>
+                     <div class="col-md-3">
+                      <div class="form-group">
+                       <label for="Statut">Prénom*</label>
+                       <input type="text" class="form-control" name="Prenom" id="Prenom" />
+                      </div>
+                     </div>
+                     <div class="col-md-3">
+                      <div class="form-group">
+                       <label for="Statut">Mot de passe*</label>
+                       <input type="text" class="form-control" name="PassUser" id="PassUser" />
+                      </div>
+                     </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                       <label for="Statut">Session</label>
+                       <select class="form-control" id="Session" name="Session">
+                         <option></option>
+                         <option>Logout</option>
+                         <option>Keep Log-In</option>
+                       </select>
+                      </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="Entite">Entité *</label>
+                          <select class="form-control" id="Entite" name="Entite">
+                            <option></option>
+                            <option>SACCOMCG</option>
+                            <option>SACCOMRH</option>
+                            <option>SACCOMXD</option>
+                            <option>SACCOMCC</option>
+                            <option>SRE</option>
+                            <option>XCDM MAROC</option>
+                            <option>WEACT ACADEMY</option>
+                            <option>WEACT SERVICE</option>
+                            <option>QSDEVINTL</option>
+                            <option>SACCOMINTL</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                          <label for="Etablissement">Département *</label>
+                          <select class="form-control" id="Etablissement" name="Etablissement">
+                            <option></option>
+                            <option>IT</option>
+                            <option>Finance</option>
+                            <option>Administratif</option>
+                            <option>Recrutement</option>
+                            <option>Production</option>
+                            <option>Work force Management</option>
+                            <option>Direction générale</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                          <label for="Etablissement">Etablissement *</label>
+                          <select class="form-control" id="Etablissement" name="Etablissement">
+                            <option></option>
+                            <option>SACCOM CAPITAL GROUP</option>
+                            <option>XCEED</option>
+                            <option>RICHBOND</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                          <label for="Etablissement">Chef département *</label>
+                          <select class="form-control" id="Chef" name="Chef">
+                            <option></option>
+                            <option>Oui</option>
+                            <option>Non</option>
+                          </select>
+                        </div>
+                    </div>
+                  </div>
+                    <div class="row text-center">
+                      <div class="col-md-12 text-center">
+                          <button type="submit" class="btn btn-primary md-5">Enregistrer/Modifier</button>
+                        </div>
+                    </div>
+                </form>
+                <hr>
+                <div class="row">
+                  <div class="col-md-12 grid-margin stretch-card">
+                    <div class="card scroll">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-8">
+                            <div class="form-group">
+                              <p class="card-title">Users list</p>
+                            </div>
+                           </div>
+                           <div class="col-md-4">
+                             <input type="text" class="form-control" name="SearchUser" id="SearchUser" placeholder="Search"/>
+                           </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="table-responsive">
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>#User</th>
+                                    <th>Login</th>
+                                    <th>Mot de passe</th>
+                                    <th>Session</th>
+                                    <th>Entité</th>
+                                    <th>Etablissement</th>
+                                    <th>Chef</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td><a href="#">Karim BOURIR</a></td>
+                                    <td>karim.bourir</td>
+                                    <td>S@ccom2023</td>
+                                    <td><label class="badge badge-success">Up</label></td>
+                                    <td>WEACT SERVICE</td>
+                                    <td>SACCOM CAPITAL GROUP</td>
+                                    <td>Oui</td>
+                                  </tr>
+                                  <tr>
+                                    <td><a href="#">Karim BOURIR</a></td>
+                                    <td>karim.bourir</td>
+                                    <td>S@ccom2023</td>
+                                    <td><label class="badge badge-danger">Down</label></td>
+                                    <td>WEACT SERVICE</td>
+                                    <td>SACCOM CAPITAL GROUP</td>
+                                    <td>Oui</td>
+                                  </tr>
+
+                                </tbody>
+                            </table>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+</div>-->
+                      <!----------------------------------------------------------------------------------------------------Users------------------------------------------------------------------------------------------------------------------>
+
+                      <!----------------------------------------------------------------------------------------------------Départements------------------------------------------------------------------------------------------------------------------>
+                      <div
+                        class="tab-pane fade show active scroll-wrapper"
+                        id="Departements"
+                        role="tabpanel"
+                        aria-labelledby="Departements"
+                      >
+                        <div class="col-12 grid-margin">
+                          <div class="card">
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <select
+                                    class="js-example-basic-single w-100"
+                                    id="Departement"
+                                    name="Departement"
+                                  ></select>
+                                </div>
+                                <div class="col-md-4">
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    name="NewDep"
+                                    id="NewDep"
+                                    placeholder="New Departement"
+                                  />
+                                </div>
+                                <div class="col-md-2">
+                                  <button
+                                    type="button"
+                                    id="addDprtBtn"
+                                    class="btn btn-success md-5"
+                                  >
+                                    Ajouter
+                                  </button>
+                                </div>
+                                <div class="col-md-2" hidden>
+                                  <button
+                                    type="submit"
+                                    class="btn btn-danger md-5"
+                                  >
+                                    Suprimer
+                                  </button>
+                                </div>
+                              </div>
+                              <hr />
+                              <!------------------------------------------------------------------------------------------------------------------------------------------------------------>
+                              <div class="row">
+                                <!---Start Dep - service-->
+                                <div class="col-md-5 stretch-card grid-margin">
+                                  <div class="card scroll">
+                                    <div class="card-body">
+                                      <div class="table-responsive">
+                                        <table class="table table-borderless">
+                                          <thead>
+                                            <tr>
+                                              <th
+                                                class="pl-0 pb-2 border-bottom"
+                                              >
+                                                Services Disponibles
+                                              </th>
+                                            </tr>
+                                          </thead>
+
+                                          <tbody id="srvcsTbl"></tbody>
+                                        </table>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div
+                                  class="col-md-2 stretch-card grid-margin text-center"
+                                >
+                                  <div class="card text-center">
+                                    <div class="card-body text-center">
+                                      <div class="row text-center">
+                                        <div class="form-group text-center">
+                                          <button
+                                            type="button"
+                                            id="attrSrvBtn"
+                                            class="btn btn-primary md-5"
+                                          >
+                                            Attribuer les services sélectionnés
+                                          </button>
+                                        </div>
+                                      </div>
+
+                                      <hr />
+
+                                      <div class="row text-center">
+                                        <div class="form-group text-center">
+                                          <button
+                                            type="button"
+                                            id="rmvAttrSrvBtn"
+                                            class="btn btn-warning md-5"
+                                          >
+                                            enlever les services sélectionnés
+                                          </button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="col-md-5 stretch-card grid-margin">
+                                  <div class="card scroll">
+                                    <div class="card-body">
+                                      <div class="table-responsive">
+                                        <table class="table table-borderless">
+                                          <thead>
+                                            <tr>
+                                              <th
+                                                class="pl-0 pb-2 border-bottom"
+                                              >
+                                                Services Attribué
+                                              </th>
+                                            </tr>
+                                          </thead>
+
+                                          <tbody id="srvcAttrDprtTbl"></tbody>
+                                        </table>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <!---End Dep - service-->
+
+                              <div class="row">
+                                <!---Start New services-->
+                                <div class="col-md-4">
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    name="Newservices"
+                                    id="Newservices"
+                                    placeholder="New services"
+                                  />
+                                </div>
+                                <div class="col-md-4">
+                                  <button
+                                    type="button"
+                                    id="addSrvcBtn"
+                                    class="btn btn-success md-5"
+                                  >
+                                    Ajouter
+                                  </button>
+                                </div>
+                              </div>
+                              <!---End  New services-->
+                              <!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!----------------------------------------------------------------------------------------------------Département End------------------------------------------------------------------------------------------------------------------>
+                      <style>
+                        .checkbox-wrapper-8 .tgl {
+                          display: none;
+                        }
+                        .checkbox-wrapper-8 .tgl,
+                        .checkbox-wrapper-8 .tgl:after,
+                        .checkbox-wrapper-8 .tgl:before,
+                        .checkbox-wrapper-8 .tgl *,
+                        .checkbox-wrapper-8 .tgl *:after,
+                        .checkbox-wrapper-8 .tgl *:before,
+                        .checkbox-wrapper-8 .tgl + .tgl-btn {
+                          box-sizing: border-box;
+                        }
+                        .checkbox-wrapper-8 .tgl::-moz-selection,
+                        .checkbox-wrapper-8 .tgl:after::-moz-selection,
+                        .checkbox-wrapper-8 .tgl:before::-moz-selection,
+                        .checkbox-wrapper-8 .tgl *::-moz-selection,
+                        .checkbox-wrapper-8 .tgl *:after::-moz-selection,
+                        .checkbox-wrapper-8 .tgl *:before::-moz-selection,
+                        .checkbox-wrapper-8 .tgl + .tgl-btn::-moz-selection,
+                        .checkbox-wrapper-8 .tgl::selection,
+                        .checkbox-wrapper-8 .tgl:after::selection,
+                        .checkbox-wrapper-8 .tgl:before::selection,
+                        .checkbox-wrapper-8 .tgl *::selection,
+                        .checkbox-wrapper-8 .tgl *:after::selection,
+                        .checkbox-wrapper-8 .tgl *:before::selection,
+                        .checkbox-wrapper-8 .tgl + .tgl-btn::selection {
+                          background: none;
+                        }
+                        .checkbox-wrapper-8 .tgl + .tgl-btn {
+                          outline: 0;
+                          display: block;
+                          width: 4em;
+                          height: 2em;
+                          position: relative;
+                          cursor: pointer;
+                          -webkit-user-select: none;
+                          -moz-user-select: none;
+                          -ms-user-select: none;
+                          user-select: none;
+                        }
+                        .checkbox-wrapper-8 .tgl + .tgl-btn:after,
+                        .checkbox-wrapper-8 .tgl + .tgl-btn:before {
+                          position: relative;
+                          display: block;
+                          content: '';
+                          width: 50%;
+                          height: 100%;
+                        }
+                        .checkbox-wrapper-8 .tgl + .tgl-btn:after {
+                          left: 0;
+                        }
+                        .checkbox-wrapper-8 .tgl + .tgl-btn:before {
+                          display: none;
+                        }
+                        .checkbox-wrapper-8 .tgl:checked + .tgl-btn:after {
+                          left: 50%;
+                        }
+
+                        .checkbox-wrapper-8 .tgl-skewed + .tgl-btn {
+                          overflow: hidden;
+                          transform: skew(-10deg);
+                          -webkit-backface-visibility: hidden;
+                          backface-visibility: hidden;
+                          transition: all 0.2s ease;
+                          font-family: sans-serif;
+                          background: #888;
+                        }
+                        .checkbox-wrapper-8 .tgl-skewed + .tgl-btn:after,
+                        .checkbox-wrapper-8 .tgl-skewed + .tgl-btn:before {
+                          transform: skew(10deg);
+                          display: inline-block;
+                          transition: all 0.2s ease;
+                          width: 100%;
+                          text-align: center;
+                          position: absolute;
+                          line-height: 2em;
+                          font-weight: bold;
+                          color: #fff;
+                          text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+                        }
+                        .checkbox-wrapper-8 .tgl-skewed + .tgl-btn:after {
+                          left: 100%;
+                          content: attr(data-tg-on);
+                        }
+                        .checkbox-wrapper-8 .tgl-skewed + .tgl-btn:before {
+                          left: 0;
+                          content: attr(data-tg-off);
+                        }
+                        .checkbox-wrapper-8 .tgl-skewed + .tgl-btn:active {
+                          background: #888;
+                        }
+                        .checkbox-wrapper-8
+                          .tgl-skewed
+                          + .tgl-btn:active:before {
+                          left: -10%;
+                        }
+                        .checkbox-wrapper-8 .tgl-skewed:checked + .tgl-btn {
+                          background: #86d993;
+                        }
+                        .checkbox-wrapper-8
+                          .tgl-skewed:checked
+                          + .tgl-btn:before {
+                          left: -100%;
+                        }
+                        .checkbox-wrapper-8
+                          .tgl-skewed:checked
+                          + .tgl-btn:after {
+                          left: 0;
+                        }
+                        .checkbox-wrapper-8
+                          .tgl-skewed:checked
+                          + .tgl-btn:active:after {
+                          left: 10%;
+                        }
+                      </style>
+                      <!----------------------------------------------------------------------------------------------------Accesses Start--------------------------------------------------------------------------------------------------------------->
+                      <div
+                        class="tab-pane fade"
+                        id="Accesses"
+                        role="tabpanel"
+                        aria-labelledby="Accesses"
+                      >
+                        <div class="col-lg-12 grid-margin stretch-card">
+                          <div class="card">
+                            <div class="card-body">
+                              <div class="table-responsive">
+                                <table class="table table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th>
+                                        <select
+                                          class="js-example-basic-single w-100"
+                                          id="UsersListe"
+                                          name="UsersListe"
+                                        ></select>
+                                      </th>
+                                      <th>Permissions</th>
+                                      <th class="text-center">Select</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody id="permisionsArea" hidden>
+                                    <tr>
+                                      <td></td>
+                                      <td>Afficher le tableau de bord</td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="viewDshbrd"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="viewDshbrd"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>Consulter les actualités</td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="viewNews"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="viewNews"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="text-center">
+                                        <h6>Service RH :</h6>
+                                      </td>
+                                      <td>Consulter les utilisateurs</td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="vewUsers"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="vewUsers"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>Consulter la fiche utilisateur</td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="vewFUsr"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="vewFUsr"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>Modifier la fiche utilisateur</td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="mdfFUser"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="mdfFUser"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>Consulter le contrat utilisateur</td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="view_C_usr"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="view_C_usr"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>Traiter le contrat utilisateur</td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="treat_C_usr"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="treat_C_usr"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>Consulter les congés</td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="view_CNJ_usr"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="view_CNJ_usr"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>Traiter les congés utilisateur</td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="treat_CNJ_usr"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="treat_CNJ_usr"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>Modifier le solde de congé</td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="mdf_soldCNJ"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="mdf_soldCNJ"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>
+                                        Consulter les demandes de décharge
+                                      </td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="view_DCHRJ_usr"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="view_DCHRJ_usr"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>Traiter les demandes de décharge</td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="treat_DCHRJ_usr"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="treat_DCHRJ_usr"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>
+                                        Consulter les demandes de déplacement
+                                      </td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="view_DPLCM_usr"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="view_DPLCM_usr"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>
+                                        Traiter les demandes de déplacement
+                                      </td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="treat_DPLCM_usr"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="treat_DPLCM_usr"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>
+                                        Consulter les demandes de documents
+                                      </td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="view_DCMT_usr"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="view_DCMT_usr"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>Traiter les demandes de documents</td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="treat_DCMT_usr"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="treat_DCMT_usr"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>
+                                        Afficher le tableau des demands RH
+                                      </td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="view_HRDMNDS"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="view_HRDMNDS"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="text-center">
+                                        <h6>Service Recrutement :</h6>
+                                      </td>
+                                      <td>
+                                        Voir le tableau de bord de recrutement
+                                      </td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="vewRecrutDchbrd"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="vewRecrutDchbrd"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>Ajouter une offre de recrutement</td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="recrutAddOffer"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="recrutAddOffer"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>Voir les offres de recrutement</td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="recrutViewOffers"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="recrutViewOffers"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>
+                                        Modifier les offres de recrutement des
+                                        autres utilisateurs
+                                      </td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="recrutMdfOthersOffer"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="recrutMdfOthersOffer"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>Consulter la liste des candidats</td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="recrutViewCondidats"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="recrutViewCondidats"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>
+                                        Consulter les fiches des candidats
+                                      </td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="recrutViewFcondidat"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="recrutViewFcondidat"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>Modifier les fiches des candidats</td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="recrutMdfFcondidat"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="recrutMdfFcondidat"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="text-center"><h6>WFM</h6></td>
+                                      <td>Log-In WFM</td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="WfmLogin"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="WfmLogin"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>Consulter l'adhérance planing</td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="ViewWFMPlanning"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="ViewWFMPlanning"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>
+                                        Log-out les utilisateurs depuis le WFM
+                                      </td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="wfmDcntOthers"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="wfmDcntOthers"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>
+                                        Passer les utilisateurs de statut Pause
+                                        a Dispo
+                                      </td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="wfmDispoOthers"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="wfmDispoOthers"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>
+                                        Gérer les Pauses : Ajout des nouveaux
+                                        statuts
+                                      </td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="wfmPauses"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="wfmPauses"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="text-center">
+                                        <h6>Service Finance</h6>
+                                      </td>
+                                      <td>Consulter le dashboard Finance</td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="ViewFinanceDchbrd"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="ViewFinanceDchbrd"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td>Ajouter des Entites</td>
+
+                                      <td class="text-center">
+                                        <div class="checkbox-wrapper-8">
+                                          <input
+                                            class="tgl tgl-skewed permsOps"
+                                            id="financeAddEntt"
+                                            type="checkbox"
+                                          />
+                                          <label
+                                            class="tgl-btn"
+                                            data-tg-off="OFF"
+                                            data-tg-on="ON"
+                                            for="financeAddEntt"
+                                          ></label>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!----------------------------------------------------------------------------------------------------Accesses End------------------------------------------------------------------------------------------------------->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!----------------------------------------------------------------------------------------------------Historique Start----------------------------------------------------------------------------------------------------------->
+            <div class="col-12 grid-margin" hidden>
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Historique</h4>
+                  <div class="row">
+                    <!---historique Global start -->
+                    <div class="col-md-12 grid-margin">
+                      <div class="table-responsive">
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th>Date</th>
+                              <th>By</th>
+                              <th>Type</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td><a href="#">26/04/2023 16:00</a></td>
+                              <td>Karim BOURIR</td>
+                              <td>
+                                Changement de numéro de téléphone de 0654598756
+                                a 0633808013
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><a href="#">26/04/2023 16:00</a></td>
+                              <td>Samia LAABAD</td>
+                              <td>
+                                Modification contrat: transfére contrat de
+                                saccomcc a weact service
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><a href="#">26/04/2023 16:00</a></td>
+                              <td>Fyçal SOQRATI</td>
+                              <td>
+                                Modification statut demande congé avec id
+                                <span>005</span> a validé
+                              </td>
+                            </tr>
+                            <tr>
+                              <td><a href="#">26/04/2023 16:00</a></td>
+                              <td>Fyçal SOQRATI</td>
+                              <td>Accés dossier Collaborateur</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <!---historique Global END -->
+                </div>
+              </div>
+            </div>
+            <!----------------------------------------------------------------------------------------------------Historique End----------------------------------------------------------------------------------------------------------->
+            <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+          </div>
+          <!---Body End-->
+          <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+          <!-- content-wrapper ends -->
+
+          <!-- partial:partials/_footer.html -->
+          <footer class="footer">
+            <div
+              class="d-sm-flex justify-content-center justify-content-sm-between"
+            >
+              <span
+                class="text-muted text-center text-sm-left d-block d-sm-inline-block"
+                >Copyright © 2023. SACCOMCG
+                <a href="https://www.saccomcg.com/" target="_blank">SACCOMCG</a>
+                All rights reserved.</span
+              >
+              <span
+                class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
+                >Hand-crafted & made by karim BOURIR & Yassine BAGHDADI
+                <i class="ti-heart text-danger ml-1"></i
+              ></span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+    <!-- plugins:js -->
+    <script src="vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="vendors/chart.js/Chart.min.js"></script>
+    <script src="vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="js/dataTables.select.min.js"></script>
+
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="js/off-canvas.js"></script>
+    <script src="js/hoverable-collapse.js"></script>
+    <script src="js/template.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="js/dashboard.js"></script>
+    <script src="js/Chart.roundedBarCharts.js"></script>
+    <!-- End custom js for this page-->
+
+    <!--sdqs-->
+
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="vendors/UserList/typeahead.js/typeahead.bundle.min.js"></script>
+    <script src="vendors/select2/select2.min.js"></script>
+    <!-- End plugin js for this page -->
+
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="js/file-upload.js"></script>
+    <script src="js/UserList/typeahead.js"></script>
+    <script src="js/select2.js"></script>
+    <script src="js/js/m.js"></script>
+    <script src="js/js/it.js"></script>
+  </body>
+</html>

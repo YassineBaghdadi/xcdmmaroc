@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Liste des Collaborateurs</title>
+    <!-- plugins:css -->
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link
+      rel="stylesheet"
+      href="vendors/datatables.net-bs4/dataTables.bootstrap4.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="js/select.dataTables.min.css"
+    />
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css" />
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css" />
+    <!-- endinject -->
+    <link rel="shortcut icon" href="images/favicon.png" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/js/r.js"></script>
+
+    <style>
+      div.scroll {
+        margin: 4px, 4px;
+        padding: 4px;
+        background-color: white;
+        height: 300px;
+        width: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align: justify;
+      }
+    </style>
+
+    <style>
+      div.scrollTableau {
+        margin: 4px, 4px;
+        padding: 4px;
+        background-color: white;
+        height: 600px;
+        width: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align: justify;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_navbar.html -->
+      <nav
+        class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+        id="theNavBar"
+      ></nav>
+
+      <!-- partial Start -->
+      <div class="container-fluid page-body-wrapper">
+        <div id="right-sidebar" class="settings-panel"></div>
+        <!-- partial  End-->
+        <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+        <!-- NAV /_sidebar.html START -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar"></nav>
+        <!-- NAV END -->
+
+        <!-- NAV END -->
+
+        <!-- content-wrapper Start -->
+        <div class="main-panel">
+          <!---------------------------------------------------------------------------------------------------Body Start-------------------------------------------------------------------------------------------------------->
+          <div class="content-wrapper">
+            <!---Body Start-->
+            <!---------------------------------------------------------------------------------------------------Body Start-------------------------------------------------------------------------------------------------------->
+            <div class="row">
+              <div class="col-md-12 grid-margin">
+                <div class="row">
+                  <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                    <h3 class="font-weight-bold">
+                      Bienvenu <span id="nme"></span>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span hidden id="theClickedFltr"></span>
+            <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+            <!---------------------------------------------------------------------------------------------------Body Start-------------------------------------------------------------------------------------------------------->
+
+            <!---------------------------------------------------------------------------------------------------WIDGET-------------------------------------------------------------------------------------------------------->
+            <div class="row">
+              <div class="col-md-2 mb-4 stretch-card transparent">
+                <div class="card card-tale fltrBtn">
+                  <div class="card-body">
+                    <p class="vlu" hidden>%</p>
+                    <p class="mb-4">Total Collaborateurs</p>
+                    <p class="fs-30 mb-2" id="sttl">0</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2 mb-4 stretch-card transparent">
+                <div class="card card-dark-blue fltrBtn">
+                  <div class="card-body">
+                    <p class="vlu" hidden>CDI</p>
+                    <p class="mb-4">CDI</p>
+                    <p class="fs-30 mb-2" id="scdi">0</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2 mb-4 stretch-card transparent">
+                <div class="card card-light-blue fltrBtn">
+                  <div class="card-body">
+                    <p class="vlu" hidden>CDD</p>
+                    <p class="mb-4">CDD</p>
+                    <p class="fs-30 mb-2" id="scdd">0</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2 mb-4 stretch-card transparent">
+                <div class="card card-dark-blue fltrBtn">
+                  <div class="card-body">
+                    <p class="vlu" hidden>ANAPEC</p>
+                    <p class="mb-4">ANAPEC</p>
+                    <p class="fs-30 mb-2" id="sanpc">0</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2 mb-4 stretch-card transparent">
+                <div class="card card-light-danger fltrBtn">
+                  <div class="card-body">
+                    <p class="vlu" hidden>CTE</p>
+                    <p class="mb-4">CTE</p>
+                    <p class="fs-30 mb-2" id="scte">0</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-2 mb-4 stretch-card transparent">
+                <div class="card card-title fltrBtn">
+                  <div class="card-body">
+                    <p class="vlu" hidden>AUTRE</p>
+                    <p class="mb-4">AUTRE</p>
+                    <p class="fs-30 mb-2" id="satre">0</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!---------------------------------------------------------------------------------------------------WIDGET-------------------------------------------------------------------------------------------------------->
+            <style>
+              .triangle-down {
+                width: 0;
+                height: 0;
+                border-left: 6px solid transparent;
+                border-right: 6px solid transparent;
+                border-top: 12px solid #555;
+              }
+              .triangle-up {
+                width: 0;
+                height: 0;
+                border-left: 6px solid transparent;
+                border-right: 6px solid transparent;
+                border-bottom: 12px solid #555;
+              }
+              #theFltrDiv {
+                cursor: pointer;
+              }
+            </style>
+            <!---------------------------------------------------------------------------------------------------Filtre-------------------------------------------------------------------------------------------------------->
+
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body" id="theFltrDiv">
+                  <div class="row" style="margin-left: 15px" id="theFltr">
+                    <h4 class="card-title">Filtre</h4>
+                    <div class="ms-auto" style="margin-left: 10px">
+                      <div class="triangle-down" id="theArrow"></div>
+                    </div>
+                  </div>
+
+                  <form class="form-sample" id="theForm" hidden>
+                    <p class="card-description" hidden>
+                      Filtré dans : TOUS / Collaborateurs CDI / Collaborateurs
+                      CDD / Total Collaborateurs Anapec
+                    </p>
+
+                    <div class="row">
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="Etablissement">Etablissement *</label>
+                          <select
+                            class="form-control"
+                            id="EtablissementX"
+                            name="Etablissement"
+                          >
+                            <option value="">Tous</option>
+                            <option value="INTERNE">INTERNE</option>
+                            <option value="RICHBOND">RICHBOND</option>
+                            <option value="ALTIMA">ALTIMA</option>
+                            <option value="PMI">PMI</option>
+                            <option value="JAPONEZA">JAPONEZA</option>
+                            <option value="METABRAIN">METABRAIN</option>
+                            <option value="ROCHE">ROCHE</option>
+                            <option value="3BF">3BF</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="Entite">Entité</label>
+                          <select
+                            class="form-control"
+                            id="Entite"
+                            name="Entite"
+                          ></select>
+                        </div>
+                      </div>
+
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="Etablissement">Département</label>
+                          <select
+                            class="form-control"
+                            id="dprt"
+                            name="Etablissement"
+                          ></select>
+                        </div>
+                      </div>
+
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="Statut">Statut</label>
+                          <select
+                            class="form-control"
+                            id="Statut"
+                            name="Statut"
+                          >
+                            <option value="">Tous</option>
+                            <option value="1">Active</option>
+                            <option value="0">SORTANT</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="Statut"
+                            >Date integration entre le :</label
+                          >
+                          <input
+                            type="date"
+                            class="form-control"
+                            name="integration1"
+                            id="dteIntgr1"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="Statut">et le :</label>
+                          <input
+                            type="date"
+                            class="form-control"
+                            name="integration2"
+                            id="dteIntgr2"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="Statut">Date Sortie entre le :</label>
+                          <input
+                            type="date"
+                            class="form-control"
+                            name="integration1"
+                            id="dteLeave1"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="Statut">et le :</label>
+                          <input
+                            type="date"
+                            class="form-control"
+                            name="integration2"
+                            id="dteLeave2"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="Statut">Chercher Avec:</label>
+                          <select
+                            class="form-control"
+                            id="ChercherAvec"
+                            name="ChercherAvec"
+                          >
+                            <option value="lname">Nom</option>
+                            <option value="fname">Prénom</option>
+                            <option value="CNSS">N° CNSS</option>
+                            <option value="matricule">Matricule</option>
+                            <option value="CIN">CIN</option>
+                            <option value="phone">Téléphone 1</option>
+                            <option value="phone2">Téléphone 2</option>
+                            <option value="ansuranceAffiliationNmber">
+                              N° d'affiliation assurance
+                            </option>
+                            <option value="ansuranceCmpny">
+                              Compagnie d'assurance
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-7 text-center">
+                        <div class="form-group text-center">
+                          <label for="Statut">Mot Clé :</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            name="MotCle"
+                            id="MotCle"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="col-md-2">
+                        <div class="form-group">
+                          <hr />
+
+                          <button
+                            type="button"
+                            id="srchBtn"
+                            class="btn btn-primary"
+                          >
+                            Cherché
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!---------------------------------------------------------------------------------------------------Filtre-------------------------------------------------------------------------------------------------------->
+
+            <!---------------------------------------------------------------------------------------------------Tableau-------------------------------------------------------------------------------------------------------->
+            <div class="row" id="allClbsTble">
+              <div class="col-md-12 grid-margin stretch-card">
+                <div class="card scrollTableau">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-10">
+                        <p class="card-title">List Collaborateurs</p>
+                      </div>
+                      <div class="col-md-2">
+                        <button
+                          id="addNewUserBtn"
+                          type="button"
+                          onclick="document.getElementById('newFrm').style.display = 'block';"
+                          class="btn btn-success md-5"
+                        >
+                          Nouveau Collaborateur
+                        </button>
+                      </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="table-responsive">
+                          <table
+                            id=""
+                            class="display expandable-table"
+                            style="width: 100%"
+                          >
+                            <thead>
+                              <tr>
+                                <th>Utilisateur</th>
+                                <th>Nom</th>
+                                <th>Entité</th>
+                                <th>Poste</th>
+                                <th>Téléphone</th>
+                                <th>Email</th>
+                                <th>Contrat</th>
+                                <th>Date Integration</th>
+                                <th>Congé</th>
+                              </tr>
+                            </thead>
+                            <tbody id="agtTble"></tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!---------------------------------------------------------------------------------------------------Tableau-------------------------------------------------------------------------------------------------------->
+
+            <!-- ------------------------------------------------------------Pop Up -------------------------------------------------------------------- -->
+            <style>
+              .popup {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(
+                  0,
+                  0,
+                  0,
+                  0.5
+                ); /* Semi-transparent black background */
+              }
+
+              /* Styles for the popup content */
+              .popup-content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+              }
+
+              /* Style for the close button */
+              .close {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 20px;
+                font-weight: bold;
+                cursor: pointer;
+              }
+            </style>
+            <script>
+              function closePopup() {
+                // clear();
+                document.getElementById('newFrm').style.display = 'none';
+              }
+            </script>
+
+            <div class="card scrollcard popup" id="newFrm">
+              <div class="card-body popup-content">
+                <span
+                  class="close"
+                  style="font-size: 30px"
+                  id="closePopupButton"
+                  onclick="closePopup()"
+                  >&times;</span
+                >
+
+                <hr />
+                <form class="form-sample">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="Statut"
+                          >Matricule
+                          <span style="color: red; font-weight: bold"
+                            >*</span
+                          ></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="Matricule"
+                          id="mtrcl"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="Statut"
+                          >Nom
+                          <span style="color: red; font-weight: bold"
+                            >*</span
+                          ></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="Nom"
+                          id="lnme"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="Statut"
+                          >Prénom
+                          <span style="color: red; font-weight: bold"
+                            >*</span
+                          ></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="Prenom"
+                          id="fnme"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="Statut"
+                          >Date de naissance
+                          <span style="color: red; font-weight: bold"
+                            >*</span
+                          ></label
+                        >
+                        <input
+                          type="date"
+                          class="form-control"
+                          name="naissance"
+                          id="naissance"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="Statut"
+                          >Civilité
+                          <span style="color: red; font-weight: bold"
+                            >*</span
+                          ></label
+                        >
+                        <select
+                          class="form-control"
+                          id="Civilit"
+                          name="Civilit"
+                        >
+                          <option value="Monsieur">Monsieur</option>
+                          <option value="Madame">Madame</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="Statut"
+                          >Portable
+                          <span style="color: red; font-weight: bold"
+                            >*</span
+                          ></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="Matricule"
+                          id="prtbl"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="Statut"
+                          >E-Mail
+                          <span style="color: red; font-weight: bold"
+                            >*</span
+                          ></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="Adresse"
+                          id="mail"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="Statut"
+                          >N° CIN/Passport
+                          <span style="color: red; font-weight: bold"
+                            >*</span
+                          ></label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="Matricule"
+                          id="cin"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="Statut"
+                          >Situation familiale
+                          <span style="color: red; font-weight: bold"
+                            >*</span
+                          ></label
+                        >
+                        <select
+                          class="form-control"
+                          id="Sfamiliale"
+                          name="Sfamiliale"
+                        >
+                          <option value="Célibataire">Célibataire</option>
+                          <option value="Marié(e)">Marié(e)</option>
+                          <option value="Divorcé">Divorcé(e)</option>
+                          <option value="Veuf/Veuve">Veuf/Veuve</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="Statut">Ville</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="Nationalit"
+                          id="cty"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="Statut">Adresse</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="Adresse"
+                          id="addrss"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row text-center">
+                    <div class="col-md-12 text-center">
+                      <button
+                        type="button"
+                        id="sveAgntBtn"
+                        class="btn btn-primary md-5"
+                      >
+                        Enregistré
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+            <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+            <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+          </div>
+          <!---Body End-->
+          <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+          <!-- content-wrapper ends -->
+
+          <!-- partial:partials/_footer.html -->
+          <footer class="footer">
+            <div
+              class="d-sm-flex justify-content-center justify-content-sm-between"
+            >
+              <span
+                class="text-muted text-center text-sm-left d-block d-sm-inline-block"
+                >Copyright © 2023. SACCOMCG
+                <a href="https://www.saccomcg.com/" target="_blank">SACCOMCG</a>
+                All rights reserved.</span
+              >
+              <span
+                class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
+                >Hand-crafted & made by karim BOURIR & Yassine BAGHDADI
+                <i class="ti-heart text-danger ml-1"></i
+              ></span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+    <!-- plugins:js -->
+    <script src="vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="vendors/chart.js/Chart.min.js"></script>
+    <script src="vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="js/dataTables.select.min.js"></script>
+    <script src="js/js/m.js"></script>
+    <script src="js/js/srvAdmin.js"></script>
+
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="js/off-canvas.js"></script>
+    <script src="js/hoverable-collapse.js"></script>
+    <script src="js/template.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="js/dashboard.js"></script>
+    <script src="js/Chart.roundedBarCharts.js"></script>
+    <!-- End custom js for this page-->
+  </body>
+</html>

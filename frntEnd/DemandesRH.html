@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Demandes RH</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link
+      rel="stylesheet"
+      href="vendors/datatables.net-bs4/dataTables.bootstrap4.css"
+    />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="js/select.dataTables.min.css"
+    />
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css" />
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css" />
+    <!-- endinject -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css" />
+    <!-- endinject -->
+    <link rel="shortcut icon" href="images/favicon.png" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/js/r.js"></script>
+
+    <style>
+      div.scroll {
+        margin: 4px, 4px;
+        padding: 4px;
+        background-color: white;
+        height: 300px;
+        width: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align: justify;
+      }
+    </style>
+
+    <style>
+      div.scrollTableau {
+        margin: 4px, 4px;
+        padding: 4px;
+        background-color: white;
+        height: 600px;
+        width: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align: justify;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_navbar.html -->
+      <nav
+        class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+        id="theNavBar"
+      ></nav>
+
+      <!-- partial Start -->
+      <div class="container-fluid page-body-wrapper">
+        <div id="right-sidebar" class="settings-panel"></div>
+        <!-- partial  End-->
+        <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+        <!-- NAV /_sidebar.html START -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar"></nav>
+        <!-- NAV END -->
+
+        <!-- NAV END -->
+
+        <!-- content-wrapper Start -->
+        <div class="main-panel">
+          <!---------------------------------------------------------------------------------------------------Body Start-------------------------------------------------------------------------------------------------------->
+          <div class="content-wrapper">
+            <!---Body Start-->
+            <!---------------------------------------------------------------------------------------------------Body Start-------------------------------------------------------------------------------------------------------->
+            <div class="row">
+              <div class="col-md-12 grid-margin"></div>
+            </div>
+            <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+            <!---------------------------------------------------------------------------------------------------Body Start-------------------------------------------------------------------------------------------------------->
+            <span id="theClickedFltr" hidden></span>
+            <!---------------------------------------------------------------------------------------------------WIDGET-------------------------------------------------------------------------------------------------------->
+            <div class="row">
+              <div class="col-md-3 mb-4 stretch-card transparent">
+                <div class="card card-dark-blue fltrBtn">
+                  <div class="card-body">
+                    <p class="vlu" hidden>%</p>
+                    <p class="mb-4">Total Demandes</p>
+                    <p class="fs-30 mb-2" id="drDmndCounterALL">0</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-4 stretch-card transparent">
+                <div class="card card-light-danger fltrBtn">
+                  <div class="card-body">
+                    <p class="vlu" hidden>_Conjes</p>
+                    <p class="mb-4">Demandes Congés</p>
+                    <p class="fs-30 mb-2" id="drDmndCounterCNJ">0</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-4 stretch-card transparent">
+                <div class="card card-light-blue fltrBtn">
+                  <div class="card-body">
+                    <p class="vlu" hidden>_Decharges</p>
+                    <p class="mb-4">Demandes Décharges</p>
+                    <p class="fs-30 mb-2" id="drDmndCounterDchrj">0</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 mb-4 stretch-card transparent">
+                <div class="card card-dark-blue fltrBtn">
+                  <div class="card-body">
+                    <p class="vlu" hidden>_DCSrequests</p>
+                    <p class="mb-4">Demandes Documents</p>
+                    <p class="fs-30 mb-2" id="drDmndCounterDCR">0</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!---------------------------------------------------------------------------------------------------WIDGET-------------------------------------------------------------------------------------------------------->
+
+            <!---------------------------------------------------------------------------------------------------Filtre-------------------------------------------------------------------------------------------------------->
+
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Filtre</h4>
+                  <p class="card-description">
+                    Filtré dans : TOUS / Demandes Documents / Demandes Décharges
+                    / Demandes Congés
+                  </p>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="Entite">Entité</label>
+                        <select
+                          class="form-control dmndRhFltr"
+                          id="Entite"
+                          name="Entite"
+                        ></select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="Etablissement">Etablissement</label>
+                        <select
+                          class="form-control dmndRhFltr"
+                          id="Etablissement"
+                          name="Etablissement"
+                        >
+                          <option value="" hidden>TOUS</option>
+                          <option value="Interne">Interne</option>
+                          <option value="XCEED">XCEED</option>
+                          <option value="RICHBOND">RICHBOND</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="Statut">Statut</label>
+                        <select
+                          class="form-control dmndRhFltr"
+                          id="Statut"
+                          name="Statut"
+                        >
+                          <option value="null">Encours</option>
+                          <option value="1">Validé</option>
+                          <option value="4">En attente signature</option>
+                          <option value="0">Rejeté</option>
+                          <option value="2">Annulé</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="Statut">Date demande entre le :</label>
+                        <input
+                          type="date"
+                          class="form-control dmndRhFltr"
+                          name="dmndte1"
+                          id="dmndte1"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="Statut">et le :</label>
+                        <input
+                          type="date"
+                          class="form-control dmndRhFltr"
+                          name="dmndte2"
+                          id="dmndte2"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                      <div class="form-group text-center">
+                        <label for="Statut">Mot Clé :</label>
+                        <input
+                          type="text"
+                          class="form-control dmndRhFltr"
+                          name="MotCle"
+                          id="MotCle"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!---------------------------------------------------------------------------------------------------Filtre-------------------------------------------------------------------------------------------------------->
+
+            <!---------------------------------------------------------------------------------------------------Tableau-------------------------------------------------------------------------------------------------------->
+            <div class="row" id="allDmndsTble">
+              <div class="col-md-12 grid-margin stretch-card">
+                <div class="card scrollTableau">
+                  <div class="card-body">
+                    <p class="card-title">List des demandes</p>
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="table-responsive">
+                          <table
+                            class="display expandable-table"
+                            style="width: 100%"
+                          >
+                            <thead>
+                              <tr>
+                                <th>Utilisateur</th>
+                                <th>Entité</th>
+                                <th>Poste</th>
+                                <th>Etablissement</th>
+                                <th>Type Demande</th>
+                                <th>Date Demandes</th>
+                                <th>Statut</th>
+                                <th class="text-center">
+                                  Accéder a la demande
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody id="dmndsTbl">
+                              <!-- <tr>
+                                <td class="py-1">
+                                  <a href="#"
+                                    >Karim BOURIR</a
+                                  >
+                                </td>
+                                <td>WEACT SERVICE</td>
+                                <td>Responsable IT</td>
+                                <td>Interne</td>
+                                <td>Demande Documents</td>
+                                <td>23/09/2023</td>
+                                <td>Encours</td>
+                                <td class="text-center">
+                                  <button
+                                    type="button"
+                                    class="btn btn-success btn-rounded btn-icon"
+                                  >
+                                    <i class="mdi mdi-pencil"></i>
+                                  </button>
+                                </td>
+                              </tr> -->
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <style>
+              .popup {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(
+                  0,
+                  0,
+                  0,
+                  0.5
+                ); /* Semi-transparent black background */
+              }
+
+              /* Styles for the popup content */
+              .popup-content {
+                position: absolute;
+
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+              }
+
+              /* Style for the close button */
+              .close {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 20px;
+                font-weight: bold;
+                cursor: pointer;
+              }
+            </style>
+            <script>
+              // var treatTheCnj = (t, tt) => {
+              //   if ($('#cnjTrComment').val()) {
+              //     var msg = '';
+              //     if (t) {
+              //       msg =
+              //         'La demande a été attribuée au département des ressources humaines.';
+              //     }
+
+              //     fetch('/TO-DO-Liste/treatTheCnj', {
+              //       method: 'POST',
+              //       headers: {
+              //         'Content-Type': 'application/json',
+              //       },
+              //       body: JSON.stringify({
+              //         i: t,
+              //         t: tt,
+              //         c: $('#cnjTrComment').val(),
+              //       }),
+              //     })
+              //       .then((response) => response.json())
+              //       .then((data) => {
+              //         if (data.error) {
+              //           console.error(data.error);
+              //         } else {
+              //           getTasks();
+              //           Swal.fire({
+              //             icon: 'success',
+              //             title: 'La tâche est terminée.',
+              //             text: msg,
+              //           });
+              //           $('#cnjTreatPopUp').hide();
+              //         }
+              //       })
+              //       .catch((error) => {
+              //         console.error('Error:', error);
+              //       });
+              //   } else {
+              //     $('#cnjTrComment').css('border', '1px solid red');
+              //     Toast.fire({
+              //       icon: 'error',
+              //       title: 'Veuillez écrire un commentaire avant le traitement',
+              //     });
+              //   }
+              // };
+
+              function closePopup() {
+                // clear();
+                document.getElementById('cnjTreatPopUp').style.display = 'none';
+              }
+            </script>
+
+            <div class="card scrollcard popup" id="cnjTreatPopUp">
+              <!---table Congé Start-->
+              <div class="card-body popup-content">
+                <span
+                  class="close"
+                  style="font-size: 30px; color: red"
+                  id="closePopupButton"
+                  onclick="closePopup()"
+                  >&times;</span
+                >
+
+                <hr />
+
+                <div class="table-responsive" id="trtWindow">
+                  <!-- <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        
+                        <th>Premier jour de congé</th>
+                        <th>Dernier jour de congé</th>
+                        <th>Nombre des jours</th>
+                        <th>Statut</th>
+                      </tr>
+                    </thead>
+                    <tbody >
+                      
+                    </tbody>
+                  </table> -->
+                </div>
+              </div>
+            </div>
+            <!---------------------------------------------------------------------------------------------------Tableau-------------------------------------------------------------------------------------------------------->
+
+            <!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+            <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+            <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+          </div>
+          <!---Body End-->
+          <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+          <!-- content-wrapper ends -->
+
+          <!-- partial:partials/_footer.html -->
+          <footer class="footer">
+            <div
+              class="d-sm-flex justify-content-center justify-content-sm-between"
+            >
+              <span
+                class="text-muted text-center text-sm-left d-block d-sm-inline-block"
+                >Copyright © 2023. SACCOMCG
+                <a href="https://www.saccomcg.com/" target="_blank">SACCOMCG</a>
+                All rights reserved.</span
+              >
+              <span
+                class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
+                >Hand-crafted & made by karim BOURIR & Yassine BAGHDADI
+                <i class="ti-heart text-danger ml-1"></i
+              ></span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+    <!-- plugins:js -->
+    <script src="vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="vendors/chart.js/Chart.min.js"></script>
+    <script src="vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="js/dataTables.select.min.js"></script>
+
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="js/off-canvas.js"></script>
+    <script src="js/hoverable-collapse.js"></script>
+    <script src="js/template.js"></script>
+    <script src="js/settings.js"></script>
+    <!-- <script src="js/todolist.js"></script> -->
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="js/dashboard.js"></script>
+    <script src="js/js/m.js"></script>
+    <script src="js/js/dmndRH.js"></script>
+    <script src="js/Chart.roundedBarCharts.js"></script>
+    <!-- End custom js for this page-->
+  </body>
+</html>

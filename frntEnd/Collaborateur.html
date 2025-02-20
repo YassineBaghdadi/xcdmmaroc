@@ -1,0 +1,2472 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Collaborateur</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="vendors/feather/feather.css" />
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
+    <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link
+      rel="stylesheet"
+      href="vendors/datatables.net-bs4/dataTables.bootstrap4.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="js/select.dataTables.min.css"
+    />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css" />
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/vertical-layout-light/style.css" />
+    <!-- endinject -->
+    <link rel="shortcut icon" href="images/favicon.png" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/js/r.js"></script>
+
+    <style>
+      div.scroll {
+        margin: 4px, 4px;
+        padding: 4px;
+        background-color: white;
+        height: 400px;
+        width: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align: justify;
+      }
+    </style>
+    <style>
+      div.scrollcard {
+        margin: 4px, 4px;
+        padding: 4px;
+        background-color: white;
+        height: 500px;
+        width: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        text-align: justify;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:partials/_navbar.html -->
+      <nav
+        class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+        id="theNavBar"
+      ></nav>
+
+      <!-- partial Start -->
+      <div class="container-fluid page-body-wrapper">
+        <div id="right-sidebar" class="settings-panel"></div>
+        <!-- partial  End-->
+        <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+        <!-- NAV /_sidebar.html START -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar"></nav>
+        <!-- NAV END -->
+
+        <!-- NAV END -->
+
+        <!-- content-wrapper Start -->
+        <div class="main-panel">
+          <!---------------------------------------------------------------------------------------------------Body Start-------------------------------------------------------------------------------------------------------->
+          <div class="content-wrapper">
+            <!---Body Start-->
+            <!----------------------------------------------------------------------------------------------------Contrat info----------------------------------------------------------------------------------------------------->
+            <script>
+              //   const Toast = Swal.mixin({
+              //   toast: true,
+              //   position: "top-end",
+              //   showConfirmButton: false,
+              //   timer: 5000,
+              //   timerProgressBar: true,
+              //   didOpen: (toast) => {
+              //     toast.onmouseenter = Swal.stopTimer;
+              //     toast.onmouseleave = Swal.resumeTimer;
+              //   },
+              // });
+              var cnjTrInfo = (t, c) => {
+                Swal.fire({
+                  title: t,
+                  text: c,
+                  icon: 'info',
+                });
+              };
+
+              //   var treatCnj = async (i) => {
+              // (async () => {
+              //     const { value: formValues } = await Swal.fire({
+              //         title: "Traiter la demande de congé",
+              //         html:
+              //             '<style>' +
+              //             '.swal2-select, .swal2-textarea {' +
+              //             '  display: block;' +
+              //             '  width: 80%;' +
+              //             '  padding: 0.3em;' +
+              //             '  box-sizing: border-box;' +
+              //             '  border: 1px solid #d9d9d9;' +
+              //             '  border-radius: 0.25em;' +
+              //             '  background: #fff;' +
+              //             '  color: #545454;' +
+              //             '  transition: border-color 0.3s, box-shadow 0.3s;' +
+              //             '}' +
+              //             '.swal2-select:focus, .swal2-textarea:focus {' +
+              //             '  border-color: #b4b4b4;' +
+              //             '  box-shadow: 0 0 0 0.2rem rgba(72, 72, 72, 0.25);' +
+              //             '}' +
+              //             '</style>' +
+              //             '<select id="status" class="swal2-select">' +
+              //             '<option  hidden value=""> Traiter ...</option>' +
+              //             '<option value="1">Validée</option>' +
+              //             '<option value="0">Rejetée</option>' +
+              //             '</select>' +
+              //             '<textarea id="comment" class="swal2-textarea" placeholder="Commentaire"></textarea>',
+              //         focusConfirm: false,
+              //         showCancelButton: true,
+              //         preConfirm: () => {
+              //             return {
+              //                 status: document.getElementById('status').value,
+              //                 comment: document.getElementById('comment').value
+              //             };
+              //         },
+
+              //     });
+              //     if (formValues.status == "") {
+              //       Toast.fire({
+              //         icon: "error",
+              //         title: "Veuillez Sélectionner le Statut de la Demande de Congé",
+              //       });
+              //     }
+              //     else if (formValues.comment == "") {
+              //       Toast.fire({
+              //         icon: "error",
+              //         title: "S'il Vous Plaît Laissez un Commentaire",
+              //       });
+              //     }else{
+              //       await fetch("/Service-Admin/tratCnj", {
+              //         method: "POST",
+              //         headers: {
+              //           "Content-Type": "application/json",
+              //         },
+              //         body: JSON.stringify({
+              //           i:i,
+              //           s: $("#mtrcl").val(),
+              //           c: $("#Civilit").val(),
+
+              //         }),
+              //       })
+              //         .then((response) => {
+              //           if (response.ok) {
+              //             return response.json();
+              //           } else {
+              //             throw new Error(`Error: ${response.statusText}`);
+              //           }
+              //         })
+              //         .then(async (data) => {
+              //           await Swal.fire(
+              //             `Profil créé : ${$("#fnme").val()} ${$(
+              //               "#lnme"
+              //             ).val()}. Informations envoyées par e-mail.`,
+              //             "",
+              //             "success"
+              //           );
+              //           window.location.replace(`/Service-Admin/Collaborateur?i=${data.id}`);
+              //         })
+              //         .catch((error) => {
+              //           console.error("Error:", error.message);
+              //         });
+              //     }
+              //     // if (formValues) {
+              //     //   console.log(formValues);
+              //     //     Swal.fire(`You selected: ${formValues.status} with comment: ${formValues.comment}`);
+              //     // }
+              // })();
+
+              //     // const { value: fruit } = await Swal.fire({
+              //     //   title: "Select field validation",
+              //     //   input: "select",
+              //     //   inputOptions: {
+              //     //     1: "Validée",
+              //     //     0: "Rejetée"
+              //     //   },
+              //     //   inputPlaceholder: "Traiter ...",
+              //     //   showCancelButton: true,
+              //     //   inputValidator: (value) => {
+              //     //     return new Promise((resolve) => {
+              //     //       if (value === "1") {
+              //     //         resolve();
+              //     //       } else {
+              //     //         resolve("You need to select oranges :)");
+              //     //       }
+              //     //     });
+              //     //   }
+              //     // });
+              //   };
+            </script>
+            <style>
+              @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+              .main-error-page {
+                min-height: 600px;
+                margin: 0px auto;
+                width: auto;
+                max-width: 560px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+              }
+              .error-title {
+                max-width: 529px;
+                font-family: Roboto;
+                font-size: 38px;
+                font-weight: bold;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                text-align: center;
+                color: #4b4b62;
+                margin-bottom: 16px;
+              }
+
+              .error-subtitle {
+                max-width: 568px;
+                font-family: Roboto;
+                font-size: 16px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.31;
+                letter-spacing: normal;
+                text-align: center;
+                color: #4b4b62;
+                margin-bottom: 24px;
+              }
+              svg {
+                margin-bottom: 16px;
+              }
+
+              .full-torradeira {
+              }
+              .torradeira {
+              }
+
+              .pao-atras {
+                animation: leftright 1s alternate infinite;
+                transform-origin: center;
+              }
+              .pao-frente {
+                animation: leftright 1s 0.3s alternate infinite;
+                transform-origin: center;
+              }
+
+              .olho-esq {
+                animation: sad 2s alternate infinite;
+                transform-origin: center;
+              }
+
+              .olho-dir {
+                animation: sad 2s alternate infinite;
+                transform-origin: center;
+              }
+              .boca {
+                animation: sad 2s alternate infinite;
+                transform-origin: center;
+              }
+              .raios {
+                -webkit-animation: flicker-4 4s linear infinite both;
+                animation: flicker-4 4s linear infinite both;
+              }
+              .tomada {
+                -webkit-animation: vibrate-1 3s linear infinite both;
+                animation: vibrate-1 3s linear infinite both;
+              }
+              .fio-500 {
+                -webkit-animation: vibrate-1 3s linear infinite both;
+                animation: vibrate-1 3s linear infinite both;
+              }
+              .fio {
+                -webkit-animation: vibrate-1 3s linear infinite both;
+                animation: vibrate-1 3s linear infinite both;
+              }
+
+              @keyframes scales {
+                from {
+                  transform: scale(0.98);
+                }
+                to {
+                  transform: scale(1);
+                }
+              }
+
+              /* ----------------------------------------------
+               * Generated by Animista on 2020-4-1 14:58:16
+               * Licensed under FreeBSD License.
+               * See http://animista.net/license for more info. 
+               * w: http://animista.net, t: @cssanimista
+               * ---------------------------------------------- */
+
+              /**
+               * ----------------------------------------
+               * animation flicker-4
+               * ----------------------------------------
+               */
+              @-webkit-keyframes flicker-4 {
+                0%,
+                100% {
+                  opacity: 1;
+                }
+                31.98% {
+                  opacity: 1;
+                }
+                32% {
+                  opacity: 0;
+                }
+                32.8% {
+                  opacity: 0;
+                }
+                32.82% {
+                  opacity: 1;
+                }
+                34.98% {
+                  opacity: 1;
+                }
+                35% {
+                  opacity: 0;
+                }
+                35.7% {
+                  opacity: 0;
+                }
+                35.72% {
+                  opacity: 1;
+                }
+                36.98% {
+                  opacity: 1;
+                }
+                37% {
+                  opacity: 0;
+                }
+                37.6% {
+                  opacity: 0;
+                }
+                37.62% {
+                  opacity: 1;
+                }
+                67.98% {
+                  opacity: 1;
+                }
+                68% {
+                  opacity: 0;
+                }
+                68.4% {
+                  opacity: 0;
+                }
+                68.42% {
+                  opacity: 1;
+                }
+                95.98% {
+                  opacity: 1;
+                }
+                96% {
+                  opacity: 0;
+                }
+                96.7% {
+                  opacity: 0;
+                }
+                96.72% {
+                  opacity: 1;
+                }
+                98.98% {
+                  opacity: 1;
+                }
+                99% {
+                  opacity: 0;
+                }
+                99.6% {
+                  opacity: 0;
+                }
+                99.62% {
+                  opacity: 1;
+                }
+              }
+              @keyframes flicker-4 {
+                0%,
+                100% {
+                  opacity: 1;
+                }
+                31.98% {
+                  opacity: 1;
+                }
+                32% {
+                  opacity: 0;
+                }
+                32.8% {
+                  opacity: 0;
+                }
+                32.82% {
+                  opacity: 1;
+                }
+                34.98% {
+                  opacity: 1;
+                }
+                35% {
+                  opacity: 0;
+                }
+                35.7% {
+                  opacity: 0;
+                }
+                35.72% {
+                  opacity: 1;
+                }
+                36.98% {
+                  opacity: 1;
+                }
+                37% {
+                  opacity: 0;
+                }
+                37.6% {
+                  opacity: 0;
+                }
+                37.62% {
+                  opacity: 1;
+                }
+                67.98% {
+                  opacity: 1;
+                }
+                68% {
+                  opacity: 0;
+                }
+                68.4% {
+                  opacity: 0;
+                }
+                68.42% {
+                  opacity: 1;
+                }
+                95.98% {
+                  opacity: 1;
+                }
+                96% {
+                  opacity: 0;
+                }
+                96.7% {
+                  opacity: 0;
+                }
+                96.72% {
+                  opacity: 1;
+                }
+                98.98% {
+                  opacity: 1;
+                }
+                99% {
+                  opacity: 0;
+                }
+                99.6% {
+                  opacity: 0;
+                }
+                99.62% {
+                  opacity: 1;
+                }
+              }
+
+              /* ----------------------------------------------
+               * Generated by Animista on 2020-4-1 15:17:57
+               * Licensed under FreeBSD License.
+               * See http://animista.net/license for more info. 
+               * w: http://animista.net, t: @cssanimista
+               * ---------------------------------------------- */
+
+              /**
+               * ----------------------------------------
+               * animation vibrate-1
+               * ----------------------------------------
+               */
+              @-webkit-keyframes vibrate-1 {
+                0% {
+                  -webkit-transform: translate(0);
+                  transform: translate(0);
+                }
+                20% {
+                  -webkit-transform: translate(-2px, 2px);
+                  transform: translate(-2px, 2px);
+                }
+                40% {
+                  -webkit-transform: translate(-2px, -2px);
+                  transform: translate(-2px, -2px);
+                }
+                60% {
+                  -webkit-transform: translate(2px, 2px);
+                  transform: translate(2px, 2px);
+                }
+                80% {
+                  -webkit-transform: translate(2px, -2px);
+                  transform: translate(2px, -2px);
+                }
+                100% {
+                  -webkit-transform: translate(0);
+                  transform: translate(0);
+                }
+              }
+              @keyframes vibrate-1 {
+                0% {
+                  -webkit-transform: translate(0);
+                  transform: translate(0);
+                }
+                20% {
+                  -webkit-transform: translate(-2px, 2px);
+                  transform: translate(-2px, 2px);
+                }
+                40% {
+                  -webkit-transform: translate(-2px, -2px);
+                  transform: translate(-2px, -2px);
+                }
+                60% {
+                  -webkit-transform: translate(2px, 2px);
+                  transform: translate(2px, 2px);
+                }
+                80% {
+                  -webkit-transform: translate(2px, -2px);
+                  transform: translate(2px, -2px);
+                }
+                100% {
+                  -webkit-transform: translate(0);
+                  transform: translate(0);
+                }
+              }
+
+              /* ----------------------------------------------
+               * Generated by Animista on 2020-4-1 15:42:45
+               * Licensed under FreeBSD License.
+               * See http://animista.net/license for more info. 
+               * w: http://animista.net, t: @cssanimista
+               * ---------------------------------------------- */
+
+              /**
+               * ----------------------------------------
+               * animation wobble-ver-right
+               * ----------------------------------------
+               */
+              @-webkit-keyframes wobble-ver-right {
+                0%,
+                100% {
+                  -webkit-transform: translateY(0) rotate(0);
+                  transform: translateY(0) rotate(0);
+                  -webkit-transform-origin: 50% 50%;
+                  transform-origin: 50% 50%;
+                }
+                15% {
+                  -webkit-transform: translateY(-30px) rotate(6deg);
+                  transform: translateY(-30px) rotate(6deg);
+                }
+                30% {
+                  -webkit-transform: translateY(15px) rotate(-6deg);
+                  transform: translateY(15px) rotate(-6deg);
+                }
+                45% {
+                  -webkit-transform: translateY(-15px) rotate(3.6deg);
+                  transform: translateY(-15px) rotate(3.6deg);
+                }
+                60% {
+                  -webkit-transform: translateY(9px) rotate(-2.4deg);
+                  transform: translateY(9px) rotate(-2.4deg);
+                }
+                75% {
+                  -webkit-transform: translateY(-6px) rotate(1.2deg);
+                  transform: translateY(-6px) rotate(1.2deg);
+                }
+              }
+
+              @keyframes sad {
+                0% {
+                  transform: rotateX(0deg) rotateY(0deg);
+                }
+                100% {
+                  transform: rotateX(10deg) rotateY(5deg);
+                }
+              }
+
+              @keyframes leftright {
+                0% {
+                  transform: rotateZ(0deg);
+                }
+                100% {
+                  transform: rotateZ(-15deg);
+                }
+              }
+            </style>
+
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Contrat : <span id="agNme"></span></h4>
+                  <form class="form-sample">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <label for="Statut"
+                          >Établissement :
+                          <h6
+                            id="etblsmt"
+                            name="Matricule"
+                            class="text-primary"
+                          >
+                            N/A
+                          </h6></label
+                        >
+                      </div>
+                      <div class="col-md-3">
+                        <label for="Entite"
+                          >Entité actual :
+                          <h6 id="entty" name="Entite" class="text-primary">
+                            N/A
+                          </h6></label
+                        >
+                      </div>
+                      <div class="col-md-2">
+                        <label for="Etablissement"
+                          >Département :
+                          <h6
+                            id="dprt"
+                            name="Etablissement"
+                            class="text-primary"
+                          >
+                            N/A
+                          </h6></label
+                        >
+                      </div>
+                      <div class="col-md-2">
+                        <label for="Statut"
+                          >Poste :
+                          <h6
+                            id="pst"
+                            name="Etablissement"
+                            class="text-primary"
+                          >
+                            N/A
+                          </h6></label
+                        >
+                      </div>
+                      <div class="col-md-2">
+                        <label for="Statut"
+                          >Statut :
+                          <h6
+                            id="stts"
+                            name="Etablissement"
+                            class="text-primary"
+                          >
+                            N/A
+                          </h6></label
+                        >
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-3">
+                        <label for="Statut"
+                          >Première Date d'intégration :
+                          <h6
+                            id="PremiereDatedintégration"
+                            name="PremiereDatedintégration"
+                            class="text-primary"
+                          >
+                            N/A
+                          </h6></label
+                        >
+                      </div>
+                      <div class="col-md-3">
+                        <label for="Statut"
+                          >Date de dernier transfert :
+                          <h6
+                            id="Datedederniertransfert"
+                            name="Datedederniertransfert"
+                            class="text-primary"
+                          >
+                            N/A
+                          </h6></label
+                        >
+                      </div>
+                      <div class="col-md-2">
+                        <label for="Statut"
+                          >TYPE CONTRAT :
+                          <h6
+                            id="cntrctTpe"
+                            name="TYPECONTRAT"
+                            class="text-primary"
+                          >
+                            N/A
+                          </h6></label
+                        >
+                      </div>
+
+                      <div class="col-md-2">
+                        <label for="Statut"
+                          >Ancienneté :
+                          <h6
+                            id="a9dmiya"
+                            name="SoldeConge"
+                            class="text-primary"
+                          >
+                            N/A
+                          </h6></label
+                        >
+                      </div>
+                      <div class="col-md-2">
+                        <label for="Statut"
+                          >Solde Congé :
+                          <h6
+                            id="cnjSld"
+                            name="SoldeConge"
+                            class="text-primary"
+                          >
+                            N/A
+                          </h6></label
+                        >
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <!------------------------------------------------------------------------------------------------------TAB----------------------------------------------------------------------------------------------------->
+            <div class="row">
+              <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <ul
+                      class="nav nav-tabs border-top"
+                      id="setting-panel"
+                      role="tablist"
+                    >
+                      <li class="nav-item">
+                        <a
+                          class="nav-link active"
+                          id="todo-tab"
+                          data-toggle="tab"
+                          href="#InformationsPresonnelle"
+                          role="tab"
+                          aria-controls="InformationsPresonnelle"
+                          aria-expanded="true"
+                          >Informations Presonnelle</a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link"
+                          id="chats-tab"
+                          data-toggle="tab"
+                          href="#Contrat"
+                          role="tab"
+                          aria-controls="Contrat"
+                          >Contrat</a
+                        >
+                      </li>
+                      <!--<li class="nav-item">
+            <a class="nav-link" id="chats-tab" data-toggle="tab" href="#TransfertContrat" role="tab" aria-controls="TransfertContrat">Transfert Contrat</a>
+          </li>-->
+                      <li class="nav-item">
+                        <a
+                          class="nav-link"
+                          id="chats-tab"
+                          data-toggle="tab"
+                          href="#Conge"
+                          role="tab"
+                          aria-controls="Conge"
+                          >Congés</a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link"
+                          id="chats-tab"
+                          data-toggle="tab"
+                          href="#Decharges"
+                          role="tab"
+                          aria-controls="Decharges"
+                          >Décharges</a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link"
+                          id="chats-tab"
+                          data-toggle="tab"
+                          href="#Deplacemnts"
+                          role="tab"
+                          aria-controls="Deplacemnts"
+                          >Déplacements</a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link"
+                          id="chats-tab"
+                          data-toggle="tab"
+                          href="#Documents"
+                          role="tab"
+                          aria-controls="Documents"
+                          >Documents</a
+                        >
+                      </li>
+                      <li class="nav-item">
+                        <a
+                          class="nav-link"
+                          id="chats-tab"
+                          data-toggle="tab"
+                          href="#disciplin"
+                          role="tab"
+                          aria-controls="disciplin"
+                          >Fiches Sanction disciplinaire</a
+                        >
+                      </li>
+                    </ul>
+                    <div class="tab-content" id="setting-content">
+                      <!------------------------------------------------------------------------------------------------------Personal info----------------------------------------------------------------------------------------------------->
+                      <div
+                        class="tab-pane fade show active scroll-wrapper"
+                        id="InformationsPresonnelle"
+                        role="tabpanel"
+                        aria-labelledby="InformationsPresonnelle"
+                      >
+                        <div class="col-12 grid-margin">
+                          <div class="card scrollcard">
+                            <div class="card-body">
+                              <form class="form-sample">
+                                <div class="row">
+                                  <div class="col-md-3">
+                                    <div class="form-group">
+                                      <label for="Statut">Matricule </label>
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        name="Matricule"
+                                        id="mtrclEdtTxt"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <div class="form-group">
+                                      <label for="Statut">N° CNSS</label>
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        name="CNSS"
+                                        id="CNSSEdtTxt"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <div class="form-group">
+                                      <label for="Statut"
+                                        >Compagnie d'assurance</label
+                                      >
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        name="Nationalit"
+                                        id="assurCmpnyEdtTxt"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <div class="form-group">
+                                      <label for="Statut"
+                                        >N° d'affiliation assurance</label
+                                      >
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        name="Matricule"
+                                        id="assrAffiliateNmbrEdtTxt"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-md-3">
+                                    <div class="form-group">
+                                      <label for="Statut">Civilité</label>
+                                      <select
+                                        class="form-control"
+                                        id="CivilitEdtTxt"
+                                        name="CivilitEdtTxt"
+                                      >
+                                        <option value="Monsieur">
+                                          Monsieur
+                                        </option>
+                                        <option value="Mademoiselle">
+                                          Mademoiselle
+                                        </option>
+                                        <option value="Madame">Madame</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <div class="form-group">
+                                      <label for="Statut">Nom</label>
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        name="Nom"
+                                        id="NomEdtTxt"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <div class="form-group">
+                                      <label for="Statut">Prénom</label>
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        name="Prenom"
+                                        id="PrenomEdtTxt"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <div class="form-group">
+                                      <label for="Statut"
+                                        >Date de naissance</label
+                                      >
+                                      <input
+                                        type="date"
+                                        class="form-control"
+                                        name="naissance"
+                                        id="naissanceEdtTxt"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-md-3">
+                                    <div class="form-group">
+                                      <label for="Statut">Nationalité</label>
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        name="Nationalit"
+                                        id="NationalitEdtTxt"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <div class="form-group">
+                                      <label for="Statut"
+                                        >N° CIN/Passport *</label
+                                      >
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        name="Matricule"
+                                        id="CINedtTxt"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <div class="form-group">
+                                      <label for="Statut"
+                                        >Situation familiale</label
+                                      >
+                                      <select
+                                        class="form-control"
+                                        id="SfamilialeEdtTxt"
+                                        name="Sfamiliale"
+                                      >
+                                        <option value="Célibataire">
+                                          Célibataire
+                                        </option>
+                                        <option value="Marié(e)">
+                                          Marié(e)
+                                        </option>
+                                        <option value="Divorcé">
+                                          Divorcé(e)
+                                        </option>
+                                        <option value="Veuf/Veuve">
+                                          Veuf/Veuve
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <div class="form-group">
+                                      <label for="Statut"
+                                        >Nombre d'enfants</label
+                                      >
+                                      <input
+                                        type="number"
+                                        class="form-control"
+                                        name="enfants"
+                                        id="enfantsEdtTxt"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-md-3">
+                                    <div class="form-group">
+                                      <label for="Statut">Ville</label>
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        name="Nationalit"
+                                        id="CtyEdtTxt"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <div class="form-group">
+                                      <label for="Statut">Code Postal</label>
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        name="Matricule"
+                                        id="zipEdtTxt"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="Statut">Adresse</label>
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        name="Adresse"
+                                        id="AdresseEdtTxt"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-md-3">
+                                    <div class="form-group">
+                                      <label for="Statut">Linkedin</label>
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        name="Nationalit"
+                                        id="lnkdinEdtTxt"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <div class="form-group">
+                                      <label for="Statut">Télé. Perso</label>
+                                      <input
+                                        type="number"
+                                        class="form-control"
+                                        name="Nationalit"
+                                        id="Tel1EdtTxt"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <div class="form-group">
+                                      <label for="Statut">Télé. Pro</label>
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        name="Matricule"
+                                        id="tel2EdtTxt"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <div class="form-group">
+                                      <label for="Statut">Mail *</label>
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        name="Adresse"
+                                        id="mailEdtTxt"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-md-3">
+                                    <div class="form-group">
+                                      <label for="Statut"
+                                        >Nom de l'organisme bancaire</label
+                                      >
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        name="Nationalit"
+                                        id="BankNmeEdtTxt"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-3">
+                                    <div class="form-group">
+                                      <label for="Statut">Nom Agence</label>
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        name="Adresse"
+                                        id="AgenceBankEdtTxt"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="Statut">RIB</label>
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        name="Adresse"
+                                        id="ribEdtTxt"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row text-center">
+                                  <div class="col-md-12 text-center">
+                                    <button
+                                      type="button"
+                                      class="btn btn-primary md-5"
+                                      id="mdfPersoInfosBtn"
+                                    >
+                                      Modifier
+                                    </button>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!----------------------------------------------------------------------------------------------------Personal info------------------------------------------------------------------------------------------------------------------>
+
+                      <!----------------------------------------------------------------------------------------------------Contrat info------------------------------------------------------------------------------------------------------------------>
+                      <div
+                        class="tab-pane fade"
+                        id="Contrat"
+                        role="tabpanel"
+                        aria-labelledby="Contrat"
+                      >
+                        <div class="col-12 grid-margin">
+                          <div class="card">
+                            <div class="card-body">
+                              <!------------------------------------------------------------------------------------Liste Des Contrat Strat---------------------------------------------------------------------------->
+                              <style>
+                                #AddCmntBtn {
+                                  margin-left: 10px;
+                                  margin-bottom: 5px;
+                                  position: relative;
+                                  text-decoration: none;
+                                  font-size: inherit;
+
+                                  color: blue;
+                                  font-weight: bold;
+                                  cursor: pointer;
+                                  transition: color 0.3s ease;
+                                }
+
+                                #AddCmntBtn:hover {
+                                  color: red;
+                                }
+
+                                #AddCmntBtn::after {
+                                  content: '';
+                                  position: absolute;
+                                  left: 50%;
+                                  bottom: 0;
+                                  width: 0;
+                                  height: 2px;
+                                  background-color: red;
+                                  transition: width 0.4s ease, left 0.4s ease;
+                                }
+
+                                #AddCmntBtn:hover::after {
+                                  width: 100%;
+                                  left: 0;
+                                }
+                              </style>
+                              <div class="row">
+                                <div class="col-md-12 grid-margin stretch-card">
+                                  <div
+                                    class="card scrollTableau"
+                                    id="cntrsContainer"
+                                  >
+                                    <!-- <p class="card-title">Commentaires</p> -->
+
+                                    <div class="row">
+                                      <h5 style="padding-top: 2px">
+                                        Commentaires
+                                      </h5>
+                                      <a href="#" id="AddCmntBtn">
+                                        Ajouter un commentaire</a
+                                      >
+                                    </div>
+
+                                    <textarea
+                                      name=""
+                                      rows="4"
+                                      style="
+                                        font-weight: bold;
+                                        color: #616169;
+                                        padding-left: 1cm;
+                                        font-style: oblique;
+                                      "
+                                      id="cmnts"
+                                      disabled
+                                    >
+                                    </textarea>
+                                    <div class="row"></div>
+                                    <div class="card-body">
+                                      <!-- <img src="403.gif" /> -->
+                                      <div class="row">
+                                        <div class="col-md-8">
+                                          <p class="card-title">
+                                            List des Contrats
+                                          </p>
+                                          <!--order by date transfert ASC-->
+                                        </div>
+                                        <div class="col-md-4">
+                                          <a
+                                            id="addCntrBtn"
+                                            href="#"
+                                            class="nav-link h5"
+                                            data-toggle="modal"
+                                            data-target="#TraitementContrat"
+                                            ><span
+                                              >Nouveau Traitement Contrat</span
+                                            ></a
+                                          >
+                                        </div>
+                                      </div>
+                                      <div class="row">
+                                        <div class="col-12">
+                                          <div class="table-responsive">
+                                            <table
+                                              id=""
+                                              class="display expandable-table"
+                                              style="width: 100%"
+                                            >
+                                              <thead>
+                                                <th>ID</th>
+                                                <th>#Date</th>
+                                                <!--Date Saisie-->
+                                                <th>Statut</th>
+                                                <th>Entité</th>
+                                                <th>TYPE CONTRAT</th>
+                                                <!--Transfére contrat, renouvellement contrat, Switch contrat-->
+                                                <th>Date de début</th>
+                                                <!-- Date d'intégration , Date renouvellement contrat, Date Switch contrat, date Transfére contrat-->
+
+                                                <th>Date clôture</th>
+                                                <th>Poste</th>
+                                              </thead>
+                                              <tbody
+                                                id="allTrsfCntrTble"
+                                              ></tbody>
+                                            </table>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <!------------------------------------------------------------------------------------Liste Des Contrat End---------------------------------------------------------------------------->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!--------------------------------------------------------------Pop Up  Submit Candidature Start---------------------------------------------------------------------->
+
+                      <div
+                        class="modal fade"
+                        id="TraitementContrat"
+                        tabindex="-1"
+                        role="dialog"
+                        aria-labelledby="modalRequestLabel"
+                        aria-hidden="true"
+                      >
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">Contrat</h5>
+                              <button
+                                type="button"
+                                class="close"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                                id="clsBtn"
+                              >
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form class="form-sample">
+                                <div class="row" id="cntrSttsDv">
+                                  <div class="col-md-12">
+                                    <div class="form-group">
+                                      <label for="Etablissement"
+                                        >Statut *</label
+                                      >
+                                      <select
+                                        class="form-control"
+                                        id="CntrctStts"
+                                        name="UpdateContrat"
+                                      >
+                                        <option value="FIN DE CONTRAT">
+                                          FIN DE CONTRAT
+                                        </option>
+                                        <option value="TRANSFERT">
+                                          TRANSFERT
+                                        </option>
+                                        <option value="SWITCH CDI">
+                                          SWITCH CDI
+                                        </option>
+                                        <option value="RENOUVELLEMENT">
+                                          RRENOUVELLEMENT
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="Etablissement"
+                                        >Etablissement *</label
+                                      >
+                                      <select
+                                        class="form-control"
+                                        id="EtablissementX"
+                                        name="Etablissement"
+                                      >
+                                        <option value="INTERNE">INTERNE</option>
+                                        <option value="RICHBOND">
+                                          RICHBOND
+                                        </option>
+                                        <option value="ALTIMA">ALTIMA</option>
+                                        <option value="PMI">PMI</option>
+                                        <option value="JAPONEZA">
+                                          JAPONEZA
+                                        </option>
+                                        <option value="METABRAIN">
+                                          METABRAIN
+                                        </option>
+                                        <option value="ROCHE">ROCHE</option>
+                                        <option value="3BF">3BF</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="Entite">Entité *</label>
+                                      <select
+                                        class="form-control"
+                                        id="EntiteX"
+                                        name="Entite"
+                                      ></select>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="Etablissement"
+                                        >Département *</label
+                                      >
+                                      <select
+                                        class="form-control"
+                                        id="dprtsX"
+                                        name="Etablissement"
+                                      ></select>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="Statut"
+                                        >L'intitulé du poste *</label
+                                      >
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        name="Poste"
+                                        id="PosteX"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="Statut"
+                                        >Date d'intégration *</label
+                                      >
+                                      <input
+                                        type="date"
+                                        class="form-control"
+                                        name="intégration"
+                                        id="intégrationX"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="Statut">Type Contrat *</label>
+                                      <select
+                                        class="form-control"
+                                        id="newCntrTpe"
+                                        name="TypeContrat"
+                                      >
+                                        <option value="CDI">CDI</option>
+                                        <option value="CDD">CDD</option>
+                                        <option value="CTE">CTE</option>
+                                        <option value="ANAPEC">ANAPEC</option>
+                                        <option value="AUTRE">Autre</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row" id="endCntrDte" hidden>
+                                  <div class="col-md-12">
+                                    <div class="form-group">
+                                      <label for="Statut"
+                                        >Date fin contrat
+                                      </label>
+                                      <input
+                                        type="date"
+                                        class="form-control"
+                                        name="fincontrat"
+                                        id="fincontratX"
+                                      />
+                                      <!--Enabled if type contrat in Anapec, CDD, Autre-->
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row" id="finContratCheckBox">
+                                  <div class="col-md-12 grid-margin">
+                                    <div class="col-12 col-md-12">
+                                      <label
+                                        class="form-check-label text-danger"
+                                      >
+                                        <input
+                                          type="checkbox"
+                                          class="form-check-input"
+                                          id="isClosedZ"
+                                        /><!-- Contrat clôturer : OUI / Non-->
+                                        Cocher la case si vous souhaitez
+                                        clôturer le contrat encours. Merci de
+                                        bien noté que le solde des congés et
+                                        Ancienneté seront réinitialiser
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row" hidden id="cntrClosinInfos">
+                                  <!--hidden if checkbox = False -->
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="Statut">Date clôture *</label>
+                                      <input
+                                        type="date"
+                                        class="form-control"
+                                        name="Datecloture"
+                                        id="ClsdDateOld"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="Statut"
+                                        >Motif de clôture *</label
+                                      >
+                                      <select
+                                        class="form-control"
+                                        id="clsMtf"
+                                        name="clsMtf"
+                                      >
+                                        <option value="Rupture">Rupture</option>
+                                        <option value="Licenciement">
+                                          Licenciement
+                                        </option>
+                                        <option value="Démission">
+                                          Démission
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row text-center">
+                                  <div class="col-md-12 text-center">
+                                    <button
+                                      type="button"
+                                      id="EdtCntrSveBtn"
+                                      class="btn btn-primary md-5"
+                                    >
+                                      Save
+                                    </button>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--------------------------------------------------------------Pop Up Submit Candidature End---------------------------------------------------------------------->
+                      <div
+                        class="modal fade"
+                        id="MdfContrat"
+                        tabindex="-1"
+                        role="dialog"
+                        aria-labelledby="modalRequestLabel"
+                        aria-hidden="true"
+                      >
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">
+                                Modification du contrat :
+                                <span id="cntrID"></span>
+                              </h5>
+                              <button
+                                type="button"
+                                class="close"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                                id="MclsBtn"
+                              >
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form class="form-sample">
+                                <div class="row" id="cntrSttsDv">
+                                  <div class="col-md-12">
+                                    <div class="form-group">
+                                      <label for="Etablissement"
+                                        >Statut *</label
+                                      >
+                                      <select
+                                        class="form-control"
+                                        id="MCntrctStts"
+                                        name="UpdateContrat"
+                                      >
+                                        <option value="EN POSTE">
+                                          EN POSTE
+                                        </option>
+                                        <option value="FIN DE CONTRAT">
+                                          FIN DE CONTRAT
+                                        </option>
+                                        <option value="TRANSFERT">
+                                          TRANSFERT
+                                        </option>
+                                        <option value="SWITCH CDI">
+                                          SWITCH CDI
+                                        </option>
+                                        <option value="RENOUVELLEMENT">
+                                          RRENOUVELLEMENT
+                                        </option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="Etablissement"
+                                        >Etablissement *</label
+                                      >
+                                      <select
+                                        class="form-control"
+                                        id="MEtablissementX"
+                                        name="Etablissement"
+                                      >
+                                        <option value="INTERNE">INTERNE</option>
+                                        <option value="RICHBOND">
+                                          RICHBOND
+                                        </option>
+                                        <option value="ALTIMA">ALTIMA</option>
+                                        <option value="PMI">PMI</option>
+                                        <option value="JAPONEZA">
+                                          JAPONEZA
+                                        </option>
+                                        <option value="METABRAIN">
+                                          METABRAIN
+                                        </option>
+                                        <option value="ROCHE">ROCHE</option>
+                                        <option value="3BF">3BF</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="Entite">Entité *</label>
+                                      <select
+                                        class="form-control"
+                                        id="MEntiteX"
+                                        name="Entite"
+                                      ></select>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="Etablissement"
+                                        >Département *</label
+                                      >
+                                      <select
+                                        class="form-control"
+                                        id="MdprtsX"
+                                        name="Etablissement"
+                                      ></select>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="Statut"
+                                        >L'intitulé du poste *</label
+                                      >
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        name="Poste"
+                                        id="MPosteX"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="Statut"
+                                        >Date d'intégration *</label
+                                      >
+                                      <input
+                                        type="date"
+                                        class="form-control"
+                                        name="intégration"
+                                        id="MintégrationX"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <label for="Statut">Type Contrat *</label>
+                                      <select
+                                        class="form-control"
+                                        id="MnewCntrTpe"
+                                        name="TypeContrat"
+                                      >
+                                        <option value="CDI">CDI</option>
+                                        <option value="CDD">CDD</option>
+                                        <option value="CTE">CTE</option>
+                                        <option value="ANAPEC">ANAPEC</option>
+                                        <option value="AUTRE">Autre</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row" id="endCntrDte">
+                                  <div class="col-md-12">
+                                    <div class="form-group">
+                                      <label for="Statut"
+                                        >Date fin contrat
+                                      </label>
+                                      <input
+                                        type="date"
+                                        class="form-control"
+                                        name="fincontrat"
+                                        id="MfincontratX"
+                                      />
+                                      <!--Enabled if type contrat in Anapec, CDD, Autre-->
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row text-center">
+                                  <div class="col-md-12 text-center">
+                                    <button
+                                      type="button"
+                                      id="EdtCntrBtn"
+                                      class="btn btn-primary md-5"
+                                    >
+                                      Modifier
+                                    </button>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!----------------------------------------------------------------------------------------------------DEMANDES Conge----------------------------------------------------------------------------------------------------------->
+                      <div
+                        class="tab-pane fade"
+                        id="Conge"
+                        role="tabpanel"
+                        aria-labelledby="Conge"
+                      >
+                        <div class="col-md-12 grid-margin stretch-card">
+                          <div class="card">
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-md-4">
+                                  <h4 class="card-title">
+                                    Solde congés annuel payés :
+                                  </h4>
+                                </div>
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <input
+                                      type="number"
+                                      class="form-control text-center"
+                                      name="soldConge"
+                                      id="soldConge"
+                                      disabled
+                                    />
+                                  </div>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                  <div class="col-md-12 text-center">
+                                    <button
+                                      type="button"
+                                      id="mdfCnjBtn"
+                                      class="btn btn-warning md-5"
+                                    >
+                                      Modifier
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="row" id="cnjContainer">
+                              <!---table Congé Start-->
+                              <div class="card-body scroll">
+                                <h4 class="card-title">Liste des Congés</h4>
+                                <div class="table-responsive">
+                                  <table class="table table-striped">
+                                    <thead>
+                                      <tr>
+                                        <th>ID</th>
+                                        <th>Date</th>
+                                        <th>Premier jour</th>
+                                        <th>Dernier jour</th>
+                                        <th>Nombre des jours</th>
+                                        <th>Validation N+1</th>
+                                        <th>Validation DRH</th>
+                                        <th>Statut</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody id="cnjTbl"></tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                            <!---table Congé End-->
+
+                            <div class="row" hidden>
+                              <!---historique demande congé  start -->
+                              <div class="col-md-6 grid-margin">
+                                <div class="table-responsive">
+                                  <table class="table table-striped">
+                                    <thead>
+                                      <tr>
+                                        <th>Historique</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>
+                                          <a href="#">25/04/2023 10:37</a>
+                                        </td>
+                                        <td>
+                                          <select
+                                            class="form-control"
+                                            id="validationN1"
+                                            name="validationN1"
+                                            disabled
+                                          >
+                                            <option>Validée</option>
+                                            <option>En cours</option>
+                                            <option>Rejetée</option>
+                                          </select>
+                                        </td>
+                                        <td>Yassine Baghdadi</td>
+                                      </tr>
+                                      <tr>
+                                        <td>
+                                          <a href="#">25/04/2023 13:15</a>
+                                        </td>
+                                        <td>
+                                          <select
+                                            class="form-control"
+                                            id="validationN1"
+                                            name="validationN1"
+                                          >
+                                            <option></option>
+                                            <option>Validée</option>
+                                            <option>En cours</option>
+                                            <option>Rejetée</option>
+                                          </select>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                              <div class="col-md-6 grid-margin">
+                                <div class="row form-group">
+                                  <div class="col-12 col-md-12">
+                                    <label
+                                      for="Objet"
+                                      class="form-control-label"
+                                      >Commentaire</label
+                                    >
+                                    <textarea
+                                      class="form-control"
+                                      name="Message"
+                                      id="Message"
+                                      rows="10"
+                                      disabled
+                                    >
+                Yassine Baghdadi : je valide le congé pour Mr karim bourir
+              </textarea
+                                    >
+                                  </div>
+                                </div>
+                                <div class="row text-center">
+                                  <div class="col-md-12 text-center">
+                                    <button
+                                      type="submit"
+                                      class="btn btn-primary md-5"
+                                    >
+                                      Enregistré
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!---historique demande congé  END -->
+                          </div>
+                        </div>
+                      </div>
+                      <!----------------------------------------------------------------------------------------------------DEMANDES Conge----------------------------------------------------------------------------------------------------------->
+
+                      <!----------------------------------------------------------------------------------------------------DEMANDES Decharges------------------------------------------------------------------------------------------------------->
+                      <div
+                        class="tab-pane fade"
+                        id="Decharges"
+                        role="tabpanel"
+                        aria-labelledby="Decharges"
+                      >
+                        <div class="row">
+                          <!---table Décharge Start-->
+                          <div class="card-body scroll" id="dchrgContainer">
+                            <h4 class="card-title">Liste des Décharges</h4>
+                            <div class="table-responsive">
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>Date demande</th>
+                                    <th>Date sortie</th>
+                                    <th>Date de reprise</th>
+                                    <th>Validation N+1</th>
+                                    <!--- En cours, validée, Refusée-->
+                                    <th>Statut</th>
+                                  </tr>
+                                </thead>
+                                <tbody id="dchrgeTble">
+                                  <!-- <tr>
+              <td><a href="#">20/03/2023 10:30</a></td>
+              <td>20/03/2023 12:30</td>
+              <td>20/03/2023 18:00</td>
+              <td><label class="badge badge-success">Validée</label></td>
+              <td><label class="badge badge-success">Validée</label></td>
+            </tr>
+            <tr>
+              <td><a href="#">20/03/2023 10:30</a></td>
+              <td>20/03/2023 12:30</td>
+              <td>20/03/2023 18:00</td>
+              <td><label class="badge badge-success">Validée</label></td>
+              <td><label class="badge badge-warning">En cours</label></td>
+            </tr>
+            <tr>
+              <td><a href="#">20/03/2023 10:30</a></td>
+              <td>20/03/2023 12:30</td>
+              <td>20/03/2023 18:00</td>
+              <td><label class="badge badge-warning">En cours</label></td>
+              <td><label class="badge badge-danger">Annulée</label></td>
+            </tr>
+            <tr>
+              <td><a href="#">20/03/2023 10:30</a></td>
+              <td>20/03/2023 12:30</td>
+              <td>20/03/2023 18:00</td>
+              <td><label class="badge badge-danger">Refusée</label></td>
+              <td><label class="badge badge-danger">Refusée</label></td>
+            </tr> -->
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <!---table Décharge End-->
+
+                        <hr />
+
+                        <div class="row" hidden>
+                          <!---historique demande Décharge  start -->
+                          <div class="col-md-8 grid-margin">
+                            <div class="table-responsive scroll">
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>Historique</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>
+                                      <a href="#">Demande d'Annulation</a>
+                                    </td>
+                                    <!--une fois c'est la phrase Demande d'Annulation devient la date de traitement -->
+                                    <td>
+                                      <select
+                                        class="form-control"
+                                        id="DemandeAnnulation"
+                                        name="DemandeAnnulation"
+                                      >
+                                        <option></option>
+                                        <option>Annulée la demande</option>
+                                        <option>Mantenir la demande</option>
+                                      </select>
+                                    </td>
+                                    <!---show if the agent ask for discard -->
+                                    <td></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td><a href="#">20/03/2023 10:30</a></td>
+                                    <td>
+                                      <select
+                                        class="form-control"
+                                        id="DemandeAnnulation"
+                                        name="DemandeAnnulation"
+                                      >
+                                        <option></option>
+                                        <option>Validée</option>
+                                        <option>Refusée</option>
+                                      </select>
+                                    </td>
+                                  </tr>
+
+                                  <tr>
+                                    <td><a href="#">20/03/2023 10:30</a></td>
+                                    <td>Demande annulée</td>
+                                    <td>Fayssal SOQRATI</td>
+                                  </tr>
+                                  <tr>
+                                    <td><a href="#">20/03/2023 10:30</a></td>
+                                    <td>Demande d'Annulation</td>
+                                    <td>KARIM BOURIR</td>
+                                  </tr>
+                                  <tr>
+                                    <td><a href="#">20/03/2023 10:30</a></td>
+                                    <td>Refusée</td>
+                                    <td>Yassine Baghdadi</td>
+                                  </tr>
+                                  <tr>
+                                    <td><a href="#">20/03/2023 10:30</a></td>
+                                    <td>Validée</td>
+                                    <td>Yassine Baghdadi</td>
+                                  </tr>
+                                  <tr>
+                                    <td><a href="#">20/03/2023 10:30</a></td>
+                                    <td>En cours</td>
+                                    <td>system</td>
+                                  </tr>
+                                  <tr>
+                                    <td><a href="#">20/03/2023 10:30</a></td>
+                                    <td>Demande Envoyé</td>
+                                    <td>KARIM BOURIR</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                          <div class="col-md-4 grid-margin">
+                            <div class="row form-group">
+                              <div class="col-12 col-md-12">
+                                <label for="Objet" class="form-control-label"
+                                  >Message</label
+                                >
+                                <textarea
+                                  class="form-control"
+                                  name="Message"
+                                  id="Message"
+                                  rows="24"
+                                >
+                                </textarea>
+                              </div>
+                            </div>
+                            <div class="row text-center">
+                              <div class="col-md-12 text-center">
+                                <button
+                                  type="submit"
+                                  class="btn btn-primary md-5"
+                                >
+                                  Enregistré
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!---historique demande Décharge  END -->
+                      </div>
+                      <!----------------------------------------------------------------------------------------------------DEMANDES Decharges----------------------------------------------------------------------------------------------------------->
+
+                      <!---------------------------------------------------------------------------------------------Deplacement---------------------------------------------------------------------------------------------------->
+                      <div
+                        class="tab-pane fade"
+                        id="Deplacemnts"
+                        role="tabpanel"
+                        aria-labelledby="Deplacemnts"
+                      >
+                        <div class="row">
+                          <!---table Déplacements Start-->
+                          <div class="card-body scroll">
+                            <h4 class="card-title">Liste des Déplacements</h4>
+                            <div class="table-responsive">
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>Date demande</th>
+                                    <th>Sortie</th>
+                                    <th>Reprise</th>
+                                    <th>Passation</th>
+                                    <th>Validation N+1</th>
+                                    <!--- En cours, validée, Refusée-->
+                                    <th>Statut</th>
+                                  </tr>
+                                </thead>
+                                <tbody id="dplcmTbl"></tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <!---table Déplacements End-->
+
+                        <hr />
+
+                        <div class="row" hidden>
+                          <!---historique demande Déplacements  start -->
+                          <div class="col-md-6 grid-margin">
+                            <div class="table-responsive scroll">
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>Historique</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>20/03/2023 10:30</td>
+                                    <td><a href="#">Annuler</a></td>
+                                    <td>KARIM BOURIR</td>
+                                  </tr>
+                                  <tr>
+                                    <td>20/03/2023 10:30</td>
+                                    <td><a href="#">Refusée</a></td>
+                                    <td>Yassine Baghdadi</td>
+                                  </tr>
+                                  <tr>
+                                    <td>20/03/2023 10:30</td>
+                                    <td><a href="#">Validée</a></td>
+                                    <td>Yassine Baghdadi</td>
+                                  </tr>
+                                  <tr>
+                                    <td>20/03/2023 10:30</td>
+                                    <td><a href="#">En cours</a></td>
+                                    <td>system</td>
+                                  </tr>
+                                  <tr>
+                                    <td>20/03/2023 10:30</td>
+                                    <td><a href="#">Demande Envoyé </a></td>
+                                    <td>KARIM BOURIR</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                          <div class="col-md-6 grid-margin">
+                            <div class="row form-group">
+                              <div class="col-12 col-md-12">
+                                <label for="Objet" class="form-control-label"
+                                  >Détails</label
+                                >
+                                <textarea
+                                  class="form-control"
+                                  name="Message"
+                                  id="Message"
+                                  rows="15"
+                                  disabled
+                                >
+                                </textarea>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!---historique demande Déplacements  END -->
+                      </div>
+                      <!---------------------------------------------------------------------------------------------Deplacement---------------------------------------------------------------------------------------------------->
+
+                      <!----------------------------------------------------------------------------------------------------DEMANDES Documents----------------------------------------------------------------------------------------------------------->
+                      <div
+                        class="tab-pane fade"
+                        id="Documents"
+                        role="tabpanel"
+                        aria-labelledby="Documents"
+                      >
+                        <div class="row">
+                          <!---table liste demande Start-->
+                          <div class="card-body scroll">
+                            <h4 class="card-title">Liste des demandes</h4>
+                            <div class="table-responsive">
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>Date demande</th>
+                                    <th class="text-center">
+                                      Documents demandés
+                                    </th>
+                                    <th>Commentaire de l'agent</th>
+                                    <th>STATUT</th>
+                                    <th>Date traitement</th>
+                                  </tr>
+                                </thead>
+                                <tbody id="DCsRqTbl"></tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <!---table liste demande End-->
+                        <script src="js/js/agnts.js"></script>
+
+                        <script>
+                          var RHtreatDCSreq = (s, i) => {
+                            fetch('/Service-Admin/RHtreatDCSreq', {
+                              method: 'POST',
+                              headers: {
+                                'Content-Type': 'application/json',
+                              },
+                              body: JSON.stringify({
+                                i: i,
+                                s: s,
+                              }),
+                            })
+                              .then((response) => response.json())
+                              .then((data) => {
+                                getDCSreqTble();
+                                Swal.close();
+                                Toast.fire({
+                                  icon: 'success',
+                                  title:
+                                    'La demande des Documents a été traitée',
+                                });
+                              })
+                              .catch((error) => {
+                                console.error('Error:', error);
+                              });
+                          };
+                        </script>
+                        <div class="row" hidden>
+                          <!---historique demande congé  start -->
+                          <div class="col-md-6 grid-margin">
+                            <div class="table-responsive">
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>Historique</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td><a href="#">Qualification</a></td>
+                                    <td>
+                                      <select
+                                        class="form-control"
+                                        id="QualificationDemandeDocuments"
+                                        name="QualificationDemandeDocuments"
+                                      >
+                                        <option></option>
+                                        <option>En cours</option>
+                                        <option>En attente signature</option>
+                                        <option>Livré</option>
+                                        <option>Refusé</option>
+                                      </select>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td><a href="#">26/04/2023 16:00</a></td>
+                                    <td>Livré</td>
+                                    <td>Samia ELAABAD</td>
+                                  </tr>
+                                  <tr>
+                                    <td><a href="#">26/04/2023 12:30</a></td>
+                                    <td>En attente signature</td>
+                                    <td>Samia ELAABAD</td>
+                                  </tr>
+                                  <tr>
+                                    <td><a href="#">25/04/2023 10:30</a></td>
+                                    <td>En cours</td>
+                                    <td>Samia ELAABAD</td>
+                                  </tr>
+                                  <tr>
+                                    <td><a href="#">24/03/2023 15:30</a></td>
+                                    <td>Demande Envoyé</td>
+                                    <td>KARIM BOURIR</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                          <div class="col-md-6 grid-margin">
+                            <div class="row form-group">
+                              <div class="col-12 col-md-12">
+                                <label for="Objet" class="form-control-label"
+                                  >Détails</label
+                                >
+                                <textarea
+                                  class="form-control"
+                                  name="Message"
+                                  id="Message"
+                                  rows="20"
+                                >
+                                </textarea>
+                              </div>
+                            </div>
+                            <div class="row text-center">
+                              <div class="col-md-12 text-center">
+                                <button
+                                  type="submit"
+                                  class="btn btn-primary md-5"
+                                >
+                                  Enregistré
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!---historique demande congé  END -->
+                      </div>
+
+                      <div
+                        class="tab-pane fade"
+                        id="disciplin"
+                        role="tabpanel"
+                        aria-labelledby="disciplin"
+                      ></div>
+                      <!----------------------------------------------------------------------------------------------------DEMANDES Documents----------------------------------------------------------------------------------------------------------->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!----------------------------------------------------------------------------------------------------Historique Start----------------------------------------------------------------------------------------------------------->
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Historique</h4>
+                  <div class="row">
+                    <!---historique Global start -->
+                    <div class="col-md-12 grid-margin">
+                      <div class="table-responsive">
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th>Date</th>
+                              <th>By</th>
+                              <th>Type</th>
+                            </tr>
+                          </thead>
+                          <tbody id="hstrTbl">
+                            <!-- <tr>
+                  <td><a href="#">26/04/2023 16:00</a></td>
+                  <td>Karim BOURIR</td>
+                  <td> Changement de numéro de téléphone de 0654598756 a 0633808013</td>
+                </tr>
+                <tr>
+                  <td><a href="#">26/04/2023 16:00</a></td>
+                  <td>Samia LAABAD</td>
+                  <td>Modification contrat: transfére contrat de saccomcc a weact service</td>
+                </tr>
+                <tr>
+                  <td><a href="#">26/04/2023 16:00</a></td>
+                  <td>Fyçal SOQRATI</td>
+                  <td>Modification statut demande congé avec id <span>005</span> a validé</td>
+                </tr>
+                <tr>
+                  <td><a href="#">26/04/2023 16:00</a></td>
+                  <td>Fyçal SOQRATI</td>
+                  <td>Accés dossier Collaborateur</td>
+                </tr>
+     -->
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <!---historique Global END -->
+                </div>
+              </div>
+            </div>
+            <script>
+              function closePopup() {
+                // clear();
+                document.getElementById('cnjTreatPopUp').style.display = 'none';
+              }
+            </script>
+            <style>
+              .popup {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(
+                  0,
+                  0,
+                  0,
+                  0.5
+                ); /* Semi-transparent black background */
+              }
+
+              /* Styles for the popup content */
+              .popup-content {
+                position: absolute;
+
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+              }
+
+              /* Style for the close button */
+              .close {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 20px;
+                font-weight: bold;
+                cursor: pointer;
+              }
+            </style>
+
+            <div class="card scrollcard popup" id="cnjTreatPopUp">
+              <!---table Congé Start-->
+              <div class="card-body popup-content">
+                <span
+                  class="close"
+                  style="font-size: 30px; color: red"
+                  id="closePopupButton"
+                  onclick="closePopup()"
+                  >&times;</span
+                >
+
+                <hr />
+
+                <div class="table-responsive" id="trtWindow"></div>
+              </div>
+            </div>
+            <!----------------------------------------------------------------------------------------------------Historique End----------------------------------------------------------------------------------------------------------->
+            <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+          </div>
+          <!---Body End-->
+
+          <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+          <!-- content-wrapper ends -->
+
+          <!-- partial:partials/_footer.html -->
+          <footer class="footer">
+            <div
+              class="d-sm-flex justify-content-center justify-content-sm-between"
+            >
+              <span
+                class="text-muted text-center text-sm-left d-block d-sm-inline-block"
+                >Copyright © 2023. SACCOMCG
+                <a href="https://www.saccomcg.com/" target="_blank">SACCOMCG</a>
+                All rights reserved.</span
+              >
+              <span
+                class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
+                >Hand-crafted & made by karim BOURIR & Yassine BAGHDADI
+                <i class="ti-heart text-danger ml-1"></i
+              ></span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+
+    <!-- plugins:js -->
+    <script src="vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="vendors/chart.js/Chart.min.js"></script>
+    <script src="vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="js/dataTables.select.min.js"></script>
+
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="js/off-canvas.js"></script>
+    <script src="js/hoverable-collapse.js"></script>
+    <script src="js/template.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="js/dashboard.js"></script>
+    <script src="js/js/m.js"></script>
+    <script src="js/Chart.roundedBarCharts.js"></script>
+    <!-- End custom js for this page-->
+  </body>
+</html>
