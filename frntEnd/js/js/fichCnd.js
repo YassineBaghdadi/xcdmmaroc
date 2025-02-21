@@ -382,6 +382,10 @@ $(document).ready(() => {
         },
         error: (xhr, status, error) => {
           console.log(xhr.responseText);
+          Toast.fire({
+            icon: 'error',
+            title: xhr.responseText,
+          });
         },
       });
     } else {

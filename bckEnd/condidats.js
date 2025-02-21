@@ -258,15 +258,21 @@ app.post('/addLang', async (req, res) => {
   var [id] = await db.execute(
     `select id from _carreerCondidats where uniqID = "${req.body.i}"`
   );
-
-  await db.execute(
-    `insert into _carreerCondidatsLangs (nme, cndidat, lvl, addedBy, addedDte) value("${
-      req.body.lng
-    }", ${id[0].id}, "${req.body.niv}", "${req.cookies.usdt.fname} ${
-      req.cookies.usdt.lname
-    }", "${getCurrentDteTime()}")`
+  var [lang] = await db.execute(
+    `select id from _carreerCondidatsLangs where nme = "${req.body.lng}" and cndidat = "${id[0].id}"`
   );
-  res.json('done');
+  if (lang.length > 0) {
+    res.status(500).json('La langue existe déjà');
+  } else {
+    await db.execute(
+      `insert into _carreerCondidatsLangs (nme, cndidat, lvl, addedBy, addedDte) value("${
+        req.body.lng
+      }", ${id[0].id}, "${req.body.niv}", "${req.cookies.usdt.fname} ${
+        req.cookies.usdt.lname
+      }", "${getCurrentDteTime()}")`
+    );
+    res.json('done');
+  }
 });
 
 app.post('/evalLang', async (req, res) => {
