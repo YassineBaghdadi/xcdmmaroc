@@ -233,6 +233,12 @@ $(document).ready(() => {
       .then((dd) => {
         var data = dd.data;
 
+        document.getElementById(
+          'clbPic'
+        ).src = `./rcs/ProfilePics/${data.id}.${data.picExt}`;
+        document.getElementById(
+          'theBigPic'
+        ).src = `./rcs/ProfilePics/${data.id}.${data.picExt}`;
         document.title = `${data.fname} ${data.lname}`;
         $('#agNme').html(`${data.fname} ${data.lname}`);
         $('#mtrcl').html(`${data.matricule}`);
