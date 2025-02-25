@@ -241,10 +241,15 @@ app.post('/sveCnj', upload.single('prflCnjProofInput'), async (req, res) => {
       fileExtension = req.file.originalname.split('.').pop();
     }
     const { ctpe, sd, ed, cout } = req.body;
+
     var [c] = await db.execute(`SELECT * FROM _Conjes 
-      WHERE  (stts NOT IN (0, 2) OR stts IS NULL) and ((fday <= '${ed}' AND lday >= '${sd}') OR 
-      (fday <= '${sd}' AND lday >= '${ed}') OR 
-      (fday >= '${sd}' AND lday <= '${ed}'))`);
+WHERE (stts NOT IN (0, 2) OR stts IS NULL) 
+AND (
+    (fday <= '${ed}' AND lday >= '${sd}') 
+    OR (fday <= '${sd}' AND lday >= '${ed}') 
+    OR (fday >= '${sd}' AND lday <= '${ed}')
+) 
+AND usr = ${req.cookies.usdt.id};`);
 
     if (c[0]) {
       res.json({ message: 'no' });
@@ -285,7 +290,7 @@ L'agent ${fullName} a demandé ${cout} jours de ${ctpe.trim()}, du ${sd} au ${ed
       `select u.email, u.id, concat(u.fname , " ", u.lname) as nme from _Users u inner join _Departments d on d.responsable = u.id where d.id = ${req.cookies.usdt.department}; `
     );
 
-    console.log(req.cookies.usdt);
+    // console.log(req.cookies.usdt);
 
     if (req.cookies.usdt.id == rsp[0].id) {
       if (req.cookies.usdt.department == 100) {

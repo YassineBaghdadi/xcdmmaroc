@@ -363,6 +363,7 @@ $(document).ready(() => {
 
   $('#addLangBtn').click(() => {
     if ($('#NiveauLangue').val() && $('#langsList').val()) {
+      $('#addLangBtn').attr('disabled', true);
       $.ajax({
         type: 'POST',
         url: '/Recrutement/Candidats/addLang',
@@ -379,6 +380,7 @@ $(document).ready(() => {
             icon: 'succes',
             title: 'La Langue a été ajoutée avec succès',
           });
+          $('#addLangBtn').removeAttr('disabled');
         },
         error: (xhr, status, error) => {
           console.log(xhr.responseText);
