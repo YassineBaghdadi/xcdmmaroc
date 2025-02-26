@@ -55,6 +55,16 @@ app.get('/', async (req, res) => {
 
 app.use(express.static(path.join(__dirname, '../frntEnd'), { index: false }));
 
+const rndmTxt = (n) => {
+  return [...Array(12)]
+    .map(() =>
+      'abcdefghijkmnopqrstuvwxyz0123456789'.charAt(
+        Math.floor(Math.random() * n)
+      )
+    )
+    .join('');
+};
+
 app.post('/getOffers', async (req, res) => {
   var cndtions = [];
   var access = true;
@@ -183,25 +193,53 @@ app.post('/getOffers', async (req, res) => {
                                     >
                                       <option value="${
                                         e.uniqId
-                                      }?p=JobBoard">JobBoard</option>
+                                      }?p=JobBoard&pr=${rndmTxt(
+      Math.floor(Math.random() * (11 - 3)) + 3
+    )}%${req.cookies.usdt.id}%${rndmTxt(
+      Math.floor(Math.random() * (20 - 5)) + 5
+    )}">JobBoard</option>
                                       <option value="${
                                         e.uniqId
-                                      }?p=Facebook">Facebook</option>
+                                      }?p=Facebook&pr=${rndmTxt(
+      Math.floor(Math.random() * (11 - 3)) + 3
+    )}%${req.cookies.usdt.id}%${rndmTxt(
+      Math.floor(Math.random() * (20 - 5)) + 5
+    )}">Facebook</option>
                                       <option value="${
                                         e.uniqId
-                                      }?p=Linkedin">Linkedin</option>
+                                      }?p=Linkedin&pr=${rndmTxt(
+      Math.floor(Math.random() * (11 - 3)) + 3
+    )}%${req.cookies.usdt.id}%${rndmTxt(
+      Math.floor(Math.random() * (20 - 5)) + 5
+    )}">Linkedin</option>
                                       <option value="${
                                         e.uniqId
-                                      }?p=Instgram">Instgram</option>
+                                      }?p=Instgram&pr=${rndmTxt(
+      Math.floor(Math.random() * (11 - 3)) + 3
+    )}%${req.cookies.usdt.id}%${rndmTxt(
+      Math.floor(Math.random() * (20 - 5)) + 5
+    )}">Instgram</option>
                                       <option value="${
                                         e.uniqId
-                                      }?p=Avito">Avito</option>
+                                      }?p=Avito&pr=${rndmTxt(
+      Math.floor(Math.random() * (11 - 3)) + 3
+    )}%${req.cookies.usdt.id}%${rndmTxt(
+      Math.floor(Math.random() * (20 - 5)) + 5
+    )}">Avito</option>
                                       <option value="${
                                         e.uniqId
-                                      }?p=Moncallcenter">Moncallcenter.ma</option>
+                                      }?p=Moncallcenter&pr=${rndmTxt(
+      Math.floor(Math.random() * (11 - 3)) + 3
+    )}%${req.cookies.usdt.id}%${rndmTxt(
+      Math.floor(Math.random() * (20 - 5)) + 5
+    )}">Moncallcenter.ma</option>
                                       <option value="${
                                         e.uniqId
-                                      }?p=ERP">Autre</option>
+                                      }?p=ERP&pr=${rndmTxt(
+      Math.floor(Math.random() * (11 - 3)) + 3
+    )}%${req.cookies.usdt.id}%${rndmTxt(
+      Math.floor(Math.random() * (20 - 5)) + 5
+    )}">Autre</option>
                                     </select>
                                   </div>
                                 </td>
@@ -209,14 +247,43 @@ app.post('/getOffers', async (req, res) => {
                                 <td class="text-center">
                                   <button
                                     type="button"
-                                    class="btn btn-primary btn-rounded cpLnk"  onclick="navigator.clipboard.writeText('http://career.xcdmmaroc.com/Offer/' + this.closest('tr').querySelector('select').value); Toast.fire({icon: 'success', title: 'Le Lien copié avec succès !'});"
+                                    class="btn btn-primary btn-rounded cpLnk"
                                   >
                                     <i class="mdi mdi-link"></i>
                                   </button>
                                 </td>
                               </tr>`;
   }
+  // navigator.clipboard.writeText('http://career.xcdmmaroc.com/Offer/' + this.closest('tr').querySelector('select').value);
   // console.log(tbl);
+
+  tbl += `
+  
+    <script>
+    
+
+  const elements = document.getElementsByClassName("cpLnk");
+
+Array.from(elements).forEach(element => {
+    element.addEventListener("click", function() {
+        var link =
+      'http://career.xcdmmaroc.com/Offer/' +
+      this.closest('tr').querySelector('select').value;
+
+    console.log(link);
+
+    Toast.fire({ icon: 'success', title: 'Le Lien copié avec succès !' });
+    const tempInput = document.createElement('input');
+  document.body.appendChild(tempInput);
+  tempInput.value = link;
+  tempInput.select();
+  document.execCommand('copy');
+  document.body.removeChild(tempInput);
+    });
+});
+</script>
+
+  `;
 
   res.json({ t: tbl, access: access });
 });

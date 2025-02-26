@@ -58,7 +58,7 @@ $(document).ready(() => {
         }
       })
       .then((data) => {
-        console.log(data);
+        // console.log(data);
 
         if (!data.access) {
           $(`#addNewOffrBtn`).attr('hidden', true);
@@ -181,4 +181,5 @@ $(document).ready(() => {
       },
     });
   });
+  document.getElementB;
 });

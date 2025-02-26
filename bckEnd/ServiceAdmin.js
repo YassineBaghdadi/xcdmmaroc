@@ -118,6 +118,15 @@ app.post('/saveNewAgent', async (req, res) => {
 
     const pswH = (await bcrypt.hash(psw, 10)).toString();
 
+    // var uid = crypto
+    //   .createHash('md5')
+    //   .update(
+    //     `${removeSpces(req.body.f)}${removeSpces(req.body.g)}XCDM${removeSpces(
+    //       req.body.j
+    //     )}`
+    //   )
+    //   .digest('hex');
+
     const qr = `insert into _Users 
               (matricule, sex, lname, 
                 fname, bd, CIN, famlyStts, city, adress, 
@@ -157,7 +166,7 @@ app.post('/saveNewAgent', async (req, res) => {
       'ERP : Création de votre profil',
       `<div style='font-family: Arial, sans-serif;'><p>Cher(e) ${req.body.g} ${req.body.f},</p><br/><br/><p>Nous sommes heureux de vous informer que votre profil a &eacute;t&eacute; cr&eacute;&eacute; avec succ&egrave;s sur notre plateforme.</p><p>Voici vos informations de connexion :</p><ul><li><strong>Nom d'utilisateur :</strong> ${usrNme}</li><li><strong>Mot de passe :</strong> ${psw}</li></ul><p>Nous vous recommandons de modifier votre mot de passe d&egrave;s votre premi&egrave;re connexion pour des raisons de s&eacute;curit&eacute;. Si vous avez des questions ou des probl&egrave;mes, n'h&eacute;sitez pas &agrave; nous contacter.</p><br/><p>Acc&eacute;dez &agrave; l'ERP en cliquant <a href='http://erp.xcdmmaroc.com/'>ici</a>.</p><p style='font-style: italic;'><br/>Cordialement,<br />XCDM ERP (Team IT)</p></div>`
     );
-    res.json({ pwd: psw, id: nw.insertId });
+    res.json({ id: nw.insertId });
   } catch (error) {
     lg.error(error);
   }
