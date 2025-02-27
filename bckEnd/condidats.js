@@ -123,7 +123,7 @@ app.post('/getCnds', async (req, res) => {
 
       return `
       <tr>
-          <td class="py-1 text-center"><a href="/Recrutement/Candidats/${
+          <td class="py-1 "><a href="/Recrutement/Candidats/${
             e.uniqID
           }"><img src="images/faces/Default.jpg" alt="image" width="30px" height="30px"/>${
         e.fname
