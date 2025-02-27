@@ -123,6 +123,8 @@ $(document).ready(() => {
       $('#Poste').val() &&
       $('#Profil').val()
     ) {
+      $('#sveJbOfrBTN').attr('hidden', true);
+
       const formData = {
         Titre: $('#Titre').val(),
         rcrtTpe: $('#RecrutementTpe').val(),
@@ -199,6 +201,7 @@ $(document).ready(() => {
             icon: 'success',
             title: txt,
           });
+          $('#sveJbOfrBTN').removeAttr('hidden');
         })
         .catch((error) => {
           console.error('Error:', error.message);
