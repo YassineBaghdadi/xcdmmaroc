@@ -254,7 +254,7 @@ app.post('/getOffers', async (req, res) => {
                                 </td>
                               </tr>`;
   }
-  // navigator.clipboard.writeText('http://career.xcdmmaroc.com/Offer/' + this.closest('tr').querySelector('select').value);
+  // navigator.clipboard.writeText('https://xcdmmaroc.com/Career/Offer/' + this.closest('tr').querySelector('select').value);
   // console.log(tbl);
 
   tbl += `
@@ -267,7 +267,7 @@ app.post('/getOffers', async (req, res) => {
 Array.from(elements).forEach(element => {
     element.addEventListener("click", function() {
         var link =
-      'https://career.xcdmmaroc.com/Offer/' +
+      'https://xcdmmaroc.com/Career/Offer/' +
       this.closest('tr').querySelector('select').value;
 
     console.log(link);
