@@ -159,7 +159,7 @@ app.post('/getOffers', async (req, res) => {
                                   ${iid}
                                 </td>
                                 <td>${e.stts}</td>
-                                <td>${e.rcrtPour ? e.rcrtPour : 'Interne'}</td>
+                                <td>${e.rcrtTpe}</td>
                                 <td>${formateDate(e.dte).split(' ')[0]}</td>
                                 <td>${e.unme}</td>
                                 <td class="text-center">

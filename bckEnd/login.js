@@ -109,7 +109,7 @@ app.post('/login', async (req, res) => {
         expiresIn: expiresIn,
       }
     );
-    lg.info(`${user.id} logged in`);
+    lg.info(`${user.fname} ${user.lname} logged in`);
     await db.execute(
       `update _Users set tkn = "${token.split('.')[2]}" where id = ${user.id}`
     );
