@@ -120,7 +120,7 @@ $(document).ready(() => {
             title: 'Oops...',
             text: "Vous devez d'abord vous connecter pour pouvoir postuler à cette offre.",
           });
-          window.location.href = `/login?next=/Career/Offer/${ofId}`;
+          window.location.href = `/Career/login?next=/Career/Offer/${ofId}`;
         } else if (data.c == 1) {
           Toast.fire({
             icon: 'Error',
