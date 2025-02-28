@@ -267,7 +267,7 @@ app.post('/getOffers', async (req, res) => {
 Array.from(elements).forEach(element => {
     element.addEventListener("click", function() {
         var link =
-      'http://career.xcdmmaroc.com/Offer/' +
+      'https://career.xcdmmaroc.com/Offer/' +
       this.closest('tr').querySelector('select').value;
 
     console.log(link);
