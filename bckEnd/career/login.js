@@ -150,7 +150,7 @@ app.post('/signup', upload.single('cv'), async (req, res) => {
   sendMail(
     removeSpces(req.body.ml),
     'XCDMMaroc : Création de votre profil',
-    `<div style='font-family: Arial, sans-serif;'><p>Cher(e) ${req.body.fn} ${req.body.ln},</p><br/><br/><p>Nous sommes heureux de vous informer que votre profil a &eacute;t&eacute; cr&eacute;&eacute; avec succ&egrave;s sur notre plateforme.</p><p>Voici vos informations de connexion :</p><ul><li><strong>Nom d'utilisateur :</strong> ${req.body.ml}</li><li><strong>Mot de passe :</strong> ${psw}</li></ul><p> Si vous avez des questions ou des probl&egrave;mes, n'h&eacute;sitez pas &agrave; nous contacter.</p><br/><p>Acc&eacute;dez &agrave; l'ERP en cliquant <a href='https://career.xcdmmaroc.com/Contact/'>ici</a>.</p><p style='font-style: italic;'><br/>Cordialement,<br />XCDM ERP (Team IT)</p></div>`
+    `<div style='font-family: Arial, sans-serif;'><p>Cher(e) ${req.body.fn} ${req.body.ln},</p><br/><br/><p>Nous sommes heureux de vous informer que votre profil a &eacute;t&eacute; cr&eacute;&eacute; avec succ&egrave;s sur notre plateforme.</p><p>Voici vos informations de connexion :</p><ul><li><strong>Nom d'utilisateur :</strong> ${req.body.ml}</li><li><strong>Mot de passe :</strong> ${psw}</li></ul><p> Si vous avez des questions ou des probl&egrave;mes, n'h&eacute;sitez pas &agrave; nous contacter.</p><br/><p>Acc&eacute;dez &agrave; l'ERP en cliquant <a href='https://xcdmmaroc.com/Career/Contact/'>ici</a>.</p><p style='font-style: italic;'><br/>Cordialement,<br />XCDM ERP (Team IT)</p></div>`
   );
   res.json('done');
 });
