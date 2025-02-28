@@ -191,6 +191,8 @@ const today = date_ob.getFullYear() + '-' + mnth + '-' + dy;
 const loginRouter = require('./login');
 app.use('/login', loginRouter);
 
+app.use('/Career', require('./career'));
+
 app.use('/ERP', require('./Home'));
 
 const HomeRouter = require('./pblc');

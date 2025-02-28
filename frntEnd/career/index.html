@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+  <head>
+    <!-- Mobile Specific Meta -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/fav.png" />
+    <!-- Author Meta -->
+    <meta name="author" content="codepixer" />
+    <!-- Meta Description -->
+    <meta name="description" content="" />
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="" />
+    <!-- meta character set -->
+    <meta charset="UTF-8" />
+    <!-- Site Title -->
+    <title>XCDM MAROC-Recrutement</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700"
+      rel="stylesheet"
+    />
+
+    <!--
+			CSS
+			============================================= -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x104"
+      href="img/XCDM_MAROC.png"
+    />
+    <link rel="stylesheet" href="css/linearicons.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" />
+    <link rel="stylesheet" href="css/nice-select.css" />
+    <link rel="stylesheet" href="css/animate.min.css" />
+    <link rel="stylesheet" href="css/owl.carousel.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="vendors/select2/select2.min.css" />
+    <link
+      rel="stylesheet"
+      href="vendors/select2-bootstrap-theme/select2-bootstrap.min.css"
+    />
+
+    <script src="js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/js/hme.js"></script>
+  </head>
+  <body>
+    <header id="header" id="home">
+      <div class="container">
+        <div class="row align-items-center justify-content-between d-flex">
+          <div id="logo">
+            <a href="/Career"
+              ><img
+                src="img/XCDM_MAROC.png"
+                width="120px"
+                height="70px"
+                alt="XCDM MAROC"
+            /></a>
+          </div>
+          <nav id="nav-menu-container">
+            <ul class="nav-menu">
+              <li class="menu-active"><a href="/Career">Accueil</a></li>
+              <li><a href="https://xcdmmaroc.com/">Qui-Somme-Nous</a></li>
+              <li><a href="/Career/Contact">Contact</a></li>
+
+              <li>
+                <a
+                  class="genric-btn primary small"
+                  href="/Career/Login"
+                  id="lgnprflBtn"
+                  >Mon profil</a
+                >
+              </li>
+              <!-- If user already connected replace Connexion with "Mon Profil"-->
+            </ul>
+          </nav>
+          <!-- #nav-menu-container -->
+        </div>
+      </div>
+    </header>
+    <!-- #header -->
+
+    <!-- start banner Area -->
+    <section class="banner-area relative" id="home">
+      <div class="overlay overlay-bg"></div>
+      <div class="container">
+        <div
+          class="row fullscreen d-flex align-items-center justify-content-center"
+        >
+          <div class="banner-content col-lg-12">
+            <h1 class="text-white">
+              Trouvez votre prochaine carrière parmi nos offres
+              <span>Nationales</span> et <span>Internationales</span>
+            </h1>
+
+            <form class="serach-form-area">
+              <div class="row justify-content-center form-wrap">
+                <div class="col-lg-4 form-cols">
+                  <div class="default-select" id="FfuncxDiv">
+                    <select
+                      class="js-example-basic-single w-100"
+                      name="fonctions"
+                      id="Ffuncx"
+                    >
+                      <option value="">Toutes les fonctions</option>
+                      <option value="Achats / Supply Chain">
+                        Achats / Supply Chain
+                      </option>
+                      <option value="Administration des ventes / SAV">
+                        Administration des ventes / SAV
+                      </option>
+                      <option value="Agriculture">Agriculture</option>
+                      <option
+                        value="Assistanat de Direction / Services Généraux"
+                      >
+                        Assistanat de Direction / Services Généraux
+                      </option>
+                      <option value="Assurance">Assurance</option>
+                      <option value="Audit / Conseil">Audit / Conseil</option>
+                      <option value="Avocat / Juriste / Fiscaliste">
+                        Avocat / Juriste / Fiscaliste
+                      </option>
+                      <option value="Banque">Banque</option>
+                      <option value="Call Centers">Call Centers</option>
+                      <option value="Caméraman / Monteur / Preneur de son">
+                        Caméraman / Monteur / Preneur de son
+                      </option>
+                      <option value="Commercial / Vente / Export">
+                        Commercial / Vente / Export
+                      </option>
+                      <option value="Communication / Publicité / RP">
+                        Communication / Publicité / RP
+                      </option>
+                      <option value="Coursier / Gardiennage / Propreté">
+                        Coursier / Gardiennage / Propreté
+                      </option>
+                      <option value="Distribution">Distribution</option>
+                      <option value="Electricité">Electricité</option>
+                      <option value="Enseignement">Enseignement</option>
+                      <option value="Environnement">Environnement</option>
+                      <option value="Gestion / Comptabilité / Finance">
+                        Gestion / Comptabilité / Finance
+                      </option>
+                      <option value="Gestion projet / Etudes">
+                        Gestion projet / Etudes / R&amp;D
+                      </option>
+                      <option value="Hôtellerie / Restauration">
+                        Hôtellerie / Restauration
+                      </option>
+                      <option value="Immobilier / Promotion">
+                        Immobilier / Promotion
+                      </option>
+                      <option value="Imprimerie">Imprimerie</option>
+                      <option value="Informatique / Electronique">
+                        Informatique / Electronique
+                      </option>
+                      <option value="Journalisme / Traduction">
+                        Journalisme / Traduction
+                      </option>
+                      <option value="Logistique / Transport">
+                        Logistique / Transport
+                      </option>
+                      <option value="Marketing">Marketing</option>
+                      <option value="Multimédia / Internet">
+                        Multimédia / Internet
+                      </option>
+                      <option value="Médical / Paramédical">
+                        Médical / Paramédical
+                      </option>
+                      <option value="Méthodes / Process / Industrialisation">
+                        Méthodes / Process / Industrialisation
+                      </option>
+                      <option
+                        value="Production / Qualité / Sécurité / Maintenance"
+                      >
+                        Production / Qualité / Sécurité / Maintenance
+                      </option>
+                      <option value="RH / Personnel / Formation">
+                        RH / Personnel / Formation
+                      </option>
+                      <option value="Responsable de Département">
+                        Responsable de Département
+                      </option>
+                      <option value="Santé / Social">Santé / Social</option>
+                      <option value="Sport / Loisirs">Sport / Loisirs</option>
+                      <option value="Tourisme (métiers du)">
+                        Tourisme (métiers du)
+                      </option>
+                      <option value="Travaux / Chantiers / BTP">
+                        Travaux / Chantiers / BTP
+                      </option>
+                      <option value="Télécoms / Réseaux">
+                        Télécoms / Réseaux
+                      </option>
+                      <option value="Urbanisme / architecture">
+                        Urbanisme / architecture
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-4 form-cols">
+                  <div class="default-select" id="FrgnDiv">
+                    <select
+                      class="js-example-basic-single w-100"
+                      id="Frgn"
+                      name="region"
+                    >
+                      <option value="">Opportunités par emplacement</option>
+                      <option value="Nationales et internationales">
+                        Nationales et internationales
+                      </option>
+                      <option value="Internationales">Internationales</option>
+                      <option value="Tout le Maroc (Nationales)">
+                        Tout le Maroc (Nationales)
+                      </option>
+                      <option value="Casablanca et région">
+                        Casablanca et région
+                      </option>
+                      <option value="Agadir et région">Agadir et région</option>
+                      <option value="Al Hoceima et région">
+                        Al Hoceima et région
+                      </option>
+                      <option value="Béni Mellal et région">
+                        Béni Mellal et région
+                      </option>
+                      <option value="Fès et région">Fès et région</option>
+                      <option value="Kénitra et région">
+                        Kénitra et région
+                      </option>
+                      <option value="Laâyoune et région">
+                        Laâyoune et région
+                      </option>
+                      <option value="Marrakech et région">
+                        Marrakech et région
+                      </option>
+                      <option value="Meknès et région">Meknès et région</option>
+                      <option value="Ouad Ed Dahab et région">
+                        Ouad Ed Dahab et région
+                      </option>
+                      <option value="Oujda et région">Oujda et région</option>
+                      <option value="Rabat et région">Rabat et région</option>
+                      <option value="Safi et région">Safi et région</option>
+                      <option value="Settat et région">Settat et région</option>
+                      <option value="Tanger et région">Tanger et région</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-3 form-cols">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="search"
+                    placeholder="Recherche par mots-clés"
+                    id="Fcle"
+                  />
+                </div>
+                <div class="col-lg-1 form-cols">
+                  <button type="button" id="searchBtn" class="btn btn-info">
+                    <span class="lnr lnr-magnifier"></span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End banner Area -->
+
+    <!-- Start features Area -->
+    <section class="features-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6">
+            <div class="single-feature">
+              <h4>Recherche</h4>
+              <p>
+                Découvrez de nombreuses offres d'emploi facilement accessibles.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="single-feature">
+              <h4>Postuler</h4>
+              <p>
+                Consultez et postulez à des postes adaptés à vos compétences.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="single-feature">
+              <h4>Sécurité</h4>
+              <p>
+                Vos informations personnelles sont protégées par nos normes de
+                sécurité les plus élevées.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="single-feature">
+              <h4>Notifications</h4>
+              <p>
+                Recevez des alertes personnalisées pour ne jamais manquer une
+                opportunité.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End features Area -->
+
+    <!-- Start feature-cat Area--
+			<section class="feature-cat-area pt-100" id="category">
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<div class="menu-content pb-60 col-lg-10">
+							<div class="title text-center">
+								<h1 class="mb-10">Catégories d'emploi</h1>
+							</div>
+						</div>
+					</div>						
+					<div class="row">
+
+						<div class="col-lg-2 col-md-4 col-sm-6">
+							<div class="single-fcat">
+								<a href="#">
+									<img src="img/o5.png" alt="">
+								</a>
+								<p>Centre d'appel</p>
+							</div>
+						</div>
+
+						
+						<div class="col-lg-2 col-md-4 col-sm-6">
+							<div class="single-fcat">
+								<a href="#">
+									<img src="img/o3.png" alt="">
+								</a>
+								<p>Technologie</p>
+							</div>
+						</div>
+
+						<div class="col-lg-2 col-md-4 col-sm-6">
+							<div class="single-fcat">
+								<a href="#">
+									<img src="img/o1.png" alt="">
+								</a>
+								<p>Management</p>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-4 col-sm-6">
+							<div class="single-fcat">
+								<a href="#">
+									<img src="img/Restauration.png" alt="">
+								</a>
+								<p>Restauration</p>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-4 col-sm-6">
+							<div class="single-fcat">
+								<a href="#">
+									<img src="img/Hotel.png" alt="">
+								</a>
+								<p>hôtellerie</p>
+							</div>
+						</div>
+
+						<div class="col-lg-2 col-md-4 col-sm-6">
+							<div class="single-fcat">
+								<a href="#">
+									<img src="img/Medical.png" alt="">
+								</a>
+								<p>Médical</p>
+							</div>			
+						</div>																											
+					</div>
+				</div>	
+			</section>
+			  End feature-cat Area -->
+
+    <!-- Start post Area -->
+    <section class="post-area section-gap">
+      <div class="container">
+        <div class="row justify-content-center d-flex">
+          <div class="col-lg-4 sidebar">
+            <div class="single-slidebar">
+              <h4>Critères de recherche</h4>
+              <ul>
+                <li>
+                  <span class="text-black">Fonction: </span>
+                  <span id="FltrFfuncxLabel" class="text-warning h6 FltrLbls"
+                    >Tous</span
+                  >
+                  <span
+                    style="cursor: pointer"
+                    id="FltrFfuncxCls"
+                    hidden
+                    class="fa fa-close text-danger clsFltr"
+                    data-ii="Ffuncx"
+                  ></span>
+                </li>
+                <!--Tous / Selected Fonction from the liste-->
+                <li>
+                  <span class="text-black">Emplacement: </span>
+                  <span id="FltrFrgnLabel" class="text-warning h6 FltrLbls"
+                    >Tous</span
+                  >
+                  <span
+                    hidden
+                    id="FltrFrgnCls"
+                    style="cursor: pointer"
+                    class="fa fa-close text-danger clsFltr"
+                    data-ii="Frgn"
+                  ></span>
+                </li>
+                <!--Tous / Selected palce from the liste-->
+                <li>
+                  <span class="text-black">Mots-Clés: </span
+                  ><span id="FltrFcleLabel" class="text-warning h6 FltrLbls"
+                    >Tous</span
+                  >
+                  <span
+                    hidden
+                    id="FltrFcleCls"
+                    style="cursor: pointer"
+                    class="fa fa-close text-danger clsFltr"
+                    data-ii="Fcle"
+                  ></span>
+                </li>
+                <!--les mots saisie par le visiteur-->
+
+                <!--Tous / Mi-temps / temps-plein / Freelance / Télétravail-->
+                <li>
+                  <span class="text-black">Secteur: </span
+                  ><span id="FltrFSctrLabel" class="text-warning h6 FltrLbls"
+                    >Tous</span
+                  >
+                  <span
+                    hidden
+                    id="FltrFSctrCls"
+                    style="cursor: pointer"
+                    class="fa fa-close text-danger clsFltr"
+                    data-ii="FSctr"
+                  ></span>
+                </li>
+                <!--Tous / Selected Secteur from the liste-->
+                <li>
+                  <span class="text-black">Salaire: </span
+                  ><span id="FltrFslrLabel" class="text-warning h6 FltrLbls"
+                    >Tous</span
+                  >
+                  <span
+                    hidden
+                    id="FltrFslrCls"
+                    style="cursor: pointer"
+                    class="fa fa-close text-danger clsFltr"
+                    data-ii="Fslr"
+                  ></span>
+                </li>
+                <!--Tous / Selected salary from the liste-->
+                <li>
+                  <span class="text-black">Années d'expérience: </span
+                  ><span id="FltrFexcprLabel" class="text-warning h6 FltrLbls"
+                    >Tous</span
+                  >
+                  <span
+                    hidden
+                    id="FltrFexcprCls"
+                    style="cursor: pointer"
+                    class="fa fa-close text-danger clsFltr"
+                    data-ii="Fexcpr"
+                  ></span>
+                </li>
+                <!--Tous / Selected Années d'expérience from the liste-->
+                <li>
+                  <span class="text-black">Niveau d'étude: </span
+                  ><span id="FltrFetdLabel" class="text-warning h6 FltrLbls"
+                    >Tous</span
+                  >
+                  <span
+                    hidden
+                    id="FltrFetdCls"
+                    style="cursor: pointer"
+                    class="fa fa-close text-danger clsFltr"
+                    data-ii="Fetd"
+                  ></span>
+                </li>
+                <!--Tous / Selected Niveau d'étude from the liste-->
+                <li>
+                  <span class="text-black">Type de formation: </span
+                  ><span id="FltrFrmtionLabel" class="text-warning h6 FltrLbls"
+                    >Tous</span
+                  >
+                  <span
+                    hidden
+                    id="FltrFrmtionCls"
+                    style="cursor: pointer"
+                    class="fa fa-close text-danger clsFltr"
+                    data-ii="Frmtion"
+                  ></span>
+                </li>
+                <!--Tous / Selected Type de formation from the liste-->
+              </ul>
+              <hr />
+              <div class="row justify-content-center align-items-center">
+                <li>
+                  <a href="" id="clearFilters" class="text-black"
+                    ><span class="fa fa-trash text-danger"></span> Supprimer
+                    tous les filtres</a
+                  >
+                </li>
+              </div>
+            </div>
+            <div class="single-slidebar">
+              <h4>Affiner les résultats</h4>
+              <div class="default-select form-cols" id="FslrDiv">
+                <select
+                  class="js-example-basic-single w-100"
+                  name="Salaire"
+                  id="Fslr"
+                >
+                  <option value="">Salaire souhaité</option>
+                  <option value="Moins de 4000 DH nets mensuels">
+                    Moins de 4000 DH nets mensuels
+                  </option>
+                  <option value="4000 - 6000 DH nets mensuels">
+                    4000 - 6000 DH nets mensuels
+                  </option>
+                  <option value="6000 - 8000 DH nets mensuels">
+                    6000 - 8000 DH nets mensuels
+                  </option>
+                  <option value="8000 - 10000 DH nets mensuels">
+                    8000 - 10000 DH nets mensuels
+                  </option>
+                  <option value="10000 - 15000 DH nets mensuels">
+                    10000 - 15000 DH nets mensuels
+                  </option>
+                  <option value="15000 - 20000 DH nets mensuels">
+                    15000 - 20000 DH nets mensuels
+                  </option>
+                  <option value="20000 - 30000 DH nets mensuels">
+                    20000 - 30000 DH nets mensuels
+                  </option>
+                  <option value="30000 - 40000 DH nets mensuels">
+                    30000 - 40000 DH nets mensuels
+                  </option>
+                  <option value="Plus de 40000 DH nets mensuels">
+                    Plus de 40000 DH nets mensuels
+                  </option>
+                </select>
+              </div>
+              <div class="default-select form-cols" id="FSctrDiv">
+                <select
+                  class="js-example-basic-single w-100"
+                  name="Secteur"
+                  id="FSctr"
+                >
+                  <option value="">Secteur souhaité</option>
+                  <option value="Aéronautique / Spatial">
+                    Aéronautique / Spatial
+                  </option>
+                  <option value="Agence pub / Marketing Direct">
+                    Agence pub / Marketing Direct
+                  </option>
+                  <option value="Agriculture / Environnement">
+                    Agriculture / Environnement
+                  </option>
+                  <option value="Agroalimentaire">Agroalimentaire</option>
+                  <option value="Assurance / Courtage">
+                    Assurance / Courtage
+                  </option>
+                  <option value="Audiovisuel">Audiovisuel</option>
+                  <option value="Automobile / Motos / Cycles">
+                    Automobile / Motos / Cycles
+                  </option>
+                  <option value="Banque / Finance">Banque / Finance</option>
+                  <option value="BTP / Génie Civil">BTP / Génie Civil</option>
+                  <option value="Centre d'appel">Centre d'appel</option>
+                  <option value="Chimie / Parachimie / Peintures">
+                    Chimie / Parachimie / Peintures
+                  </option>
+                  <option value="Comptabilité / Audit">
+                    Comptabilité / Audit
+                  </option>
+                  <option value="Conseil / Etudes">Conseil / Etudes</option>
+                  <option value="Distribution">Distribution</option>
+                  <option value="Edition / Imprimerie">
+                    Edition / Imprimerie
+                  </option>
+                  <option value="Enseignement / Formation">
+                    Enseignement / Formation
+                  </option>
+                  <option value="Energie">Energie</option>
+                  <option value="Extraction / Mines">Extraction / Mines</option>
+                  <option value="Ferroviaire">Ferroviaire</option>
+                  <option value="Hôtellerie / Restauration">
+                    Hôtellerie / Restauration
+                  </option>
+                  <option value="Immobilier / Promoteur / Agence">
+                    Immobilier / Promoteur / Agence
+                  </option>
+                  <option value="Informatique">Informatique</option>
+                  <option value="Internet / Multimédia">
+                    Internet / Multimédia
+                  </option>
+                  <option value="Matériel Médical">Matériel Médical</option>
+                  <option value="Pétrole / Gaz">Pétrole / Gaz</option>
+                  <option value="Pharmacie / Santé">Pharmacie / Santé</option>
+                  <option value="Plasturgie">Plasturgie</option>
+                  <option value="Presse">Presse</option>
+                  <option value="Recrutement / Intérim">
+                    Recrutement / Intérim
+                  </option>
+                  <option value="Service public / Administration">
+                    Service public / Administration
+                  </option>
+                  <option value="Tabac">Tabac</option>
+                  <option value="Telecom">Telecom</option>
+                  <option value="Textile / Cuir">Textile / Cuir</option>
+                  <option value="Tourisme / Voyage / Loisirs">
+                    Tourisme / Voyage / Loisirs
+                  </option>
+                  <option value="Transport / Messagerie / Logistique">
+                    Transport / Messagerie / Logistique
+                  </option>
+                  <option value="Ameublement / Décoration">
+                    Ameublement / Décoration
+                  </option>
+                  <option value="Communication / Evénementiel">
+                    Communication / Evénementiel
+                  </option>
+                  <option value="Cosmétique / Parfumerie / Luxe">
+                    Cosmétique / Parfumerie / Luxe
+                  </option>
+                  <option value="Electro-mécanique / Mécanique">
+                    Electro-mécanique / Mécanique
+                  </option>
+                  <option value="Electronique">Electronique</option>
+                  <option value="Import / Export / Négoce">
+                    Import / Export / Négoce
+                  </option>
+                  <option value="Juridique / Cabinet d’avocats">
+                    Juridique / Cabinet d’avocats
+                  </option>
+                  <option value="Métallurgie / Sidérurgie">
+                    Métallurgie / Sidérurgie
+                  </option>
+                  <option value="Nettoyage / Sécurité / Gardiennage">
+                    Nettoyage / Sécurité / Gardiennage
+                  </option>
+                  <option value="Offshoring / Nearshoring">
+                    Offshoring / Nearshoring
+                  </option>
+                  <option value="Papier / Carton">Papier / Carton</option>
+                  <option value="Electricité">Electricité</option>
+                  <option value="Autres Industries">Autres Industries</option>
+                  <option value="Autres services">Autres services</option>
+                </select>
+              </div>
+              <div class="default-select form-cols" id="FexcprDiv">
+                <select
+                  class="js-example-basic-single w-100"
+                  name="expérience"
+                  id="Fexcpr"
+                >
+                  <option value="">Années d'expérience</option>
+                  <option value="Débutant">Débutant</option>
+                  <option value="Moins de 1 an">Moins de 1 an</option>
+                  <option value="De 1 à 3 ans">De 1 à 3 ans</option>
+                  <option value="De 3 à 5 ans">De 3 à 5 ans</option>
+                  <option value="De 5 à 10 ans">De 5 à 10 ans</option>
+                  <option value="De 10 à 20 ans">De 10 à 20 ans</option>
+                  <option value="Plus de 20 ans">Plus de 20 ans</option>
+                </select>
+              </div>
+              <div class="default-select form-cols" id="FetdDiv">
+                <select
+                  class="js-example-basic-single w-100"
+                  name="Fetd"
+                  id="Fetd"
+                >
+                  <option value="">Niveau d'étude</option>
+                  <option value="Autodidacte">Autodidacte</option>
+                  <option value="Qualification avant Bac">
+                    Qualification avant Bac
+                  </option>
+                  <option value="Bac">Bac</option>
+                  <option value="Bac +1">Bac +1</option>
+                  <option value="Bac +2">Bac +2</option>
+                  <option value="Bac +3">Bac +3</option>
+                  <option value="Bac +4">Bac +4</option>
+                  <option value="Bac +5 et plus">Bac +5 et plus</option>
+                </select>
+              </div>
+
+              <div class="default-select form-cols" id="FrmtionDiv">
+                <select
+                  class="js-example-basic-single w-100"
+                  name="Formation"
+                  id="Frmtion"
+                >
+                  <option value="">Type de formation</option>
+                  <option value="Doctorat / DEA">Doctorat / DEA</option>
+                  <option value="Master">Master</option>
+                  <option value="Ecole de commerce">Ecole de commerce</option>
+                  <option value="Ecole d'ingénieur">Ecole d'ingénieur</option>
+                  <option value="BTS / DUT">BTS / DUT</option>
+                  <option value="Université">Université</option>
+                  <option value="Formation professionnelle">
+                    Formation professionnelle
+                  </option>
+                  <option value="Formation spécialisée">
+                    Formation spécialisée
+                  </option>
+                  <option value="Baccalauréat">Baccalauréat</option>
+                  <option value="Formation avant BAC">
+                    Formation avant BAC
+                  </option>
+                  <option value="Autre">Autre</option>
+                </select>
+              </div>
+
+              <div class="row justify-content-center align-items-center">
+                <div class="form-cols">
+                  <button
+                    type="button"
+                    id="fltrBtn"
+                    class="genric-btn primary small"
+                  >
+                    Valider
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-8 post-list" id="offersDev"></div>
+        </div>
+      </div>
+    </section>
+    <!-- End post Area -->
+
+    <!-- Start callto-action Area -->
+    <section class="callto-action-area section-gap" id="join">
+      <div class="container">
+        <div class="row d-flex justify-content-center">
+          <div class="menu-content col-lg-9">
+            <div class="title text-center">
+              <h1 class="mb-10 text-white">
+                Rejoignez-Nous et Trouvez Votre Emploi de Rêve !
+              </h1>
+              <p class="text-white">
+                Créez un compte dès maintenant et accédez à des centaines
+                d'offres d'emploi nationales et internationales. Postulez
+                facilement et recevez des notifications en temps réel. Votre
+                prochaine opportunité est à portée de clic !
+              </p>
+              <a class="primary-btn" href="/Login">Créez votre compte</a>
+              <a class="primary-btn" href="/Login">Connectez-Vous</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End calto-action Area -->
+
+    <!-- start footer Area -->
+    <footer class="footer-area section-gap">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-12">
+            <div class="single-footer-widget">
+              <h6>Contact Info</h6>
+              <ul class="footer-nav">
+                <li>
+                  IMM 148, ANGLE ROUTE DES OULAD ZIANE ET SIKKA LHADIDIYA.
+                  20250. CASABLANCA, MAROC
+                </li>
+                <li>00212 522862839</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12">
+            <div class="single-footer-widget newsletter">
+              <h6>Newsletter</h6>
+              <p>
+                Rejoignez notre communauté dès aujourd'hui ! Remplissez
+                simplement votre adresse email ci-dessous et restez connectés
+              </p>
+              <div id="mc_embed_signup">
+                <form
+                  target="_blank"
+                  novalidate="true"
+                  action=""
+                  method="get"
+                  class="form-inline"
+                >
+                  <div class="form-group row" style="width: 100%">
+                    <div class="col-lg-8 col-md-12">
+                      <input
+                        id="subEmail"
+                        name="EMAIL"
+                        placeholder="Enter Email"
+                        onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'Email '"
+                        required=""
+                        type="email"
+                      />
+                      <!-- <div style="position: absolute; left: -5000px">
+                        <input
+                          name="b_36c4fd991d266f23781ded980_aefe40901a"
+                          tabindex="-1"
+                          value=""
+                          type="text"
+                        />
+                      </div> -->
+                    </div>
+
+                    <div class="col-lg-4 col-md-12">
+                      <button class="nw-btn primary-btn" id="subBtn">
+                        Subscribe<span class="lnr lnr-arrow-right"></span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="info"></div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row footer-bottom d-flex justify-content-between">
+          <p class="col-lg-8 col-sm-12 footer-text m-0 text-white">
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            All rights reserved <i class="fa fa-heart-o" aria-hidden="true"></i>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </p>
+          <div class="col-lg-4 col-sm-12 footer-social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End footer Area -->
+
+    <!-- <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script> -->
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"
+    ></script>
+    <script src="js/easing.min.js"></script>
+    <script src="js/hoverIntent.js"></script>
+    <script src="js/superfish.min.js"></script>
+    <script src="js/jquery.ajaxchimp.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/parallax.min.js"></script>
+    <script src="js/mail-script.js"></script>
+    <script src="js/main.js"></script>
+
+    <script src="vendors/select2/select2.min.js"></script>
+    <script src="js/select2.js"></script>
+  </body>
+</html>

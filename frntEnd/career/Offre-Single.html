@@ -1,0 +1,279 @@
+<html>
+  <head>
+    <!-- Mobile Specific Meta -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/fav.png" />
+    <!-- Author Meta -->
+    <meta name="author" content="codepixer" />
+    <!-- Meta Description -->
+    <meta name="description" content="" />
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="" />
+    <!-- meta character set -->
+    <meta charset="UTF-8" />
+    <!-- Site Title -->
+    <title>XCDM MAROC-Recrutement</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700"
+      rel="stylesheet"
+    />
+    <!--
+			CSS
+			============================================= -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x104"
+      href="img/XCDM_MAROC.png"
+    />
+    <link rel="stylesheet" href="css/linearicons.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" />
+    <link rel="stylesheet" href="css/nice-select.css" />
+    <link rel="stylesheet" href="css/animate.min.css" />
+    <link rel="stylesheet" href="css/owl.carousel.css" />
+    <link rel="stylesheet" href="css/main.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <header id="header" id="home">
+      <div class="container">
+        <div class="row align-items-center justify-content-between d-flex">
+          <div id="logo">
+            <a href="/"
+              ><img
+                src="img/XCDM_MAROC.png"
+                width="120px"
+                height="70px"
+                alt="XCDM MAROC"
+            /></a>
+          </div>
+          <nav id="nav-menu-container">
+            <ul class="nav-menu">
+              <li class="menu-active"><a href="/Career">Accueil</a></li>
+              <li><a href="https://xcdmmaroc.com/">Qui-Somme-Nous</a></li>
+              <li><a href="/Career/Contact">Contact</a></li>
+
+              <li>
+                <a
+                  class="genric-btn primary small"
+                  href="/Career/Login"
+                  id="lgnprflBtn"
+                  >Mon profil</a
+                >
+              </li>
+              <!-- If user already connected replace Connexion with "Mon Profil"-->
+            </ul>
+          </nav>
+          <!-- #nav-menu-container -->
+        </div>
+      </div>
+    </header>
+    <!-- #header -->
+
+    <!-- start banner Area -->
+    <section class="banner-area relative" id="home">
+      <div class="overlay overlay-bg"></div>
+      <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+          <div class="about-content col-lg-12">
+            <h1 class="text-white">Détail de l'offre</h1>
+            <p class="text-white link-nav">
+              <a href="/Career">Accueil </a>
+              <span class="lnr lnr-arrow-right"></span
+              ><span class="ofNme"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Start post Area -->
+    <section class="post-area section-gap">
+      <div class="container">
+        <div class="row justify-content-center d-flex">
+          <div class="col-lg-4 post-list">
+            <div class="single-post d-flex flex-row">
+              <div class="details">
+                <div class="title d-flex flex-row justify-content-between">
+                  <div class="titles">
+                    <a href="#"><h4 class="ofNme"></h4></a>
+                  </div>
+                </div>
+                <p>
+                  Publication : du
+                  <span
+                    id="startdate"
+                    name="startdate"
+                    class="text-primary"
+                  ></span>
+                  au
+                  <span id="enddate" name="enddate" class="text-primary"></span>
+                </p>
+                <p>
+                  Région :
+                  <span id="region" name="region"></span>
+                </p>
+                <p>Ville : <span id="City" name="City"></span></p>
+                <p>Salaire : <span id="salary" name="salary"></span></p>
+                <p>
+                  Expérience :
+                  <span Id="experience" name="experience"></span>
+                </p>
+                <p>
+                  Niveau d'étude :
+                  <span Id="education" name="education"></span>
+                </p>
+                <p>Secteur : <span Id="Secteur" name="Secteur"></span></p>
+                <p>
+                  Fonction :
+                  <span Id="Fonction" name="Fonction"></span>
+                </p>
+                <p>
+                  Mode de travail :
+                  <span Id="wrkTpe" name="wrkTpe"></span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8 post-list">
+            <div class="single-post job-details">
+              <h4 class="single-title">Entreprise :</h4>
+              <span id="cmpny"> </span>
+            </div>
+
+            <div class="single-post job-details">
+              <h4 class="single-title">Poste</h4>
+              <span id="postInfo"></span>
+            </div>
+
+            <div class="single-post job-experience">
+              <h4 class="single-title">Les missions:</h4>
+              <span id="mssions"></span>
+            </div>
+            <div class="single-post job-experience">
+              <h4 class="single-title">Profil recherché</h4>
+              <span id="profileInfo"></span>
+            </div>
+            <div class="row justify-content-center align-items-center">
+              <div class="form-cols" id="aplyBtnArea">
+                <button type="button" id="aplyBtn" class="btn btn-success">
+                  Postuler
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End post Area -->
+
+    <!-- start footer Area -->
+    <footer class="footer-area section-gap">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-12">
+            <div class="single-footer-widget">
+              <h6>Contact Info</h6>
+              <ul class="footer-nav">
+                <li>
+                  IMM 148, ANGLE ROUTE DES OULAD ZIANE ET SIKKA LHADIDIYA.
+                  20250. CASABLANCA, MAROC
+                </li>
+                <li>00212 522862839</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-12">
+            <div class="single-footer-widget newsletter">
+              <h6>Newsletter</h6>
+              <p>
+                Rejoignez notre communauté dès aujourd'hui ! Remplissez
+                simplement votre adresse email ci-dessous et restez connectés
+              </p>
+              <div id="mc_embed_signup">
+                <form
+                  target="_blank"
+                  novalidate="true"
+                  action=""
+                  method="get"
+                  class="form-inline"
+                >
+                  <div class="form-group row" style="width: 100%">
+                    <div class="col-lg-8 col-md-12">
+                      <input
+                        id="subEmail"
+                        name="EMAIL"
+                        placeholder="Enter Email"
+                        onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'Email '"
+                        required=""
+                        type="email"
+                      />
+                      <!-- <div style="position: absolute; left: -5000px">
+                        <input
+                          name="b_36c4fd991d266f23781ded980_aefe40901a"
+                          tabindex="-1"
+                          value=""
+                          type="text"
+                        />
+                      </div> -->
+                    </div>
+
+                    <div class="col-lg-4 col-md-12">
+                      <button class="nw-btn primary-btn" id="subBtn">
+                        Subscribe<span class="lnr lnr-arrow-right"></span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="info"></div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row footer-bottom d-flex justify-content-between">
+          <p class="col-lg-8 col-sm-12 footer-text m-0 text-white">
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            All rights reserved <i class="fa fa-heart-o" aria-hidden="true"></i>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </p>
+          <div class="col-lg-4 col-sm-12 footer-social">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!--  footer Area End -->
+
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"
+    ></script>
+    <script src="js/easing.min.js"></script>
+    <script src="js/hoverIntent.js"></script>
+    <script src="js/superfish.min.js"></script>
+    <script src="js/jquery.ajaxchimp.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/parallax.min.js"></script>
+    <script src="js/mail-script.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/js/ofr-f.js"></script>
+  </body>
+</html>

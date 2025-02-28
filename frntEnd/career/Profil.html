@@ -1,0 +1,785 @@
+	<!DOCTYPE html>
+	<html lang="zxx" class="no-js">
+	<head>
+		<!-- Mobile Specific Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Favicon-->
+		<link rel="shortcut icon" href="img/fav.png">
+		<!-- Author Meta -->
+		<meta name="author" content="codepixer">
+		<!-- Meta Description -->
+		<meta name="description" content="">
+		<!-- Meta Keyword -->
+		<meta name="keywords" content="">
+		<!-- meta character set -->
+		<meta charset="UTF-8">
+		<!-- Site Title -->
+		<title>XCDM MAROC - Mon Profil</title>
+
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+			<!--
+			CSS
+			============================================= -->
+			<link rel="icon" type="image/png" sizes="96x104" href="img/XCDM_MAROC.png">
+			<link rel="stylesheet" href="css/linearicons.css">
+			<link rel="stylesheet" href="css/font-awesome.min.css">
+			<link rel="stylesheet" href="css/bootstrap.css">
+			<link rel="stylesheet" href="css/magnific-popup.css">
+			<link rel="stylesheet" href="css/nice-select.css">					
+			<link rel="stylesheet" href="css/animate.min.css">
+			<link rel="stylesheet" href="css/owl.carousel.css">
+			<link rel="stylesheet" href="css/main.css">
+			<link rel="stylesheet" href="vendors/select2/select2.min.css">
+			<link rel="stylesheet" href="vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+			<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		</head>
+		<body>
+
+			<header id="header" id="home">
+			    <div class="container">
+			    	<div class="row align-items-center justify-content-between d-flex">
+				      <div id="logo">
+				        <a href="/Career"><img src="img/XCDM_MAROC.png" width="120px" height="70px" alt="XCDM MAROC"/></a>
+						
+				      </div>
+				      <nav id="nav-menu-container">
+				        <ul class="nav-menu">
+							<li class="menu-active"><a href="/Career">Accueil</a></li>
+							<li><a href="https://xcdmmaroc.com/">Qui-Somme-Nous</a></li>
+							<li><a href="/Career/Contact">Contact</a></li>
+			  
+							<li>
+							  <a
+								class="genric-btn primary small"
+								href="/Career/Login"
+								id="lgnprflBtn"
+								>Mon profil</a
+							  >
+							</li>
+							<!-- If user already connected replace Connexion with "Mon Profil"-->
+						  </ul>
+				      </nav><!-- #nav-menu-container -->		    		
+			    	</div>
+			    </div>
+			  </header><!-- #header -->
+
+
+			<!-- start banner Area -->
+			<section class="banner-area relative" id="home">	
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								Profil			
+							</h1>	
+							<p class="text-white link-nav"><a href="/">Accueil </a>  <span class="lnr lnr-arrow-right"></span>  <a href="#">Mon Profil</a></p>
+						</div>											
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->
+			 
+			
+			<!-- start Profil-->
+			<div class="whole-wrap">
+				<div class="container border-top-generic">
+					<div class="section-top-border">
+						<div class="row">
+							<!--Photo profil start-->
+							<div class="col-md-3 team-area">
+											<div class="single-team">
+												<div class="thumb">
+													<img class="img-fluid" id="prfPic" style="width: 250px; height: 250px;border-radius: 50%; object-fit: cover;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" src="img/t1.jpg">
+													<div class="align-items-center justify-content-center d-flex">
+														<input type="file" id="prfPicInp" style="display: none;" accept="image/*">
+														<button type="button" id="picBtn" class="genric-btn primary-btn small">Modifier</button>
+													</div>
+												</div>
+												<div class="meta-text mt-30 text-center">
+													<h4 id="fullName"></h4>
+													<p id="prflTTle"></p>									    	
+												</div>
+											</div>
+								<!--Tags Langues et compétences-->
+								<div class="row justify-content-center form-wrap">
+									<div class="col-md-2 mt-10">
+										<h4>Langues</h4>
+									</div>
+									<div class="col-md-10 mt-10">
+										<hr>
+									</div>
+								</div>
+								<div class="row justify-content-center sidebar">
+									<div class="single-element-widget mt-30" id="langsSpace">
+										
+									</div>
+
+								</div>		
+							<!--Tags Langues et compétences-->
+							<!--Tags  compétences Start-->
+								<div class="row justify-content-center form-wrap">
+									<div class="col-md-2 mt-10">
+										<h4>Compétences</h4>
+									</div>
+									<div class="col-md-10 mt-10">
+										<hr>
+									</div>
+								</div>
+							<div class="single-post">
+								<div class="thumb">
+									<ul class="tags" id="sklsSpace">
+										
+
+									</ul>
+								</div>
+							</div>
+							<!--Tags  compétences End-->
+											
+
+							</div><!--Photo profil end-->
+							
+
+								<!--Personal information Start-->
+							<div class="col-md-9 mt-sm-20">
+								<div class="row justify-content-center form-wrap">
+									<div class="col-md-4 mt-10">
+										<h4>Informations personnelles</h4>
+									</div>
+									<div class="col-md-8 mt-10">
+										<hr>
+									</div>
+								</div>
+								<form action="#" >
+									<div class="row justify-content-center form-wrap">
+										<div class="col-md-4 mt-10">
+											<div class="form-select" id="Civilite" name="Civilite">
+												<select>
+													<option value="">Civilité *</option>
+													<option value="Monsieur">Monsieur</option>
+													<option value="Madame">Madame</option> 
+												</select>
+											</div>
+									    </div>
+										<div class="col-md-4 mt-10">
+												<input type="text" name="first_name" placeholder="Prénom*" id="fname"  required class="single-input">
+										</div>
+										<div class="col-md-4 mt-10">
+												<input type="text" name="last_name" placeholder="Nom*" id="lname" required class="single-input">
+										</div>
+									</div>
+
+									<div class="row justify-content-center form-wrap">
+										<div class="col-md-4 mt-10 input-group-icon ">
+											<div class="icon"><i class="fa fa-birthday-cake" aria-hidden="true"></i></div>
+												<input type="date" name="Birthday1" placeholder="Date de Naissance *" id="bd"  required class="single-input">
+										</div>
+										<div class="col-md-4 mt-10">
+												<input type="text" name="Nationalit" placeholder="Nationalité *" id="nationality"  required class="single-input">
+										</div>
+										<div class="col-md-4 mt-10">
+											<div class="form-select" id="Situation_familiale" name="Situation_familiale">
+												<select>
+													<option value="">Situation familiale</option>
+													<option value="Marié(e)">Marié(e)</option>
+													<option value="Célibataire">Célibataire</option>
+													<option value="Divorcé(e)">Divorcé(e)</option>
+													<option value="Veuf(e)">Veuf(e)</option>
+													
+												</select>
+											</div>
+									    </div>
+									</div>
+									<div class="row justify-content-center form-wrap">
+										<div class="col-md-4 mt-10">
+												<input type="tel" name="Phone" placeholder="Téléphone*" id="phone" required class="single-input">
+										</div>
+										<div class="col-md-4 mt-10">
+												<input type="email" name="Email" id="email" placeholder="Mail*"required class="single-input">
+										</div>
+										<div class="col-md-4 mt-10">
+												<input type="url" name="LinkdinUrl" id="lnkdin" placeholder="Lien LinkedIn"  class="single-input">
+										</div>
+									</div>
+
+									<div class="row justify-content-center form-wrap">
+										<div class="col-md-12 mt-10">
+												<input type="text" name="Adresse*" id="address" placeholder="Adresse" required class="single-input">
+										</div>
+									</div>
+
+									<div class="row justify-content-center form-wrap">
+										<div class="col-md-4 mt-10">
+											<input type="text" name="Postal-Code" id="zip" placeholder="Code Postal"  class="single-input">
+									    </div>
+										<div class="col-md-4 mt-10">
+											<input type="text" name="City" id="city" placeholder="Ville*" required class="single-input">
+									    </div>
+										<div class="col-md-4 mt-10">
+											<div class="form-select" id="Disponibilite" name="Disponibilite">
+												<select>
+													<option value="">Disponibilité</option>
+													<option value="Immédiatement">Immédiatement</option>
+													<option value="Avec préavis">Avec préavis</option>
+													
+												</select>
+											</div>
+									    </div>
+									</div>
+									<!--Personnal information End-->
+
+									<!--Expérience Start-->
+									<div class="row justify-content-center form-wrap">
+										<div class="col-md-2 mt-10">
+											<h4>Expérience</h4>
+										</div>
+										<div class="col-md-10 mt-10">
+											<hr>
+										</div>
+									</div>
+									<div class="row justify-content-center form-wrap">
+										<div class="col-md-6 mt-10">
+											<select class="js-example-basic-single w-100" id="fonctions"  name="fonctions">
+												<option value="">Fonction actuelle</option>
+												<option value="Achats / Supply Chain">Achats / Supply Chain</option>
+												<option value="Administration des ventes / SAV">Administration des ventes / SAV</option>
+												<option value="Agriculture">Agriculture</option>
+												<option value="Assistanat de Direction / Services Généraux">Assistanat de Direction / Services Généraux</option>
+												<option value="Assurance">Assurance</option>
+												<option value="Audit / Conseil">Audit / Conseil</option>
+												<option value="Avocat / Juriste / Fiscaliste">Avocat / Juriste / Fiscaliste</option>
+												<option value="Banque">Banque</option>
+												<option value="Call Centers">Call Centers</option>
+												<option value="Caméraman / Monteur / Preneur de son">Caméraman / Monteur / Preneur de son</option>
+												<option value="Commercial / Vente / Export">Commercial / Vente / Export</option>
+												<option value="Communication / Publicité / RP">Communication / Publicité / RP</option>
+												<option value="Coursier / Gardiennage / Propreté">Coursier / Gardiennage / Propreté</option>
+												<option value="Distribution">Distribution</option>
+												<option value="Electricité">Electricité</option>
+												<option value="Enseignement">Enseignement</option>
+												<option value="Environnement">Environnement</option>
+												<option value="Gestion / Comptabilité / Finance">Gestion / Comptabilité / Finance</option>
+												<option value="Gestion projet / Etudes / R&D">Gestion projet / Etudes / R&D</option>
+												<option value="Hôtellerie / Restauration">Hôtellerie / Restauration</option>
+												<option value="Immobilier / Promotion">Immobilier / Promotion</option>
+												<option value="Imprimerie">Imprimerie</option>
+												<option value="Informatique / Electronique">Informatique / Electronique</option>
+												<option value="Journalisme / Traduction">Journalisme / Traduction</option>
+												<option value="Logistique / Transport">Logistique / Transport</option>
+												<option value="Marketing">Marketing</option>
+												<option value="Multimédia / Internet">Multimédia / Internet</option>
+												<option value="Médical / Paramédical">Médical / Paramédical</option>
+												<option value="Méthodes / Process / Industrialisation">Méthodes / Process / Industrialisation</option>
+												<option value="Production / Qualité / Sécurité / Maintenance">Production / Qualité / Sécurité / Maintenance</option>
+												<option value="RH / Personnel / Formation">RH / Personnel / Formation</option>
+												<option value="Responsable de Département">Responsable de Département</option>
+												<option value="Santé / Social">Santé / Social</option>
+												<option value="Sport / Loisirs">Sport / Loisirs</option>
+												<option value="Tourisme (métiers du)">Tourisme (métiers du)</option>
+												<option value="Travaux / Chantiers / BTP">Travaux / Chantiers / BTP</option>
+												<option value="Télécoms / Réseaux">Télécoms / Réseaux</option>
+												<option value="Urbanisme / architecture">Urbanisme / architecture</option>
+
+											</select>
+									</div>
+									<div class="col-md-6 mt-10">
+										<select class="js-example-basic-single w-100" id="fonctionssouhait" name="fonctions1">
+											<option value="1">Fonction souhaitée(1)</option>
+											<option value="Achats / Supply Chain">Achats / Supply Chain</option>
+											<option value="Administration des ventes / SAV">Administration des ventes / SAV</option>
+											<option value="Agriculture">Agriculture</option>
+											<option value="Assistanat de Direction / Services Généraux">Assistanat de Direction / Services Généraux</option>
+											<option value="Assurance">Assurance</option>
+											<option value="Audit / Conseil">Audit / Conseil</option>
+											<option value="Avocat / Juriste / Fiscaliste">Avocat / Juriste / Fiscaliste</option>
+											<option value="Banque">Banque</option>
+											<option value="Call Centers">Call Centers</option>
+											<option value="Caméraman / Monteur / Preneur de son">Caméraman / Monteur / Preneur de son</option>
+											<option value="Commercial / Vente / Export">Commercial / Vente / Export</option>
+											<option value="Communication / Publicité / RP">Communication / Publicité / RP</option>
+											<option value="Coursier / Gardiennage / Propreté">Coursier / Gardiennage / Propreté</option>
+											<option value="Distribution">Distribution</option>
+											<option value="Electricité">Electricité</option>
+											<option value="Enseignement">Enseignement</option>
+											<option value="Environnement">Environnement</option>
+											<option value="Gestion / Comptabilité / Finance">Gestion / Comptabilité / Finance</option>
+											<option value="Gestion projet / Etudes / R&D">Gestion projet / Etudes / R&D</option>
+											<option value="Hôtellerie / Restauration">Hôtellerie / Restauration</option>
+											<option value="Immobilier / Promotion">Immobilier / Promotion</option>
+											<option value="Imprimerie">Imprimerie</option>
+											<option value="Informatique / Electronique">Informatique / Electronique</option>
+											<option value="Journalisme / Traduction">Journalisme / Traduction</option>
+											<option value="Logistique / Transport">Logistique / Transport</option>
+											<option value="Marketing">Marketing</option>
+											<option value="Multimédia / Internet">Multimédia / Internet</option>
+											<option value="Médical / Paramédical">Médical / Paramédical</option>
+											<option value="Méthodes / Process / Industrialisation">Méthodes / Process / Industrialisation</option>
+											<option value="Production / Qualité / Sécurité / Maintenance">Production / Qualité / Sécurité / Maintenance</option>
+											<option value="RH / Personnel / Formation">RH / Personnel / Formation</option>
+											<option value="Responsable de Département">Responsable de Département</option>
+											<option value="Santé / Social">Santé / Social</option>
+											<option value="Sport / Loisirs">Sport / Loisirs</option>
+											<option value="Tourisme (métiers du)">Tourisme (métiers du)</option>
+											<option value="Travaux / Chantiers / BTP">Travaux / Chantiers / BTP</option>
+											<option value="Télécoms / Réseaux">Télécoms / Réseaux</option>
+											<option value="Urbanisme / architecture">Urbanisme / architecture</option>
+										</select>
+
+								</div>
+									</div>
+									<div class="row justify-content-center form-wrap">
+										<div class="col-md-6 mt-10">
+											<input type="text" name="Competence" id="title" placeholder="Nominations poste actuel, ex :Développeur Informatique"  class="w-100">
+									   </div>
+									<div class="col-md-6 mt-10">
+										<select class="js-example-basic-single w-100" id="expYrs" name="expérience">
+											<option value="">Années d'expérience</option>
+											<option value="Débutant">Débutant</option>
+											<option value="Moins de 1 an">Moins de 1 an</option>
+											<option value="De 1 à 3 ans">De 1 à 3 ans</option>
+											<option value="De 3 à 5 ans">De 3 à 5 ans</option>
+											<option value="De 5 à 10 ans">De 5 à 10 ans</option>
+											<option value="De 10 à 20 ans">De 10 à 20 ans</option>
+											<option value="Plus de 20 ans">Plus de 20 ans</option>
+										</select>
+								</div>
+									</div>
+
+									<div class="row justify-content-center form-wrap">
+										<div class="col-md-6 mt-10">
+											<select class="js-example-basic-single w-100" id="Secteur" name="Secteur">
+												    <option value="">Secteur Actuel</option>
+												    <option value="Aéronautique / Spatial">Aéronautique / Spatial</option>
+													<option value="Agence pub / Marketing Direct">Agence pub / Marketing Direct</option>
+													<option value="Agriculture / Environnement">Agriculture / Environnement</option>
+													<option value="Agroalimentaire">Agroalimentaire</option>
+													<option value="Assurance / Courtage">Assurance / Courtage</option>
+													<option value="Audiovisuel">Audiovisuel</option>
+													<option value="Automobile / Motos / Cycles">Automobile / Motos / Cycles</option>
+													<option value="Banque / Finance">Banque / Finance</option>
+													<option value="BTP / Génie Civil">BTP / Génie Civil</option>
+													<option value="Centre d'appel">Centre d'appel</option>
+													<option value="Chimie / Parachimie / Peintures">Chimie / Parachimie / Peintures</option>
+													<option value="Comptabilité / Audit">Comptabilité / Audit</option>
+													<option value="Conseil / Etudes">Conseil / Etudes</option>
+													<option value="Distribution">Distribution</option>
+													<option value="Edition / Imprimerie">Edition / Imprimerie</option>
+													<option value="Enseignement / Formation">Enseignement / Formation</option>
+													<option value="Energie">Energie</option>
+													<option value="Extraction / Mines">Extraction / Mines</option>
+													<option value="Ferroviaire">Ferroviaire</option>
+													<option value="Hôtellerie / Restauration">Hôtellerie / Restauration</option>
+													<option value="Immobilier / Promoteur / Agence">Immobilier / Promoteur / Agence</option>
+													<option value="Informatique">Informatique</option>
+													<option value="Internet / Multimédia">Internet / Multimédia</option>
+													<option value="Matériel Médical">Matériel Médical</option>
+													<option value="Pétrole / Gaz">Pétrole / Gaz</option>
+													<option value="Pharmacie / Santé">Pharmacie / Santé</option>
+													<option value="Plasturgie">Plasturgie</option>
+													<option value="Presse">Presse</option>
+													<option value="Recrutement / Intérim">Recrutement / Intérim</option>
+													<option value="Service public / Administration">Service public / Administration</option>
+													<option value="Tabac">Tabac</option>
+													<option value="Telecom">Telecom</option>
+													<option value="Textile / Cuir">Textile / Cuir</option>
+													<option value="Tourisme / Voyage / Loisirs">Tourisme / Voyage / Loisirs</option>
+													<option value="Transport / Messagerie / Logistique">Transport / Messagerie / Logistique</option>
+													<option value="Ameublement / Décoration">Ameublement / Décoration</option>
+													<option value="Communication / Evénementiel">Communication / Evénementiel</option>
+													<option value="Cosmétique / Parfumerie / Luxe">Cosmétique / Parfumerie / Luxe</option>
+													<option value="Electro-mécanique / Mécanique">Electro-mécanique / Mécanique</option>
+													<option value="Electronique">Electronique</option>
+													<option value="Import / Export / Négoce">Import / Export / Négoce</option>
+													<option value="Juridique / Cabinet d’avocats">Juridique / Cabinet d’avocats</option>
+													<option value="Métallurgie / Sidérurgie">Métallurgie / Sidérurgie</option>
+													<option value="Nettoyage / Sécurité / Gardiennage">Nettoyage / Sécurité / Gardiennage</option>
+													<option value="Offshoring / Nearshoring">Offshoring / Nearshoring</option>
+													<option value="Papier / Carton">Papier / Carton</option>
+													<option value="Electricité">Electricité</option>
+													<option value="Autres Industries">Autres Industries</option>
+													<option value="Autres services">Autres services</option>
+
+											</select>
+										</div>
+										<div class="col-md-6 mt-10">
+											<select class="js-example-basic-single w-100" id="SecteurSouhaite" name="SecteurSouhaite">
+												    <option value="">Secteur souhaité</option>
+												    <option value="Aéronautique / Spatial">Aéronautique / Spatial</option>
+													<option value="Agence pub / Marketing Direct">Agence pub / Marketing Direct</option>
+													<option value="Agriculture / Environnement">Agriculture / Environnement</option>
+													<option value="Agroalimentaire">Agroalimentaire</option>
+													<option value="Assurance / Courtage">Assurance / Courtage</option>
+													<option value="Audiovisuel">Audiovisuel</option>
+													<option value="Automobile / Motos / Cycles">Automobile / Motos / Cycles</option>
+													<option value="Banque / Finance">Banque / Finance</option>
+													<option value="BTP / Génie Civil">BTP / Génie Civil</option>
+													<option value="Centre d'appel">Centre d'appel</option>
+													<option value="Chimie / Parachimie / Peintures">Chimie / Parachimie / Peintures</option>
+													<option value="Comptabilité / Audit">Comptabilité / Audit</option>
+													<option value="Conseil / Etudes">Conseil / Etudes</option>
+													<option value="Distribution">Distribution</option>
+													<option value="Edition / Imprimerie">Edition / Imprimerie</option>
+													<option value="Enseignement / Formation">Enseignement / Formation</option>
+													<option value="Energie">Energie</option>
+													<option value="Extraction / Mines">Extraction / Mines</option>
+													<option value="Ferroviaire">Ferroviaire</option>
+													<option value="Hôtellerie / Restauration">Hôtellerie / Restauration</option>
+													<option value="Immobilier / Promoteur / Agence">Immobilier / Promoteur / Agence</option>
+													<option value="Informatique">Informatique</option>
+													<option value="Internet / Multimédia">Internet / Multimédia</option>
+													<option value="Matériel Médical">Matériel Médical</option>
+													<option value="Pétrole / Gaz">Pétrole / Gaz</option>
+													<option value="Pharmacie / Santé">Pharmacie / Santé</option>
+													<option value="Plasturgie">Plasturgie</option>
+													<option value="Presse">Presse</option>
+													<option value="Recrutement / Intérim">Recrutement / Intérim</option>
+													<option value="Service public / Administration">Service public / Administration</option>
+													<option value="Tabac">Tabac</option>
+													<option value="Telecom">Telecom</option>
+													<option value="Textile / Cuir">Textile / Cuir</option>
+													<option value="Tourisme / Voyage / Loisirs">Tourisme / Voyage / Loisirs</option>
+													<option value="Transport / Messagerie / Logistique">Transport / Messagerie / Logistique</option>
+													<option value="Ameublement / Décoration">Ameublement / Décoration</option>
+													<option value="Communication / Evénementiel">Communication / Evénementiel</option>
+													<option value="Cosmétique / Parfumerie / Luxe">Cosmétique / Parfumerie / Luxe</option>
+													<option value="Electro-mécanique / Mécanique">Electro-mécanique / Mécanique</option>
+													<option value="Electronique">Electronique</option>
+													<option value="Import / Export / Négoce">Import / Export / Négoce</option>
+													<option value="Juridique / Cabinet d’avocats">Juridique / Cabinet d’avocats</option>
+													<option value="Métallurgie / Sidérurgie">Métallurgie / Sidérurgie</option>
+													<option value="Nettoyage / Sécurité / Gardiennage">Nettoyage / Sécurité / Gardiennage</option>
+													<option value="Offshoring / Nearshoring">Offshoring / Nearshoring</option>
+													<option value="Papier / Carton">Papier / Carton</option>
+													<option value="Electricité">Electricité</option>
+													<option value="Autres Industries">Autres Industries</option>
+													<option value="Autres services">Autres services</option>
+
+											</select>
+										</div>
+									</div>
+
+									<div class="row justify-content-center form-wrap">
+										<div class="col-md-6 mt-10">
+											<select class="js-example-basic-single w-100" id="regionA" name="regionA">
+												<option value="">Région actuelle</option>
+												<option value="Casablanca et région">Casablanca et région</option>
+												<option value="Agadir et région">Agadir et région</option>
+												<option value="Al Hoceima et région">Al Hoceima et région</option>
+												<option value="Béni Mellal et région">Béni Mellal et région</option>
+												<option value="Fès et région">Fès et région</option>
+												<option value="Kénitra et région">Kénitra et région</option>
+												<option value="Laâyoune et région">Laâyoune et région</option>
+												<option value="Marrakech et région">Marrakech et région</option>
+												<option value="Meknès et région">Meknès et région</option>
+												<option value="Ouad Ed Dahab et région">Ouad Ed Dahab et région</option>
+												<option value="Oujda et région">Oujda et région</option>
+												<option value="Rabat et région">Rabat et région</option>
+												<option value="Safi et région">Safi et région</option>
+												<option value="Settat et région">Settat et région</option>
+												<option value="Tanger et région">Tanger et région</option>
+
+											</select>
+										</div>
+										<div class="col-md-6 mt-10">
+											<select class="js-example-basic-single w-100" id="regionS" name="regionS">
+												<option value="">Région actuelle</option>
+												<option value="Casablanca et région">Casablanca et région</option>
+												<option value="Agadir et région">Agadir et région</option>
+												<option value="Al Hoceima et région">Al Hoceima et région</option>
+												<option value="Béni Mellal et région">Béni Mellal et région</option>
+												<option value="Fès et région">Fès et région</option>
+												<option value="Kénitra et région">Kénitra et région</option>
+												<option value="Laâyoune et région">Laâyoune et région</option>
+												<option value="Marrakech et région">Marrakech et région</option>
+												<option value="Meknès et région">Meknès et région</option>
+												<option value="Ouad Ed Dahab et région">Ouad Ed Dahab et région</option>
+												<option value="Oujda et région">Oujda et région</option>
+												<option value="Rabat et région">Rabat et région</option>
+												<option value="Safi et région">Safi et région</option>
+												<option value="Settat et région">Settat et région</option>
+												<option value="Tanger et région">Tanger et région</option>
+
+											</select>
+										</div>
+									</div>
+									<div class="row justify-content-center form-wrap">
+										<div class="col-md-6 mt-10">
+											<select class="js-example-basic-single w-100" id="SalaireA" name="SalaireA">
+												<option value="">Salaire actuel</option>
+												<option value="Moins de 4000 DH nets mensuels">Moins de 4000 DH nets mensuels</option>
+												<option value="4000 - 6000 DH nets mensuels">4000 - 6000 DH nets mensuels</option>
+												<option value="6000 - 8000 DH nets mensuels">6000 - 8000 DH nets mensuels</option>
+												<option value="8000 - 10000 DH nets mensuels">8000 - 10000 DH nets mensuels</option>
+												<option value="10000 - 15000 DH nets mensuels">10000 - 15000 DH nets mensuels</option>
+												<option value="15000 - 20000 DH nets mensuels">15000 - 20000 DH nets mensuels</option>
+												<option value="20000 - 30000 DH nets mensuels">20000 - 30000 DH nets mensuels</option>
+												<option value="30000 - 40000 DH nets mensuels">30000 - 40000 DH nets mensuels</option>
+												<option value="Plus de 40000 DH nets mensuel">Plus de 40000 DH nets mensuel</option>
+
+											</select>
+										</div>
+										<div class="col-md-6 mt-10">
+											<select class="js-example-basic-single w-100" id="SalaireS" name="SalaireS">
+												<option value="">Salaire souhaité</option>
+												<option value="Moins de 4000 DH nets mensuels">Moins de 4000 DH nets mensuels</option>
+												<option value="4000 - 6000 DH nets mensuels">4000 - 6000 DH nets mensuels</option>
+												<option value="6000 - 8000 DH nets mensuels">6000 - 8000 DH nets mensuels</option>
+												<option value="8000 - 10000 DH nets mensuels">8000 - 10000 DH nets mensuels</option>
+												<option value="10000 - 15000 DH nets mensuels">10000 - 15000 DH nets mensuels</option>
+												<option value="15000 - 20000 DH nets mensuels">15000 - 20000 DH nets mensuels</option>
+												<option value="20000 - 30000 DH nets mensuels">20000 - 30000 DH nets mensuels</option>
+												<option value="30000 - 40000 DH nets mensuels">30000 - 40000 DH nets mensuels</option>
+												<option value="Plus de 40000 DH nets mensuel">Plus de 40000 DH nets mensuel</option>
+											</select>
+										</div>
+									</div>
+									<!--Expérience End-->
+
+									<!--Formation Start-->
+									<div class="row justify-content-center form-wrap">
+										<div class="col-md-2 mt-10">
+											<h4>Formation</h4>
+										</div>
+										<div class="col-md-10 mt-10">
+											<hr>
+										</div>
+									</div>
+									<div class="row justify-content-center form-wrap">
+										<div class="col-md-6 mt-10">
+											<select class="js-example-basic-single w-100" id="etudLvl" name="Niveau">
+												<option value="">Niveau d'étude</option>
+												<option value="Autodidacte">Autodidacte</option>
+												<option value="Qualification avant Bac">Qualification avant Bac</option>
+												<option value="Bac">Bac</option>
+												<option value="Bac +1">Bac +1</option>
+												<option value="Bac +2">Bac +2</option>
+												<option  value="Bac +3">Bac +3</option>
+												<option value="Bac +4">Bac +4</option>
+												<option value="Bac +5 et plus">Bac +5 et plus</option>
+
+
+											</select>
+										</div>
+										<div class="col-md-6 mt-10">
+											<select class="js-example-basic-single w-100" id="formation" name="formation">
+												<option value="">Type de formation</option>
+												<option value="Doctorat / DEA">Doctorat / DEA</option>
+												<option value="Master">Master</option>
+												<option value="Ecole de commerce">Ecole de commerce</option>
+												<option  value="Ecole d'ingénieur">Ecole d'ingénieur</option>
+												<option value="BTS / DUT">BTS / DUT</option>
+												<option value="Université">Université</option>
+												<option value="Formation professionnelle">Formation professionnelle</option>
+												<option value="Formation spécialisée">Formation spécialisée</option>
+												<option value="Baccalauréat">Baccalauréat</option>
+												<option value="Formation avant BAC">Formation avant BAC</option>
+												<option value="Autre">Autre</option>
+
+											</select>
+										</div>
+									</div>
+									<!--Formation End-->
+									<!--Langues Start-->
+									<div class="row justify-content-center form-wrap">
+										<div class="col-md-2 mt-10">
+											<h4>Langues</h4>
+										</div>
+										<div class="col-md-10 mt-10">
+											<hr>
+										</div>
+									</div>
+									<div class="row justify-content-center form-wrap">
+										<div class="col-md-5 mt-10">
+											<select class="js-example-basic-single w-100" id="Langues" name="Langues">
+												<option value="">**Langues**</option>
+												<option value="Allemand">Allemand</option>
+												<option value="Amazigh">Amazigh</option>
+												<option value="Anglais">Anglais</option>
+												<option value="Arabe">Arabe</option>
+												<option value="Espagnol">Espagnol</option>
+												<option value="Français">Français</option>
+												<option value="Italien">Italien</option>
+												<option value="Portugais">Portugais</option>
+												<option value="Albanais">Albanais</option>
+												<option value="Bulgare">Bulgare</option>
+												<option value="Chinois">Chinois</option>
+												<option value="Coréen">Coréen</option>
+												<option value="Croate">Croate</option>
+												<option value="Danois">Danois</option>
+												<option value="Finlandais">Finlandais</option>
+												<option value="Grec">Grec</option>
+												<option value="Hébreu">Hébreu</option>
+												<option value="Hindi">Hindi</option>
+												<option value="Indonésien">Indonésien</option>
+												<option value="Islandais">Islandais</option>
+												<option value="Japonais">Japonais</option>
+												<option value="Kabyle">Kabyle</option>
+												<option value="Néerlandais">Néerlandais</option>
+												<option value="Norvégien">Norvégien</option>
+												<option value="Perse">Perse</option>
+												<option value="Polonais">Polonais</option>
+												<option value="Roumain">Roumain</option>
+												<option value="Russe">Russe</option>
+												<option value="Serbe">Serbe</option>
+												<option value="Slovaque">Slovaque</option>
+												<option value="Slovène">Slovène</option>
+												<option value="Suédois">Suédois</option>
+												<option value="Tchèque">Tchèque</option>
+												<option value="Thaï">Thaï</option>
+												<option value="Turque">Turque</option>
+												<option value="Vietnamien">Vietnamien</option>
+
+											</select>
+										</div>
+										<div class="col-md-5 mt-10">
+											<select class="js-example-basic-single w-100" id="NiveauLangue" name="NiveauLangue">
+												<option value="">Niveau</option>
+												<option value="Débutant">Débutant</option>
+												<option value="Pré-intermédiaire">Pré-intermédiaire</option>
+												<option value="Intermédiaire">Intermédiaire</option>
+												<option value="Intermédiaire-avancé">Intermédiaire-avancé</option>
+												<option value="Avancé">Avancé</option>
+											</select>
+										</div>
+										<div class="col-md-2 mt-10">
+											<button type="button" id="addLangBtn" class="genric-btn primary small">Ajouter</button>
+										</div>
+									</div>
+									<!--Langues End-->
+
+									<!--Compétences Start-->
+									<div class="row justify-content-center form-wrap">
+										<div class="col-md-2 mt-10">
+											<h4>Compétences</h4>
+										</div>
+										<div class="col-md-10 mt-10">
+											<hr>
+										</div>
+									</div>
+									<div class="row justify-content-center form-wrap">
+										<div class="col-md-10 mt-10">
+											<input type="text" name="Competence" id="skill" placeholder="Compétence : HTML, CSS, Nodejs, Excel, ..."  class="w-100">
+										</div>
+										<div class="col-md-2 mt-10">
+											<button type="button" id="addSkillBtn" class="genric-btn primary small">Ajouter</button>
+										</div>
+									</div>
+									<!--Compétences End-->
+
+									<!--CV Start-->
+									<div class="row justify-content-center form-wrap">
+										<div class="col-md-2 mt-10">
+											<h4>Mon CV</h4>
+										</div>
+										<div class="col-md-10 mt-10">
+											<hr>
+										</div>
+									</div>
+									<div class="row justify-content-center form-wrap">
+										<div class="col-md-8 mt-10">
+											<label for="CVFile">Modifier Mon CV * :</label><input type="file" id="CV" name="CV">
+										</div>
+										<div class="col-md-4 mt-10">
+											<a href="/Profile/getCV" >Télécharger Mon CV </a>
+											<!-- <button type="button" id="downloadCV" class="genric-btn primary small">Télécharger Mon CV </button> -->
+										</div>
+									</div>
+									<!--CV end-->
+
+									<hr><!--Save Button-->
+									<div class="row justify-content-center form-wrap">
+										<div class="mt-10">
+											<button type="button" id="updateBtn" class="btn btn-success">Enregistré</button>
+										</div>
+									</div>
+									<!--Save Button-->
+								</div>
+							</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>	
+
+			<!-- End Profil -->
+
+		
+			<!-- start footer Area -->		
+			<footer class="footer-area section-gap">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6  col-md-12">
+							<div class="single-footer-widget">
+								<h6>Contact Info</h6>
+								<ul class="footer-nav">
+									<li>IMM 148, ANGLE ROUTE DES OULAD ZIANE ET SIKKA LHADIDIYA. 20250. CASABLANCA, MAROC</li>
+									<li>00212 522862839</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-6  col-md-12">
+							<div class="single-footer-widget newsletter">
+								<h6>Newsletter</h6>
+								<p>Rejoignez notre communauté dès aujourd'hui ! Remplissez simplement votre adresse email ci-dessous et restez connectés</p>
+								<div id="mc_embed_signup">
+									<form target="_blank" novalidate="true" action="" method="get" class="form-inline">
+
+										<div class="form-group row" style="width: 100%">
+											<div class="col-lg-8 col-md-12">
+												<input id="subEmail" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email '" required="" type="email">
+												<div style="position: absolute; left: -5000px;">
+													<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+												</div>
+											</div> 
+										
+											<div class="col-lg-4 col-md-12">
+												<button id="subBtn" class="nw-btn primary-btn">Subscribe<span class="lnr lnr-arrow-right"></span></button>
+											</div> 
+										</div>		
+										<div class="info"></div>
+									</form>
+								</div>		
+							</div>
+						</div>					
+					</div>
+
+					<div class="row footer-bottom d-flex justify-content-between">
+						<p class="col-lg-8 col-sm-12 footer-text m-0 text-white">
+							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved <i class="fa fa-heart-o" aria-hidden="true"></i>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						</p>
+						<div class="col-lg-4 col-sm-12 footer-social">
+							<a href="#"><i class="fa fa-facebook"></i></a>
+						</div>
+					</div>
+				</div>
+			</footer>	
+				<!--  footer Area End -->		
+
+				<script src="js/vendor/jquery-2.2.4.min.js"></script>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+				<script src="js/vendor/bootstrap.min.js"></script>			
+				<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+				  <script src="js/easing.min.js"></script>			
+				<script src="js/hoverIntent.js"></script>
+				<script src="js/superfish.min.js"></script>	
+				<script src="js/jquery.ajaxchimp.min.js"></script>
+				<script src="js/jquery.magnific-popup.min.js"></script>	
+				<script src="js/owl.carousel.min.js"></script>			
+				<script src="js/jquery.sticky.js"></script>
+				<script src="js/jquery.nice-select.min.js"></script>			
+				<script src="js/parallax.min.js"></script>		
+				<script src="js/mail-script.js"></script>	
+				<script src="js/main.js"></script>
+				<script src="js/js/prfl-f.js"></script>
+	
+				<script src="vendors/select2/select2.min.js"></script>	
+				 <script src="js/select2.js"></script>
+
+				 
+		</body>
+	</html>
+
+
+
