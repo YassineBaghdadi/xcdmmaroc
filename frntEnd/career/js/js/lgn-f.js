@@ -134,7 +134,7 @@ $(document).ready(() => {
           if (data) {
             const urlParams = new URLSearchParams(window.location.search);
             const nxt = urlParams.get('next') || '/Career';
-            window.location.href = nxt.replace('/ERP');
+            window.location.href = nxt;
           } else {
             $('#lgnBtn').html('Se connecter');
             $('#lgnBtn').removeAttr('disabled');
