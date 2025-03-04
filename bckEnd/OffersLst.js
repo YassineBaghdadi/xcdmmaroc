@@ -143,7 +143,7 @@ app.post('/getOffers', async (req, res) => {
       `select count(id) as c from _carreerCondidatsAplies where ofr = ${e.ofId}`
     );
 
-    var iid = `<a href="/Recrutement/Nouvelle-Offer?Offer=${e.uniqId}" >${e.nme}</a >`;
+    var iid = `<a href="/ERP/Recrutement/Nouvelle-Offer?Offer=${e.uniqId}" >${e.nme}</a >`;
 
     if (
       req.cookies.usdt.id != e.createdBy &&
