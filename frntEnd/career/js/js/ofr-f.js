@@ -93,7 +93,7 @@ $(document).ready(() => {
 
   checkApply();
 
-  $('#aplyBtn').click(() => {
+  var applyTo = () => {
     fetch('/Career/Offer/Apply', {
       method: 'POST',
       headers: {
@@ -120,7 +120,7 @@ $(document).ready(() => {
             title: 'Oops...',
             text: "Vous devez d'abord vous connecter pour pouvoir postuler à cette offre.",
           });
-          window.location.href = `/Career/login?next=/Career/Offer/${ofId}`;
+          window.location.href = `/Career/login?next=/Career/Offer/${ofId}?a=p`;
         } else if (data.c == 1) {
           Toast.fire({
             icon: 'Error',
@@ -134,6 +134,15 @@ $(document).ready(() => {
       .catch((error) => {
         console.error('Login Error:', error);
       });
+  };
+
+  const urlParams = new URLSearchParams(window.location.search);
+
+  if (urlParams.get('a') == 'p') {
+    applyTo();
+  }
+  $('#aplyBtn').click(() => {
+    applyTo();
   });
 
   $('#subBtn').click(() => {
