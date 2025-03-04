@@ -11,7 +11,7 @@ const Toast = Swal.mixin({
 });
 
 var removeSKL = (i) => {
-  fetch('/Recrutement/Candidats/removeSKL', {
+  fetch('/ERP/Recrutement/Candidats/removeSKL', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ function evalLang(btn) {
   if (row.find('.NiveauLangue').val()) {
     $.ajax({
       type: 'POST',
-      url: '/Recrutement/Candidats/evalLang',
+      url: '/ERP/Recrutement/Candidats/evalLang',
       data: {
         i: row.find('#langsID').html(),
         niv: row.find('.NiveauLangue').val(),
@@ -74,7 +74,7 @@ $(document).ready(() => {
     (window.location.href.match(/\/Candidats\/([^\/]+)/) || [])[1] || null;
 
   if (!ID) {
-    window.location.href = '/Recrutement/Candidats/';
+    window.location.href = '/ERP/Recrutement/Candidats/';
   }
 
   var changeSelect = (id, value) => {
@@ -101,7 +101,7 @@ $(document).ready(() => {
   let getCndInfo = () => {
     $.ajax({
       type: 'POST',
-      url: '/Recrutement/Candidats/getCndInfo',
+      url: '/ERP/Recrutement/Candidats/getCndInfo',
       data: { i: ID },
       success: (data) => {
         // console.log(data.infos);
@@ -156,7 +156,10 @@ $(document).ready(() => {
         // $('#actualSalaire').val(data.infos.actualSalaire);
         // $('#desiredSalaire').val(data.infos.desiredSalaire);
         if (data.infos.cvEXT) {
-          $('#CV').attr('href', `/Recrutement/getCV?i=${data.infos.uniqID}`);
+          $('#CV').attr(
+            'href',
+            `/ERP/Recrutement/getCV?i=${data.infos.uniqID}`
+          );
 
           $('#CV').removeAttr('hidden');
         }
@@ -172,7 +175,7 @@ $(document).ready(() => {
   let getLangs = () => {
     $.ajax({
       type: 'POST',
-      url: '/Recrutement/Candidats/getLangs',
+      url: '/ERP/Recrutement/Candidats/getLangs',
       data: {
         i: ID,
       },
@@ -238,7 +241,7 @@ $(document).ready(() => {
   let getSkills = () => {
     $.ajax({
       type: 'POST',
-      url: '/Recrutement/Candidats/getSkills',
+      url: '/ERP/Recrutement/Candidats/getSkills',
       data: {
         i: ID,
       },
@@ -273,7 +276,7 @@ $(document).ready(() => {
 
   $('#addNewSklBtn').click(() => {
     if ($('#Competence').val()) {
-      fetch('/Recrutement/Candidats/addSKL', {
+      fetch('/ERP/Recrutement/Candidats/addSKL', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -312,7 +315,7 @@ $(document).ready(() => {
   let getApplies = () => {
     $.ajax({
       type: 'POST',
-      url: '/Recrutement/Candidats/getApplies',
+      url: '/ERP/Recrutement/Candidats/getApplies',
       data: {
         i: ID,
       },
@@ -366,7 +369,7 @@ $(document).ready(() => {
       $('#addLangBtn').attr('disabled', true);
       $.ajax({
         type: 'POST',
-        url: '/Recrutement/Candidats/addLang',
+        url: '/ERP/Recrutement/Candidats/addLang',
         data: {
           i: ID,
           niv: $('#NiveauLangue').val(),
@@ -407,7 +410,7 @@ $(document).ready(() => {
     ) {
       $.ajax({
         type: 'POST',
-        url: '/Recrutement/Candidats/updatePersonalInfo',
+        url: '/ERP/Recrutement/Candidats/updatePersonalInfo',
         data: {
           i: ID,
           Civilite: $('#Civilite select').val(),
@@ -445,7 +448,7 @@ $(document).ready(() => {
   $('#profileInfoUpdateBtn').click(() => {
     $.ajax({
       type: 'POST',
-      url: '/Recrutement/Candidats/profileInfoUpdate',
+      url: '/ERP/Recrutement/Candidats/profileInfoUpdate',
       data: {
         i: ID,
         Nominationposteactuel: $('#Nominationposteactuel').val(),
@@ -488,7 +491,7 @@ $(document).ready(() => {
   var getAplyQlfHst = (i) => {
     $.ajax({
       type: 'POST',
-      url: `/Recrutement/Candidats/getAplyQlfHst`,
+      url: `/ERP/Recrutement/Candidats/getAplyQlfHst`,
       data: {
         i: i,
       },
@@ -537,7 +540,7 @@ $(document).ready(() => {
     $('#sveCndQlf').click(async () => {
       await $.ajax({
         type: 'POST',
-        url: `/Recrutement/Candidats/sveCndQlf`,
+        url: `/ERP/Recrutement/Candidats/sveCndQlf`,
         data: {
           i: $(event.relatedTarget).data('id'),
           q: $('#cndQlf').val(),
@@ -564,7 +567,7 @@ $(document).ready(() => {
   $('#addNewApply').click(async (e) => {
     e.preventDefault();
 
-    await fetch('/Recrutement/Candidats/getOfrsL', {
+    await fetch('/ERP/Recrutement/Candidats/getOfrsL', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -612,7 +615,7 @@ $(document).ready(() => {
           },
         });
         if (ofr) {
-          await fetch('/Recrutement/Candidats/applyForUsr', {
+          await fetch('/ERP/Recrutement/Candidats/applyForUsr', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

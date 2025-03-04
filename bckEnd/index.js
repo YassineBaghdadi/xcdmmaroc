@@ -189,7 +189,7 @@ if (dy < 10) {
 const today = date_ob.getFullYear() + '-' + mnth + '-' + dy;
 
 const loginRouter = require('./login');
-app.use('/login', loginRouter);
+app.use('/ERP/login', loginRouter);
 
 app.use('/Career', require('./career'));
 
@@ -199,34 +199,34 @@ const HomeRouter = require('./pblc');
 app.use('/', HomeRouter);
 
 const newsRouter = require('./news');
-app.use('/FiL-Actualites', newsRouter);
+app.use('/ERP/FiL-Actualites', newsRouter);
 
 const servAdm = require('./ServiceAdmin');
-app.use('/Service-Admin', servAdm);
+app.use('/ERP/Service-Admin', servAdm);
 
 const rcrtOffrs = require('./Rcrtmt');
-app.use('/Recrutement', rcrtOffrs);
+app.use('/ERP/Recrutement', rcrtOffrs);
 
 const servfinance = require('./finance');
-app.use('/Finance', servfinance);
+app.use('/ERP/Finance', servfinance);
 
 const WFM = require('./WFM');
-app.use('/WFM', WFM);
+app.use('/ERP/WFM', WFM);
 
 const it = require('./it');
-app.use('/IT-Management', it);
+app.use('/ERP/IT-Management', it);
 
 const todo = require('./todo');
-app.use('/TO-DO-Liste', todo);
+app.use('/ERP/TO-DO-Liste', todo);
 
 const ManageUsers = require('./ManageUsers');
-app.use('/Users', ManageUsers);
+app.use('/ERP/Users', ManageUsers);
 
 const Prfl = require('./prfl');
-app.use('/Profile', Prfl);
+app.use('/ERP/Profile', Prfl);
 
-// const ntfs = require('./notifs');
-// app.use('/Notifications', ntfs);
+const ntfs = require('./notifs');
+app.use('/ERP/Notifications', ntfs);
 
 const path = require('path');
 const { log } = require('console');
@@ -241,7 +241,7 @@ app.use((req, res, next) => {
     String(process.env.sessionSecret),
     (err, decoded) => {
       if (err) {
-        res.redirect(`/login?next:${req.originalUrl}`);
+        res.redirect(`/ERP/login?next:${req.originalUrl}`);
       } else {
         next();
       }
@@ -269,11 +269,11 @@ var formateDate = (d) => {
 };
 
 app.get(/^.*\.html$/, (req, res) => {
-  res.redirect(301, '/');
+  res.redirect(301, '/ERP');
 });
 
 app.get(/^.*\.js$/, (req, res) => {
-  res.redirect(301, '/');
+  res.redirect(301, '/ERP');
 });
 app.use(requestIp.mw());
 
@@ -403,7 +403,7 @@ app.get('/logout', async (req, res) => {
 
   // req.cookies = 'jwtToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
   // lg.info(`${req.cookies.usdt.id} logged out`);
-  res.redirect('/');
+  res.redirect('/ERP');
   // } catch (error) {
   //   lg.error(error);
   // }
@@ -421,7 +421,7 @@ app.get('/lock', async (req, res) => {
       expires: new Date(0),
       path: '/',
     });
-    res.redirect('/');
+    res.redirect('/ERP');
   } catch (error) {
     lg.error(error);
   }

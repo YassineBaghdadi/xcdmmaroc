@@ -19,7 +19,7 @@ $(document).ready(function () {
   $('#DemandeRec').html(underCnstrct);
 
   function getUsrData() {
-    fetch('/Profile/getUsDt')
+    fetch('/ERP/Profile/getUsDt')
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
@@ -29,7 +29,7 @@ $(document).ready(function () {
           $('#userFullName').html(data.data.fname + ' ' + data.data.lname);
 
           // document.getElementById("prflPic").src = imageUrl;
-          if (window.location.pathname == '/Profile/') {
+          if (window.location.pathname == '/ERP/Profile/') {
             document.getElementById(
               'thePic'
             ).src = `./rcs/ProfilePics/${data.data.id}.${data.data.picExt}`;
@@ -81,7 +81,7 @@ $(document).ready(function () {
   }
 
   function getDCSrqstDt() {
-    fetch('/Profile/getDCSrqstDt')
+    fetch('/ERP/Profile/getDCSrqstDt')
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
@@ -96,7 +96,7 @@ $(document).ready(function () {
   }
 
   function getDechargesTble() {
-    fetch('/Profile/getDechargesTble')
+    fetch('/ERP/Profile/getDechargesTble')
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
@@ -111,7 +111,7 @@ $(document).ready(function () {
   }
 
   function getDplcmTble() {
-    fetch('/Profile/getDplcmTble')
+    fetch('/ERP/Profile/getDplcmTble')
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
@@ -126,7 +126,7 @@ $(document).ready(function () {
   }
 
   function getRecupTble() {
-    fetch('/Profile/getRecupTble')
+    fetch('/ERP/Profile/getRecupTble')
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
@@ -141,7 +141,7 @@ $(document).ready(function () {
   }
 
   function getReclmTble() {
-    fetch('/Profile/getReclmTble')
+    fetch('/ERP/Profile/getReclmTble')
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
@@ -329,7 +329,7 @@ $(document).ready(function () {
   });
 
   $('#mdfInfoBtn').click(function () {
-    fetch('/Profile/modifyInfo', {
+    fetch('/ERP/Profile/modifyInfo', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -393,7 +393,7 @@ $(document).ready(function () {
     });
     if (formValues) {
       $.ajax({
-        url: '/Profile/resetPawd',
+        url: '/ERP/Profile/resetPawd',
         method: 'POST',
         data: {
           p: formValues.input1,
@@ -596,7 +596,7 @@ $(document).ready(function () {
 
       $.ajax({
         type: 'POST',
-        url: '/Profile/sveCnj',
+        url: '/ERP/Profile/sveCnj',
         data: formData,
         contentType: false,
         processData: false,
@@ -669,7 +669,7 @@ $(document).ready(function () {
       var DCs = DCLst.join(', ');
       // console.log({ dcs: DCs, msg: $("#DCsRMessage").val() });
 
-      fetch('/Profile/sveDCSrqst', {
+      fetch('/ERP/Profile/sveDCSrqst', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -717,7 +717,7 @@ $(document).ready(function () {
 
   $('#DCSrqsttbl').on('click', 'button', function () {
     if (confirm('Es-tu sûr de vouloir annuler cette demande?')) {
-      fetch('/Profile/cnclDcsRqst', {
+      fetch('/ERP/Profile/cnclDcsRqst', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -757,7 +757,7 @@ $(document).ready(function () {
     ) {
       $('#saveDchrgeBtn').html('<i class="fa fa-spinner fa-spin"></i> ');
       $('#saveDchrgeBtn').attr('disabled', 'disabled');
-      fetch('/Profile/saveDchrge', {
+      fetch('/ERP/Profile/saveDchrge', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -831,7 +831,7 @@ $(document).ready(function () {
       $('#dplcmPaass').val() &&
       $('#dplcmNotes').val()
     ) {
-      fetch('/Profile/sveDplcmReq', {
+      fetch('/ERP/Profile/sveDplcmReq', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -890,7 +890,7 @@ $(document).ready(function () {
 
   $('#sveRecupReqBtn').click(function () {
     if ($('#recupD1').val() && $('#recupD2').val()) {
-      fetch('/Profile/sveRecupReq', {
+      fetch('/ERP/Profile/sveRecupReq', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -935,7 +935,7 @@ $(document).ready(function () {
 
   $('#sveReclmBtn').click(function () {
     if ($('#reclmTpe').val() && $('#reclmTtle').val() && $('#reclmMsg').val()) {
-      fetch('/Profile/getReclmTble', {
+      fetch('/ERP/Profile/getReclmTble', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

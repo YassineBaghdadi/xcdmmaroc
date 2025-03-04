@@ -12,7 +12,7 @@ $(document).ready(function () {
   //       });
 
   var getDepsList = () => {
-    $.get('/IT-Management/getDeprts', function (data) {
+    $.get('/ERP/IT-Management/getDeprts', function (data) {
       $('#Departement').html(data.d);
       $('#UsersListe').html(data.u);
       // console.log(data);
@@ -28,7 +28,7 @@ $(document).ready(function () {
     $('#srvcAttrDprtTbl').html('');
     if ($('#Departement').val()) {
       $.ajax({
-        url: '/IT-Management/getSrvc',
+        url: '/ERP/IT-Management/getSrvc',
         method: 'POST',
         contentType: 'application/json',
         dataType: 'json',
@@ -54,7 +54,7 @@ $(document).ready(function () {
       srvcs.push($(this).attr('value'));
     });
     $.ajax({
-      url: '/IT-Management/attrSrvc',
+      url: '/ERP/IT-Management/attrSrvc',
       method: 'POST',
       contentType: 'application/json',
       dataType: 'json',
@@ -74,7 +74,7 @@ $(document).ready(function () {
       srvcs.push($(this).attr('value'));
     });
     $.ajax({
-      url: '/IT-Management/rmvAttrSrvBtn',
+      url: '/ERP/IT-Management/rmvAttrSrvBtn',
       method: 'POST',
       contentType: 'application/json',
       dataType: 'json',
@@ -91,7 +91,7 @@ $(document).ready(function () {
   $('#addDprtBtn').click(() => {
     if ($('#NewDep').val()) {
       $.ajax({
-        url: '/IT-Management/addDprt',
+        url: '/ERP/IT-Management/addDprt',
         method: 'POST',
         contentType: 'application/json',
         dataType: 'json',
@@ -110,7 +110,7 @@ $(document).ready(function () {
   $('#addSrvcBtn').click(() => {
     if ($('#Newservices').val()) {
       $.ajax({
-        url: '/IT-Management/addSrvc',
+        url: '/ERP/IT-Management/addSrvc',
         method: 'POST',
         contentType: 'application/json',
         dataType: 'json',

@@ -19,7 +19,7 @@ app.use((req, res, next) => {
     String(process.env.sessionSecret),
     (err, decoded) => {
       if (err) {
-        res.redirect('/login');
+        res.redirect('/ERP/login');
       } else {
         next();
       }
@@ -114,7 +114,7 @@ app.get('/Administration', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.redirect(301, '/WFM/Administration');
+  res.redirect(301, '/ERP/WFM/Administration');
 });
 
 app.get('/Pauses', async (req, res) => {

@@ -6,7 +6,7 @@ $(document).ready(function () {
   async function ntfClck(i, l) {
     // alert('clicked')
 
-    await fetch('/Notifications/click', {
+    await fetch('/ERP/Notifications/click', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

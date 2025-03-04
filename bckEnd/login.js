@@ -68,7 +68,7 @@ app.get('/', (req, res) => {
     String(process.env.sessionSecret),
     (err, decoded) => {
       if (!err) {
-        res.redirect('/');
+        res.redirect('/ERP');
       }
     }
   );

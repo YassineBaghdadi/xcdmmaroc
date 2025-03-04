@@ -1,5 +1,5 @@
 if (window.location.pathname.includes('.html')) {
-  window.location.href = '/';
+  window.location.href = '/ERP';
 }
 
 const tst = Swal.mixin({
@@ -195,7 +195,7 @@ $(document).ready(async function () {
             .then(function (content) {
               // $("#right-sidebar").html(content);
 
-              fetch('/WFM/lgn')
+              fetch('/ERP/WFM/lgn')
                 .then((response) => response.json())
                 .then((data) => {
                   if (data.error) {

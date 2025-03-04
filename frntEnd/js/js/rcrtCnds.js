@@ -32,7 +32,7 @@ $(document).ready(() => {
         jsonData[id] = inputElement.value;
       }
     });
-    fetch('/Recrutement/Candidats/getCnds', {
+    fetch('/ERP/Recrutement/Candidats/getCnds', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

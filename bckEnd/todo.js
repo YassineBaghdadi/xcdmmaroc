@@ -21,7 +21,7 @@ app.use((req, res, next) => {
     String(process.env.sessionSecret),
     (err, decoded) => {
       if (err) {
-        res.redirect('/login');
+        res.redirect('/ERP/login');
       } else {
         next();
       }
@@ -720,7 +720,7 @@ app.post('/getTskInfo', async (req, res) => {
 });
 
 app.use(function (req, res) {
-  res.redirect(301, '/TO-DO-Liste');
+  res.redirect(301, '/ERP/TO-DO-Liste');
   // res.json({
   //   error: {
   //     'name':'Error',

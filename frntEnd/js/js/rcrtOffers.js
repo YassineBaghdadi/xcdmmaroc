@@ -11,7 +11,7 @@ const Toast = Swal.mixin({
 });
 
 $(document).ready(() => {
-  $.get('/Recrutement/Nouvelle-Offer/getEnttiesList', function (data) {
+  $.get('/ERP/Recrutement/Nouvelle-Offer/getEnttiesList', function (data) {
     $('#entity').html(data);
   }).fail(function () {
     console.error('Failed to fetch default image.');
@@ -43,7 +43,7 @@ $(document).ready(() => {
         jsonData[id] = inputElement.value;
       }
     });
-    fetch('/Recrutement/Les-offres/getOffers', {
+    fetch('/ERP/Recrutement/Les-offres/getOffers', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -96,7 +96,7 @@ $(document).ready(() => {
   };
 
   var getOfrCnds = (e) => {
-    let url = `/Recrutement/Les-offres/getOffresApllies/${$(
+    let url = `/ERP/Recrutement/Les-offres/getOffresApllies/${$(
       e.relatedTarget
     ).data('id')}`;
     let qrs = [];
@@ -168,7 +168,7 @@ $(document).ready(() => {
 
   $('#qlfBtn').click(() => {
     $.ajax({
-      url: '/Recrutement/Les-offres/qlfCnd',
+      url: '/ERP/Recrutement/Les-offres/qlfCnd',
       type: 'POST',
       contentType: 'application/json',
       data: JSON.stringify({ q: $('#qlfSelect').val(), i: $('#ofID').html() }),

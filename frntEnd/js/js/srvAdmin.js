@@ -57,7 +57,7 @@ var treatCnj = async (i) => {
       title: "S'il Vous Plaît Laissez un Commentaire",
     });
   } else {
-    await fetch('/Service-Admin/tratCnj', {
+    await fetch('/ERP/Service-Admin/tratCnj', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -113,7 +113,7 @@ $(document).ready(() => {
       .padStart(2, '0')}`;
   };
   var getStatics = () => {
-    fetch('/Service-Admin/getStatics')
+    fetch('/ERP/Service-Admin/getStatics')
       .then((response) => response.json())
       .then((data) => {
         var ids = {
@@ -142,7 +142,7 @@ $(document).ready(() => {
       });
   };
   var getClbs = () => {
-    fetch('/Service-Admin/getAllClbrs', {
+    fetch('/ERP/Service-Admin/getAllClbrs', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -181,13 +181,13 @@ $(document).ready(() => {
           tbl += `
           <tr>
             <td class="py-1">
-              <a href="/Service-Admin/Collaborateur?i=${e.id}">
+              <a href="/ERP/Service-Admin/Collaborateur?i=${e.id}">
                 <img src="images/faces/Default.jpg" alt="image" width="30px" height="30px"/>
               </a>
             </td>
-            <td><a href="/Service-Admin/Collaborateur?i=${e.id}">${e.lname} ${
-            e.fname
-          }</a></td>
+            <td><a href="/ERP/Service-Admin/Collaborateur?i=${e.id}">${
+            e.lname
+          } ${e.fname}</a></td>
             <td>${e.nme}</td>
             <td>${e.jobeTitle}</td>
             <td>${e.phone}</td>
@@ -246,7 +246,7 @@ $(document).ready(() => {
       $('#cin').val() &&
       $('#Sfamiliale').val()
     ) {
-      fetch('/Service-Admin/saveNewAgent', {
+      fetch('/ERP/Service-Admin/saveNewAgent', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -282,7 +282,9 @@ $(document).ready(() => {
             '',
             'success'
           );
-          window.location.replace(`/Service-Admin/Collaborateur?i=${data.id}`);
+          window.location.replace(
+            `/ERP/Service-Admin/Collaborateur?i=${data.id}`
+          );
         })
         .catch((error) => {
           console.error('Error:', error.message);

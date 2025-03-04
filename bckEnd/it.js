@@ -16,7 +16,7 @@ app.use((req, res, next) => {
     String(process.env.sessionSecret),
     (err, decoded) => {
       if (err) {
-        res.redirect('/login');
+        res.redirect('/ERP/login');
       } else {
         next();
       }
@@ -193,7 +193,7 @@ app.get('/getPermitions', async (req, res) => {
 });
 
 app.use(function (req, res) {
-  res.redirect(301, '/IT-Management');
+  res.redirect(301, '/ERP/IT-Management');
   // res.json({
   //   error: {
   //     'name':'Error',

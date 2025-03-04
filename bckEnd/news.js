@@ -16,7 +16,7 @@ app.use((req, res, next) => {
     String(process.env.sessionSecret),
     (err, decoded) => {
       if (err) {
-        res.redirect('/login');
+        res.redirect('/ERP/login');
       } else {
         next();
       }

@@ -93,7 +93,7 @@ const Toast = Swal.mixin({
 //     };
 
 var openTreatWndw = (i, t) => {
-  fetch('/Service-Admin/getTreatWindow', {
+  fetch('/ERP/Service-Admin/getTreatWindow', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -152,7 +152,7 @@ var openTreatWndw = (i, t) => {
 // }
 
 var getRhDemmands = () => {
-  fetch('/Service-Admin/getRhDemmand', {
+  fetch('/ERP/Service-Admin/getRhDemmand', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -188,7 +188,7 @@ var getRhDemmands = () => {
 
 var RHtreatCnj = async (s, i) => {
   if ($('#cnjTrComment').val()) {
-    fetch('/Service-Admin/treatTheCnj', {
+    fetch('/ERP/Service-Admin/treatTheCnj', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -234,7 +234,7 @@ var treatTheDchrg = (s, i) => {
   if ($('#DchrgTrComment').val()) {
     var msg = '';
 
-    fetch('/Service-Admin/treatTheDchrg', {
+    fetch('/ERP/Service-Admin/treatTheDchrg', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -269,7 +269,7 @@ var treatTheDchrg = (s, i) => {
 var RHtreatRCPreq = (s, i) => {
   var msg = '';
 
-  fetch('/Service-Admin/RHtreatRCPreq', {
+  fetch('/ERP/Service-Admin/RHtreatRCPreq', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -297,7 +297,7 @@ var treatTheDplcm = (s, i) => {
   if ($('#DplcmComment').val()) {
     var msg = '';
 
-    fetch('/Service-Admin/treatTheDplcm', {
+    fetch('/ERP/Service-Admin/treatTheDplcm', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -330,7 +330,7 @@ var treatTheDplcm = (s, i) => {
 };
 
 var RHtreatDCSreq = (s, i) => {
-  fetch('/Service-Admin/RHtreatDCSreq', {
+  fetch('/ERP/Service-Admin/RHtreatDCSreq', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -355,7 +355,7 @@ var RHtreatDCSreq = (s, i) => {
 };
 
 var downld = (i, d) => {
-  fetch('/Service-Admin/RHdownldDCSreq', {
+  fetch('/ERP/Service-Admin/RHdownldDCSreq', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -401,7 +401,7 @@ $(document).ready(() => {
   var maxDate = year + '-' + month + '-' + day;
   $('#naissance').attr('max', maxDate);
 
-  fetch('/getEnttiesList')
+  fetch('/ERP/getEnttiesList')
     .then((response) => {
       if (response.ok) {
         return response.json();

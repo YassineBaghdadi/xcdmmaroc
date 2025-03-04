@@ -18,7 +18,7 @@ app.use((req, res, next) => {
     String(process.env.sessionSecret),
     (err, decoded) => {
       if (err) {
-        res.redirect(`/login?next=${req.originalUrl}`);
+        res.redirect(`/ERP/login?next=${req.originalUrl}`);
       } else {
         next();
       }
@@ -65,7 +65,7 @@ app.get('/:i', async (req, res) => {
     if (ofr[0].i > 0) {
       res.sendFile(path.join(__dirname, '../frntEnd', 'Fiche-Candidat.html'));
     } else {
-      res.redirect(`/Recrutement/Candidats/`);
+      res.redirect(`/ERP/Recrutement/Candidats/`);
     }
   } else {
     res.sendFile(path.join(__dirname, '../frntEnd', 'accessDenied.html'));

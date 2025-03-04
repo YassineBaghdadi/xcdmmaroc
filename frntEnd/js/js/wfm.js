@@ -111,7 +111,7 @@ fetch('/getDprtmList')
   });
 
 function getAllBrks() {
-  fetch('/WFM/getAllBrks')
+  fetch('/ERP/WFM/getAllBrks')
     .then((response) => {
       if (response.ok) {
         return response.json();
@@ -162,7 +162,7 @@ function getAllBrks() {
 }
 
 var getBrksCodeTble = () => {
-  fetch('/WFM/getBrksCodeTble', {
+  fetch('/ERP/WFM/getBrksCodeTble', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -200,7 +200,7 @@ var getBrksCodeTble = () => {
 var removeBrkCde = (i) => {
   if (i) {
     if (confirm('are you sure you want to remove the break code ?')) {
-      fetch('/WFM/rmBrCde', {
+      fetch('/ERP/WFM/rmBrCde', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -225,7 +225,7 @@ var removeBrkCde = (i) => {
 };
 
 var getWfmBreaksCodes = () => {
-  fetch('/WFM/getWfmBreaksCodes')
+  fetch('/ERP/WFM/getWfmBreaksCodes')
     .then((response) => {
       if (response.ok) {
         return response.json();
@@ -252,7 +252,7 @@ $(document).ready(() => {
   const socket = io();
 
   function checkActiveBrk() {
-    fetch('/WFM/checkActiveBrk')
+    fetch('/ERP/WFM/checkActiveBrk')
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -290,7 +290,7 @@ $(document).ready(() => {
 
   var getAllAttrBrkForDprt = () => {
     if ($('#Departement').val()) {
-      fetch('/WFM/getAttBrksCdes', {
+      fetch('/ERP/WFM/getAttBrksCdes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -337,7 +337,7 @@ $(document).ready(() => {
   };
   var getBrListAttr = () => {
     if ($('#Departement').val()) {
-      fetch('/WFM/getBrksCodeTble', {
+      fetch('/ERP/WFM/getBrksCodeTble', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -375,7 +375,7 @@ $(document).ready(() => {
 
   $('#brChangeBtn').click(async () => {
     if ($('#brksList').val()) {
-      fetch('/WFM/saveBr', {
+      fetch('/ERP/WFM/saveBr', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -405,7 +405,7 @@ $(document).ready(() => {
   });
 
   $('#dispoBtn').click(() => {
-    fetch('/WFM/dispo')
+    fetch('/ERP/WFM/dispo')
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -434,7 +434,7 @@ $(document).ready(() => {
       $('#reqVld').val() &&
       $('#spltr').val()
     ) {
-      fetch('/WFM/SveNewBrkCde', {
+      fetch('/ERP/WFM/SveNewBrkCde', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -496,7 +496,7 @@ $(document).ready(() => {
 
   $('#attrBrkBtn').click(() => {
     if ($('#Departement').val() && $('#lstBreaks option:selected').length > 0) {
-      fetch('/WFM/attBrksCdes', {
+      fetch('/ERP/WFM/attBrksCdes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

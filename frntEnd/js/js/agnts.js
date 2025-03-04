@@ -95,7 +95,7 @@ var treatCnj = async (i) => {
       title: "S'il Vous Plaît Laissez un Commentaire",
     });
   } else {
-    await fetch('/Service-Admin/treatTheCnj', {
+    await fetch('/ERP/Service-Admin/treatTheCnj', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -128,7 +128,7 @@ var treatCnj = async (i) => {
 };
 
 var openDCStrWndw = (i) => {
-  fetch('/Service-Admin/openDCStrWndw', {
+  fetch('/ERP/Service-Admin/openDCStrWndw', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -214,7 +214,7 @@ $(document).ready(() => {
     }
   }
   var getInfo = () => {
-    fetch('/Service-Admin/getUsrInfos', {
+    fetch('/ERP/Service-Admin/getUsrInfos', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -355,7 +355,7 @@ $(document).ready(() => {
       });
   };
   var getAllHstr = () => {
-    fetch('/Service-Admin/getHstrs', {
+    fetch('/ERP/Service-Admin/getHstrs', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -380,7 +380,7 @@ $(document).ready(() => {
   };
   getAllHstr();
   var getCntrctTrHstry = () => {
-    fetch('/Service-Admin/getAllTrsfCntrTble', {
+    fetch('/ERP/Service-Admin/getAllTrsfCntrTble', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -430,7 +430,7 @@ $(document).ready(() => {
   };
 
   var getConjeTble = () => {
-    fetch('/Service-Admin/getCnjTble', {
+    fetch('/ERP/Service-Admin/getCnjTble', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -481,7 +481,7 @@ $(document).ready(() => {
   };
 
   function getDplcmTble() {
-    fetch('/Service-Admin/getDplcmTble', {
+    fetch('/ERP/Service-Admin/getDplcmTble', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -510,7 +510,7 @@ $(document).ready(() => {
   getDplcmTble();
 
   var getDCSreqTble = () => {
-    fetch('/Service-Admin/getDCSreqTble', {
+    fetch('/ERP/Service-Admin/getDCSreqTble', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -539,7 +539,7 @@ $(document).ready(() => {
   };
 
   var getDchrgeTble = () => {
-    fetch('/Service-Admin/getDchrgeTble', {
+    fetch('/ERP/Service-Admin/getDchrgeTble', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -589,7 +589,7 @@ $(document).ready(() => {
   getDCSreqTble();
   getCntrctTrHstry();
   if (!agentId) {
-    window.location.href = `/Service-Admin/Liste-des-Collaborateurs`;
+    window.location.href = `/ERP/Service-Admin/Liste-des-Collaborateurs`;
   } else {
   }
   getInfo();
@@ -604,7 +604,7 @@ $(document).ready(() => {
       if ($('#enfantsEdtTxt').val()) {
         chldrn = $('#enfantsEdtTxt').val();
       }
-      fetch('/Service-Admin/updatePersoInfoUsr', {
+      fetch('/ERP/Service-Admin/updatePersoInfoUsr', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -687,7 +687,7 @@ $(document).ready(() => {
         });
         return false;
       }
-      fetch('/Service-Admin/saveNewTrsfrCntr', {
+      fetch('/ERP/Service-Admin/saveNewTrsfrCntr', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -780,7 +780,7 @@ $(document).ready(() => {
         confirmButtonText: 'Oui',
       }).then((result) => {
         if (result.isConfirmed) {
-          fetch('/Service-Admin/changeSoldCnj', {
+          fetch('/ERP/Service-Admin/changeSoldCnj', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -821,7 +821,7 @@ $(document).ready(() => {
     if ($('#PosteX').val() && $('#intégrationX').val()) {
       $.ajax({
         type: 'POST',
-        url: '/Service-Admin/sveNewCntrct',
+        url: '/ERP/Service-Admin/sveNewCntrct',
         data: {
           i: agentId,
           s: $('#CntrctStts').val(),
@@ -870,7 +870,7 @@ $(document).ready(() => {
         $('#endCntrDte').removeAttr('hidden');
       }
     });
-    fetch(`/Service-Admin/checkCntrcts?i=${agentId}`)
+    fetch(`/ERP/Service-Admin/checkCntrcts?i=${agentId}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -944,7 +944,7 @@ $(document).ready(() => {
         Swal.fire(`You selected: ${cutCntrDte} and ${cutCntrMtf}`);
         $.ajax({
           type: 'POST',
-          url: '/Service-Admin/cutCntr',
+          url: '/ERP/Service-Admin/cutCntr',
           data: {
             i: agentId,
             d: cutCntrDte,
@@ -973,7 +973,7 @@ $(document).ready(() => {
 
     $('#cntrID').html(cntrId);
 
-    fetch(`/Service-Admin/getCntrDetails?i=${cntrId}`)
+    fetch(`/ERP/Service-Admin/getCntrDetails?i=${cntrId}`)
       .then((response) => response.json())
       .then((data) => {
         // console.log(data);
@@ -1003,7 +1003,7 @@ $(document).ready(() => {
     $('#EdtCntrBtn').click(() => {
       console.log('clicked');
 
-      fetch('/Service-Admin/edtCntr', {
+      fetch('/ERP/Service-Admin/edtCntr', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -1065,7 +1065,7 @@ $(document).ready(() => {
         icon: 'success',
         title: `Le commentaire a été enregistré avec succès`,
       });
-      await fetch(`/Service-Admin/newCmnt?t=${text.trim()}&a=${agentId}`);
+      await fetch(`/ERP/Service-Admin/newCmnt?t=${text.trim()}&a=${agentId}`);
       $('#cmnts').val($('#cmnts').val() + `* ${text.trim()}.\n`);
       getAllHstr();
     }

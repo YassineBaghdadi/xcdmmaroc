@@ -21,7 +21,7 @@ app.use((req, res, next) => {
     String(process.env.sessionSecret),
     (err, decoded) => {
       if (err) {
-        res.redirect('/login');
+        res.redirect('/ERP/login');
       } else {
         next();
       }
@@ -52,7 +52,7 @@ app.get('/Finance-entite', async (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.redirect(301, '/Finance/Finance-entite');
+  res.redirect(301, '/ERP/Finance/Finance-entite');
 });
 
 app.get('/getEntties', async (req, res) => {
@@ -134,7 +134,7 @@ app.post('/sveNewEnttie', upload.single('logo'), async (req, res) => {
 });
 
 app.use(function (req, res) {
-  res.redirect(301, '/Finance');
+  res.redirect(301, '/ERP/Finance');
   // res.json({
   //   error: {
   //     'name':'Error',

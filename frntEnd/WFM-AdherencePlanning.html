@@ -260,7 +260,7 @@
           <script>
             var scket = io();
             var showDetailedPauses = (i, w) => {
-              fetch('/WFM/getTodayBRsForAgent', {
+              fetch('/ERP/WFM/getTodayBRsForAgent', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
@@ -333,7 +333,7 @@
                 confirmButtonText: 'Oui',
               }).then((result) => {
                 if (result.isConfirmed) {
-                  fetch('/WFM/makeAgDispo', {
+                  fetch('/ERP/WFM/makeAgDispo', {
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json',
@@ -373,7 +373,7 @@
                 confirmButtonText: 'Oui',
               }).then((result) => {
                 if (result.isConfirmed) {
-                  fetch('/WFM/dcnctAg', {
+                  fetch('/ERP/WFM/dcnctAg', {
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json',
@@ -400,7 +400,7 @@
             };
 
             function getWorkDaysTbl() {
-              fetch('/WFM/getWorkDaysTbl', {
+              fetch('/ERP/WFM/getWorkDaysTbl', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',

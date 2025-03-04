@@ -13,7 +13,7 @@ const Toast = Swal.mixin({
 $(document).ready(() => {
   $.ajax({
     type: 'GET',
-    url: '/Recrutement/getUsersList',
+    url: '/ERP/Recrutement/getUsersList',
     dataType: 'json',
     success: function (response) {
       // console.log(response);
@@ -41,7 +41,7 @@ $(document).ready(() => {
         jsonData[id] = inputElement.value;
       }
     });
-    fetch('/Recrutement/getOffers', {
+    fetch('/ERP/Recrutement/getOffers', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ $(document).ready(() => {
         jsonData[id] = inputElement.value;
       }
     });
-    fetch('/Recrutement/getOfrsFltr', {
+    fetch('/ERP/Recrutement/getOfrsFltr', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

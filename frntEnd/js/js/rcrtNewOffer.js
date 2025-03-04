@@ -17,12 +17,12 @@ $(document).ready(() => {
   }).fail(function () {
     console.error('Failed to fetch default image.');
   });
-  $.get('/Recrutement/Nouvelle-Offer/getEnttiesList', function (data) {
+  $.get('/ERP/Recrutement/Nouvelle-Offer/getEnttiesList', function (data) {
     $('#RecrutementPar').html(data);
   }).fail(function () {
     console.error('Failed to fetch');
   });
-  $.get('/Recrutement/Nouvelle-Offer/getClientsList', function (data) {
+  $.get('/ERP/Recrutement/Nouvelle-Offer/getClientsList', function (data) {
     $('#RecrutementPour').html(data);
   }).fail(function () {
     console.error('Failed to fetch');
@@ -40,7 +40,7 @@ $(document).ready(() => {
   const params = new URLSearchParams(window.location.search);
   const of = params.get('Offer');
   if (of) {
-    fetch(`/Recrutement/Nouvelle-Offer/getOfr?o=${of}`)
+    fetch(`/ERP/Recrutement/Nouvelle-Offer/getOfr?o=${of}`)
       .then((response) => {
         console.log(response);
 
@@ -153,7 +153,7 @@ $(document).ready(() => {
         formData['upt'] = of;
       }
 
-      fetch('/Recrutement/Nouvelle-Offer/saveJobOffer ', {
+      fetch('/ERP/Recrutement/Nouvelle-Offer/saveJobOffer ', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

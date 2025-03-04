@@ -25,20 +25,20 @@ const {
 const PizZip = require('pizzip');
 const Docxtemplater = require('docxtemplater');
 
-// app.use((req, res, next) => {
-//         //console.log(req.originalUrl);
-//   jwt.verify(
-//     req.cookies.jwtToken,
-//     String(process.env.sessionSecret),
-//     (err, decoded) => {
-//       if (err) {
-//         res.redirect(`/login?next:${req.originalUrl}`);
-//       } else {
-//         next();
-//       }
-//     }
-//   );
-// });
+app.use((req, res, next) => {
+        //console.log(req.originalUrl);
+  jwt.verify(
+    req.cookies.jwtToken,
+    String(process.env.sessionSecret),
+    (err, decoded) => {
+      if (err) {
+        res.redirect(`/ERP/login?next:${req.originalUrl}`);
+      } else {
+        next();
+      }
+    }
+  );
+});
 
 app.use(express.static(path.join(__dirname, '../frntEnd'), { index: false }));
 
@@ -58,7 +58,7 @@ app.get('/Collaborateur', async (req, res) => {
       if (req.query.i && ag[0]) {
         res.sendFile(path.join(__dirname, '../frntEnd', 'Collaborateur.html'));
       } else {
-        res.redirect(301, '/Service-Admin/Liste-des-Collaborateurs');
+        res.redirect(301, '/ERP/Service-Admin/Liste-des-Collaborateurs');
       }
     } catch (error) {
       lg.error(error);
@@ -74,7 +74,7 @@ app.get('/Collaborateur', async (req, res) => {
 //   });
 
 app.get('/', (req, res) => {
-  res.redirect(301, '/Service-Admin/Liste-des-Collaborateurs');
+  res.redirect(301, '/ERP/Service-Admin/Liste-des-Collaborateurs');
 });
 
 app.get('/Liste-des-Collaborateurs', async (req, res) => {
@@ -1098,7 +1098,7 @@ app.post('/getRhDemmand', async (req, res) => {
     }
     tbl += `
         <tr>
-          <td class="py-1"> <a href="/Service-Admin/Collaborateur?i=${
+          <td class="py-1"> <a href="/ERP/Service-Admin/Collaborateur?i=${
             e.uid
           }" >${e.unme}</a >
           </td>
@@ -2369,7 +2369,7 @@ app.get('/newCmnt', async (req, res) => {
 });
 
 app.use(function (req, res) {
-  res.redirect(301, '/Service-Admin');
+  res.redirect(301, '/ERP/Service-Admin');
   // res.json({
   //   error: {
   //     'name':'Error',

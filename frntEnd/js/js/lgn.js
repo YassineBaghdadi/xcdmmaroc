@@ -18,7 +18,7 @@ $(document).ready(function () {
     try {
       $('button').html('<i class="fa fa-spinner fa-spin"></i> ');
       $('button').attr('disabled', 'disabled');
-      fetch('/login/login', {
+      fetch('/ERP/login/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ $(document).ready(function () {
             const nxt =
               urlParams.get('next') != '/ERP'
                 ? urlParams.get('next')
-                : '/Profile';
+                : '/ERP/Profile';
             // const nxt = urlParams.get('next') || '/Profile';
             window.location.href = nxt;
           } else {
@@ -83,7 +83,7 @@ $(document).ready(function () {
       showLoaderOnConfirm: true,
       preConfirm: async (c) => {
         try {
-          const response = await fetch(`/login/frgtPss?x=${c}`);
+          const response = await fetch(`/ERP/login/frgtPss?x=${c}`);
           if (!response.ok) {
             const errorData = await response.json();
             const errorMessage = `Une erreur s'est produite. Veuillez contacter l'administration.`;
