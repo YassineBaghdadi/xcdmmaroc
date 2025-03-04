@@ -241,7 +241,7 @@ app.use((req, res, next) => {
     String(process.env.sessionSecret),
     (err, decoded) => {
       if (err) {
-        res.redirect(`/ERP/login?next:${req.originalUrl}`);
+        res.redirect(`/ERP/login?next=${req.originalUrl}`);
       } else {
         next();
       }

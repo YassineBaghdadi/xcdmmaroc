@@ -26,13 +26,13 @@ const PizZip = require('pizzip');
 const Docxtemplater = require('docxtemplater');
 
 app.use((req, res, next) => {
-        //console.log(req.originalUrl);
+  //console.log(req.originalUrl);
   jwt.verify(
     req.cookies.jwtToken,
     String(process.env.sessionSecret),
     (err, decoded) => {
       if (err) {
-        res.redirect(`/ERP/login?next:${req.originalUrl}`);
+        res.redirect(`/ERP/login?next=${req.originalUrl}`);
       } else {
         next();
       }

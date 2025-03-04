@@ -36,15 +36,17 @@ $(document).ready(function () {
           }
         })
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           if (data) {
             const urlParams = new URLSearchParams(window.location.search);
+            console.log(urlParams);
 
-            const nxt =
-              urlParams.get('next') != '/ERP'
-                ? urlParams.get('next')
-                : '/ERP/Profile';
-            // const nxt = urlParams.get('next') || '/Profile';
+            const nxt = urlParams.get('next')
+              ? urlParams.get('next')
+              : '/ERP/Profile';
+            // const nxt = urlParams.get('next') || '/ERP/Profile';
+            // console.log(nxt);
+
             window.location.href = nxt;
           } else {
             $('button').html('Se connecter');

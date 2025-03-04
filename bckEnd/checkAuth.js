@@ -13,7 +13,7 @@ function isAuth(req, res, next) {
     String(process.env.sessionSecret),
     (err, decoded) => {
       if (err) {
-        res.redirect(`/ERP/login?next:${next}`);
+        res.redirect(`/ERP/login?next=${next}`);
       } else {
         next();
       }
