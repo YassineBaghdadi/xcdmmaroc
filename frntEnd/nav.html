@@ -107,7 +107,7 @@
         class="dropdown-menu dropdown-menu-right navbar-dropdown"
         aria-labelledby="profileDropdown"
       >
-        <a class="dropdown-item" href="/Profile">
+        <a class="dropdown-item" href="/ERP/Profile">
           <i class="ti-user text-primary"></i>
           Mon Profil
         </a>
@@ -176,7 +176,7 @@
         await fetch('/logout');
       }
       if (!result.isDismissed) {
-        window.location.href = '/';
+        window.location.href = '/ERP';
       }
     });
 
