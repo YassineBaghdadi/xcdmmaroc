@@ -170,7 +170,7 @@ var getInfos = () => {
       // $("#formation").val(data.info.formation);
       $('#formation').val(data.info.formation).trigger('change');
 
-      document.getElementById('prfPic').src = `/Profile/getPrflPic`;
+      document.getElementById('prfPic').src = `/Career/Profile/getPrflPic`;
 
       var langs = data.langs;
       var langsHtml = ``;
@@ -420,7 +420,7 @@ $(document).ready(() => {
           $('#prfPic').empty();
           $('#prfPic').attr(
             'src',
-            `/Profile/getPrflPic?timestamp=${new Date().getTime()}`
+            `/Career/Profile/getPrflPic?timestamp=${new Date().getTime()}`
           );
           // document.getElementById("prfPic").src = `/Profile/getPrflPic`;
         })
