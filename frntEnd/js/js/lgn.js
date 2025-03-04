@@ -41,9 +41,11 @@ $(document).ready(function () {
             const urlParams = new URLSearchParams(window.location.search);
 
             const nxt =
-              urlParams.get('next') != '/' ? urlParams.get('next') : '/Profile';
+              urlParams.get('next') != '/ERP'
+                ? urlParams.get('next')
+                : '/Profile';
             // const nxt = urlParams.get('next') || '/Profile';
-            window.location.href = nxt.replace('/ERP');
+            window.location.href = nxt;
           } else {
             $('button').html('Se connecter');
             $('button').removeAttr('disabled');
