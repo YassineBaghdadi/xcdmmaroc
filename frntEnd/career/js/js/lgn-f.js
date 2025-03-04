@@ -67,7 +67,7 @@ $(document).ready(() => {
 
       $.ajax({
         type: 'POST',
-        url: '/Login/signup',
+        url: '/Career/Login/signup',
         data: formData,
         contentType: false,
         processData: false,
