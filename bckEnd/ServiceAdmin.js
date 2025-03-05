@@ -883,7 +883,7 @@ app.post('/treatTheCnj', async (req, res) => {
   );
   await sendMail(
     cnj[0].email,
-    `RE: la demande conji a été traitée`,
+    `RE: la demande congé a été traitée`,
     `
           <div style='font-family: Arial, sans-serif;'><p>Bonjour ${cnj[0].usrNme},</p><br><p>Votre demande de congé a été ${rslt}. Le document attend votre signature.<p style='font-style: italic;'><br/>Cordialement,<br />XCDM ERP (Team IT)</p></div>
           `

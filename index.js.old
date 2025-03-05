@@ -404,7 +404,7 @@ app.post("/sveCnj", isAuth, async (req, res) => {
     const [r] = await db.execute(qry, [req.cookies.usdt.id, currentDateTime, $('#StartDay').val(), $('#EndDay').val(), parseFloat($('#JoursCong').val()), prvFileblob]);
     res.send("DONE");
   } catch (error) {
-    res.status(500).send("Error occurred while saving Conji.");
+    res.status(500).send("Error occurred while saving congé.");
   }
   
   

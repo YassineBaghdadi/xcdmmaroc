@@ -502,7 +502,7 @@ app.post('/treatTheCnj', async (req, res) => {
     if (!req.body.i) {
       await sendMail(
         cnj[0].email,
-        `RE: la demande conji a été traitée`,
+        `RE: la demande congé a été traitée`,
         `
                                   <div style='font-family: Arial, sans-serif;'><p>Bonjour ${cnj[0].usrNme},</p><br><p>Votre demande de congé a été refusée par votre responsable.<p style='font-style: italic;'><br/>Cordialement,<br />XCDM ERP (Team IT)</p></div>
                                   `
@@ -515,7 +515,7 @@ app.post('/treatTheCnj', async (req, res) => {
 
     await sendMail(
       rhRsp[0].email,
-      `RE: la demande conji a été traitée`,
+      `RE: la demande congé a été traitée`,
       `
                                 <div style='font-family: Arial, sans-serif;'><p>Bonjour ${rhRsp[0].fname},</p><br><p>Il y a une nouvelle demande de congé de ${cnj[0].usrNme} qui doit être traitée.<br>Pour accéder à toutes les demandes RH veuillez cliquer ou copier le lien : <a href="http://erp.xcdmmaroc.com/Service-Admin/Demandes-RH">http://erp.xcdmmaroc.com/Service-Admin/Demandes-RH</a><p style='font-style: italic;'><br/>Cordialement,<br />XCDM ERP (Team IT)</p></div>
                                 `

@@ -212,7 +212,7 @@ $(document).ready(function () {
           icon: 'error',
           title: `il ne vous reste que ${$(
             '#soldConge'
-          ).html()} jours sur le compte conji`,
+          ).html()} jours sur le compte congé`,
         });
         $('#EndDay').val('');
         return '00';
