@@ -160,7 +160,7 @@ $(document).ready(function () {
     }
     // $('#permisionsArea').attr('hidden', true);
     await fetch(
-      `/IT-Management/addPermition?i=${this.id}&c=${ckd}&u=${$(
+      `/ERP/IT-Management/addPermition?i=${this.id}&c=${ckd}&u=${$(
         '#UsersListe'
       ).val()}`
     );
