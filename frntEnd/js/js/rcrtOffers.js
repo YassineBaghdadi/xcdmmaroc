@@ -127,9 +127,9 @@ $(document).ready(() => {
                                  .split('.')[0]
                                  .replace('T', ' ')}</td>
                                <td class="text-center">
-                                 <a href="/Recrutement/Candidats/${e.uniqID}">${
-            e.cndNme
-          }</a>
+                                 <a href="/ERP/Recrutement/Candidats/${
+                                   e.uniqID
+                                 }">${e.cndNme}</a>
                                </td>
                                <td class="text-center">${e.qlf}</td>
                                <td class="text-center">${e.qlfBy}</td>
