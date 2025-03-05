@@ -130,7 +130,7 @@ $(document).ready(function () {
     if ($('#UsersListe').val()) {
       $(`.permsOps`).prop('checked', false);
       const response = await fetch(
-        `/IT-Management/getPermitions?i=${$('#UsersListe').val()}`
+        `/ERP/IT-Management/getPermitions?i=${$('#UsersListe').val()}`
       );
 
       if (!response.ok) {
@@ -141,6 +141,7 @@ $(document).ready(function () {
       }
 
       const data = await response.json();
+      console.log(data);
 
       data.forEach((e) => {
         $(`#${e}`).prop('checked', true);
