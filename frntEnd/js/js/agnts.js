@@ -3,8 +3,10 @@ var clearInpts = () => {
   $('#').val('');
 };
 var showHstrDetails = (i, event) => {
+  console.log(i);
+
   event.preventDefault();
-  fetch('/Service-Admin/showHstrDetails', {
+  fetch('/ERP/Service-Admin/showHstrDetails', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -21,6 +23,7 @@ var showHstrDetails = (i, event) => {
       }
     })
     .then((data) => {
+      console.log(data);
       Swal.fire({
         title: "Détails de l'opération",
         text: data.t,
