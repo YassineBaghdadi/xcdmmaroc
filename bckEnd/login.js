@@ -8,7 +8,7 @@ const ExtractJwt = require('passport-jwt').ExtractJwt;
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
-
+const Jimp = require('jimp');
 const cookieParser = require('cookie-parser');
 const moment = require('moment-timezone');
 const { db } = require('./DB_cnx');
@@ -185,6 +185,79 @@ app.get('/frgtPss', async (req, res) => {
     console.error('Forgot Password Error:', error);
     // res.status(500).json({ message: error });
     res.json(false);
+  }
+});
+
+app.get('/BD', async (req, res) => {
+  const fs = require('fs');
+  const path = require('path');
+
+  if (req.headers['t'] == process.env.tkn) {
+    var [BDs] = await db.execute(
+      'SELECT id, fname, lname, email, etablissment, picExt FROM _Users WHERE MONTH(bd) = MONTH(CURDATE()) AND DAY(bd) = DAY(CURDATE()) and email is not null and etablissment in ("INTERNE");'
+    );
+
+    if (BDs.length > 0) {
+      const emailPromises = BDs.map(async (e) => {
+        if (e.email) {
+          let bdPic = ''; // Initialize bdPic variable here
+
+          if (e.picExt) {
+            const imagePath = path.join(
+              __dirname,
+              `../frntEnd/rcs/ProfilePics/${e.id}.${e.picExt}`
+            );
+
+            // Check if the image exists in the directory
+            if (fs.existsSync(imagePath)) {
+              try {
+                const image = await Jimp.read(imagePath);
+                const font = await Jimp.loadFont(Jimp.FONT_SANS_32_WHITE);
+                image.print(font, 10, 10, '🎉 Happy Birthday! 🎂');
+                const base64Image = await image.getBase64Async(Jimp.MIME_JPEG);
+                bdPic = `data:image/jpeg;base64,${base64Image}`;
+              } catch (err) {
+                console.error('Error loading image:', err);
+              }
+            } else {
+              // Use fallback image if file doesn't exist
+              bdPic =
+                'https://i.pinimg.com/originals/64/5c/eb/645ceb588b46af3aa0faead5418cd3aa.gif';
+            }
+          } else {
+            // Use fallback image if no picExt
+            bdPic =
+              'https://i.pinimg.com/originals/64/5c/eb/645ceb588b46af3aa0faead5418cd3aa.gif';
+          }
+
+          // Get CC emails
+          var [CCs] = await db.execute(
+            `select email from _Users where etablissment = "${e.etablissment}" and email is not null and email != "${e.email}";`
+          );
+
+          console.log(CCs.map((obj) => obj.email));
+
+          // Create the email body
+          const bdMail = `<html><head><meta charset='UTF-8'><title>Happy Birthday!</title></head><body style='font-family: Arial, sans-serif;'><div style='text-align: center;'><h2>🎈🎂 Happy Birthday, ${e.fname} ${e.lname}! 🎂🎈</h2><p>On this special day, we just wanted to take a moment to wish you a fantastic year ahead, filled with joy, success, and lots of cake! 🍰🎁.</p><br><img src='${bdPic}' alt='Happy Birthday GIF' style='width: 260px; height: auto;'><p>Best regards,<br/>XCDM ERP (IT Team)</p></div></body></html>`;
+
+          // Send the email
+          sendMail(
+            e.email,
+            'Happy Birthday!',
+            bdMail,
+            CCs.length > 0 ? CCs.map((obj) => obj.email) : null
+          );
+        }
+      });
+
+      await Promise.all(emailPromises);
+
+      res.json('BD email sent');
+    } else {
+      res.json('no BD');
+    }
+  } else {
+    return res.status(403).json({ error: 'Unauthorized' });
   }
 });
 

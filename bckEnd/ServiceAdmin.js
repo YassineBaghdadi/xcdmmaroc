@@ -2275,11 +2275,9 @@ app.post('/cutCntr', async (req, res) => {
 
   await db.execute(
     `update _Users set login = "0", 
-                        etablissment = null, 
                         activeStatus = "0", 
                         leaveDate = "${req.body.d}", 
                         contractTpe = null, 
-                        department = null,
                         integrationDate = null
                         where id = ${req.body.i}`
   );
