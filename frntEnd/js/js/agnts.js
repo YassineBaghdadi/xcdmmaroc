@@ -821,6 +821,7 @@ $(document).ready(() => {
   });
 
   $('#EdtCntrSveBtn').click(() => {
+    $('#EdtCntrSveBtn').attr('hidden', true);
     if ($('#PosteX').val() && $('#intégrationX').val() && $('#EntiteX').val()) {
       $.ajax({
         type: 'POST',
@@ -865,6 +866,7 @@ $(document).ready(() => {
         icon: 'error',
       });
     }
+    $('#EdtCntrSveBtn').removeAttr('hidden');
   });
 
   $('#TraitementContrat').on('show.bs.modal', function (event) {
