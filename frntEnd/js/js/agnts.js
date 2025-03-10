@@ -821,7 +821,7 @@ $(document).ready(() => {
   });
 
   $('#EdtCntrSveBtn').click(() => {
-    if ($('#PosteX').val() && $('#intégrationX').val()) {
+    if ($('#PosteX').val() && $('#intégrationX').val() && $('#EntiteX').val()) {
       $.ajax({
         type: 'POST',
         url: '/ERP/Service-Admin/sveNewCntrct',
@@ -847,10 +847,12 @@ $(document).ready(() => {
           getInfo();
           $('#cntrClosinInfos').attr('hidden', true);
           $('#isClosedZ').prop('checked', false);
-          Swal.fire({
-            title: `l'opération a réussi.`,
+
+          Toast.fire({
             icon: 'success',
+            title: `Le contrat a été enregistré avec succès`,
           });
+
           $('#clsBtn').click();
         },
         error: (xhr, status, error) => {
