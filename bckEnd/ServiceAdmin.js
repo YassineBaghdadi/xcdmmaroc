@@ -2166,98 +2166,102 @@ app.get('/checkCntrcts', async (req, res) => {
 });
 
 app.post('/sveNewCntrct', async (req, res) => {
-  var lastCntr = await db.execute(
-    `select id, tpe from _Contracts where usr = ${req.body.i} order by id desc LIMIT 1;`
-  );
+  try {
+    var lastCntr = await db.execute(
+      `select id, tpe from _Contracts where usr = ${req.body.i} order by id desc LIMIT 1;`
+    );
 
-  if (lastCntr[0].length > 0) {
-    //console.log(`there is a contract with id ${lastCntr[0][0].id}`);
-    //console.log(typeof req.body.clsed);
+    if (lastCntr[0].length > 0) {
+      //console.log(`there is a contract with id ${lastCntr[0][0].id}`);
+      //console.log(typeof req.body.clsed);
 
-    if (req.body.clsed == 'true') {
-      //console.log(`the last contract should be closed`);
+      if (req.body.clsed == 'true') {
+        //console.log(`the last contract should be closed`);
 
-      await db.execute(
-        `update _Users set soldCnj = 0, lastTransferDate = "${req.body.startDte}" where id = ${req.body.i};`
-      );
-      //console.log(`soldCnj has been set to 0`);
-      //console.log(
-      //   ` **** UPDATE _Contracts SET endDte = "${req.body.ClsdDate}", stts = "${req.body.closeReason}", closeReason = "${req.body.closeReason}" WHERE id = "${lastCntr[0][0].id}"`
-      // );
+        await db.execute(
+          `update _Users set soldCnj = 0, lastTransferDate = "${req.body.startDte}" where id = ${req.body.i};`
+        );
+        //console.log(`soldCnj has been set to 0`);
+        //console.log(
+        //   ` **** UPDATE _Contracts SET endDte = "${req.body.ClsdDate}", stts = "${req.body.closeReason}", closeReason = "${req.body.closeReason}" WHERE id = "${lastCntr[0][0].id}"`
+        // );
 
-      await db.execute(
-        `UPDATE _Contracts SET endDte = "${req.body.ClsdDate}", stts = "${req.body.closeReason}", closeReason = "${req.body.closeReason}" WHERE id = "${lastCntr[0][0].id}"`
-      );
-      //console.log(
-      // `the last cntr changed stts to ${req.body.closeReason} and endDte to ${req.body.ClsdDate}`
-      // );
+        await db.execute(
+          `UPDATE _Contracts SET endDte = "${req.body.ClsdDate}", stts = "${req.body.closeReason}", closeReason = "${req.body.closeReason}" WHERE id = "${lastCntr[0][0].id}"`
+        );
+        //console.log(
+        // `the last cntr changed stts to ${req.body.closeReason} and endDte to ${req.body.ClsdDate}`
+        // );
+      } else {
+        await db.execute(`UPDATE _Contracts SET stts = ? WHERE id = ?`, [
+          req.body.s,
+          lastCntr[0][0].id,
+        ]);
+        // //console.log(
+        //   `the last cntrct didnt closed and its stts changed to ${req.body.s}`
+        // );
+      }
     } else {
-      await db.execute(`UPDATE _Contracts SET stts = ? WHERE id = ?`, [
-        req.body.s,
-        lastCntr[0][0].id,
-      ]);
-      // //console.log(
-      //   `the last cntrct didnt closed and its stts changed to ${req.body.s}`
+      await db.execute(
+        `update _Users set activeStatus = 1,  firstIntegrationDate = "${req.body.startDte}" where id = ${req.body.i};`
+      );
+      //console.log(
+      `there is no old cntr so first the first intergration date of the user saved as ${req.body.startDte}`;
       // );
     }
-  } else {
+
     await db.execute(
-      `update _Users set activeStatus = 1,  firstIntegrationDate = "${req.body.startDte}" where id = ${req.body.i};`
+      `UPDATE _Users SET
+                          integrationDate = ?, actualEntity = ?, etablissment = ?, jobeTitle = ?, contractTpe = ?, department = ? WHERE id = ?`,
+      [
+        req.body.startDte,
+        req.body.ent,
+        req.body.e,
+        req.body.pst,
+        req.body.cntrtpe,
+        req.body.d,
+        req.body.i,
+      ]
     );
     //console.log(
-    `there is no old cntr so first the first intergration date of the user saved as ${req.body.startDte}`;
+    //   `the user info has been updated to match the new contract details `
     // );
+
+    await db.execute(
+      `INSERT INTO _Contracts
+      (usr, tpe, stts, etablissement, entty, dteIntgr, dteOps, endDte, byUsr, pst)
+      VALUES (?, ?, "EN POSTE", ?, ?, ?, ?, ?, ?, ?)`,
+      [
+        req.body.i,
+        req.body.cntrtpe,
+        req.body.e,
+        req.body.ent,
+        req.body.startDte,
+        getCurrentTime(),
+        req.body.endDte || null,
+        req.cookies.usdt.id,
+        req.body.pst,
+      ]
+    );
+    //console.log(`the new contract saved `);
+
+    var entt = await db.execute(
+      `select nme from _Entity where id = ${req.body.ent}`
+    );
+
+    let txt = `Une nouvelle Contrat a été créée par ${req.cookies.usdt.fname} ${req.cookies.usdt.lname} en tant que ${req.body.pst}, à compter du ${req.body.startDte}, au sein de l’établissement ${req.body.e}, et rattachée à l’entité ${entt[0][0].nme}.`;
+
+    await db.execute(`insert into _Histories (usr ,alfa3il ,sbjct ,actionDteTme ,ttle ,details )
+            values(
+              ${req.body.i}, ${
+      req.cookies.usdt.id
+    }, "ADMIN", "${getCurrentTime()}", "Changement de contrat", "${txt}."
+            )`);
+
+    res.json('done');
+  } catch (error) {
+    lg.error(error);
   }
-
-  await db.execute(
-    `UPDATE _Users SET
-                        integrationDate = ?, actualEntity = ?, etablissment = ?, jobeTitle = ?, contractTpe = ?, department = ? WHERE id = ?`,
-    [
-      req.body.startDte,
-      req.body.ent,
-      req.body.e,
-      req.body.pst,
-      req.body.cntrtpe,
-      req.body.d,
-      req.body.i,
-    ]
-  );
-  //console.log(
-  //   `the user info has been updated to match the new contract details `
-  // );
-
-  await db.execute(
-    `INSERT INTO _Contracts
-    (usr, tpe, stts, etablissement, entty, dteIntgr, dteOps, endDte, byUsr, pst)
-    VALUES (?, ?, "EN POSTE", ?, ?, ?, ?, ?, ?, ?)`,
-    [
-      req.body.i,
-      req.body.cntrtpe,
-      req.body.e,
-      req.body.ent,
-      req.body.startDte,
-      getCurrentTime(),
-      req.body.endDte || null,
-      req.cookies.usdt.id,
-      req.body.pst,
-    ]
-  );
-  //console.log(`the new contract saved `);
-
-  var entt = await db.execute(
-    `select nme from _Entity where id = ${req.body.ent}`
-  );
-
-  let txt = `Une nouvelle Contrat a été créée par ${req.cookies.usdt.fname} ${req.cookies.usdt.lname} en tant que ${req.body.pst}, à compter du ${req.body.startDte}, au sein de l’établissement ${req.body.e}, et rattachée à l’entité ${entt[0][0].nme}.`;
-
-  await db.execute(`insert into _Histories (usr ,alfa3il ,sbjct ,actionDteTme ,ttle ,details )
-          values(
-            ${req.body.i}, ${
-    req.cookies.usdt.id
-  }, "ADMIN", "${getCurrentTime()}", "Changement de contrat", "${txt}."
-          )`);
-
-  res.json('done');
 });
 
 app.post('/cutCntr', async (req, res) => {
