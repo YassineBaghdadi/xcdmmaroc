@@ -318,7 +318,7 @@ L'agent ${fullName} a demandé ${cout} jours de ${ctpe.trim()}, du ${sd} au ${ed
       rsp[0].email,
       `Demande de traitement : Congé de ${fullName}`,
       `
-    <div style='font-family: Arial, sans-serif;'><p>Bonjour ${rsp[0].nme},</p><br><p>Vous êtes chargé de traiter la demande de congé de ${fullName}. Veuillez cliquer sur le lien suivant pour accéder à la tâche : <a href='/TO-DO-Liste?t=${tskSve.insertId}'>Lien</a> ou copiez le lien ci-dessous dans votre navigateur :<br></p><p>http://erp.xcdmmaroc.com/TO-DO-Liste?t=${tskSve.insertId}</p><p><br>Merci de vous en occuper dès que possible.</p><p style='font-style: italic;'><br/>Cordialement,<br />XCDM ERP (Team IT)</p></div>
+    <div style='font-family: Arial, sans-serif;'><p>Bonjour ${rsp[0].nme},</p><br><p>Vous êtes chargé de traiter la demande de congé de ${fullName}. Veuillez cliquer sur le lien suivant pour accéder à la tâche : <a href='/TO-DO-Liste?t=${tskSve.insertId}'>Lien</a> ou copiez le lien ci-dessous dans votre navigateur :<br></p><p>https://xcdmmaroc.com/ERP/TO-DO-Liste?t=${tskSve.insertId}</p><p><br>Merci de vous en occuper dès que possible.</p><p style='font-style: italic;'><br/>Cordialement,<br />XCDM ERP (Team IT)</p></div>
     `
     );
     res.json({ message: 'DONE' });
@@ -557,7 +557,7 @@ app.post('/saveDchrge', async (req, res) => {
         rsp[0].email,
         `Demande de traitement : Décharge de ${fullName}`,
         `
-      <div style='font-family: Arial, sans-serif;'><p>Bonjour ${rsp[0].nme},</p><br><p>Vous êtes chargé de traiter la demande de décharge de ${fullName}. Veuillez cliquer sur le lien suivant pour accéder à la tâche : <a href='/TO-DO-Liste?t=${tskSve.insertId}'>Lien</a> ou copiez le lien ci-dessous dans votre navigateur :<br></p><p>http://erp.xcdmmaroc.com/TO-DO-Liste?t=${tskSve.insertId}</p><p><br>Merci de vous en occuper dès que possible.</p><p style='font-style: italic;'><br/>Cordialement,<br />XCDM ERP (Team IT)</p></div>
+      <div style='font-family: Arial, sans-serif;'><p>Bonjour ${rsp[0].nme},</p><br><p>Vous êtes chargé de traiter la demande de décharge de ${fullName}. Veuillez cliquer sur le lien suivant pour accéder à la tâche : <a href='/TO-DO-Liste?t=${tskSve.insertId}'>Lien</a> ou copiez le lien ci-dessous dans votre navigateur :<br></p><p>https://xcdmmaroc.com/ERP/TO-DO-Liste?t=${tskSve.insertId}</p><p><br>Merci de vous en occuper dès que possible.</p><p style='font-style: italic;'><br/>Cordialement,<br />XCDM ERP (Team IT)</p></div>
       `
       );
       res.json({ message: 'DONE' });
@@ -706,7 +706,7 @@ app.post('/sveDplcmReq', async (req, res) => {
       rsp[0].email,
       `Demande de traitement : déplacement de ${fullName}`,
       `
-      <div style='font-family: Arial, sans-serif;'><p>Bonjour ${rsp[0].nme},</p><br><p>Vous êtes chargé de traiter la demande de déplacement de ${fullName}. Veuillez cliquer sur le lien suivant pour accéder à la tâche : <a href='/TO-DO-Liste?t=${tskSve.insertId}'>Lien</a> ou copiez le lien ci-dessous dans votre navigateur :<br></p><p>http://erp.xcdmmaroc.com/TO-DO-Liste?t=${tskSve.insertId}</p><p><br>Merci de vous en occuper dès que possible.</p><p style='font-style: italic;'><br/>Cordialement,<br />XCDM ERP (Team IT)</p></div>
+      <div style='font-family: Arial, sans-serif;'><p>Bonjour ${rsp[0].nme},</p><br><p>Vous êtes chargé de traiter la demande de déplacement de ${fullName}. Veuillez cliquer sur le lien suivant pour accéder à la tâche : <a href='/TO-DO-Liste?t=${tskSve.insertId}'>Lien</a> ou copiez le lien ci-dessous dans votre navigateur :<br></p><p>https://xcdmmaroc.com/ERP/TO-DO-Liste?t=${tskSve.insertId}</p><p><br>Merci de vous en occuper dès que possible.</p><p style='font-style: italic;'><br/>Cordialement,<br />XCDM ERP (Team IT)</p></div>
       `
     );
 
@@ -857,7 +857,7 @@ app.post('/sveRecupReq', async (req, res) => {
     rsp[0].email,
     `Demande de traitement : Récupération de ${fullName}`,
     `
-    <div style='font-family: Arial, sans-serif;'><p>Bonjour ${rsp[0].nme},</p><br><p>Vous êtes chargé de traiter la demande de récupération de ${fullName}. Veuillez cliquer sur le lien suivant pour accéder à la tâche : <a href='/TO-DO-Liste?t=${tskSve.insertId}'>Lien</a> ou copiez le lien ci-dessous dans votre navigateur :<br></p><p>http://erp.xcdmmaroc.com/TO-DO-Liste?t=${tskSve.insertId}</p><p><br>Merci de vous en occuper dès que possible.</p><p style='font-style: italic;'><br/>Cordialement,<br />XCDM ERP (Team IT)</p></div>
+    <div style='font-family: Arial, sans-serif;'><p>Bonjour ${rsp[0].nme},</p><br><p>Vous êtes chargé de traiter la demande de récupération de ${fullName}. Veuillez cliquer sur le lien suivant pour accéder à la tâche : <a href='/TO-DO-Liste?t=${tskSve.insertId}'>Lien</a> ou copiez le lien ci-dessous dans votre navigateur :<br></p><p>https://xcdmmaroc.com/ERP/TO-DO-Liste?t=${tskSve.insertId}</p><p><br>Merci de vous en occuper dès que possible.</p><p style='font-style: italic;'><br/>Cordialement,<br />XCDM ERP (Team IT)</p></div>
     `
   );
 

@@ -202,14 +202,17 @@ app.get('/BD', async (req, res) => {
       const emailPromises = BDs.map(async (e) => {
         if (e.email) {
           if (e.picExt) {
-            bdPic = path.join(
+            var pcPth = path.join(
               __dirname,
               `../frntEnd/rcs/ProfilePics/${e.id}.${e.picExt}`
             );
+            bdPic = fs.existsSync(pcPth);
 
-            if (!fs.existsSync(bdPic)) {
+            if (!fs.existsSync(pcPth)) {
               bdPic =
                 'https://i.pinimg.com/originals/64/5c/eb/645ceb588b46af3aa0faead5418cd3aa.gif';
+            } else {
+              bdPic = fs.existsSync(pcPth);
             }
           } else {
             bdPic =
@@ -222,13 +225,20 @@ app.get('/BD', async (req, res) => {
           );
 
           const bdMail = `<html><head><meta charset='UTF-8'><title>Happy Birthday!</title></head><body style='font-family: Arial, sans-serif;'><div style='text-align: center;'><h2>🎈🎂 Happy Birthday, ${e.fname} ${e.lname}! 🎂🎈</h2><p>On this special day, we just wanted to take a moment to wish you a fantastic year ahead, filled with joy, success, and lots of cake! 🍰🎁.</p><br><img src='${bdPic}' alt='Happy Birthday' style='width: 260px; height: auto;'><p>Best regards,<br/>XCDM ERP (IT Team)</p></div></body></html>`;
+          var attch = [
+            {
+              filename: `${e.id}.${e.picExt}`,
+              content: image,
+              cid: imageName, // Content ID for embedding in HTML
+            },
+          ];
 
-          // sendMail(
-          //   e.email,
-          //   'Happy Birthday!',
-          //   bdMail,
-          //   CCs.length > 0 ? CCs.map((obj) => obj.email) : null
-          // );
+          sendMail(
+            e.email,
+            'Happy Birthday!',
+            bdMail,
+            CCs.length > 0 ? CCs.map((obj) => obj.email) : null
+          );
         }
       });
 

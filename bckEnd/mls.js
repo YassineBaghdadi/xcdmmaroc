@@ -2,7 +2,7 @@ require('dotenv').config();
 const nodemailer = require('nodemailer');
 const { lg } = require('./lg');
 
-const sendMail = async (to, sbj, msg, cc = []) => {
+const sendMail = async (to, sbj, msg, cc = [], atch = []) => {
   try {
     const transporter = nodemailer.createTransport({
       host: process.env.mlHost,
@@ -19,6 +19,7 @@ const sendMail = async (to, sbj, msg, cc = []) => {
       to,
       subject: sbj,
       html: msg,
+      attachments: atch ? atch : [],
       ...(cc.length > 0 && { cc: Array.isArray(cc) ? cc.join(', ') : cc }),
     };
 
