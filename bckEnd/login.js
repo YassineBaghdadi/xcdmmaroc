@@ -13,6 +13,8 @@ const cookieParser = require('cookie-parser');
 const moment = require('moment-timezone');
 const { db } = require('./DB_cnx');
 const { lg } = require('./lg');
+const mime = require('mime-types');
+const fs = require('fs');
 
 const path = require('path');
 app.use(bodyParser.json());
@@ -189,64 +191,78 @@ app.get('/frgtPss', async (req, res) => {
 });
 
 app.get('/BD', async (req, res) => {
-  const fs = require('fs');
-  const path = require('path');
-
   if (req.headers['t'] == process.env.tkn) {
-    var [BDs] = await db.execute(
-      'SELECT id, fname, lname, email, etablissment, picExt FROM _Users WHERE MONTH(bd) = MONTH(CURDATE()) AND DAY(bd) = DAY(CURDATE()) and email is not null and etablissment in ("INTERNE");'
-    );
+    try {
+      const [BDs] = await db.execute(
+        'SELECT id, fname, lname, email, etablissment, picExt FROM _Users WHERE MONTH(bd) = MONTH(CURDATE()) AND DAY(bd) = DAY(CURDATE()) and email is not null and etablissment in ("INTERNE");'
+      );
 
-    if (BDs.length > 0) {
-      let bdPic = '';
-      const emailPromises = BDs.map(async (e) => {
-        if (e.email) {
-          if (e.picExt) {
-            var pcPth = path.join(
-              __dirname,
-              `../frntEnd/rcs/ProfilePics/${e.id}.${e.picExt}`
-            );
-            bdPic = fs.existsSync(pcPth);
-
-            if (!fs.existsSync(pcPth)) {
-              bdPic =
-                'https://i.pinimg.com/originals/64/5c/eb/645ceb588b46af3aa0faead5418cd3aa.gif';
-            } else {
-              bdPic = fs.existsSync(pcPth);
-            }
-          } else {
-            bdPic =
+      if (BDs.length > 0) {
+        const emailPromises = BDs.map(async (e) => {
+          if (e.email) {
+            let attch = [];
+            let bdPic =
               'https://i.pinimg.com/originals/64/5c/eb/645ceb588b46af3aa0faead5418cd3aa.gif';
+
+            if (e.picExt) {
+              const pcPth = path.join(
+                __dirname,
+                `../frntEnd/rcs/ProfilePics/${e.id}.${e.picExt}`
+              );
+
+              if (fs.existsSync(pcPth)) {
+                const contentType = mime.lookup(pcPth);
+                if (contentType) {
+                  attch = [
+                    {
+                      filename: `${e.id}.${e.picExt}`,
+                      content: fs.readFileSync(pcPth),
+                      cid: `${e.id}.${e.picExt}`,
+                      contentType: contentType,
+                    },
+                  ];
+                  bdPic = `cid:${e.id}.${e.picExt}`;
+                } else {
+                  console.error(`Could not determine MIME type for: ${pcPth}`);
+                  attch = [];
+                }
+              }
+            }
+
+            const [CCs] = await db.execute(
+              `select email from _Users where etablissment = "${e.etablissment}" and email is not null and email != "${e.email}";`
+            );
+            let birthdayEmails = [
+              `Wishing you a very happy birthday! We hope you have a wonderful day filled with joy and celebration 🍰🎁.`,
+              `On this special day, we just wanted to take a moment to wish you a fantastic year ahead, filled with joy, success, and lots of cake! 🍰🎁.`,
+              `We hope you have a fantastic day celebrating with loved ones and creating wonderful memories 🍰🎁.`,
+              `Wishing you a happy birthday and a fantastic year ahead! We hope your day is filled with everything that brings you happiness 🍰🎁.`,
+              `Happy Birthday! We hope you take some time to truly enjoy your special day and celebrate in style 🍰🎁.`,
+            ];
+
+            var ml =
+              birthdayEmails[Math.floor(Math.random() * birthdayEmails.length)];
+
+            const bdMail = `<html><head><meta charset='UTF-8'><title>Happy Birthday!</title></head><body style='font-family: Arial, sans-serif;'><div style='text-align: center;'><h2>🎈🎂 Happy Birthday, ${e.fname} ${e.lname}! 🎂🎈</h2><p>${ml}</p><br><img src='${bdPic}' alt='Happy Birthday' style='width: 260px; height: auto;'><br/><p>Best regards,<br/>XCDM ERP (IT Team)</p></div></body></html>`;
+
+            await sendMail(
+              e.email,
+              'Happy Birthday!',
+              bdMail,
+              CCs.length > 0 ? CCs.map((obj) => obj.email) : null,
+              attch
+            );
           }
-          console.log(bdPic);
+        });
 
-          var [CCs] = await db.execute(
-            `select email from _Users where etablissment = "${e.etablissment}" and email is not null and email != "${e.email}";`
-          );
-
-          const bdMail = `<html><head><meta charset='UTF-8'><title>Happy Birthday!</title></head><body style='font-family: Arial, sans-serif;'><div style='text-align: center;'><h2>🎈🎂 Happy Birthday, ${e.fname} ${e.lname}! 🎂🎈</h2><p>On this special day, we just wanted to take a moment to wish you a fantastic year ahead, filled with joy, success, and lots of cake! 🍰🎁.</p><br><img src='${bdPic}' alt='Happy Birthday' style='width: 260px; height: auto;'><p>Best regards,<br/>XCDM ERP (IT Team)</p></div></body></html>`;
-          var attch = [
-            {
-              filename: `${e.id}.${e.picExt}`,
-              content: image,
-              cid: imageName, // Content ID for embedding in HTML
-            },
-          ];
-
-          sendMail(
-            e.email,
-            'Happy Birthday!',
-            bdMail,
-            CCs.length > 0 ? CCs.map((obj) => obj.email) : null
-          );
-        }
-      });
-
-      await Promise.all(emailPromises);
-
-      res.json('BD email sent');
-    } else {
-      res.json('no BD');
+        await Promise.all(emailPromises);
+        res.json('');
+      } else {
+        res.json('no BD');
+      }
+    } catch (error) {
+      console.error('Error processing birthday emails:', error);
+      res.status(500).json({ error: 'Internal server error' });
     }
   } else {
     return res.status(403).json({ error: 'Unauthorized' });
