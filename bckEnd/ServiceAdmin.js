@@ -850,50 +850,51 @@ app.post('/getDCSreqTble', async (req, res) => {
 });
 
 app.post('/treatTheCnj', async (req, res) => {
-  // try {
-  var rslt = req.body.s == 1 ? 'accepté' : 'rejeté';
+  try {
+    var rslt = req.body.s == 1 ? 'accepté' : 'rejeté';
 
-  var [cnj] = await db.execute(
-    `select c.id as id, c.usr as usr, c.duration as drtion, concat(u.fname, " ", u.lname) as usrNme, u.email, c.fday, c.lday from _Conjes c inner join _Users u on c.usr = u.id where c.id = ${req.body.i}`
-  );
-  await db.execute(
-    `update _Conjes set HRvalidation = ${req.body.s}, hrCmnt = "${
-      req.body.c
-    }", hrTreatDte = "${getCurrentTime()}", stts = ${req.body.s} where id = ${
-      req.body.i
-    }`
-  );
-  await db.execute(`insert into _Histories (usr, alfa3il, sbjct, actionDteTme, ttle, details) values(${
-    cnj[0].usr
-  }, ${
-    req.cookies.usdt.id
-  }, "ADMIN", "${getCurrentTime()}", "Traitement de congé",
+    var [cnj] = await db.execute(
+      `select c.id as id, c.usr as usr, c.duration as drtion, concat(u.fname, " ", u.lname) as usrNme, u.email, c.fday, c.lday from _Conjes c inner join _Users u on c.usr = u.id where c.id = ${req.body.i}`
+    );
+    await db.execute(
+      `update _Conjes set HRvalidation = ${req.body.s}, hrCmnt = "${
+        req.body.c
+      }", hrTreatDte = "${getCurrentTime()}", stts = ${req.body.s} where id = ${
+        req.body.i
+      }`
+    );
+    await db.execute(`insert into _Histories (usr, alfa3il, sbjct, actionDteTme, ttle, details) values(${
+      cnj[0].usr
+    }, ${
+      req.cookies.usdt.id
+    }, "ADMIN", "${getCurrentTime()}", "Traitement de congé",
     "${req.cookies.usdt.fname} ${
-    req.cookies.usdt.lname
-  } (RH) a ${rslt} la demande de congé de ${cnj[0].drtion} jours de ${
-    cnj[0].usrNme
-  }  qui commence le ${formateDate(cnj[0].fday)} et se termine le ${formateDate(
-    cnj[0].lday
-  )} et il a dit : ${req.body.c}")`);
+      req.cookies.usdt.lname
+    } (RH) a ${rslt} la demande de congé de ${cnj[0].drtion} jours de ${
+      cnj[0].usrNme
+    }  qui commence le ${formateDate(
+      cnj[0].fday
+    )} et se termine le ${formateDate(cnj[0].lday)} et il a dit : ${
+      req.body.c
+    }")`);
 
-  await db.execute(
-    `update _Users set soldCnj = soldCnj - ${parseFloat(
-      cnj[0].drtion
-    )} where id = ${cnj[0].usr}`
-  );
-  await sendMail(
-    cnj[0].email,
-    `RE: la demande congé a été traitée`,
-    `
+    await db.execute(
+      `update _Users set soldCnj = soldCnj - ${parseFloat(
+        cnj[0].drtion
+      )} where id = ${cnj[0].usr}`
+    );
+    await sendMail(
+      cnj[0].email,
+      `RE: la demande congé a été traitée`,
+      `
           <div style='font-family: Arial, sans-serif;'><p>Bonjour ${cnj[0].usrNme},</p><br><p>Votre demande de congé a été ${rslt}. Le document attend votre signature.<p style='font-style: italic;'><br/>Cordialement,<br />XCDM ERP (Team IT)</p></div>
           `
-  );
+    );
 
-  res.json('done');
-  // } catch (error) {
-
-  //   lg.error(error)
-  // }
+    res.json('done');
+  } catch (error) {
+    lg.error(error);
+  }
 });
 
 app.post('/getRhDemmand', async (req, res) => {

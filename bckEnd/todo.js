@@ -584,60 +584,59 @@ app.post('/treatTheDchrg', async (req, res) => {
 });
 
 app.post('/treatTheDplcm', async (req, res) => {
-  // try {
-  var rslt = req.body.i ? 'accepté' : 'rejeté';
-  var taskID = req.body.t;
-  var [dplc] = await db.execute(
-    `select c.id as id, c.usr as usr, c.leaveDate, concat(u.fname, " ", u.lname) as usrNme, u.email, c.returnDate from _deplacements c inner join _Tasks t on t.dplcmnt = c.id inner join _Users u on c.usr = u.id where t.id = ${taskID}`
-  );
+  try {
+    var rslt = req.body.i ? 'accepté' : 'rejeté';
+    var taskID = req.body.t;
+    var [dplc] = await db.execute(
+      `select c.id as id, c.usr as usr, c.leaveDate, concat(u.fname, " ", u.lname) as usrNme, u.email, c.returnDate from _deplacements c inner join _Tasks t on t.dplcmnt = c.id inner join _Users u on c.usr = u.id where t.id = ${taskID}`
+    );
 
-  await db.execute(`update _deplacements set 
+    await db.execute(`update _deplacements set 
                               responsableValidation = ${req.body.i}, 
                               npls1Cmnt = "${req.body.c}", 
                               npls1TreatDte = "${getCurrentTime()}" 
                               where id = ${dplc[0].id}`);
-  if (!req.body.i) {
-    await db.execute(`update _deplacements set 
+    if (!req.body.i) {
+      await db.execute(`update _deplacements set 
         stts = ${req.body.i}, 
         
         where id = ${dplc[0].id}`);
-  }
+    }
 
-  await db.execute(`update _Tasks set 
+    await db.execute(`update _Tasks set 
                               treated = 1, 
                               treatedDate = "${getCurrentTime()}" 
                               where id = ${taskID}`);
 
-  await db.execute(`insert into _Histories (usr, alfa3il, sbjct, actionDteTme, ttle, details) value(
+    await db.execute(`insert into _Histories (usr, alfa3il, sbjct, actionDteTme, ttle, details) value(
                               ${dplc[0].usr}, ${req.cookies.usdt.id}, 
                               "ADMIN", 
                               "${getCurrentTime()}", 
                               "Traitement de déplacement",
                               "${req.cookies.usdt.fname} ${
-    req.cookies.usdt.lname
-  } (Responsable) a ${rslt} la demande de déplacement de ${
-    dplc[0].usrNme
-  } qui commence le ${formateDate(
-    dplc[0].leaveDate
-  )} et se termine le ${formateDate(dplc[0].returnDate)} et il a dit : ${
-    req.body.c
-  }")`);
+      req.cookies.usdt.lname
+    } (Responsable) a ${rslt} la demande de déplacement de ${
+      dplc[0].usrNme
+    } qui commence le ${formateDate(
+      dplc[0].leaveDate
+    )} et se termine le ${formateDate(dplc[0].returnDate)} et il a dit : ${
+      req.body.c
+    }")`);
 
-  if (!req.body.i) {
-    await sendMail(
-      dplc[0].email,
-      `RE: la demande déplacement a été traitée`,
-      `
+    if (!req.body.i) {
+      await sendMail(
+        dplc[0].email,
+        `RE: la demande déplacement a été traitée`,
+        `
                                       <div style='font-family: Arial, sans-serif;'><p>Bonjour ${dplc[0].usrNme},</p><br><p>Votre demande de déplacement a été refusée par votre responsable.<p style='font-style: italic;'><br/>Cordialement,<br />XCDM ERP (Team IT)</p></div>
                                       `
-    );
+      );
+    }
+
+    res.json('OK');
+  } catch (error) {
+    lg.error(error);
   }
-
-  res.json('OK');
-
-  // } catch (error) {
-  //   lg.error(error);
-  // }
 });
 
 app.post('/RHtreatRCPreq', async (req, res) => {
