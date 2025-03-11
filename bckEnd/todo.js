@@ -41,8 +41,12 @@ app.get('/', (req, res) => {
 
 app.get('/getTasks', async (req, res) => {
   // var  [tsks] = await db.execute(`select * from _Tasks where usr = ${req.cookies.usdt.id} `);
+  // var [tsks] = await db.execute(
+  //   `select t.id, t.nme, t.tpe, t.treated, t.usr, tc.byUsr, concat(u.fname, " ", u.lname) as busr from _Tasks t left join _taskCntrbt tc on tc.tsk = t.id left join _Users u on tc.byUsr = u.id where t.usr = ${req.cookies.usdt.id} or tc.usr = ${req.cookies.usdt.id}`
+  // );
+
   var [tsks] = await db.execute(
-    `select t.id, t.nme, t.tpe, t.treated, t.usr, tc.byUsr, concat(u.fname, " ", u.lname) as busr from _Tasks t left join _taskCntrbt tc on tc.tsk = t.id left join _Users u on tc.byUsr = u.id where t.usr = ${req.cookies.usdt.id} or tc.usr = ${req.cookies.usdt.id}`
+    `select t.id, t.nme, t.tpe, t.treated, t.usr, concat(u.fname, " ", u.lname) as busr from _Tasks t left join _Users u on t.usr = u.id where t.usr = ${req.cookies.usdt.id}`
   );
   var tble = '';
 
@@ -512,13 +516,17 @@ app.post('/treatTheCnj', async (req, res) => {
     var [rhRsp] = await db.execute(
       `select u.email, u.fname  from _Departments d inner join _Users u on d.responsable = u.id where d.nme = "Service RH"`
     );
+    var [CCs] = await db.execute(
+      `select u.email from _Managemnt m inner join _Users u on m.usr = u.id where m.treat_CNJ_usr = 1`
+    );
 
     await sendMail(
       rhRsp[0].email,
       `RE: la demande congé a été traitée`,
       `
                                 <div style='font-family: Arial, sans-serif;'><p>Bonjour ${rhRsp[0].fname},</p><br><p>Il y a une nouvelle demande de congé de ${cnj[0].usrNme} qui doit être traitée.<br>Pour accéder à toutes les demandes RH veuillez cliquer ou copier le lien : <a href="https://xcdmmaroc.com/ERP/Service-Admin/Demandes-RH">https://xcdmmaroc.com/ERP/Service-Admin/Demandes-RH</a><p style='font-style: italic;'><br/>Cordialement,<br />XCDM ERP (Team IT)</p></div>
-                                `
+                                `,
+      CCs.length > 0 ? CCs.map((obj) => obj.email) : null
     );
 
     res.json('OK');
