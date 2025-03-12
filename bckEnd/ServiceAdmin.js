@@ -542,6 +542,12 @@ app.post('/getAllTrsfCntrTble', async (req, res) => {
     var [prms] = await db.execute(
       `select view_C_usr, treat_C_usr from _Managemnt where usr = ${req.cookies.usdt.id}`
     );
+    console.log(
+      `select view_C_usr, treat_C_usr from _Managemnt where usr = ${req.cookies.usdt.id}`
+    );
+
+    console.log(prms);
+    console.log(prms[0].view_C_usr);
 
     var tbl = '0';
 
