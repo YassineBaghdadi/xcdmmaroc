@@ -27,9 +27,13 @@ app.use((req, res, next) => {
 app.use(express.static(path.join(__dirname, '../frntEnd'), { index: false }));
 
 app.get('/', async (req, res) => {
+  console.log('hiiiiiiiiii');
+
   var [checkPermsion] = await db.execute(
     `select view_HRDMNDS as p from _Managemnt where usr = ${req.cookies.usdt.id}`
   );
+  console.log(checkPermsion[0]);
+
   if (checkPermsion[0].p == 1) {
     res.sendFile(path.join(__dirname, '../frntEnd', 'DemandesRH.html'));
   } else {

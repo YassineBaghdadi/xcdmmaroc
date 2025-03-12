@@ -164,7 +164,7 @@ io.on('connection', (socket) => {
   }, 1000);
 
   socket.on('disconnect', () => {
-    console.log('User disconnected:', socket.id);
+    // console.log('User disconnected:', socket.id);
     delete connectedSockets[socket.userId];
   });
 });

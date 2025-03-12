@@ -90,8 +90,16 @@ app.get('/Liste-des-Collaborateurs', async (req, res) => {
   }
 });
 
-app.get('/Demandes-RH', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frntEnd', 'DemandesRH.html'));
+app.get('/Demandes-RH', async (req, res) => {
+  var [checkPermsion] = await db.execute(
+    `select view_HRDMNDS as p from _Managemnt where usr = ${req.cookies.usdt.id}`
+  );
+
+  if (checkPermsion[0].p == 1) {
+    res.sendFile(path.join(__dirname, '../frntEnd', 'DemandesRH.html'));
+  } else {
+    res.sendFile(path.join(__dirname, '../frntEnd', 'accessDenied.html'));
+  }
 });
 
 var removeSpces = (s) => {
