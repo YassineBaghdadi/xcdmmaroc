@@ -543,7 +543,7 @@ app.post('/getAllTrsfCntrTble', async (req, res) => {
       `select view_C_usr, treat_C_usr from _Managemnt where usr = ${req.cookies.usdt.id}`
     );
 
-    var tbl = '0';
+    var tbl = 'null';
 
     if (prms[0].view_C_usr == 1) {
       var tbl = '';
