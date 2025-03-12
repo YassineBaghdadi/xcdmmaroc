@@ -400,6 +400,8 @@ $(document).ready(() => {
         }
       })
       .then((data) => {
+        console.log(data);
+
         if (data.d == 0) {
           // fetch('err500small.html')
           //   .then(function (response) {

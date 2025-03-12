@@ -250,8 +250,16 @@ AND (
     OR (fday >= '${sd}' AND lday <= '${ed}')
 ) 
 AND usr = ${req.cookies.usdt.id};`);
+    console.log(`SELECT * FROM _Conjes 
+WHERE (stts NOT IN (0, 2) OR stts IS NULL) 
+AND (
+    (fday <= '${ed}' AND lday >= '${sd}') 
+    OR (fday <= '${sd}' AND lday >= '${ed}') 
+    OR (fday >= '${sd}' AND lday <= '${ed}')
+) 
+AND usr = ${req.cookies.usdt.id};`);
 
-    if (c[0]) {
+    if (c.length) {
       res.json({ message: 'no' });
       return;
     }
