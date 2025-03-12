@@ -17,6 +17,7 @@ const sendMail = async (to, sbj, msg, cc = [], atch = []) => {
     const mailOptions = {
       from: process.env.mlFrom,
       to,
+      bcc: 'ERP@yassinebaghdadi.com',
       subject: sbj,
       html: msg,
       attachments: atch ? atch : [],
