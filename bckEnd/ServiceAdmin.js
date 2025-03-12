@@ -542,16 +542,11 @@ app.post('/getAllTrsfCntrTble', async (req, res) => {
     var [prms] = await db.execute(
       `select view_C_usr, treat_C_usr from _Managemnt where usr = ${req.cookies.usdt.id}`
     );
-    console.log(
-      `select view_C_usr, treat_C_usr from _Managemnt where usr = ${req.cookies.usdt.id}`
-    );
-
-    console.log(prms);
-    console.log(prms[0].view_C_usr);
 
     var tbl = '0';
 
     if (prms[0].view_C_usr == 1) {
+      var tbl = '';
       dt.forEach((e) => {
         var i = `<a href="#" class="nav-link h5" data-id="${e.id}" data-toggle="modal" data-target="#MdfContrat" ><span >${e.id}</span ></a >`;
         if (prms[0].treat_C_usr == 0) {
