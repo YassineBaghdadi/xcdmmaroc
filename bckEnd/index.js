@@ -473,7 +473,9 @@ app.post('/uploadPrflPic', upload.single('prflPc'), async (req, res) => {
 
   // try {
 
-  await db.execute(`update _Users set picExt = "${ext}"`);
+  await db.execute(
+    `update _Users set picExt = "${ext}" where id = ${req.cookies.usdt.id}`
+  );
   const newFilePath = path.join(
     __dirname,
     '../frntEnd/rcs/ProfilePics/',
