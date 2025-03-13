@@ -587,6 +587,7 @@ $(document).ready(function () {
         title: 'Veuillez remplir toutes les entrées',
       });
     } else {
+      $('#saveCnjBtn').attr('hidden', true);
       const formData = new FormData();
       formData.append('ctpe', $('#cnjTpe option:selected').text());
       formData.append('sd', $('#StartDay').val());
@@ -633,6 +634,7 @@ $(document).ready(function () {
           console.error(error);
         },
       });
+      $('#saveCnjBtn').removeAttr('hidden');
     }
   });
 

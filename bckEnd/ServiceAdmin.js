@@ -692,7 +692,7 @@ app.post('/getCnjTble', async (req, res) => {
 
   if (prms[0].view_CNJ_usr == 1) {
     const [d] = await db.execute(
-      `select * from _Conjes where usr = ${req.body.i} and responsableValidation is not null order by id desc`
+      `select * from _Conjes where usr = ${req.body.i} order by id desc`
     );
 
     var ff = (i) => {
