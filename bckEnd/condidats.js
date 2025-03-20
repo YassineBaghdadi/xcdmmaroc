@@ -39,6 +39,12 @@ var formateDate = (d) => {
   }
 };
 
+var lgs = async (u, pth, d) => {
+  await db.query(
+    `insert into _Logs(usr, url, d)values(${u}, "${pth}", "${d}")`
+  );
+};
+
 app.use(express.static(path.join(__dirname, '../frntEnd'), { index: false }));
 
 app.get('/', async (req, res) => {
@@ -46,8 +52,10 @@ app.get('/', async (req, res) => {
     `select recrutViewCondidats as p from _Managemnt where usr = ${req.cookies.usdt.id}`
   );
   if (checkPermsion[0].p == 1) {
+    lgs(req.cookies.usdt.id, req.get('host') + req.originalUrl, 'Accessed');
     res.sendFile(path.join(__dirname, '../frntEnd', 'Candidats.html'));
   } else {
+    lgs(req.cookies.usdt.id, req.get('host') + req.originalUrl, 'Denied');
     res.sendFile(path.join(__dirname, '../frntEnd', 'accessDenied.html'));
   }
 });
@@ -63,11 +71,13 @@ app.get('/:i', async (req, res) => {
     );
 
     if (ofr[0].i > 0) {
+      lgs(req.cookies.usdt.id, req.get('host') + req.originalUrl, 'Accessed');
       res.sendFile(path.join(__dirname, '../frntEnd', 'Fiche-Candidat.html'));
     } else {
       res.redirect(`/ERP/Recrutement/Candidats/`);
     }
   } else {
+    lgs(req.cookies.usdt.id, req.get('host') + req.originalUrl, 'Denied');
     res.sendFile(path.join(__dirname, '../frntEnd', 'accessDenied.html'));
   }
 });
@@ -210,21 +220,29 @@ app.post('/getSkills', async (req, res) => {
   res.json(lngs);
 });
 
-app.post('/getSkills', async (req, res) => {
-  var [id] = await db.execute(
-    `select id from _carreerCondidats where uniqID = "${req.body.i}"`
-  );
-  var [lngs] = await db.execute(
-    `select * from _carreerCondidatsSkills where cndidat = "${id[0].id}" order by id desc`
-  );
-  // console.log(lngs);
+// app.post('/getSkills', async (req, res) => {
+//   var [id] = await db.execute(
+//     `select id from _carreerCondidats where uniqID = "${req.body.i}"`
+//   );
+//   var [lngs] = await db.execute(
+//     `select * from _carreerCondidatsSkills where cndidat = "${id[0].id}" order by id desc`
+//   );
+//   // console.log(lngs);
 
-  res.json(lngs);
-});
+//   res.json(lngs);
+// });
 
 app.post('/removeSKL', async (req, res) => {
+  var [skl] = await db.execute(
+    `select nme from _carreerCondidatsSkills where id = "${req.body.i}"`
+  );
   await db.execute(
     `delete from _carreerCondidatsSkills where id = ${req.body.i}`
+  );
+  lgs(
+    req.cookies.usdt.id,
+    req.get('host') + req.originalUrl,
+    `Skill record removed [${skl[0].nme}]`
   );
   res.json('done');
 });
@@ -235,6 +253,11 @@ app.post('/addSKL', async (req, res) => {
   );
   await db.execute(
     `insert into _carreerCondidatsSkills (nme, cndidat) value("${req.body.s}", ${id[0].id})`
+  );
+  lgs(
+    req.cookies.usdt.id,
+    req.get('host') + req.originalUrl,
+    `Skill record Added [${req.body.s}]`
   );
   res.json('done');
 });
@@ -271,6 +294,11 @@ app.post('/addLang', async (req, res) => {
         req.cookies.usdt.lname
       }", "${getCurrentDteTime()}")`
     );
+    lgs(
+      req.cookies.usdt.id,
+      req.get('host') + req.originalUrl,
+      `Language record Added [${req.body.lng}]`
+    );
     res.json('done');
   }
 });
@@ -281,6 +309,14 @@ app.post('/evalLang', async (req, res) => {
           set evaluation = "${req.body.niv}", 
           evaluatedBy = "${req.cookies.usdt.fname} ${req.cookies.usdt.lname}",  
           evaluationDte = "${getCurrentDteTime()}" where id = ${req.body.i}`
+  );
+  var [l] = await db.execute(
+    `select nme from _carreerCondidatsLangs where id = ${req.body.i}`
+  );
+  lgs(
+    req.cookies.usdt.id,
+    req.get('host') + req.originalUrl,
+    `Language evaluated [${l[0].nme} : ${req.body.niv}]`
   );
   res.json('done');
 });
@@ -303,6 +339,11 @@ app.post('/updatePersonalInfo', async (req, res) => {
           
           
           where uniqID = "${req.body.i}"`
+  );
+  lgs(
+    req.cookies.usdt.id,
+    req.get('host') + req.originalUrl,
+    `Language evaluated [${l[0].nme} : ${req.body.niv}]`
   );
   res.json('done');
 });
