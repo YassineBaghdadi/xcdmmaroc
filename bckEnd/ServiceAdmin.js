@@ -230,7 +230,7 @@ app.post('/getAllClbrs', async (req, res) => {
     }
 
     if (req.body.ee) {
-      qr += ` and  etablissment like "${req.body.ee}"`;
+      qr += ` and  etablsID = ${req.body.ee}`;
     }
     const statis = {};
     // //console.log(qr);
@@ -592,8 +592,12 @@ app.post('/saveNewTrsfrCntr', async (req, res) => {
       "${req.body.h}", "${oldDt[0].contractTpe}")`;
 
   await db.execute(qr);
+
   await db.execute(`update _Users set 
                     etablissment = "${req.body.b}", 
+                    etablsID = (select id from _Etablisment where nme = "${
+                      req.body.b
+                    }"),
                     actualEntity = "${req.body.a}", 
                     jobeTitle = "${req.body.d}",
                     ${req.body.e ? `, integrationDate = "${req.body.g}"` : ''}
@@ -2337,6 +2341,7 @@ app.post('/edtCntr', async (req, res) => {
   );
 
   await db.execute(`update _Users set etablissment = "${req.body.etb}",
+                                      etablsID = (select id from _Etablisment where nme = "${req.body.etb}"),
                                       actualEntity = "${req.body.entt}",
                                       contractTpe = "${req.body.tpe}",
                                       jobeTitle = "${req.body.pst}" ,

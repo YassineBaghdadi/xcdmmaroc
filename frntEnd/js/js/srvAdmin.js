@@ -235,6 +235,21 @@ $(document).ready(() => {
       console.error('Fetch error details:', error);
     });
 
+  fetch('/getEtablsList')
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error(`Error: ${response.statusText}`);
+      }
+    })
+    .then((data) => {
+      $('#EtablissementX').html(data);
+    })
+    .catch((error) => {
+      console.error('Fetch error details:', error);
+    });
+
   $('#sveAgntBtn').click(() => {
     if (
       $('#lnme').val() &&

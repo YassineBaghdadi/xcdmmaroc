@@ -765,7 +765,14 @@ app.get('/getEnttiesList', async (req, res) => {
   });
   res.json(out);
 });
-
+app.get('/getEtablsList', async (req, res) => {
+  var [entts] = await db.execute(`select * from _Etablisment`);
+  var out = '<option value="" hidden>Tous</option>';
+  entts.forEach((e) => {
+    out += `<option value="${e.id}">${e.nme}</option>`;
+  });
+  res.json(out);
+});
 app.get('/getDprtmList', async (req, res) => {
   var [entts] = await db.execute(`select * from _Departments`);
   var out = '<option value="" hidden>Tous</option>';
