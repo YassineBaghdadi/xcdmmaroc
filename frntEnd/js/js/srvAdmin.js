@@ -148,7 +148,7 @@ $(document).ready(() => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        a: $('#Entite').val(),
+        a: $('#Entites').val(),
         b: $('#Statut').val(),
         c: $('#dteIntgr1').val(),
         c1: $('#dteIntgr2').val(),
@@ -229,7 +229,7 @@ $(document).ready(() => {
       }
     })
     .then((data) => {
-      $('#Entite').html(data);
+      $('#Entites').html(data);
     })
     .catch((error) => {
       console.error('Fetch error details:', error);
@@ -315,7 +315,7 @@ $(document).ready(() => {
   $('.fltrBtn').on('click', function () {
     if ($(this).find('.vlu').html() == '%') {
       $('#theClickedFltr').html('');
-      $('#Entite').val('');
+      $('#Entites').val('');
       $('#Statut').val('');
       $('#dteIntgr1').val('');
       $('#dteIntgr2').val('');

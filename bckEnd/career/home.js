@@ -8,7 +8,8 @@ app.use(cookieParser());
 const path = require('path');
 const jwt = require('jsonwebtoken');
 const moment = require('moment-timezone');
-
+const { sendMail } = require('./mls');
+const nodemailer = require('nodemailer');
 const { db } = require('./DB_cnx');
 
 // app.use((req, res, next) => {
@@ -100,6 +101,12 @@ app.post('/subscribe', async (req, res) => {
   }
 
   res.json('subscribed');
+});
+
+app.get('/testEmail', async (req, res) => {
+  sendMail(req.query.to, `Testing`, `this is just a test`);
+
+  res.json('sent ');
 });
 
 module.exports = app;

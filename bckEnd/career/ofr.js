@@ -110,7 +110,8 @@ app.post('/Apply', async (req, res) => {
         sendMail(
           req.cookies.cndDt.email,
           `Accusé de réception de votre candidature - ${ofid[0].nme}`,
-          `<p>Bonjour ${req.cookies.cndDt.fname} ${req.cookies.cndDt.lname},<br/><br/>Nous vous remercions pour l'intérêt que vous portez à l'offre de ${ofid[0].nme} au sein de ${ofid[0].rcrtPour}.</p> <p>Nous avons bien reçu votre candidature et nous l'étudions avec attention. Si votre profil correspond aux critères de sélection, nous ne manquerons pas de vous recontacter pour organiser un entretien. Dans le cas contraire, nous conserverons vos informations pour de futures opportunités qui pourraient correspondre davantage à votre profil.</p><p>Nous vous remercions encore une fois pour votre candidature et vous souhaitons beaucoup de succès dans vos démarches.</p><p style='font-style: italic;'><br/>Cordialement,<br />Team Recrutement XCDM Maroc</p>`
+          `<p>Bonjour ${req.cookies.cndDt.fname} ${req.cookies.cndDt.lname},<br/><br/>Nous vous remercions pour l'intérêt que vous portez à l'offre de ${ofid[0].nme} au sein de ${ofid[0].rcrtPour}.</p> <p>Nous avons bien reçu votre candidature et nous l'étudions avec attention. Si votre profil correspond aux critères de sélection, nous ne manquerons pas de vous recontacter pour organiser un entretien. Dans le cas contraire, nous conserverons vos informations pour de futures opportunités qui pourraient correspondre davantage à votre profil.</p><p>Nous vous remercions encore une fois pour votre candidature et vous souhaitons beaucoup de succès dans vos démarches.</p><p style='font-style: italic;'><br/>Cordialement,<br />Team Recrutement XCDM Maroc</p>`,
+          'noreply@xcdmmaroc.com'
         );
 
         res.json({ c: 0 });

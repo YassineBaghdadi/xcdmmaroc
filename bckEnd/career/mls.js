@@ -1,6 +1,6 @@
-require("dotenv").config();
-const nodemailer = require("nodemailer");
-const { lg } = require("./lg");
+require('dotenv').config();
+const nodemailer = require('nodemailer');
+const { lg } = require('./lg');
 var sendMail = (to, sbj, msg) => {
   try {
     const transporter = nodemailer.createTransport({
@@ -15,9 +15,7 @@ var sendMail = (to, sbj, msg) => {
 
     transporter.verify(function (error, success) {
       if (error) {
-        console.log("Verification failed:", error);
-      } else {
-        console.log("Server is ready to take our messages");
+        console.log('Verification failed:', error);
       }
     });
 
@@ -29,12 +27,12 @@ var sendMail = (to, sbj, msg) => {
     };
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-        return console.error("Error:", error);
+        return console.error('Error:', error);
       }
-      console.log("Email sent:", info.response);
+      console.log('Email sent:', info.response);
     });
   } catch (error) {
-    log.error(error);
+    lg.error(error);
   }
 };
 
