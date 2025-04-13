@@ -2227,7 +2227,7 @@ app.post('/sveNewCntrct', async (req, res) => {
 
     await db.execute(
       `UPDATE _Users SET
-                          integrationDate = ?, actualEntity = ?, etablissment = ?, jobeTitle = ?, contractTpe = ?, department = ? WHERE id = ?`,
+                          integrationDate = ?, actualEntity = ?, etablissment = ?, etablsID = (select id from _Etablisment where nme = "${req.body.e}"), jobeTitle = ?, contractTpe = ?, department = ? WHERE id = ?`,
       [
         req.body.startDte,
         req.body.ent,
