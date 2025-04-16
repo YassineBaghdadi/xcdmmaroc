@@ -33,9 +33,9 @@ $(document).ready(async function () {
   socket.on('allNtfs', (ntfs) => {
     $('#nofsArea').html(ntfs);
   });
-  socket.on('currecntTime', (ntfs) => {
-    $('#nofsArea').html(ntfs);
-  });
+  // socket.on('currecntTime', (ntfs) => {
+  //   $('#nofsArea').html(ntfs);
+  // });
 
   var chechIP = async () => {
     await fetch('/checkIp');
