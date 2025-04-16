@@ -147,8 +147,8 @@ function getAllBrks() {
                 <td class="text-muted pl-0">${
                   item.strt.split('T')[1].split('.')[0]
                 } - ${
-          item.fnsh ? item.fnsh.split('T')[1].split('.')[0] : ''
-        }</td>
+                  item.fnsh ? item.fnsh.split('T')[1].split('.')[0] : ''
+                }</td>
               </tr>`;
       });
       tbl += `</tbody>
@@ -249,7 +249,7 @@ $(document).ready(() => {
   getBrksCodeTble();
   getWfmBreaksCodes();
 
-  const socket = io();
+  const socket = io('https://xcdmmaroc.com');
 
   function checkActiveBrk() {
     fetch('/ERP/WFM/checkActiveBrk')

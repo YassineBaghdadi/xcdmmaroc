@@ -1,7 +1,7 @@
 // import './socket.io.shim.js';
 
 $(document).ready(function () {
-  // const socket = io();
+  // const socket = io('https://xcdmmaroc.com');
 
   async function ntfClck(i, l) {
     // alert('clicked')
@@ -90,9 +90,8 @@ $(document).ready(function () {
   //     });
   // }, 5000);
 
-  $(
-    'footer'
-  ).html(`<div class="d-sm-flex justify-content-center justify-content-sm-between">
+  $('footer')
+    .html(`<div class="d-sm-flex justify-content-center justify-content-sm-between">
             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">
             &copy; ${new Date().getFullYear()} <a href="https://www.xcdmmaroc.com/" target="_blank">XCDM Maroc</a>. All rights reserved.
             </span>

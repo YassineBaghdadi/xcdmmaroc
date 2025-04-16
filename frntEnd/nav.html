@@ -203,7 +203,7 @@
     return i;
   }
 
-  const socket = io();
+  const socket = io('https://xcdmmaroc.com');
   socket.on('currecntTime', (m) => {
     $('#timeLabel').html(m.t);
     $('#timeLabel2').html(m.t2);

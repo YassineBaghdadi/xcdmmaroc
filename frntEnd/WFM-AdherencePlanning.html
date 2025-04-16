@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -258,7 +258,7 @@
           <!---Body End-->
           <!---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
           <script>
-            var scket = io();
+            var scket = io('https://xcdmmaroc.com');
             var showDetailedPauses = (i, w) => {
               fetch('/ERP/WFM/getTodayBRsForAgent', {
                 method: 'POST',
@@ -440,13 +440,13 @@
                       <td class="py-1"><a href="#" onclick="showDetailedPauses(${
                         e.id
                       }, ${e.wrkdy})"><img src="${
-                      e.pic
-                    }" onerror="this.onerror=null;this.src='./js/js/prflPic.jpg';" /></a></td> 
+                        e.pic
+                      }" onerror="this.onerror=null;this.src='./js/js/prflPic.jpg';" /></a></td> 
                       <td><a href="#" onclick="showDetailedPauses(${e.id}, ${
-                      e.wrkdy
-                    })"  >${
-                      e.usrNme
-                    }</a></td> <!-- MALI YBRAK 3LA Smiya POP-UP TBAN FIHA DETAILLES DYAL LES PAUSES-->
+                        e.wrkdy
+                      })"  >${
+                        e.usrNme
+                      }</a></td> <!-- MALI YBRAK 3LA Smiya POP-UP TBAN FIHA DETAILLES DYAL LES PAUSES-->
                       <td>${e.dprtmnt}</td>
                       <td>${e.lgin}</td>
                       <td>${e.lgout}</td>
@@ -456,10 +456,10 @@
                       <td><button type="button" ${
                         e.lgout ? 'hidden' : ''
                       } class="btn btn-outline-danger btn-rounded btn-icon" ${
-                      e.showDcnct
-                    } onclick="dcnctAg(${e.id}, '${
-                      e.usrNme
-                    }')"><i class="mdi mdi-close"></i></button></td>
+                        e.showDcnct
+                      } onclick="dcnctAg(${e.id}, '${
+                        e.usrNme
+                      }')"><i class="mdi mdi-close"></i></button></td>
                     </tr>
                     `;
                     tblDt += r;
