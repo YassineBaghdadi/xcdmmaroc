@@ -202,12 +202,16 @@
     }
     return i;
   }
+  try {
+    const socket = io('https://xcdmmaroc.com');
+    socket.on('currecntTime', (m) => {
+      $('#timeLabel').html(m.t);
+      $('#timeLabel2').html(m.t2);
+    });
+  } catch (error) {
+    console.log(error);
+  }
 
-  const socket = io('https://xcdmmaroc.com');
-  socket.on('currecntTime', (m) => {
-    $('#timeLabel').html(m.t);
-    $('#timeLabel2').html(m.t2);
-  });
   // function startTime() {
   //   fetch('/getCurrentTime')
   //     .then((response) => response.json())
