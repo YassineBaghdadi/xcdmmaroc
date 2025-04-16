@@ -14,7 +14,6 @@ const cookieParser = require('cookie-parser');
 const url = require('url');
 const querystring = require('querystring');
 const http = require('http');
-const socketIo = require('socket.io');
 
 require('dotenv').config();
 const moment = require('moment-timezone');
@@ -26,6 +25,7 @@ const { lg } = require('./lg');
 
 const app = express();
 const server = createServer(app);
+const io = new Server(server);
 const multer = require('multer');
 // const fileUpload = require("express-fileupload");
 const fs = require('fs');
@@ -35,7 +35,6 @@ app.use(express.json());
 function getCurrentTime() {
   return moment.tz('Africa/Casablanca').format('YYYY-MM-DD HH:mm:ss');
 }
-const io = new Server(server);
 
 const connectedSockets = {};
 io.use((socket, next) => {
@@ -721,8 +720,8 @@ app.get('/getUsrCnjTbl', async (req, res) => {
       <td>${v3}</td>
       <td>
         <button type="button" ${cnclBtn} class="btn btn-inverse-danger btn-icon" onclick="cancelCnj('${
-        c.id
-      }')">
+          c.id
+        }')">
           <i class="ti-close"></i>
         </button>
       </td>

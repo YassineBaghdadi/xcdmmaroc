@@ -15,7 +15,7 @@ const tst = Swal.mixin({
 });
 
 $(document).ready(async function () {
-  const socket = io();
+  const socket = io('https://xcdmmaroc.com');
   socket.on('NewNotf', (msg) => {
     console.log(msg);
 
@@ -27,10 +27,7 @@ $(document).ready(async function () {
   });
 
   socket.on('byeZine', async (e) => {
-    console.log(e);
-
     window.location.replace('/logout');
-    // await fetch('/logout');
   });
 
   socket.on('allNtfs', (ntfs) => {
